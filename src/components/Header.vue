@@ -12,7 +12,7 @@
             </svg>
           </a>
           <button
-            @click="$emit('darkModeToggle')"
+            @click="darkModeToggle()"
             class="dark-mode-toggle"
           />
         </div>
@@ -26,9 +26,33 @@ export default {
   name: 'Header',
   data() {
     return {
-      isDay: true
+      darkMode: false
     }
   },
+  mounted() {
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null
+    if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme)
+      if (currentTheme === 'dark') {
+        this.darkMode = true
+      }
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark')
+      this.darkMode = true
+    }
+  },
+  methods: {
+    darkModeToggle() {
+      if (!this.darkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        localStorage.setItem('theme', 'dark')
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light')
+        localStorage.setItem('theme', 'light')
+      }
+      this.darkMode = !this.darkMode
+    }
+  }
 }
 </script>
 
