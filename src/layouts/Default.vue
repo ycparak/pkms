@@ -1,50 +1,84 @@
 <template>
-  <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
-      </nav>
-    </header>
-    <slot/>
+  <div class="site">
+    <div class="site-wrapper"></div>
   </div>
 </template>
 
-<static-query>
-query {
-  metadata {
-    siteName
+<style lang="scss">
+html, body {
+  font-family: HKGrotesk, -apple-system, BlinkMacSystemFont, Avenir, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  font-style: normal;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  @include colors;
+  @include daynight;
+}
+
+body {
+  &::before, &::after {
+    background-color: var(--background-accent-color);
+    content: "";
+    height: 10px;
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    width: 100%;
+    z-index: 111;
+    @include daynight;
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+  &::before {
+    top: 0;
+  }
+  &::after {
+    bottom: 0;
   }
 }
-</static-query>
 
-<style>
-body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  margin:0;
-  padding:0;
-  line-height: 1.5;
+.site {
+  overflow-x: hidden;
+  min-height: 100vh;
+
+  &::before, &::after {
+    background-color: var(--background-accent-color);
+    bottom: 0;
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    z-index: 111;
+    @include daynight;
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+
+  &:before {
+    left: 0;
+  }
+
+  &:after {
+    right: 0;
+  }
 }
 
-.layout {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
-}
-
-.nav__link {
-  margin-left: 20px;
+.site-wrapper {
+  padding: 10px;
+  @media (max-width: 576px) {
+    padding: 0;
+  }
 }
 </style>
