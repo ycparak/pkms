@@ -1,8 +1,50 @@
 <template>
   <div class="site">
-    <div class="site-wrapper"></div>
+    <div class="site-wrapper">
+      <Header />
+    </div>
   </div>
 </template>
+
+<script>
+import Header from '~/components/Header'
+
+export default {
+  name: 'DefaultLayout',
+  components: {
+    Header,
+  },
+  data() {
+    return {
+      darkMode: false
+    }
+  },
+  mounted() {
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null
+    if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme)
+      if (currentTheme === 'dark') {
+        this.darkMode = true
+      }
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark')
+      this.darkMode = true
+    }
+  },
+  methods: {
+    darkModeToggle() {
+      if (!this.darkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        localStorage.setItem('theme', 'dark')
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light')
+        localStorage.setItem('theme', 'light')
+      }
+      this.darkMode = !this.darkMode
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 html, body {
@@ -21,7 +63,6 @@ html, body {
   @include colors;
   @include daynight;
 }
-
 body {
   &::before, &::after {
     background-color: var(--background-accent-color);
@@ -45,7 +86,6 @@ body {
     bottom: 0;
   }
 }
-
 .site {
   overflow-x: hidden;
   min-height: 100vh;
@@ -65,20 +105,77 @@ body {
       display: none;
     }
   }
-
   &:before {
     left: 0;
   }
-
   &:after {
     right: 0;
   }
 }
-
 .site-wrapper {
   padding: 10px;
   @media (max-width: 576px) {
     padding: 0;
   }
+}
+
+p {
+  font-size: 21px;
+  margin: 20px 0;
+  line-height: 32px;
+  text-align: left;
+  font-weight: 400;
+  color: var(--text-color);
+}
+h1 {
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 900;
+  color: var(--text-color);
+}
+
+a {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+.username-link {
+  background:
+     linear-gradient(
+       to bottom, var(--twitter-color) 0%,
+       var(--twitter-color) 100%
+     );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+  border-radius: 2px;
+  color: var(--text-color);
+  &:hover {
+    background-size: 2px 50px;
+    color: #fff;
+    padding: 4px 18px;
+    height: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+}
+
+.hero-content--fixed {
+  position: fixed;
+  top: calc(10vh + 100px);
+  width: 440px;
+}
+.hero {
+  margin-top: calc(10vh + 90px);
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  grid-gap: 10vw;
+  height: 100%;
+}
+.hero-actions {
+  grid-column-start: 2;
+  padding-top: 8px;
 }
 </style>
