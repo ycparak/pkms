@@ -13,13 +13,15 @@ export default {
 <style lang="scss" scoped>
 .container {
   height: 100%;
-  width: calc(100vw - 80px);
+  width: 100%;
+  padding: 56px;
   margin: 0 auto;
+  min-height: calc(100vh - 20px);
   @media (max-width: 576px) {
-    width: calc(100vw - 28px);
+    padding: 8px;
   }
   @media (max-width: 768px) {
-    width: calc(100vw - 52px)
+    padding: 24px;
   }
 }
 </style>

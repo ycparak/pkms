@@ -1,0 +1,19 @@
+h1 {
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 900;
+  color: var(--text-color);
+}
+p {
+  font-size: 21px;
+  margin: 20px 0;
+  line-height: 32px;
+  text-align: left;
+  font-weight: 400;
+  color: var(--text-color);
+}
+a {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
