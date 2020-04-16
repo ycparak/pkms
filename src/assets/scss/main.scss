@@ -1,0 +1,91 @@
+@use 'reset';
+@use 'variables';
+@use 'mixins';
+@use 'helpers';
+@use 'typography';
+
+html, body {
+  font-family: HKGrotesk, -apple-system, BlinkMacSystemFont, Avenir, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  font-style: normal;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  @include colors;
+  @include daynight;
+}
+body {
+  &::before, &::after {
+    background-color: var(--background-accent-color);
+    content: "";
+    height: 10px;
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    width: 100%;
+    z-index: 111;
+    @include daynight;
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+  &::before {
+    top: 0;
+  }
+  &::after {
+    bottom: 0;
+  }
+}
+.site {
+  overflow-x: hidden;
+  min-height: 100vh;
+
+  &::before, &::after {
+    background-color: var(--background-accent-color);
+    bottom: 0;
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    z-index: 111;
+    @include daynight;
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+}
+.site-wrapper {
+  padding: 10px;
+  @media (max-width: 576px) {
+    padding: 0;
+  }
+}
+
+button, a {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  font-size: 15px;
+  text-decoration: none;
+  @include colors;
+  @include daynight;
+}

@@ -1,6 +1,6 @@
 <template>
   <Layout>
-
+    <div class="x"></div>
   </Layout>
 </template>
 
@@ -10,4 +10,7 @@ export default {
 </script>
 
 <style>
+.x {
+  height: 200vh;
+}
 </style>
