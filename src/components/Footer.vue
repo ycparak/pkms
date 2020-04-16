@@ -69,17 +69,27 @@ export default {
   display: grid;
   grid-template-columns: 75% 1fr;
   align-items: center;
-  @include colors;
+  color: var(--text-color);
   @include daynight;
-  @media (max-width: 576px) {
-    bottom: 8px;
-    left: 8px;
-    right: 8px;
+  @media (max-width: 1500px) {
+    bottom: 32px;
+    left: 32px;
+    right: 32px;
   }
   @media (max-width: 768px) {
     bottom: 24px;
     left: 24px;
     right: 24px;
+  }
+  @media (max-width: 676px) {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+  @media (max-width: 576px) {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
   }
 }
 .footer__links {
@@ -96,6 +106,7 @@ export default {
   background: transparent;
   &:last-child {
     margin-bottom: 0;
+    height: 15px;
   }
   // Icons
   .footer__link-icon {

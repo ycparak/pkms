@@ -57,17 +57,27 @@ export default {
   display: grid;
   grid-template-columns: 75% 1fr;
   align-items: center;
-  @include colors;
+  color: var(--text-color);
   @include daynight;
-  @media (max-width: 576px) {
-    top: 8px;
-    left: 8px;
-    right: 8px;
+  @media (max-width: 1500px) {
+    top: 32px;
+    left: 32px;
+    right: 32px;
   }
   @media (max-width: 768px) {
     top: 24px;
     left: 24px;
     right: 24px;
+  }
+  @media (max-width: 676px) {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+  }
+  @media (max-width: 576px) {
+    top: 12px;
+    left: 12px;
+    right: 12px;
   }
 }
 .header__controls {
@@ -79,6 +89,10 @@ export default {
   background: var(--text-color);
   border-radius: 50%;
   margin-right: 8px;
+  @media (max-width: 1500px) {
+    width: 36px;
+    height: 36px;
+  }
 }
 .header__darkmode {
   display: inline-block;
