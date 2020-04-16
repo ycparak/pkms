@@ -2,9 +2,7 @@
   <div class="site">
     <div class="site__wrapper">
       <Header />
-      <main class="site__content">
-        <slot />
-      </main>
+      <slot />
       <Footer />
     </div>
   </div>
@@ -29,7 +27,7 @@ export default {
   min-height: 100vh;
 
   &::before, &::after {
-    background-color: var(--background-accent-color);
+    background-color: var(--accent-color);
     bottom: 0;
     content: "";
     pointer-events: none;

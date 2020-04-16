@@ -10,13 +10,34 @@ h6 {
 p {
   font-size: 18px;
   margin: 20px 0;
-  line-height: 26px;
+  line-height: 28px;
   text-align: left;
   font-weight: 400;
   color: var(--text-color);
 }
+
 a {
   font-size: inherit;
   line-height: inherit;
   font-weight: inherit;
+  text-decoration: none;
+  color: inherit;
+  background: linear-gradient(to bottom, var(--twitter-color) 0%,  var(--twitter-color) 100%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  border-radius: 2px;
+  @include daynight;
+}
+
+.username-link {
+  &:hover {
+    background-size: 2px 50px;
+    color: #fff;
+    padding: 2px 6px;
+    height: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+  }
 }
