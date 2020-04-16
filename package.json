@@ -7,7 +7,8 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
-    "gridsome": "^0.7.0"
+    "gridsome": "^0.7.0",
+    "vue-feather-icons": "^5.0.0"
   },
   "devDependencies": {
     "node-sass": "^4.13.1",

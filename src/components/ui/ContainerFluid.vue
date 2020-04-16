@@ -12,9 +12,10 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  position: relative;
   height: 100%;
   width: 100%;
-  padding: 56px;
+  padding: 44px;
   margin: 0 auto;
   min-height: calc(100vh - 20px);
   @media (max-width: 576px) {

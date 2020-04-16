@@ -22,6 +22,6 @@ module.exports = {
       addStyleResource(config.module.rule('scss').oneOf(type))
     })
 	},
-  siteName: 'Gridsome',
+  siteName: 'ycparak',
   plugins: []
 }

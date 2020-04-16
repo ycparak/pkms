@@ -1,21 +1,22 @@
 <template>
   <div class="site">
     <div class="site-wrapper">
-      <ContainerFluid>
-        <Header />
-        <slot />
-      </ContainerFluid>
+      <Header />
+      <slot />
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
 import Header from '~/components/Header'
+import Footer from '~/components/Footer'
 
 export default {
   name: 'DefaultLayout',
   components: {
-    Header
+    Header,
+    Footer
   }
 }
 </script>

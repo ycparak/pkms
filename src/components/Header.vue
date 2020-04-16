@@ -1,19 +1,19 @@
 <template>
   <header class="header">
-    
+    <div class="header__profile">
+      <div class="header__logo"></div>
+    </div>
+    <div class="header__controls">
+      <button
+        @click="darkModeToggle()"
+        class="header__darkmode"
+      />
+    </div>
   </header>
-  <!-- <a class="nav-icon" href="https://twitter.com/MumblingIO" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-      <path d="M32 7.075a12.941 12.941 0 0 1-3.769 1.031 6.601 6.601 0 0 0 2.887-3.631 13.21 13.21 0 0 1-4.169 1.594A6.565 6.565 0 0 0 22.155 4a6.563 6.563 0 0 0-6.563 6.563c0 .512.056 1.012.169 1.494A18.635 18.635 0 0 1 2.23 5.195a6.56 6.56 0 0 0-.887 3.3 6.557 6.557 0 0 0 2.919 5.463 6.565 6.565 0 0 1-2.975-.819v.081a6.565 6.565 0 0 0 5.269 6.437 6.574 6.574 0 0 1-2.968.112 6.588 6.588 0 0 0 6.131 4.563 13.17 13.17 0 0 1-9.725 2.719 18.568 18.568 0 0 0 10.069 2.95c12.075 0 18.681-10.006 18.681-18.681 0-.287-.006-.569-.019-.85A13.216 13.216 0 0 0 32 7.076z" />
-    </svg>
-  </a>
-  <button
-    @click="darkModeToggle()"
-    class="dark-mode-toggle"
-  /> -->
 </template>
 
 <script>
+
 export default {
   name: 'Header',
   data() {
@@ -50,22 +50,50 @@ export default {
 
 <style lang="scss" scoped>
 .header {
+  position: fixed;
+  left: 44px;
+  top: 44px;
+  right: 44px;
+  display: grid;
+  grid-template-columns: 75% 1fr;
+  align-items: center;
   @include colors;
   @include daynight;
+  @media (max-width: 576px) {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+  }
+  @media (max-width: 768px) {
+    top: 24px;
+    left: 24px;
+    right: 24px;
+  }
 }
-.dark-mode-toggle {
+.header__controls {
+  text-align: right;
+}
+.header__logo {
+  width: 44px;
+  height: 44px;
+  background: var(--text-color);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.header__darkmode {
   display: inline-block;
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   overflow: hidden;
-  position: relative;
   transition-property: box-shadow;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
   z-index: 100;
   box-shadow: var(--icon-toggle-shadow);
-  @include daynight;
+  position: relative;
+  top: 1.4px;
+  margin: 0;
   &::after {
     background: var(--text-color);
     content: "";
@@ -83,18 +111,6 @@ export default {
   }
   &:hover::after {
     background: var(--neutral-color);
-  }
-}
-.nav-icon {
-  fill: var(--text-color);
-  display: inline-block;
-  margin-right: 12px;
-  svg {
-    display: block;
-    height: 15px;
-  }
-  &:hover {
-    fill: var(--neutral-color);
   }
 }
 </style>
