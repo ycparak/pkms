@@ -69,7 +69,7 @@ export default {
   display: grid;
   grid-template-columns: 75% 1fr;
   align-items: center;
-  @include colors;
+  color: var(--text-color);
   @include daynight;
   @media (max-width: 1500px) {
     bottom: 32px;
@@ -106,6 +106,7 @@ export default {
   background: transparent;
   &:last-child {
     margin-bottom: 0;
+    height: 15px;
   }
   // Icons
   .footer__link-icon {
