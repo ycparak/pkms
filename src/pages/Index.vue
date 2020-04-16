@@ -1,6 +1,8 @@
 <template>
   <Layout>
-    <div class="x"></div>
+    <Container>
+      <div class="x"></div>
+    </Container>
   </Layout>
 </template>
 
@@ -10,7 +12,7 @@ export default {
 </script>
 
 <style>
-.x {
+/* .x {
   height: 200vh;
-}
+} */
 </style>
