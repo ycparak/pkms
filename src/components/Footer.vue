@@ -23,7 +23,7 @@
 import { MailIcon, TwitterIcon } from 'vue-feather-icons';
 
 export default {
-  name: 'footer',
+  name: 'Footer',
   components: {
     MailIcon,
     TwitterIcon

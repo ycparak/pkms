@@ -27,6 +27,7 @@ a {
   background-repeat: repeat-x;
   background-size: 2px 2px;
   border-radius: 2px;
+  pointer-events: visible;
   @include daynight;
 }
 

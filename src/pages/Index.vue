@@ -11,7 +11,9 @@
         </div>
         <div class="grid__column grid__column-2">
           <section class="thoughts">
-            Hello
+            <h1>
+              Hello my name is Yusuf Parak and I require a full width container.
+            </h1>
           </section>
         </div>
       </div>
@@ -27,23 +29,23 @@ export default {
 <style lang="scss" scoped>
 .grid {
   display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 200px 80px;
-  justify-content: stretch;
-  /* background: palevioletred; */
-  height: 100vh;
+  grid-template-columns: repeat(auto-fit, minmax(404px, 1fr));
+  gap: 20px 80px;
   padding-top: 144px;
+  // min-height: calc(100vh - 20px);
 }
 .grid__column-1 {
-  max-width: 420px;
-  position: fixed;
-  top: 144px;
   background: transparent;
-  pointer-events: none;
+  @media (min-width: 1082px) {
+    max-width: 404px;
+    // position: fixed;
+    // top: 144px;
+    // pointer-events: none;
+  }
 }
 .grid__column-2 {
-  height: 200vh;
   background: var(--twitter-color);
-  grid-column-start: 2;
+  // height: 200vh;
+  // grid-column-start: 2;
 }
 </style>
