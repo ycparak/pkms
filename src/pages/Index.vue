@@ -28,24 +28,36 @@ export default {
 
 <style lang="scss" scoped>
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(404px, 1fr));
-  gap: 20px 80px;
   padding-top: 144px;
-  // min-height: calc(100vh - 20px);
-}
-.grid__column-1 {
-  background: transparent;
-  @media (min-width: 1082px) {
-    max-width: 404px;
-    // position: fixed;
-    // top: 144px;
-    // pointer-events: none;
+  @media (min-width: 1060px) {
+    display: grid;
+    grid-template-columns: 414px 1fr;
+    gap: 0 72px;
   }
-}
-.grid__column-2 {
-  background: var(--twitter-color);
-  // height: 200vh;
-  // grid-column-start: 2;
+  @media (min-width: 1160px) {
+    gap: 0 140px;
+  }
+  // All columns
+  .grid__column {
+    margin-bottom: 72px;
+  }
+  // First column/div
+  .grid__column-1 {
+    @media (min-width: 1060px) {
+      position: fixed;
+      max-width: 414px;
+      height: calc(100vh - 164px);
+      margin-bottom: 0;
+    }
+  }
+  // Secnd column/div
+  .grid__column-2 {
+    @media (min-width: 1060px) {
+      height: 200vh;
+      grid-column-start: 2;
+      grid-column-end: 2;
+      width: 100%;
+    }
+  }
 }
 </style>

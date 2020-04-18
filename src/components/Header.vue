@@ -58,7 +58,6 @@ export default {
   grid-template-columns: 75% 1fr;
   align-items: center;
   color: var(--text-color);
-  pointer-events: none;
   @include daynight;
   @media (max-width: 1500px) {
     top: 32px;
