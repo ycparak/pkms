@@ -16,7 +16,8 @@
   ** Lightmode variables
   */
   --background-color: #fff;
-  --background-accent-color: #eee;
+  --accent-color: #eee;
+  --accent-color-2: #DDDDDD;
   --text-color: #171717;
 
   --darkmode-toggle-translate: 50%;
@@ -24,7 +25,8 @@
 
 [data-theme="dark"] {
   --background-color: #171717;
-  --background-accent-color: #201F22;
+  --accent-color: #201F22;
+  --accent-color-2: #2D2C30;
   --text-color: #fff;
 
   --darkmode-toggle-translate: -52.5%;

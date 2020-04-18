@@ -58,6 +58,7 @@ export default {
   grid-template-columns: 75% 1fr;
   align-items: center;
   color: var(--text-color);
+  pointer-events: none;
   @include daynight;
   @media (max-width: 1500px) {
     top: 32px;
@@ -89,6 +90,7 @@ export default {
   background: var(--text-color);
   border-radius: 50%;
   margin-right: 8px;
+  pointer-events: visible;
   @media (max-width: 1500px) {
     width: 36px;
     height: 36px;
@@ -108,6 +110,7 @@ export default {
   position: relative;
   top: 1.4px;
   margin: 0;
+  pointer-events: visible;
   &::after {
     background: var(--text-color);
     content: "";
