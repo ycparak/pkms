@@ -139,7 +139,7 @@ export default {
     font-weight: 300;
     cursor: pointer;
     &:last-child {
-      margin-bottom: 0;
+      padding-bottom: 0;
     }
     .footer__collection--color {
       display: inline-block;
@@ -163,7 +163,7 @@ export default {
     }
   }
   .active {
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-color);
     @include daynight;
     .footer__collection--color{
