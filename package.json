@@ -7,6 +7,8 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@gridsome/source-filesystem": "^0.6.2",
+    "@gridsome/transformer-remark": "^0.5.0",
     "gridsome": "^0.7.0",
     "vue-feather-icons": "^5.0.0"
   },

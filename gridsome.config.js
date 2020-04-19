@@ -22,6 +22,17 @@ module.exports = {
       addStyleResource(config.module.rule('scss').oneOf(type))
     })
 	},
-  siteName: 'ycparak',
-  plugins: []
+  siteName: '@ycparak',
+  plugins: [
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'Post',
+        path: './posts/**/*.md',
+      }
+    }
+  ],
+  templates: {
+    Post: '/:title'
+  }
 }
