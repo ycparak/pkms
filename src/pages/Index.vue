@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout v-slot:default="slotProps">
     <Container>
       <div class="grid">
         <div class="grid__column grid__column-1">
@@ -10,11 +10,7 @@
           </div>
         </div>
         <div class="grid__column grid__column-2">
-          <section class="thoughts">
-            <h1>
-              Hello my name is Yusuf Parak and I require a full width container.
-            </h1>
-          </section>
+          <Posts :collection="slotProps.collection" />
         </div>
       </div>
     </Container>
@@ -22,7 +18,18 @@
 </template>
 
 <script>
+import Posts from '~/components/Posts'
+
 export default {
+  name: 'Index',
+  components: {
+    Posts,
+  },
+  methods: {
+    setCollection() {
+      console.log(slotProps);
+    }
+  }
 }
 </script>
 

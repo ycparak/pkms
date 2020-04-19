@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__profile">
-      <div class="header__logo"></div>
+      <g-link to="/" class="header__logo"></g-link>
     </div>
     <div class="header__controls">
       <button
@@ -84,6 +84,7 @@ export default {
   text-align: right;
 }
 .header__logo {
+  display: block;
   width: 44px;
   height: 44px;
   background: var(--text-color);

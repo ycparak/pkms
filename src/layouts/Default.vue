@@ -3,7 +3,7 @@
     <div :class="`site ${getHoveredCollectionState}`">
       <div class="site__wrapper">
         <Header />
-        <slot />
+        <slot :collection="collection" />
         <Footer :collection="collection" />
       </div>
     </div>
