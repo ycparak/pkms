@@ -22,21 +22,21 @@
         </li>
         <li
           class="footer__collection"
-          :class="{ active: collection === 'projects' }"
-          @mouseover="mouseoverCollection('projects')"
-          @mouseleave="mouseleaveCollection('projects')"
-          @click="setCollection('projects')">
-          <span class="footer__collection--color projects"></span>
-          Projects
-        </li>
-        <li
-          class="footer__collection"
           @mouseover="mouseoverCollection('tweetstorms')"
           @mouseleave="mouseleaveCollection('tweetstorms')"
           :class="{ active: collection === 'tweetstorms' }"
           @click="setCollection('tweetstorms')">
           <span class="footer__collection--color tweetstorms"></span>
           Tweetstorms
+        </li>
+        <li
+          class="footer__collection"
+          :class="{ active: collection === 'projects' }"
+          @mouseover="mouseoverCollection('projects')"
+          @mouseleave="mouseleaveCollection('projects')"
+          @click="setCollection('projects')">
+          <span class="footer__collection--color projects"></span>
+          Projects
         </li>
       </ul>
     </div>
@@ -114,49 +114,52 @@ export default {
   }
 }
 .footer__collections--list {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  bottom: -2px;
-  .footer__collection {
-    font-size: 15px;
-    line-height: 15px;
+  display: none;
+  @media (min-width: 1060px) {
+    display: inline-block;
     margin: 0;
-    padding: 8px 0;
-    color: var(--accent-color-3);
-    font-weight: 500;
-    cursor: pointer;
-    @include daynight;
-    &:last-child {
-      padding-bottom: 0;
-    }
-    .footer__collection--color {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      background: var(--accent-color-2);
-      margin-right: 4px;
-      border-radius: 50%;
-      position: relative;
-      top: -1px;
-      opacity: 0.1;
-      &.essays  {
-        background: var(--essays-color);
-      }
-      &.projects  {
-        background: var(--projects-color);
-      }
-      &.tweetstorms  {
-        background: var(--twitter-color);
-      }
-    }
-    &:hover, &.active {
+    padding: 0;
+    position: relative;
+    bottom: -2px;
+    .footer__collection {
+      font-size: 15px;
+      line-height: 15px;
+      margin: 0;
+      padding: 8px 0;
+      color: var(--accent-color-3);
       font-weight: 500;
-      color: var(--text-color);
+      cursor: pointer;
+      @include daynight;
+      &:last-child {
+        padding-bottom: 0;
+      }
       .footer__collection--color {
-        opacity: 1;
-        @include daynight;
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: var(--accent-color-2);
+        margin-right: 4px;
+        border-radius: 50%;
+        position: relative;
+        top: -1px;
+        opacity: 0.2;
+        &.essays  {
+          background: var(--essays-color);
+        }
+        &.projects  {
+          background: var(--projects-color);
+        }
+        &.tweetstorms  {
+          background: var(--twitter-color);
+        }
+      }
+      &:hover, &.active {
+        font-weight: 500;
+        color: var(--text-color);
+        .footer__collection--color {
+          opacity: 1;
+          @include daynight;
+        }
       }
     }
   }

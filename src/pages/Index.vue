@@ -32,9 +32,9 @@ export default {
   @media (min-width: 1060px) {
     display: grid;
     grid-template-columns: 414px 1fr;
-    gap: 0 72px;
+    gap: 0 48px;
   }
-  @media (min-width: 1160px) {
+  @media (min-width: 1428px) {
     gap: 0 140px;
   }
   // All columns
