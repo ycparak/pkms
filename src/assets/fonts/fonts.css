@@ -1,84 +1,84 @@
-@font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-Black.woff2') format('woff2'), 
-    url('./HKGrotesk-Black.woff') format('woff');
+/* @font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-Black.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
-}
-@font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-ExtraBold.woff2') format('woff2'), 
-    url('./HKGrotesk-ExtraBold.woff') format('woff');
+} */
+/* @font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-ExtraBold.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-ExtraBold.woff') format('woff');
   font-weight: 800;
   font-style: normal;
-}
+} */
 @font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-Bold.woff2') format('woff2'), 
-    url('./HKGrotesk-Bold.woff') format('woff');
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-Bold.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
 }
-@font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-BoldItalic.woff2') format('woff2'), 
-    url('./HKGrotesk-BoldItalic.woff') format('woff');
+/* @font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-BoldItalic.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-BoldItalic.woff') format('woff');
   font-weight: 700;
   font-style: italic;
-}
-@font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-SemiBold.woff2') format('woff2'), 
-    url('./HKGrotesk-SemiBold.woff') format('woff');
+} */
+/* @font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-SemiBold.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
-}
-@font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-SemiBoldItalic.woff2') format('woff2'), 
-    url('./HKGrotesk-SemiBoldItalic.woff') format('woff');
+} */
+/* @font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-SemiBoldItalic.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-SemiBoldItalic.woff') format('woff');
   font-weight: 600;
   font-style: italic;
-}
+} */
 @font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-Medium.woff2') format('woff2'), 
-    url('./HKGrotesk-Medium.woff') format('woff');
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-Medium.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
-@font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-MediumItalic.woff2') format('woff2'), 
-    url('./HKGrotesk-MediumItalic.woff') format('woff');
+/* @font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-MediumItalic.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-MediumItalic.woff') format('woff');
   font-weight: 500;
   font-style: italic;
-}
+} */
 @font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-Regular.woff2') format('woff2'), 
-    url('./HKGrotesk-Regular.woff') format('woff');
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-Regular.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
-@font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-Italic.woff2') format('woff2'), 
-    url('./HKGrotesk-Italic.woff') format('woff');
+/* @font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-RegularItalic.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-RegularItalic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
-}
+} */
 @font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-Light.woff2') format('woff2'), 
-    url('./HKGrotesk-Light.woff') format('woff');
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-Light.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
 }
-@font-face {
-  font-family: "HKGrotesk";
-  src: url('./HKGrotesk-LightItalic.woff2') format('woff2'), 
-    url('./HKGrotesk-LightItalic.woff') format('woff');
+/* @font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-LightItalic.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-LightItalic.woff') format('woff');
   font-weight: 300;
   font-style: italic;
-}
+} */
