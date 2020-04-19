@@ -1,9 +1,11 @@
 <template>
-  <div class="site">
-    <div class="site__wrapper">
-      <Header />
-      <slot />
-      <Footer />
+  <div :class="`body ${collection}`">
+    <div :class="`site ${collection}`">
+      <div class="site__wrapper">
+        <Header />
+        <slot />
+        <Footer />
+      </div>
     </div>
   </div>
 </template>
@@ -17,6 +19,18 @@ export default {
   components: {
     Header,
     Footer
+  },
+  data() {
+    return {
+      collection: 'all',
+      collectionPrev: 'all',
+      collectionNext: 'all',
+    }
+  },
+  methods: {
+    setPrimaryColor(collection) {
+      this.collection = collection;
+    }
   }
 }
 </script>
@@ -33,7 +47,7 @@ export default {
     pointer-events: none;
     position: fixed;
     top: 0;
-    width: 10px;
+    width: 8px;
     height: 100%;
     z-index: 111;
     @include daynight;
@@ -46,6 +60,25 @@ export default {
   }
   &:after {
     right: 0;
+  }
+
+  &.all {
+    &::before, &::after {
+      background-color: var(--accent-color);
+    }
+  }
+  &.essays {
+    &::before, &::after {
+      background-color: var(--essays-color);
+    }
+  }
+  &.projects {
+    &::before, &::after {
+      background-color: var(--projects-color);
+    }
+  }
+  &::before, &::after {
+    background-color: var(--twitter-color);
   }
 }
 .site__wrapper {

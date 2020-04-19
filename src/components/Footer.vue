@@ -1,6 +1,44 @@
 <template>
   <footer class="footer">
-    <div class="footer__categories">
+    <div class="footer__collections">
+      <ul class="footer__collections--list">
+        <li
+          class="footer__collection"
+          :class="{ active: active === 'all' }"
+          @mouseover="mouseoverActive('all')"
+          @mouseleave="mouseleaveActive('all')"
+          @click="setActive('all')">
+          <span class="footer__collection--color all"></span>
+          All
+        </li>
+        <li
+          class="footer__collection"
+          :class="{ active: active === 'essays' }"
+          @mouseover="mouseoverActive('essays')"
+          @mouseleave="mouseleaveActive('essays')"
+          @click="setActive('essays')">
+          <span class="footer__collection--color essays"></span>
+          Essays
+        </li>
+        <li
+          class="footer__collection"
+          :class="{ active: active === 'projects' }"
+          @mouseover="mouseoverActive('projects')"
+          @mouseleave="mouseleaveActive('projects')"
+          @click="setActive('projects')">
+          <span class="footer__collection--color projects"></span>
+          Projects
+        </li>
+        <li
+          class="footer__collection"
+          @mouseover="mouseoverActive('tweetstorms')"
+          @mouseleave="mouseleaveActive('tweetstorms')"
+          :class="{ active: active === 'tweetstorms' }"
+          @click="setActive('tweetstorms')">
+          <span class="footer__collection--color tweetstorms"></span>
+          Tweetstorms
+        </li>
+      </ul>
     </div>
     <div class="footer__links">
       <a href="https://aemail.com/vw8" target="_blank" class="footer__link">
@@ -30,31 +68,25 @@ export default {
   },
   data() {
     return {
-      darkMode: false
-    }
-  },
-  mounted() {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme)
-      if (currentTheme === 'dark') {
-        this.darkMode = true
-      }
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark')
-      this.darkMode = true
-    }
+      prevActive: 'all',
+      active: 'all',
+    };
   },
   methods: {
-    darkModeToggle() {
-      if (!this.darkMode) {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        localStorage.setItem('theme', 'dark')
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light')
-        localStorage.setItem('theme', 'light')
-      }
-      this.darkMode = !this.darkMode
+    setActive(collection) {
+      this.prevActive = collection;
+      this.active = collection;
+    },
+    mouseoverActive(collection) {
+      this.active = collection;
+    },
+    mouseleaveActive(collection) {
+      this.active = this.prevActive;
+    }
+  },
+  watch: {
+    active() {
+      this.$parent.setPrimaryColor(this.active);
     }
   }
 }
@@ -68,7 +100,7 @@ export default {
   right: 44px;
   display: grid;
   grid-template-columns: 75% 1fr;
-  align-items: center;
+  align-items: end;
   color: var(--text-color);
   @include daynight;
   @media (max-width: 1500px) {
@@ -90,6 +122,54 @@ export default {
     bottom: 12px;
     left: 12px;
     right: 12px;
+  }
+}
+.footer__collections--list {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  bottom: -2px;
+  .footer__collection {
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0;
+    padding: 8px 0;
+    color: var(--neutral-color);
+    font-weight: 300;
+    cursor: pointer;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .footer__collection--color {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent-color-2);
+      margin-right: 4px;
+      border-radius: 50%;
+      position: relative;
+      top: -1px;
+      opacity: 0.1;
+      &.essays  {
+        background: var(--essays-color);
+      }
+      &.projects  {
+        background: var(--projects-color);
+      }
+      &.tweetstorms  {
+        background: var(--twitter-color);
+      }
+    }
+  }
+  .active {
+    font-weight: 600;
+    color: var(--text-color);
+    @include daynight;
+    .footer__collection--color{
+      opacity: 1;
+      @include daynight;
+    }
   }
 }
 .footer__links {
