@@ -20,11 +20,14 @@ html, body {
   @include colors;
   @include daynight;
 }
-body {
+html {
+  background-color: var(--accent-color);
+}
+.body {
   &::before, &::after {
     background-color: var(--accent-color);
     content: "";
-    height: 10px;
+    height: 8px;
     left: 0;
     pointer-events: none;
     position: fixed;
@@ -42,8 +45,26 @@ body {
   &::after {
     bottom: 0;
   }
-}
 
+  &.all {
+    &::before, &::after {
+      background-color: var(--accent-color);
+    }
+  }
+  &.essays {
+    &::before, &::after {
+      background-color: var(--essays-color);
+    }
+  }
+  &.projects {
+    &::before, &::after {
+      background-color: var(--projects-color);
+    }
+  }
+  &::before, &::after {
+    background-color: var(--twitter-color);
+  }
+}
 button {
   margin: 0;
   padding: 0;
