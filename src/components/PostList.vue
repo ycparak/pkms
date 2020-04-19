@@ -1,19 +1,23 @@
 <template>
-  <div class="posts">
-    <article
+  <div class="post__list">
+    <PostListItem
       v-for="edge in $static.allPost.edges"
-      :key="edge.node.id">
-      <g-link :to="edge.node.path">
-        {{ edge.node.title }}
-      </g-link>
-    </article>
+      :key="edge.node.id"
+      :post="edge.node"
+      :collection="collection"
+      />
   </div>
 </template>
 
 <script>
+import PostListItem from '~/components/PostListItem';
+
 export default {
-  name: 'Posts',
+  name: 'PostList',
   props: ['collection'],
+  components: {
+    PostListItem
+  }
 }
 </script>
 
@@ -36,4 +40,10 @@ export default {
 </static-query>
 
 <style lang="scss" scoped>
+.post__list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  margin: -4px;
+}
 </style>

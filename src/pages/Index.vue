@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="grid__column grid__column-2">
-          <Posts :collection="slotProps.collection" />
+          <PostList :collection="slotProps.collection" />
         </div>
       </div>
     </Container>
@@ -18,18 +18,13 @@
 </template>
 
 <script>
-import Posts from '~/components/Posts'
+import PostList from '~/components/PostList'
 
 export default {
   name: 'Index',
   components: {
-    Posts,
+    PostList,
   },
-  methods: {
-    setCollection() {
-      console.log(slotProps);
-    }
-  }
 }
 </script>
 
