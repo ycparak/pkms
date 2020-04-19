@@ -1,10 +1,10 @@
 <template>
-  <div :class="`body ${collection}`">
-    <div :class="`site ${collection}`">
+  <div :class="`body ${getHoveredCollectionState}`">
+    <div :class="`site ${getHoveredCollectionState}`">
       <div class="site__wrapper">
         <Header />
-        <slot />
-        <Footer />
+        <slot :collection="collection" />
+        <Footer :collection="collection" />
       </div>
     </div>
   </div>
@@ -27,10 +27,25 @@ export default {
       collectionNext: 'all',
     }
   },
-  methods: {
-    setPrimaryColor(collection) {
-      this.collection = collection;
+  computed: {
+    getHoveredCollectionState() {
+      if (this.collection !== this.collectionNext) {
+        return this.collectionNext;
+      }
+      return this.collection;
     }
+  },
+  methods: {
+    setCollection(collection) {
+      this.collectionPrev = collection;
+      this.collection = collection;
+    },
+    setNextCollection(collection) {
+      this.collectionNext = collection;
+    },
+    revertCollection() {
+      this.collectionNext = this.collection;
+    },
   }
 }
 </script>

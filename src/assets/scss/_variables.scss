@@ -1,7 +1,8 @@
 :root {
   --neutral-color: #777;
-  --essays-color: blue;
-  --projects-color: #00AB00;
+  --essays-color: #0BD082;
+  --projects-color: #A25AFB;
+  --designs-color: #F45120;
   --twitter-color: #1EA0F2;
   --icon-toggle-shadow-hover: inset 0px 0px 0px 2px var(--neutral-color);
   --icon-toggle-shadow: inset 0px 0px 0px 2px var(--text-color);
@@ -19,6 +20,7 @@
   --background-color: #fff;
   --accent-color: #eee;
   --accent-color-2: #DDDDDD;
+  --accent-color-3: #D1D1D1;
   --text-color: #171717;
 
   --darkmode-toggle-translate: 50%;
@@ -26,8 +28,9 @@
 
 [data-theme="dark"] {
   --background-color: #171717;
-  --accent-color: #201F22;
-  --accent-color-2: #2D2C30;
+  --accent-color: #262528;
+  --accent-color-2: #333135;
+  --accent-color-3: #3F3C42;
   --text-color: #fff;
 
   --darkmode-toggle-translate: -52.5%;
