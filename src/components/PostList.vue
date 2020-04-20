@@ -1,11 +1,14 @@
 <template>
   <div class="post__list">
     <PostListItem
-      v-for="(edge, index) in $static.allPost.edges"
+      v-for="(edge, index) in posts"
       :key="edge.node.id"
       :post="edge.node"
-      :collection="collection"
-      :last-index="$static.allPost.edges.length - index"
+      :last-index="posts.length + 100 - index"
+      :collection="slotProps.collection"
+      :set-collection="slotProps.setCollection"
+      :set-next-collection="slotProps.setNextCollection"
+      :revert-collection="slotProps.revertCollection"
       />
   </div>
 </template>
@@ -15,9 +18,18 @@ import PostListItem from '~/components/PostListItem';
 
 export default {
   name: 'PostList',
-  props: ['collection'],
+  props: ['slotProps'],
   components: {
     PostListItem
+  },
+  computed: {
+    posts() {
+      const { collection } = this.slotProps;
+      const posts = this.$static.allPost.edges;
+
+      if (collection === 'all') return posts;
+      return posts.filter(post => post.node.collection.toLowerCase() === collection);
+    }
   }
 }
 </script>
@@ -41,8 +53,9 @@ export default {
 </static-query>
 
 <style lang="scss" scoped>
-// .post__list {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
+.post__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
+}
 </style>

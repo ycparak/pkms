@@ -6,7 +6,7 @@
         class="footer__collections--list">
         <li
           class="footer__collection"
-          :class="{ active: collection === 'all' }"
+          :class="{ active: collection === 'all' || collectionNext === 'all' }"
           @mouseover="mouseoverCollection('all')"
           @mouseleave="mouseleaveCollection('all')"
           @click="setCollection('all')">
@@ -15,29 +15,29 @@
         </li>
         <li
           class="footer__collection"
-          :class="{ active: collection === 'essays' }"
-          @mouseover="mouseoverCollection('essays')"
-          @mouseleave="mouseleaveCollection('essays')"
-          @click="setCollection('essays')">
-          <span class="footer__collection--color essays"></span>
+          :class="{ active: collection === 'essay' || collectionNext === 'essay' }"
+          @mouseover="mouseoverCollection('essay')"
+          @mouseleave="mouseleaveCollection('essay')"
+          @click="setCollection('essay')">
+          <span class="footer__collection--color essay"></span>
           Essays
         </li>
         <li
           class="footer__collection"
-          @mouseover="mouseoverCollection('tweetstorms')"
-          @mouseleave="mouseleaveCollection('tweetstorms')"
-          :class="{ active: collection === 'tweetstorms' }"
-          @click="setCollection('tweetstorms')">
-          <span class="footer__collection--color tweetstorms"></span>
+          :class="{ active: collection === 'tweetstorm' || collectionNext === 'tweetstorm' }"
+          @mouseover="mouseoverCollection('tweetstorm')"
+          @mouseleave="mouseleaveCollection('tweetstorm')"
+          @click="setCollection('tweetstorm')">
+          <span class="footer__collection--color tweetstorm"></span>
           Tweetstorms
         </li>
         <li
           class="footer__collection"
-          :class="{ active: collection === 'projects' }"
-          @mouseover="mouseoverCollection('projects')"
-          @mouseleave="mouseleaveCollection('projects')"
-          @click="setCollection('projects')">
-          <span class="footer__collection--color projects"></span>
+          :class="{ active: collection === 'project' || collectionNext === 'project' }"
+          @mouseover="mouseoverCollection('project')"
+          @mouseleave="mouseleaveCollection('project')"
+          @click="setCollection('project')">
+          <span class="footer__collection--color project"></span>
           Projects
         </li>
       </ul>
@@ -64,7 +64,7 @@ import { MailIcon, TwitterIcon } from 'vue-feather-icons';
 
 export default {
   name: 'Footer',
-  props: ['collection'],
+  props: ['collection', 'collectionNext'],
   components: {
     MailIcon,
     TwitterIcon
@@ -97,6 +97,7 @@ export default {
   grid-template-columns: 75% 1fr;
   align-items: end;
   color: var(--text-color);
+  pointer-events: none;
   @include daynight;
   @media (max-width: 1500px) {
     bottom: 32px;
@@ -122,6 +123,7 @@ export default {
 .footer__collections--list {
   display: none;
   @media (min-width: 1060px) {
+    pointer-events: visible;
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -143,19 +145,19 @@ export default {
         display: inline-block;
         width: 8px;
         height: 8px;
-        background: var(--accent-color-2);
+        background: var(--text-color);
         margin-right: 4px;
         border-radius: 50%;
         position: relative;
         top: -1px;
         opacity: 0.2;
-        &.essays  {
+        &.essay  {
           background: var(--essays-color);
         }
-        &.projects  {
+        &.project  {
           background: var(--projects-color);
         }
-        &.tweetstorms  {
+        &.tweetstorm  {
           background: var(--twitter-color);
         }
       }
@@ -171,6 +173,7 @@ export default {
   }
 }
 .footer__links {
+  pointer-events: visible;
   display: grid;
   text-align: center;
   justify-content: end;

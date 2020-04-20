@@ -33,7 +33,7 @@ html {
     position: fixed;
     right: 0;
     width: 100%;
-    z-index: 111;
+    z-index: 100;
     @include daynight;
     @media (max-width: 576px) {
       display: none;
@@ -51,18 +51,20 @@ html {
       background-color: var(--accent-color);
     }
   }
-  &.essays {
+  &.essay {
     &::before, &::after {
       background-color: var(--essays-color);
     }
   }
-  &.projects {
+  &.project {
     &::before, &::after {
       background-color: var(--projects-color);
     }
   }
-  &::before, &::after {
-    background-color: var(--twitter-color);
+  &.tweetstorm {
+    &::before, &::after {
+      background-color: var(--twitter-color);
+    }
   }
 }
 button {
