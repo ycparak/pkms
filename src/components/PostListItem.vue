@@ -1,5 +1,7 @@
 <template>
-  <g-link :class="`post ${post.collection}`" :to="post.path">
+  <g-link
+    :class="`post ${post.collection}`" :to="post.path"
+    :style="{ 'z-index': lastIndex }">
     <article :class="`post__container ${post.collection}`">
       <div class="post__title">
         <h5>{{ post.title }}</h5>
@@ -11,28 +13,67 @@
 <script>
 export default {
   name: 'PostItem',
-  props: ['post', 'collection'],
+  props: ['post', 'collection', 'lastIndex'],
+  mounted() {
+    console.log(this.lastIndex);
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .post {
-  display: block;
-  flex: none;
-  margin: 4px;
+  position: relative;
+  display: grid;
+  align-items: end;
   min-height: 320px;
-  width: calc(50% - 8px);
+  width: 280px;
   background: var(--accent-color);
-  &:nth-child(odd) {
-    transform: translateY(-32px);
+  border-radius: 12px;
+  transform: rotateX(45deg) rotateY(-15deg) rotate(45deg);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  cursor: pointer;
+  // background-image: linear-gradient(135deg, #bd7be8, #8063e1);
+  background-image: linear-gradient(135deg, var(--accent-color), var(--accent-color-3));
+  box-shadow: 20px 20px 60px rgba(34,50,84,0.5), 1px 1px 0px 1px #8063e1;
+  transition: all.3s ease-out;
+  color: var(--text-color);
+  margin: -200px auto 0 auto;
+
+  &:first-child { 
+    margin-top: 0;
   }
-}
-.post__container {
-  padding: 20px;
+
+  &::after {
+    position: absolute;
+    top: -70px;
+    left: 0;
+    content: '';
+    width: 200%;
+    height: 200%;
+    background-image: linear-gradient(60deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.1), rgba(255,255,255,0) 80%);
+    transform: translateX(-100%);
+  }
+
+  &:hover {
+    // transform: rotateX(0) rotateY(0) rotate(0) translate(-25px, 50px);
+    width: 100%;
+    &::after {
+      transform: translateX(100%);
+      transition: all 1.2s ease-in-out;
+    }
+  }
+  // &:nth-child(odd) {
+  //   transform: translateY(-32px);
+  // }
 }
 .post__title {
-  font-weight: 400;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 22px;
   display: block;
+  align-self: end;
+  justify-self: end;
+  width: 280px;
+  padding: 20px;
 }
 </style>

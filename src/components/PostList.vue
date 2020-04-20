@@ -1,10 +1,11 @@
 <template>
   <div class="post__list">
     <PostListItem
-      v-for="edge in $static.allPost.edges"
+      v-for="(edge, index) in $static.allPost.edges"
       :key="edge.node.id"
       :post="edge.node"
       :collection="collection"
+      :last-index="$static.allPost.edges.length - index"
       />
   </div>
 </template>
@@ -40,10 +41,8 @@ export default {
 </static-query>
 
 <style lang="scss" scoped>
-.post__list {
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 32px;
-  margin: -4px;
-}
+// .post__list {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 </style>
