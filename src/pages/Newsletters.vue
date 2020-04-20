@@ -6,7 +6,6 @@
           <div class="site__hero">
             <h1 class="site__hero--title title">Hello, I’m Yusuf Parak.</h1>
             <p class="site__hero--paragraph body-text">I go by the handle <a href="https://twitter.com/ycparak" class="link">@ycparak</a> on the internets. In the real world, I live in Cape Town, where I'm a software developer/designer working on Thinkst Canary &mdash; one of the most loved security products around.</p>
-            <NewsletterList :slot-props="slotProps" />
           </div>
         </div>
         <div class="grid__column grid__column-2">
@@ -18,13 +17,11 @@
 </template>
 
 <script>
-import NewsletterList from '~/components/NewsletterList'
 import PostList from '~/components/PostList'
 
 export default {
   name: 'Index',
   components: {
-    NewsletterList,
     PostList,
   },
 }

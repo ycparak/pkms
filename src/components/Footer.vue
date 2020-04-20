@@ -97,6 +97,7 @@ export default {
   grid-template-columns: 75% 1fr;
   align-items: end;
   color: var(--text-color);
+  pointer-events: none;
   @include daynight;
   @media (max-width: 1500px) {
     bottom: 32px;
@@ -122,6 +123,7 @@ export default {
 .footer__collections--list {
   display: none;
   @media (min-width: 1060px) {
+    pointer-events: visible;
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -171,6 +173,7 @@ export default {
   }
 }
 .footer__links {
+  pointer-events: visible;
   display: grid;
   text-align: center;
   justify-content: end;

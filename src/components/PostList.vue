@@ -53,8 +53,9 @@ export default {
 </static-query>
 
 <style lang="scss" scoped>
-// .post__list {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
+.post__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
+}
 </style>

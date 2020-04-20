@@ -4,7 +4,6 @@
       <div class="site__wrapper">
         <Header />
         <slot
-          :loading="loading"
           :collection="collection"
           :set-collection="setCollection"
           :set-next-collection="setNextCollection"
