@@ -1,5 +1,5 @@
 ---
-title: Turning Side Projects into Profitable
+title: Turning Side Projects into Profitable Startups
 date: 2019-04-12
 year: 2019
 excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis."

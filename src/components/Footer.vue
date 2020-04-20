@@ -1,7 +1,9 @@
 <template>
   <footer class="footer">
     <div class="footer__collections">
-      <ul class="footer__collections--list">
+      <ul
+        v-if="isHomePage()"
+        class="footer__collections--list">
         <li
           class="footer__collection"
           :class="{ active: collection === 'all' }"
@@ -68,6 +70,10 @@ export default {
     TwitterIcon
   },
   methods: {
+    isHomePage() {
+      if (this.$route.path === '/') return true;
+      return false;
+    },
     setCollection(collection) {
       this.$parent.setCollection(collection)
     },
