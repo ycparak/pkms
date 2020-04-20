@@ -13,7 +13,6 @@ import '~/assets/scss/main.scss'
 export default function (Vue, { router, head, isClient }) {
   head.htmlAttrs = {
     lang: 'en',
-    title: 'Yusuf Parak',
     meta: [
       { charset: 'utf-8' },
       { name: "author", content: 'Yusuf Parak' },

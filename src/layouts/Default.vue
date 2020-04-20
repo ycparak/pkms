@@ -3,8 +3,13 @@
     <div :class="`site ${getHoveredCollectionState}`">
       <div class="site__wrapper">
         <Header />
-        <slot :collection="collection" />
-        <Footer :collection="collection" />
+        <slot
+          :loading="loading"
+          :collection="collection"
+          :set-collection="setCollection"
+          :set-next-collection="setNextCollection"
+          :revert-collection="revertCollection" />
+        <Footer :collection="collection" :collection-next="collectionNext" />
       </div>
     </div>
   </div>
@@ -64,7 +69,7 @@ export default {
     top: 0;
     width: 8px;
     height: 100%;
-    z-index: 111;
+    z-index: 100;
     @include daynight;
     @media (max-width: 576px) {
       display: none;
@@ -82,18 +87,20 @@ export default {
       background-color: var(--accent-color);
     }
   }
-  &.essays {
+  &.essay {
     &::before, &::after {
       background-color: var(--essays-color);
     }
   }
-  &.projects {
+  &.project {
     &::before, &::after {
       background-color: var(--projects-color);
     }
   }
-  &::before, &::after {
-    background-color: var(--twitter-color);
+  &.tweetstorm {
+    &::before, &::after {
+      background-color: var(--twitter-color);
+    }
   }
 }
 .site__wrapper {

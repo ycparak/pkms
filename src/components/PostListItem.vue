@@ -1,6 +1,8 @@
 <template>
   <g-link
-    :class="`post ${post.collection}`" :to="post.path"
+    :class="`post ${post.collection.toLowerCase()}`" :to="post.path"
+    @mouseover.native="mouseoverArticle(post.collection)"
+    @mouseleave.native="mouseleaveArticle()"
     :style="{ 'z-index': lastIndex }">
     <article :class="`post__container ${post.collection}`">
       <div class="post__title">
@@ -13,9 +15,14 @@
 <script>
 export default {
   name: 'PostItem',
-  props: ['post', 'collection', 'lastIndex'],
-  mounted() {
-    console.log(this.lastIndex);
+  props: ['post', 'lastIndex', 'collection', 'setCollection', 'setNextCollection', 'revertCollection'],
+  methods: {
+    mouseoverArticle(collection) {
+      this.setNextCollection(collection.toLowerCase())
+    },
+    mouseleaveArticle() {
+      this.revertCollection();
+    }
   }
 }
 </script>
@@ -36,13 +43,10 @@ export default {
   // background-image: linear-gradient(135deg, #bd7be8, #8063e1);
   background-image: linear-gradient(135deg, var(--accent-color), var(--accent-color-3));
   box-shadow: 20px 20px 60px rgba(34,50,84,0.5), 1px 1px 0px 1px #8063e1;
-  transition: all.3s ease-out;
   color: var(--text-color);
   margin: -200px auto 0 auto;
 
-  &:first-child { 
-    margin-top: 0;
-  }
+  &:first-child { margin-top: 0 }
 
   &::after {
     position: absolute;
@@ -56,16 +60,13 @@ export default {
   }
 
   &:hover {
-    // transform: rotateX(0) rotateY(0) rotate(0) translate(-25px, 50px);
-    width: 100%;
+    width: 460px;
+    transform: rotateX(45deg) rotateY(-15deg) rotate(45deg) translate(60px, 0);
     &::after {
       transform: translateX(100%);
       transition: all 1.2s ease-in-out;
     }
   }
-  // &:nth-child(odd) {
-  //   transform: translateY(-32px);
-  // }
 }
 .post__title {
   font-weight: 500;

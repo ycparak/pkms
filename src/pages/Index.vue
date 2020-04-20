@@ -5,12 +5,12 @@
         <div class="grid__column grid__column-1">
           <div class="site__hero">
             <h1 class="site__hero--title title">Hello, I’m Yusuf Parak.</h1>
-            <p class="site__hero--paragraph body-text">I go by the handle <a href="https://twitter.com/ycparak" class="username-link">@ycparak</a> on the internets. In the real world, I live in Cape Town, where I'm a software developer/designer at Thinkst Canary &mdash; one of the most loved security products around.</p>
+            <p class="site__hero--paragraph body-text">I go by the handle <a href="https://twitter.com/ycparak" class="username-link">@ycparak</a> on the internets. In the real world, I live in Cape Town, where I'm a software developer/designer working on Thinkst Canary &mdash; one of the most loved security products around.</p>
             <p class="site__hero--paragraph body-text">This site is built using my side-project <a href="https://twitter.com/ycparak">MumblingIO</a> &mdash; which allows you to use Twitter as a CMS for your blog. If you love Twitter and value simplicity, you should check it out.</p>
           </div>
         </div>
         <div class="grid__column grid__column-2">
-          <PostList :collection="slotProps.collection" />
+          <PostList :slot-props="slotProps" />
         </div>
       </div>
     </Container>
