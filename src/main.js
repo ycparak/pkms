@@ -4,7 +4,6 @@ import DefaultLayout from '~/layouts/Default.vue'
 
 import Container from '~/components/ui/Container.vue'
 import ContainerFluid from '~/components/ui/ContainerFluid.vue'
-import Button from '~/components/ui/Btn.vue'
 import LoadingSpinner from '~/components/ui/LoadingSpinner.vue'
 
 import '~/assets/fonts/fonts.css'
@@ -24,6 +23,5 @@ export default function (Vue, { router, head, isClient }) {
   Vue.component('Layout', DefaultLayout)
   Vue.component('Container', Container)
   Vue.component('ContainerFluid', ContainerFluid)
-  Vue.component('Btn', Button)
   Vue.component('LoadingSpinner', LoadingSpinner)
 }

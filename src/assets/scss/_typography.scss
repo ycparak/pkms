@@ -26,5 +26,6 @@ a {
 }
 
 .link {
+  @include daynight;
   text-decoration: underline;
 }

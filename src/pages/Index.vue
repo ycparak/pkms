@@ -7,6 +7,7 @@
             <h1 class="site__hero--title title">Hello, I’m Yusuf Parak.</h1>
             <p class="site__hero--paragraph body-text">I'm a software developer/designer working on Thinkst Canary &mdash; one of the most loved security products around. I'm also the maker of x which does y and has z metric. My story &rarr;</p>
             <p class="site__hero--paragraph body-text">I'm obsessed with improving myself, human behaivour, design and bootstrapped startups. If you're interested in these topics too, I write a short weekly newsletter you'd probably love. It containins some writing by me and 3 curated links I think will go on to pass the <a href="https://en.wikipedia.org/wiki/Lindy_effect" class="link">Lindy test</a>. You can subscribe below.</p>
+            <NewsletterForm :slot-props="slotProps" />
             <NewsletterList :slot-props="slotProps" />
           </div>
         </div>
@@ -20,12 +21,14 @@
 
 <script>
 import NewsletterList from '~/components/NewsletterList'
+import NewsletterForm from '~/components/NewsletterForm'
 import PostList from '~/components/PostList'
 
 export default {
   name: 'Index',
   components: {
     NewsletterList,
+    NewsletterForm,
     PostList,
   },
 }
