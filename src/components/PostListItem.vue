@@ -36,19 +36,15 @@ export default {
   min-width: 230px;
   background: var(--accent-color);
   color: var(--text-color);
-  border-radius: 2px;
+  border-radius: 8px;
   cursor: pointer;
-  // &:nth-child(even) {
-  //   top: 120px;
-  // }
+  &.essay{
+    grid-column: span 2;
+  }
 
   &:hover {
     transform: scale(1.1);
-    opacity: 1 !important;
-  }
-
-  &.essay{
-    grid-column: span 2;
+    z-index: 120;
   }
 
   @media (max-width: 1360px) {

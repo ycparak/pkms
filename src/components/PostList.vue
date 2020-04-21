@@ -4,7 +4,6 @@
       v-for="(edge, index) in posts"
       :key="edge.node.id"
       :post="edge.node"
-      :last-index="posts.length + 100 - index"
       :collection="slotProps.collection"
       :set-collection="slotProps.setCollection"
       :set-next-collection="slotProps.setNextCollection"
@@ -52,7 +51,7 @@ export default {
       });
 
       return sortedPosts;
-    }
+    },
   }
 }
 </script>

@@ -5,12 +5,13 @@
         <div class="grid__column grid__column-1">
           <div class="site__hero">
             <h1 class="site__hero--title title">Hello, I’m Yusuf Parak.</h1>
-            <p class="site__hero--paragraph body-text">I go by the handle <a href="https://twitter.com/ycparak" class="link">@ycparak</a> on the internets. In the real world, I live in Cape Town, where I'm a software developer/designer working on Thinkst Canary &mdash; one of the most loved security products around.</p>
+            <p class="site__hero--paragraph body-text">I'm a software developer/designer working on Thinkst Canary &mdash; one of the most loved security products around. I'm also the maker of x which does y and has z metric. My story &rarr;</p>
+            <p class="site__hero--paragraph body-text">I'm obsessed with improving myself, human behaivour, design and bootstrapped startups. If you're interested in these topics too, I write a short weekly newsletter you'd probably love. It containins some writing by me and 3 curated links I think will go on to pass the <a href="https://en.wikipedia.org/wiki/Lindy_effect" class="link">Lindy test</a>. You can subscribe below.</p>
             <NewsletterList :slot-props="slotProps" />
           </div>
         </div>
         <div class="grid__column grid__column-2">
-          <PostList :slot-props="slotProps" />
+          <!-- <PostList :slot-props="slotProps" /> -->
         </div>
       </div>
     </Container>
