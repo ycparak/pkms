@@ -60,6 +60,7 @@ export default {
       grid-column-start: 2;
       grid-column-end: 2;
       width: 100%;
+      padding-bottom: 144px;
     }
   }
 }
