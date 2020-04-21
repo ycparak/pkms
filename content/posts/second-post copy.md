@@ -1,6 +1,6 @@
 ---
 title: The Un-Silicon Valley Way to make it as a
-date: 2019-04-12
+date: 2019-04-10
 year: 2019
 excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis."
 collection: Tweetstorm

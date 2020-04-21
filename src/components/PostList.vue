@@ -4,7 +4,6 @@
       v-for="(edge, index) in posts"
       :key="edge.node.id"
       :post="edge.node"
-      :last-index="posts.length + 100 - index"
       :collection="slotProps.collection"
       :set-collection="slotProps.setCollection"
       :set-next-collection="slotProps.setNextCollection"
@@ -27,9 +26,32 @@ export default {
       const { collection } = this.slotProps;
       const posts = this.$static.allPost.edges;
 
-      if (collection === 'all') return posts;
+      if (collection === 'all') return this.sortPosts(posts);
       return posts.filter(post => post.node.collection.toLowerCase() === collection);
     }
+  },
+  methods: {
+    sortPosts(posts) {
+      const sortedPosts = posts;
+      posts.forEach((post, i) => {
+        if (i > 0) {
+          const prevPost = posts[i - 1];
+          const nextPost = posts[i + 1];
+
+          // Get current posts details
+          const isEssay = post.node.collection === 'Essay'
+          const isSecondCol = i % 2 !== 0;
+
+          // Condition where we have an issue where the row above doesn't have a second col
+          if (isEssay && isSecondCol && prevPost.node.collection !== 'Essay') {
+            sortedPosts[i] = nextPost;
+            sortedPosts[i + 1] = post;
+          }
+        }
+      });
+
+      return sortedPosts;
+    },
   }
 }
 </script>
@@ -56,9 +78,9 @@ export default {
 .post__list {
   margin: -4px auto;
   @media (min-width: 1360px) {
-    margin: -4px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
     padding-bottom: 80px;
   }
 }

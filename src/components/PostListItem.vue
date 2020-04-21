@@ -31,21 +31,20 @@ export default {
   position: relative;
   display: block;
   min-height: 240px;
-  width: calc(50% - 16px);
-  min-width: 230px;
+  width: calc(100% - 8px);
   margin: 4px;
+  min-width: 230px;
   background: var(--accent-color);
   color: var(--text-color);
-  border-radius: 2px;
+  border-radius: 8px;
   cursor: pointer;
-
-  &:nth-child(even) {
-    top: 120px;
+  &.essay{
+    grid-column: span 2;
   }
 
   &:hover {
     transform: scale(1.1);
-    opacity: 1 !important;
+    z-index: 120;
   }
 
   @media (max-width: 1360px) {

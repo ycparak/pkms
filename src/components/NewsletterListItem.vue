@@ -23,16 +23,14 @@ export default {
   display: grid;
   align-items: end;
   min-height: 260px;
-  width: 220px;
-  background: var(--accent-color);
+  width: 180px;
+  background: var(--background-color);
   border-radius: 12px;
-  transform: rotateX(45deg) rotateY(-15deg) rotate(45deg);
+  transform: rotateX(45deg) rotateY(0) rotate(45deg);
   transition: all 0.4s ease;
   overflow: hidden;
   cursor: pointer;
-  // background-image: linear-gradient(135deg, #bd7be8, #8063e1);
-  background-image: linear-gradient(135deg, var(--accent-color), var(--accent-color-3));
-  box-shadow: 20px 20px 60px rgba(34,50,84,0.5), 1px 1px 0px 1px #8063e1;
+  box-shadow: var(--card-shadow), 2px 2px 0px 1px #8063e1;
   color: var(--text-color);
   margin: -180px auto 0 auto;
 
@@ -51,7 +49,7 @@ export default {
 
   &:hover {
     width: 100%;
-    transform: rotateX(45deg) rotateY(-15deg) rotate(45deg) translate(60px, 0);
+    transform: rotateX(45deg) rotateY(0) rotate(45deg) translate(60px, 0);
     &::after {
       transform: translateX(100%);
       transition: all 1.2s ease-in-out;
