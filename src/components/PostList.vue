@@ -54,8 +54,12 @@ export default {
 
 <style lang="scss" scoped>
 .post__list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -4px;
+  margin: -4px auto;
+  @media (min-width: 1360px) {
+    margin: -4px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 80px;
+  }
 }
 </style>

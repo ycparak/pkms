@@ -29,7 +29,5 @@ export default {
   @media (min-width: 1060px) {
     width: calc(100% - 400px);
   }
-  @media (min-width: 1500px) {
-  }
 }
 </style>

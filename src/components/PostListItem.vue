@@ -28,23 +28,40 @@ export default {
 
 <style lang="scss" scoped>
 .post {
-  display: grid;
-  align-items: end;
-  min-height: 320px;
-  width: calc(50% - 8px);
+  position: relative;
+  display: block;
+  min-height: 240px;
+  width: calc(50% - 16px);
+  min-width: 230px;
   margin: 4px;
   background: var(--accent-color);
-  border-radius: 8px;
-  cursor: pointer;
   color: var(--text-color);
+  border-radius: 2px;
+  cursor: pointer;
+
+  &:nth-child(even) {
+    top: 120px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1 !important;
+  }
+
+  @media (max-width: 1360px) {
+    margin: 4px auto;
+  }
+}
+
+.post__container {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  align-items: end;
+  padding: 20px;
 }
 .post__title {
   font-weight: 500;
-  font-size: 22px;
-  display: block;
-  align-self: end;
-  justify-self: end;
-  width: 280px;
-  padding: 20px;
+  font-size: 21px;
 }
 </style>

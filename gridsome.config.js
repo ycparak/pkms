@@ -28,11 +28,19 @@ module.exports = {
       use: '@gridsome/source-filesystem',
       options: {
         typeName: 'Post',
-        path: './posts/**/*.md',
+        path: './content/posts/**/*.md',
       }
-    }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'Newsletter',
+        path: './content/newsletters/**/*.md',
+      }
+    },
   ],
   templates: {
-    Post: '/:title'
+    Post: '/:title',
+    Newsletter: '/newsletters/:issue'
   }
 }
