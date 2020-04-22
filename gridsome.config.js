@@ -40,7 +40,7 @@ module.exports = {
     },
   ],
   templates: {
-    Post: '/:title',
-    Newsletter: '/newsletters/:issue'
+    Post: '/:collection/:title',
+    Newsletter: '/newsletter/:issue'
   }
 }

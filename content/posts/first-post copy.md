@@ -2,7 +2,7 @@
 title: Turning Side Projects into Profitable Startups
 date: 2019-04-09
 year: 2019
-excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis."
+excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
 collection: Essay
 tags: ['Startups', 'Hobbies', 'Side-projects', 'Indiehacking', 'Bootstrapping']
 ---
