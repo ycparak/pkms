@@ -105,7 +105,6 @@ export default {
   transition-property: box-shadow;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
-  z-index: 100;
   box-shadow: var(--icon-toggle-shadow);
   position: relative;
   top: 1.4px;
@@ -119,7 +118,6 @@ export default {
     right: -10px;
     bottom: -10px;
     left: -10px;
-    z-index: 90;
     transform: translateX(var(--darkmode-toggle-translate));
     @include daynight;
   }

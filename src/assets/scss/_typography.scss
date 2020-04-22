@@ -22,10 +22,75 @@ a {
   font-weight: inherit;
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
   @include daynight;
 }
 
 .link {
   @include daynight;
   text-decoration: underline;
+}
+
+.link__special {
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
+    &.tweetstorm { color: var(--twitter-color) }
+    &.newsletter { color: var(--newsletter-color) }
+
+    .link__special--svg  {
+      animation: shake .9s infinite;
+      animation-duration: 0.9s;
+      animation-timing-function: ease;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+      animation-fill-mode: none;
+      animation-play-state: running;
+      animation-name: shake;
+      &.tweetstorm { fill: var(--twitter-color) }
+      &.newsletter { fill: var(--newsletter-color) }
+    }
+  }
+
+  @keyframes shake {
+    0% {
+      transform:translateX(0)
+    }
+    50%{
+      transform:translateX(4px)
+    }
+    100% {
+      transform:translateX(0)
+    }
+  }
+
+  .link__special--label {
+    margin-right: 4px;
+    cursor: pointer;
+  }
+  .link__special--svg {
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    fill: var(--text-color);
+    @include daynight;
+  }
+}
+
+.subtitle {
+  font-family: Larsseit, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.subtitle__humanized {
+  font-family: Larsseit, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
 }

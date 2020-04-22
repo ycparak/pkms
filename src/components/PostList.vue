@@ -64,9 +64,9 @@ export default {
           id
           path
           title
-          date (format:"DD MM YYYY")
+          date (format:"MMMM YYYY")
           collection
-          tags
+          excerpt
           timeToRead
         }
       }
@@ -76,12 +76,12 @@ export default {
 
 <style lang="scss" scoped>
 .post__list {
-  margin: -4px auto;
+  margin: 0 auto;
   @media (min-width: 1360px) {
+    margin: -4px auto;
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr;
-    padding-bottom: 80px;
   }
 }
 </style>

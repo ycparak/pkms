@@ -19,11 +19,12 @@ export default {
   display: grid;
   grid-template-columns: 3fr 1fr;
   width: 100%;
+  margin: 28px 0;
 }
 .form__input {
   width: 100%;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 2px;
   padding: 0 12px;
   border: 1px solid var(--accent-color);
   box-shadow: none;
@@ -44,7 +45,7 @@ export default {
   }
 }
 .form__button {
-  border-radius: 8px;
+  border-radius: 2px;
   border: none;
   height: 40px;
   padding: 0 12px;
