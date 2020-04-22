@@ -30,7 +30,7 @@ export default {
   transition: all 0.4s ease;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: var(--card-shadow), 2px 2px 0px 1px #8063e1;
+  box-shadow: 2px 2px 0px 1px #8063e1, var(--card-shadow);
   color: var(--text-color);
   margin: -180px auto 0 auto;
 
