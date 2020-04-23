@@ -1,7 +1,9 @@
 <template>
   <header class="header">
     <div class="header__profile">
-      <g-link to="/" class="header__logo"></g-link>
+      <g-link 
+        to="/" 
+        class="header__logo" />
     </div>
     <div class="header__controls">
       <button

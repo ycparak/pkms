@@ -33,14 +33,11 @@ a {
 
 .link__special {
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   &:hover {
-    &.tweetstorm { color: var(--twitter-color) }
-    &.newsletter { color: var(--newsletter-color) }
-
+    color: var(--current-fill-color);
     .link__special--svg  {
-      animation: shake .9s infinite;
       animation-duration: 0.9s;
       animation-timing-function: ease;
       animation-delay: 0s;
@@ -49,8 +46,7 @@ a {
       animation-fill-mode: none;
       animation-play-state: running;
       animation-name: shake;
-      &.tweetstorm { fill: var(--twitter-color) }
-      &.newsletter { fill: var(--newsletter-color) }
+      fill: var(--current-fill-color);
     }
   }
 

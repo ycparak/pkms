@@ -1,15 +1,13 @@
 <template>
-  <div :class="`body ${getHoveredCollectionState}`">
-    <div :class="`site ${getHoveredCollectionState}`">
-      <div class="site__wrapper">
-        <Header />
-        <slot
-          :collection="collection"
-          :set-collection="setCollection"
-          :set-next-collection="setNextCollection"
-          :revert-collection="revertCollection" />
-        <Footer :collection="collection" :collection-next="collectionNext" />
-      </div>
+  <div :class="`site ${getHoveredCollectionState}`">
+    <div class="site__wrapper">
+      <Header />
+      <slot
+        :collection="collection"
+        :set-collection="setCollection"
+        :set-next-collection="setNextCollection"
+        :revert-collection="revertCollection" />
+      <Footer :collection="collection" :collection-next="collectionNext" />
     </div>
   </div>
 </template>
@@ -43,13 +41,38 @@ export default {
     setCollection(collection) {
       this.collectionPrev = collection;
       this.collection = collection;
+      this.setCurrentColor(collection);
     },
     setNextCollection(collection) {
       this.collectionNext = collection;
+      this.setCurrentColor(collection);
     },
     revertCollection() {
       this.collectionNext = this.collection;
+      this.setCurrentColor(this.collection);
     },
+    setCurrentColor(collection) {
+      const root = document.documentElement;
+      console.log(collection);
+      switch (collection) {
+        case 'essay':
+          root.style.setProperty('--current-color', 'var(--essays-color)');
+          root.style.setProperty('--current-fill-color', 'var(--essays-color)');
+          break;
+        case 'tweetstorm':
+          root.style.setProperty('--current-color', 'var(--twitter-color)');
+          root.style.setProperty('--current-fill-color', 'var(--twitter-color)');
+          break;
+        case 'project':
+          root.style.setProperty('--current-color', 'var(--projects-color)');
+          root.style.setProperty('--current-fill-color', 'var(--projects-color)');
+          break;
+        default:
+          root.style.setProperty('--current-color', 'var(--accent-color)');
+          root.style.setProperty('--current-fill-color', 'var(--text-color)');
+          break;
+      }
+    }
   }
 }
 </script>
@@ -60,7 +83,7 @@ export default {
   min-height: 100vh;
 
   &::before, &::after {
-    background-color: var(--accent-color);
+    background-color: var(--current-color);
     bottom: 0;
     content: "";
     pointer-events: none;
@@ -79,27 +102,6 @@ export default {
   }
   &:after {
     right: 0;
-  }
-
-  &.all {
-    &::before, &::after {
-      background-color: var(--accent-color);
-    }
-  }
-  &.essay {
-    &::before, &::after {
-      background-color: var(--essays-color);
-    }
-  }
-  &.project {
-    &::before, &::after {
-      background-color: var(--projects-color);
-    }
-  }
-  &.tweetstorm {
-    &::before, &::after {
-      background-color: var(--twitter-color);
-    }
   }
 }
 .site__wrapper {
