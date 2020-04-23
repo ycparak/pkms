@@ -13,3 +13,8 @@
   background-color: var(--text-color);
   color: var(--background-color);
 }
+
+@mixin selected-color {
+  background-color: var(--selected-color);
+  color: var(--background-color);
+}

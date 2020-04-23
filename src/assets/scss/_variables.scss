@@ -24,6 +24,8 @@
   --accent-color-2: #DDDDDD;
   --accent-color-3: #D1D1D1;
   --text-color: #171717;
+  --current-color: var(--accent-color);
+  --current-fill-color: var(--text-color);
 
   --darkmode-toggle-translate: 50%;
 }
@@ -34,6 +36,8 @@
   --accent-color-2: #333135;
   --accent-color-3: #3F3C42;
   --text-color: #fff;
+  --current-color: var(--accent-color);
+  --current-fill-color: var(--text-color);
 
   --card-shadow: 10px 10px 21px #000;
 

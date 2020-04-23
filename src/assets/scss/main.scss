@@ -23,11 +23,11 @@ html, body {
   @include daynight;
 }
 html {
-  background-color: var(--accent-color);
+  background-color: var(--current-color);
 }
-.body {
+body {
   &::before, &::after {
-    background-color: var(--accent-color);
+    background-color: var(--current-color);
     content: "";
     height: 8px;
     left: 0;
@@ -46,27 +46,6 @@ html {
   }
   &::after {
     bottom: 0;
-  }
-
-  &.all {
-    &::before, &::after {
-      background-color: var(--accent-color);
-    }
-  }
-  &.essay {
-    &::before, &::after {
-      background-color: var(--essays-color);
-    }
-  }
-  &.project {
-    &::before, &::after {
-      background-color: var(--projects-color);
-    }
-  }
-  &.tweetstorm {
-    &::before, &::after {
-      background-color: var(--twitter-color);
-    }
   }
 }
 button, input {

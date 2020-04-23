@@ -54,5 +54,6 @@ export default {
   font-size: 15px;
   font-weight: 500;
   @include colors-inverted;
+  background-color: var(--current-fill-color);
 }
 </style>
