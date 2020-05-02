@@ -2,6 +2,7 @@
   <header class="header">
     <div class="header__profile">
       <g-link 
+        @click.native="revertCollection()"
         to="/" 
         class="header__logo" />
     </div>
@@ -36,6 +37,10 @@ export default {
     }
   },
   methods: {
+    revertCollection() {
+      this.$parent.setCollection('all');
+      this.$parent.setNextCollection('all');
+    },
     darkModeToggle() {
       if (!this.darkMode) {
         document.documentElement.setAttribute('data-theme', 'dark')

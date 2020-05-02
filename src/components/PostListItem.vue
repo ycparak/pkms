@@ -37,7 +37,7 @@ export default {
     },
     mouseleaveArticle() {
       this.revertCollection();
-    }
+    },
   }
 }
 </script>

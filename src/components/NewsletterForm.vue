@@ -9,8 +9,7 @@
 
 <script>
 export default {
-  name: 'NewsletterForm',
-  props: ['slotProps'],
+  name: 'NewsletterForm'
 }
 </script>
 
