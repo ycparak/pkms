@@ -1,17 +1,3 @@
-/* @font-face {
-  font-family: "Larsseit";
-  src: url('./Larsseit/Larsseit-Black.woff2') format('woff2'), 
-    url('./Larsseit/Larsseit-Black.woff') format('woff');
-  font-weight: 900;
-  font-style: normal;
-} */
-/* @font-face {
-  font-family: "Larsseit";
-  src: url('./Larsseit/Larsseit-ExtraBold.woff2') format('woff2'), 
-    url('./Larsseit/Larsseit-ExtraBold.woff') format('woff');
-  font-weight: 800;
-  font-style: normal;
-} */
 @font-face {
   font-family: "Larsseit";
   src: url('./Larsseit/Larsseit-Bold.woff2') format('woff2'), 
@@ -19,27 +5,6 @@
   font-weight: 700;
   font-style: normal;
 }
-/* @font-face {
-  font-family: "Larsseit";
-  src: url('./Larsseit/Larsseit-BoldItalic.woff2') format('woff2'), 
-    url('./Larsseit/Larsseit-BoldItalic.woff') format('woff');
-  font-weight: 700;
-  font-style: italic;
-} */
-/* @font-face {
-  font-family: "Larsseit";
-  src: url('./Larsseit/Larsseit-SemiBold.woff2') format('woff2'), 
-    url('./Larsseit/Larsseit-SemiBold.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-} */
-/* @font-face {
-  font-family: "Larsseit";
-  src: url('./Larsseit/Larsseit-SemiBoldItalic.woff2') format('woff2'), 
-    url('./Larsseit/Larsseit-SemiBoldItalic.woff') format('woff');
-  font-weight: 600;
-  font-style: italic;
-} */
 @font-face {
   font-family: "Larsseit";
   src: url('./Larsseit/Larsseit-Medium.woff2') format('woff2'), 
@@ -47,13 +12,6 @@
   font-weight: 500;
   font-style: normal;
 }
-/* @font-face {
-  font-family: "Larsseit";
-  src: url('./Larsseit/Larsseit-MediumItalic.woff2') format('woff2'), 
-    url('./Larsseit/Larsseit-MediumItalic.woff') format('woff');
-  font-weight: 500;
-  font-style: italic;
-} */
 @font-face {
   font-family: "Larsseit";
   src: url('./Larsseit/Larsseit-Regular.woff2') format('woff2'), 
@@ -61,13 +19,6 @@
   font-weight: 400;
   font-style: normal;
 }
-/* @font-face {
-  font-family: "Larsseit";
-  src: url('./Larsseit/Larsseit-RegularItalic.woff2') format('woff2'), 
-    url('./Larsseit/Larsseit-RegularItalic.woff') format('woff');
-  font-weight: 400;
-  font-style: italic;
-} */
 @font-face {
   font-family: "Larsseit";
   src: url('./Larsseit/Larsseit-Light.woff2') format('woff2'), 
@@ -75,10 +26,3 @@
   font-weight: 300;
   font-style: normal;
 }
-/* @font-face {
-  font-family: "Larsseit";
-  src: url('./Larsseit/Larsseit-LightItalic.woff2') format('woff2'), 
-    url('./Larsseit/Larsseit-LightItalic.woff') format('woff');
-  font-weight: 300;
-  font-style: italic;
-} */

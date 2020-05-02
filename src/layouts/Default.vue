@@ -27,7 +27,11 @@ export default {
       collection: 'all',
       collectionPrev: 'all',
       collectionNext: 'all',
+      isFromIndex: false,
     }
+  },
+  mounted() {
+    this.setCollection('all');
   },
   computed: {
     getHoveredCollectionState() {
@@ -53,7 +57,6 @@ export default {
     },
     setCurrentColor(collection) {
       const root = document.documentElement;
-      console.log(collection);
       switch (collection) {
         case 'essay':
           root.style.setProperty('--current-color', 'var(--essays-color)');

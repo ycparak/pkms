@@ -23,7 +23,7 @@
                 </svg>
               </g-link>
               </p>
-            <NewsletterForm :slot-props="slotProps" />
+            <NewsletterForm />
             <!-- <NewsletterList :slot-props="slotProps" /> -->
           </div>
         </div>

@@ -26,3 +26,9 @@ query ($path: String!) {
   }
 }
 </page-query>
+
+<script>
+export default {
+  name: 'Post',
+}
+</script>

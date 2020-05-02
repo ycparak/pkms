@@ -19,6 +19,7 @@ export default function (Vue, { router, head, isClient }) {
       { name: "keywords", content: '' },
     ]
   },
+
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
   Vue.component('Container', Container)
