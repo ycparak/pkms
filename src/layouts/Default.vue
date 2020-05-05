@@ -7,20 +7,20 @@
         :set-collection="setCollection"
         :set-next-collection="setNextCollection"
         :revert-collection="revertCollection" />
-      <Footer :collection="collection" :collection-next="collectionNext" />
+      <SocialButtons />
     </div>
   </div>
 </template>
 
 <script>
 import Header from '~/components/Header'
-import Footer from '~/components/Footer'
+import SocialButtons from '~/components/SocialButtons'
 
 export default {
   name: 'DefaultLayout',
   components: {
     Header,
-    Footer
+    SocialButtons
   },
   data() {
     return {

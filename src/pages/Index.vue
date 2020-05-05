@@ -32,6 +32,8 @@
         </div>
       </div>
     </Container>
+
+    <FeedCategories :collection="slotProps.collection" :collection-next="slotProps.collectionNext" />
   </Layout>
 </template>
 
@@ -39,6 +41,7 @@
 import NewsletterList from '~/components/NewsletterList'
 import NewsletterForm from '~/components/NewsletterForm'
 import PostList from '~/components/PostList'
+import FeedCategories from '~/components/FeedCategories'
 
 export default {
   name: 'Index',
@@ -46,6 +49,7 @@ export default {
     NewsletterList,
     NewsletterForm,
     PostList,
+    FeedCategories
   },
 }
 </script>
