@@ -83,7 +83,7 @@ export default {
 }
 .social__link {
   display: block;
-  margin: 8px 0;
+  margin: 6px 0;
   padding: 0;
   text-decoration: none;
   position: relative;
