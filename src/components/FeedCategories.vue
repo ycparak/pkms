@@ -3,39 +3,51 @@
     <div class="categories__container">
       <div
         class="category"
-        :class="{ active: collection === 'all' || collectionNext === 'all' }"
+        :class="{ 
+          current: collection === 'all' && (collectionNext === null || collectionNext === 'all'),
+          hovered: collectionNext === 'all' && collection !== 'all',
+        }"
         @mouseover="mouseoverCollection('all')"
         @mouseleave="mouseleaveCollection('all')"
         @click="setCollection('all')">
-        <span class="category__text all">All</span>
         <span class="category__color all"></span>
+        <span class="category__text all">All</span>
       </div>
       <div
         class="category"
-        :class="{ active: collection === 'essay' || collectionNext === 'essay' }"
+        :class="{ 
+          current: collection === 'essay' && (collectionNext === null || collectionNext === 'essay'),
+          hovered: collectionNext === 'essay' && collection !== 'essay',
+        }"
         @mouseover="mouseoverCollection('essay')"
         @mouseleave="mouseleaveCollection('essay')"
         @click="setCollection('essay')">
-        <span class="category__text essay">Essays</span>
         <span class="category__color essay"></span>
+        <span class="category__text essay">Essays</span>
       </div>
       <div
         class="category"
-        :class="{ active: collection === 'tweetstorm' || collectionNext === 'tweetstorm' }"
+        :class="{ 
+          current: collection === 'tweetstorm' && (collectionNext === null || collectionNext === 'tweetstorm'),
+          hovered: collectionNext === 'tweetstorm' && collection !== 'tweetstorm',
+        }"
         @mouseover="mouseoverCollection('tweetstorm')"
         @mouseleave="mouseleaveCollection('tweetstorm')"
         @click="setCollection('tweetstorm')">
-        <span class="category__text tweetstorm">Tweetstorms</span>
         <span class="category__color tweetstorm"></span>
+        <span class="category__text tweetstorm">Tweetstorms</span>
       </div>
       <div
         class="category"
-        :class="{ active: collection === 'project' || collectionNext === 'project' }"
+        :class="{ 
+          current: collection === 'project' && (collectionNext === null || collectionNext === 'project'),
+          hovered: collectionNext === 'project' && collection !== 'project',
+        }"
         @mouseover="mouseoverCollection('project')"
         @mouseleave="mouseleaveCollection('project')"
         @click="setCollection('project')">
-        <span class="category__text project">Projects</span>
         <span class="category__color project"></span>
+        <span class="category__text project">Projects</span>
       </div>
     </div>
   </div>
@@ -82,46 +94,38 @@ export default {
     left: 32px;
   }
   @media (max-width: 768px) {
-    bottom: 24px;
-    left: 24px;
-  }
-  @media (max-width: 676px) {
-    bottom: 20px;
-    left: 20px;
-  }
-  @media (max-width: 576px) {
-    bottom: 12px;
-    left: 12px;
+    display: none;
   }
 }
 
 .categories__container {
   pointer-events: visible;
+  text-align: left;
+  position: relative;
 }
 
 .category {
-  display: inline-block;
+  display: block;
   font-size: 15px;
   line-height: 15px;
-  margin: 0 16px;
-  padding: 0;
+  padding: 8px 0;
   color: var(--accent-color-3);
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   @include daynight;
-  &:first-child { margin-left: 0 }
-  &:last-child { margin-right: 0 }
+  &:first-child { padding-top: 0 }
+  &:last-child { padding-bottom: 0 }
 
   .category__text {
-    display: block;
+    display: inline-block;
   }
 
   .category__color {
-    display: block;
+    display: inline-block;
     width: 8px;
     height: 8px;
-    margin: 8px auto 0 auto;
-    background: var(--text-color);
+    margin-right: 8px;
+    background: var(--accent-color-2);
     text-align: center;
     border-radius: 50%;
     position: relative;
@@ -138,9 +142,10 @@ export default {
     }
   }
 
-  &:hover, &.active {
+  &.current, &.hovered {
     font-weight: 500;
     color: var(--text-color);
+    @include daynight;
     .category__color {
       opacity: 1;
       @include daynight;

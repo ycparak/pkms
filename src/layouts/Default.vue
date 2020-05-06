@@ -4,6 +4,7 @@
       <Header />
       <slot
         :collection="collection"
+        :collection-next="collectionNext"
         :set-collection="setCollection"
         :set-next-collection="setNextCollection"
         :revert-collection="revertCollection" />
