@@ -6,7 +6,7 @@
           <div class="site__hero">
             <h1 class="site__hero--title title">Hello, I’m Yusuf Parak.</h1>
             <p class="site__hero--paragraph body-text">
-              I'm a South African software developer/designer working at Thinkst Applied Research. There, I mostly work on Canary &mdash; one of the most loved security products around. I'm also the maker of x which does y and has z metric.
+              I'm a software developer/designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I'm also the maker of x which does y and has z metric.
               <g-link to="/story" class="link link__special tweetstorm">
                 <label class="link__special--label">My story</label>
                 <svg class="link__special--svg tweetstorm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

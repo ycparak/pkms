@@ -1,8 +1,13 @@
 <template>
   <g-link
-    :class="`post ${post.collection.toLowerCase()}`" :to="post.path"
-    @mouseover.native="mouseoverArticle(post.collection)"
-    @mouseleave.native="mouseleaveArticle()">
+    class="post"
+    :class="{
+      essay: post.collection.toLowerCase() === 'essay',
+      active: isActive,
+    }" 
+    :to="post.path"
+    @mouseover.native.stop.prevent="mouseoverArticle(post)"
+    @mouseleave.native.stop.prevent="mouseleaveArticle()">
     <div class="post__meta">
       <span :class="`subtitle subtitle__${post.collection.toLowerCase()}`">
         {{ post.collection }}
@@ -30,12 +35,36 @@
 <script>
 export default {
   name: 'PostItem',
-  props: ['post', 'lastIndex', 'collection', 'setCollection', 'setNextCollection', 'revertCollection'],
+  props: ['post', 'lastIndex', 'collection', 'collectionNext', 'setCollection', 'setNextCollection', 'revertCollection'],
+  data() {
+    return {
+      hovering: false,
+      hoveredPostId: null,
+    }
+  },
+  computed: {
+    isActive() {
+      if (this.collection === this.collectionNext) {
+        return true;
+      }
+      else if (this.collectionNext === this.post.collection.toLowerCase()) {
+        if (!this.hovering || this.hoveredPostId === this.post.id) {
+          return true;
+        }
+        return false;
+      }
+      return false;
+    }
+  },
   methods: {
-    mouseoverArticle(collection) {
-      this.setNextCollection(collection.toLowerCase())
+    mouseoverArticle(post) {
+      this.hovering = true;
+      this.hoveredPostId = post.id;
+      this.setNextCollection(post.collection.toLowerCase())
     },
     mouseleaveArticle() {
+      this.hovering = false;
+      this.hoveredPostId = null;
       this.revertCollection();
     },
   }
@@ -55,13 +84,20 @@ export default {
   color: var(--text-color);
   border-radius: 2px;
   cursor: pointer;
-  z-index: 11;
 
-  &.essay{
+  &.essay  {
     grid-column: span 2;
     .post__body {
       padding: 20px 0;
     }
+  }
+
+  &.active {
+    opacity: 1;
+    z-index: 11;
+  }
+  &:not(.active) {
+    opacity: .3;
   }
 
   @media (max-width: 1360px) {
