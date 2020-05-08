@@ -5,6 +5,7 @@
       :key="edge.node.id"
       :post="edge.node"
       :collection="slotProps.collection"
+      :collection-next="slotProps.collectionNext"
       :set-collection="slotProps.setCollection"
       :set-next-collection="slotProps.setNextCollection"
       :revert-collection="slotProps.revertCollection"

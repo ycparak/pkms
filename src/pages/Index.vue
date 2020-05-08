@@ -6,7 +6,7 @@
           <div class="site__hero">
             <h1 class="site__hero--title title">Hello, I’m Yusuf Parak.</h1>
             <p class="site__hero--paragraph body-text">
-              I'm a South African software developer/designer working at Thinkst Applied Research. There, I mostly work on Canary &mdash; one of the most loved security products around. I'm also the maker of x which does y and has z metric.
+              I'm a software developer/designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I'm also the maker of x which does y and has z metric.
               <g-link to="/story" class="link link__special tweetstorm">
                 <label class="link__special--label">My story</label>
                 <svg class="link__special--svg tweetstorm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -57,16 +57,16 @@ export default {
 <style lang="scss" scoped>
 .grid {
   padding: 144px 0;
-  @media (min-width: 1060px) {
+  @media (min-width: 1160px) {
     display: grid;
     grid-template-columns: 414px 1fr;
-    gap: 0 48px;
+    gap: 0 80px;
   }
   @media (min-width: 1428px) {
     gap: 0 140px;
   }
   .grid__column-1 {
-    @media (min-width: 1060px) {
+    @media (min-width: 1160px) {
       position: fixed;
       max-width: 414px;
       height: calc(100vh - 164px);
@@ -74,7 +74,7 @@ export default {
     }
   }
   .grid__column-2 {
-    @media (min-width: 1060px) {
+    @media (min-width: 1160px) {
       grid-column-start: 2;
       grid-column-end: 2;
       width: 100%;
