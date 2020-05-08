@@ -35,37 +35,40 @@
 <script>
 export default {
   name: 'PostItem',
-  props: ['post', 'lastIndex', 'collection', 'collectionNext', 'setCollection', 'setNextCollection', 'revertCollection'],
-  data() {
-    return {
-      hovering: false,
-      hoveredPostId: null,
-    }
-  },
+  props: [
+    'post',
+    'collection',
+    'collectionNext',
+    'hoveredPost',
+    'setNextCollection',
+    'setHoveredPost',
+    'revertCollection'
+  ],
   computed: {
     isActive() {
-      if (this.collection === this.collectionNext) {
+      if (this.collection === this.collectionNext || this.collectionNext === 'all') {
         return true;
       }
-      else if (this.collectionNext === this.post.collection.toLowerCase()) {
-        if (!this.hovering || this.hoveredPostId === this.post.id) {
-          return true;
-        }
+      else if (this.hoveredPost && this.hoveredPost.id === this.post.id) {
+        return true;
+      }
+      else if (this.hoveredPost && this.collectionNext === this.post.collection.toLowerCase()) {
         return false;
+      }
+      else if (this.hoveredPost === null && this.collectionNext === this.post.collection.toLowerCase()) {
+        return true;
       }
       return false;
     }
   },
   methods: {
     mouseoverArticle(post) {
-      this.hovering = true;
-      this.hoveredPostId = post.id;
       this.setNextCollection(post.collection.toLowerCase())
+      this.setHoveredPost(post)
     },
     mouseleaveArticle() {
-      this.hovering = false;
-      this.hoveredPostId = null;
       this.revertCollection();
+      this.setHoveredPost(null)
     },
   }
 }
@@ -96,9 +99,7 @@ export default {
     opacity: 1;
     z-index: 11;
   }
-  &:not(.active) {
-    opacity: .3;
-  }
+  &:not(.active) { opacity: .3 }
 
   @media (max-width: 1360px) {
     margin: 8px auto;
