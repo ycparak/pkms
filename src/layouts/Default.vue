@@ -5,8 +5,10 @@
       <slot
         :collection="collection"
         :collection-next="collectionNext"
+        :hovered-post="hoveredPost"
         :set-collection="setCollection"
         :set-next-collection="setNextCollection"
+        :set-hovered-post="setHoveredPost"
         :revert-collection="revertCollection" />
       <SocialButtons />
     </div>
@@ -28,7 +30,7 @@ export default {
       collection: 'all',
       collectionPrev: 'all',
       collectionNext: 'all',
-      isFromIndex: false,
+      hoveredPost: null,
     }
   },
   mounted() {
@@ -51,6 +53,10 @@ export default {
     setNextCollection(collection) {
       this.collectionNext = collection;
       this.setCurrentColor(collection);
+    },
+    setHoveredPost(post) {
+      if (post) this.hoveredPost = post;
+      else this.hoveredPost = null;
     },
     revertCollection() {
       this.collectionNext = this.collection;

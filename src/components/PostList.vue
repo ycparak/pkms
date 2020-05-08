@@ -6,8 +6,9 @@
       :post="edge.node"
       :collection="slotProps.collection"
       :collection-next="slotProps.collectionNext"
-      :set-collection="slotProps.setCollection"
+      :hovered-post="slotProps.hoveredPost"
       :set-next-collection="slotProps.setNextCollection"
+      :set-hovered-post="slotProps.setHoveredPost"
       :revert-collection="slotProps.revertCollection"
       />
   </div>
