@@ -1,48 +1,51 @@
 <template>
   <div class="post">
-    <a
-      v-if="post.link"
-      class="post__link"
-      :class="{
-        essay: post.collection.toLowerCase() === 'essay',
-        active: isActive,
-      }" 
-      :href="post.link"
-      target="_blank"
-      @mouseover.stop.prevent="mouseoverArticle(post)"
-      @mouseleave.stop.prevent="mouseleaveArticle()">
-      <PostListItemCard
-        :post="post"
-        :collection="collection"
-        :isActive="isActive"
-        :actively-selected="activelySelected"
-      />
-    </a>
     <g-link
-      v-else
       class="post__link"
       :class="{
         essay: post.collection.toLowerCase() === 'essay',
         active: isActive,
       }" 
-      :to="post.link ? post.link : post.path"
+      :to="post.path"
       @mouseover.native.stop.prevent="mouseoverArticle(post)"
       @mouseleave.native.stop.prevent="mouseleaveArticle()">
-      <PostListItemCard
-        :post="post"
-        :collection="collection"
-        :isActive="isActive"
-        :actively-selected="activelySelected"
-      />
+      <div class="post__meta">
+        <span class="subtitle">{{ post.collection }}</span>
+        <template v-if="activelySelected === 'active'">
+          <span class="subtitle">&middot;</span>
+          <span class="subtitle">{{ post.date }}</span>
+          <template v-if="!post.quote">
+            <span class="subtitle">&middot;</span>
+            <span class="subtitle">{{ post.timeToRead }} min read</span>
+          </template>
+        </template>
+      </div>
+      <div
+        v-if="!post.quote"
+        class="post__body">
+        <h5 class="post__title">
+          {{ post.title }}
+        </h5>
+        <p
+          v-if="post.excerpt"
+          class="post__content">
+          {{ getExcerpt(post.excerpt) }}
+        </p>
+      </div>
+      <div v-else-if="post.quote" class="post__body">
+        <blockquote 
+          class="post__quote"
+          :class="{ active: activelySelected === 'active' }">
+          <span>{{ post.quote }}</span>
+        </blockquote>
+      </div>
     </g-link>
   </div>
 </template>
 
 <script>
-import PostListItemCard from '@/components/PostListItemCard';
-
 export default {
-  name: 'PostListItem',
+  name: 'PostItem',
   props: [
     'post',
     'collection',
@@ -52,9 +55,6 @@ export default {
     'setHoveredPost',
     'revertCollection'
   ],
-  components: {
-    PostListItemCard,
-  },
   computed: {
     isActive() {
       if (this.collection === this.collectionNext || this.collectionNext === 'all') {
@@ -78,7 +78,6 @@ export default {
   },
   methods: {
     mouseoverArticle(post) {
-      console.log(post.collection);
       this.setNextCollection(post.collection.toLowerCase())
       this.setHoveredPost(post)
     },
@@ -86,6 +85,10 @@ export default {
       this.revertCollection();
       this.setHoveredPost(null)
     },
+    getExcerpt(excerpt) {
+      if (excerpt.length > 140) return `${excerpt.substring(0, 140)}...`;
+      return excerpt;
+    }
   }
 }
 </script>
@@ -109,9 +112,64 @@ export default {
   &.active { opacity: 1; }
   &:not(.active) { opacity: .2 }
 
-  &:hover, &:focus, &:active {
+  &:active, &:hover, &:focus {
     outline: none;
     box-shadow: none;
+    border: none;
+  }
+}
+.post__body {
+  .post__title {
+    font-size: 17px;
+    font-weight: 500;
+    margin: 0;
+    @include daynight;
+  }
+  .post__content {
+    padding-bottom: 0;
+    margin: 0;
+    margin-top: 1px;
+    opacity: .6;
+    font-size: 16px;
+    line-height: 24px;
+    @include daynight;
+  }
+  .post__quote {
+    font-family: freight-text-pro, serif;
+    margin: 0;
+    font-size: 17px;
+    line-height: 24px;
+    font-style: italic;
+    padding-left: 18px;
+    border-left: 4px solid var(--accent-color);
+    margin-left: -20px;
+    padding-bottom: 4px;
+    @include daynight;
+    span {
+      opacity: .6;
+    }
+    &.active {
+      border-left-color: var(--text-color);
+    }
+  }
+}
+.post__meta {
+  margin: 0;
+  padding: 0;
+  line-height: 10px;
+  margin-bottom: 8px;
+  @include daynight;
+  .subtitle {
+    vertical-align: top;
+    opacity: .3;
+    font-size: 10px;
+    margin: 0 2px;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    &:first-child { margin-left: 0; }
+    &:first-child { margin-right: 0; }
   }
 }
 </style>

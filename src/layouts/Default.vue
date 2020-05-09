@@ -11,6 +11,10 @@
         :set-hovered-post="setHoveredPost"
         :revert-collection="revertCollection" />
       <SocialButtons />
+      <!-- <template v-if="getDelayedDarkmode">
+        <div class="blur__scroll top" />
+        <div class="blur__scroll bottom" />
+      </template> -->
     </div>
   </div>
 </template>
@@ -27,6 +31,7 @@ export default {
   },
   data() {
     return {
+      darkMode: false,
       collection: 'all',
       collectionPrev: 'all',
       collectionNext: 'all',
@@ -34,7 +39,16 @@ export default {
     }
   },
   mounted() {
-    this.setCollection('all');
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null
+    if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme)
+      if (currentTheme === 'dark') {
+        this.darkMode = true
+      }
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark')
+      this.darkMode = true
+    }
   },
   computed: {
     getHoveredCollectionState() {
@@ -42,9 +56,19 @@ export default {
         return this.collectionNext;
       }
       return this.collection;
-    }
+    },
   },
   methods: {
+    darkModeToggle() {
+      if (!this.darkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        localStorage.setItem('theme', 'dark')
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light')
+        localStorage.setItem('theme', 'light')
+      }
+      this.darkMode = !this.darkMode
+    },
     setCollection(collection) {
       this.collectionPrev = collection;
       this.collection = collection;
@@ -77,9 +101,9 @@ export default {
           root.style.setProperty('--current-color', 'var(--projects-color)');
           root.style.setProperty('--current-fill-color', 'var(--projects-color)');
           break;
-        case 'note':
-          root.style.setProperty('--current-color', 'var(--notes-color)');
-          root.style.setProperty('--current-fill-color', 'var(--notes-color)');
+        case 'quote':
+          root.style.setProperty('--current-color', 'var(--quotes-color)');
+          root.style.setProperty('--current-fill-color', 'var(--quotes-color)');
           break;
         default:
           root.style.setProperty('--current-color', 'var(--accent-color)');
@@ -127,4 +151,22 @@ export default {
 .site__content {
   padding-top: 144px;
 }
+/* .blur__scroll {
+  position: fixed;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  height: 40px;
+  width: 100%;
+  z-index: 10;
+  &.top { 
+    @include daynight;
+    top: 8px;
+    background-image: linear-gradient(0deg,rgba(0,0,0,0), #171717);
+  }
+  &.bottom { 
+    bottom: 8px;
+    background-image: linear-gradient(180deg,rgba(0,0,0,0), #171717);
+  }
+} */
 </style>

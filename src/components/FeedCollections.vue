@@ -52,14 +52,14 @@
       <div
         class="collection"
         :class="{ 
-          current: collection === 'note' && (collectionNext === null || collectionNext === 'note'),
-          hovered: collectionNext === 'note' && collection !== 'note',
+          current: collection === 'quote' && (collectionNext === null || collectionNext === 'quote'),
+          hovered: collectionNext === 'quote' && collection !== 'quote',
         }"
-        @mouseover="mouseoverCollection('note')"
-        @mouseleave="mouseleaveCollection('note')"
-        @click="setCollection('note')">
-        <span class="collection__color note"></span>
-        <span class="collection__text note">Notes</span>
+        @mouseover="mouseoverCollection('quote')"
+        @mouseleave="mouseleaveCollection('quote')"
+        @click="setCollection('quote')">
+        <span class="collection__color quote"></span>
+        <span class="collection__text quote">Quotes</span>
       </div>
     </div>
   </div>
@@ -152,8 +152,8 @@ export default {
     &.tweetstorm  {
       background: var(--twitter-color);
     }
-    &.note  {
-      background: var(--notes-color);
+    &.quote  {
+      background: var(--quotes-color);
     }
   }
 
