@@ -122,14 +122,14 @@ export default {
 
   .category__color {
     display: inline-block;
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     margin-right: 8px;
     background: var(--accent-color-2);
     text-align: center;
     border-radius: 50%;
     position: relative;
-    top: -1px;
+    top: -2px;
     opacity: 0.2;
     &.essay  {
       background: var(--essays-color);

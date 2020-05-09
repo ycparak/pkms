@@ -9,7 +9,7 @@
     @mouseover.native.stop.prevent="mouseoverArticle(post)"
     @mouseleave.native.stop.prevent="mouseleaveArticle()">
     <div class="post__meta">
-      <span :class="`subtitle subtitle__${post.collection.toLowerCase()}`">
+      <span :class="`subtitle subtitle__${post.collection.toLowerCase()} ${getActive}`">
         {{ post.collection }}
       </span>
       <span :class="`subtitle__humanized subtitle__${post.collection.toLowerCase()}`">
@@ -59,6 +59,10 @@ export default {
         return true;
       }
       return false;
+    },
+    getActive() {
+      if (this.isActive) return 'active';
+      return '';
     }
   },
   methods: {
@@ -99,7 +103,7 @@ export default {
     opacity: 1;
     z-index: 11;
   }
-  &:not(.active) { opacity: .3 }
+  &:not(.active) { opacity: .5 }
 
   @media (max-width: 1360px) {
     margin: 8px auto;

@@ -80,7 +80,7 @@ export default {
 .post__list {
   margin: 0 auto;
   @media (min-width: 1360px) {
-    margin: -4px auto;
+    margin: 0 auto;
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr;
