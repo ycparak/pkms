@@ -1,40 +1,48 @@
 <template>
   <div class="post">
-    <g-link
+    <a
+      v-if="post.link"
       class="post__link"
       :class="{
         essay: post.collection.toLowerCase() === 'essay',
         active: isActive,
       }" 
-      :to="post.path"
+      :href="post.link"
+      target="_blank"
+      @mouseover.stop.prevent="mouseoverArticle(post)"
+      @mouseleave.stop.prevent="mouseleaveArticle()">
+      <PostListItemCard
+        :post="post"
+        :collection="collection"
+        :isActive="isActive"
+        :actively-selected="activelySelected"
+      />
+    </a>
+    <g-link
+      v-else
+      class="post__link"
+      :class="{
+        essay: post.collection.toLowerCase() === 'essay',
+        active: isActive,
+      }" 
+      :to="post.link ? post.link : post.path"
       @mouseover.native.stop.prevent="mouseoverArticle(post)"
       @mouseleave.native.stop.prevent="mouseleaveArticle()">
-      <div class="post__meta">
-        <span class="subtitle">{{ post.collection }}</span>
-        <template v-if="activelySelected === 'active'">
-          <span class="subtitle">&middot;</span>
-          <span class="subtitle">{{ post.date }}</span>
-          <span class="subtitle">&middot;</span>
-          <span class="subtitle">{{ post.timeToRead }} min read</span>
-        </template>
-      </div>
-      <div class="post__header">
-        <h5 class="post__title">
-          {{ post.title }}
-        </h5>
-        <p
-          v-if="post.excerpt"
-          class="post__excerpt">
-          {{ getExcerpt(post.excerpt) }}
-        </p>
-      </div>
+      <PostListItemCard
+        :post="post"
+        :collection="collection"
+        :isActive="isActive"
+        :actively-selected="activelySelected"
+      />
     </g-link>
   </div>
 </template>
 
 <script>
+import PostListItemCard from '@/components/PostListItemCard';
+
 export default {
-  name: 'PostItem',
+  name: 'PostListItem',
   props: [
     'post',
     'collection',
@@ -44,6 +52,9 @@ export default {
     'setHoveredPost',
     'revertCollection'
   ],
+  components: {
+    PostListItemCard,
+  },
   computed: {
     isActive() {
       if (this.collection === this.collectionNext || this.collectionNext === 'all') {
@@ -67,6 +78,7 @@ export default {
   },
   methods: {
     mouseoverArticle(post) {
+      console.log(post.collection);
       this.setNextCollection(post.collection.toLowerCase())
       this.setHoveredPost(post)
     },
@@ -74,10 +86,6 @@ export default {
       this.revertCollection();
       this.setHoveredPost(null)
     },
-    getExcerpt(excerpt) {
-      if (excerpt.length > 140) return `${excerpt.substring(0, 140)}...`;
-      return excerpt;
-    }
   }
 }
 </script>
@@ -100,40 +108,10 @@ export default {
 
   &.active { opacity: 1; }
   &:not(.active) { opacity: .2 }
-}
-.post__header {
-  .post__title {
-    font-size: 17px;
-    font-weight: 500;
-    margin: 0;
-    @include daynight;
-  }
-  .post__excerpt {
-    padding-bottom: 0;
-    margin: 0;
-    margin-top: 1px;
-    opacity: .6;
-    font-size: 16px;
-    line-height: 24px;
-  }
-}
-.post__meta {
-  margin: 0;
-  padding: 0;
-  line-height: 10px;
-  margin-bottom: 8px;
-  .subtitle {
-    vertical-align: top;
-    opacity: .3;
-    font-size: 10px;
-    margin: 0 2px;
-    padding: 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-    @include daynight;
-    &:first-child { margin-left: 0; }
-    &:first-child { margin-right: 0; }
+
+  &:hover, &:focus, &:active {
+    outline: none;
+    box-shadow: none;
   }
 }
 </style>

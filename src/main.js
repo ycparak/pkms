@@ -17,8 +17,13 @@ export default function (Vue, { router, head, isClient }) {
       { name: "author", content: 'Yusuf Parak' },
       { name: "description", content: '' },
       { name: "keywords", content: '' },
-    ]
+    ],
   },
+
+  head.link.push({
+    rel: 'stylesheet',
+    href: 'https://use.typekit.net/pnp6woe.css'
+  })
 
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)

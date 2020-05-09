@@ -66,10 +66,12 @@ export default {
           id
           path
           title
+          note
           date (format:"MM YYYY")
           collection
           excerpt
           timeToRead
+          link
         }
       }
     }
