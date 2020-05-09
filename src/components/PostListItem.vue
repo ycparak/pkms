@@ -1,35 +1,35 @@
 <template>
-  <g-link
-    class="post"
-    :class="{
-      essay: post.collection.toLowerCase() === 'essay',
-      active: isActive,
-    }" 
-    :to="post.path"
-    @mouseover.native.stop.prevent="mouseoverArticle(post)"
-    @mouseleave.native.stop.prevent="mouseleaveArticle()">
-    <div class="post__meta">
-      <span :class="`subtitle subtitle__${post.collection.toLowerCase()} ${getActive}`">
-        {{ post.collection }}
-      </span>
-      <span :class="`subtitle__humanized subtitle__${post.collection.toLowerCase()}`">
-        {{ post.timeToRead }} min read
-      </span>
-    </div>
-    <div class="post__body">
-      <h5 class="post__title">{{ post.title }}</h5>
-      <p
-        v-if="post.collection.toLowerCase() === 'essay'"
-        class="post__excerpt">
-        {{ post.excerpt }}
-      </p>
-    </div>
-    <div class="post__footer">
-      <span :class="`subtitle__humanized subtitle__${post.collection.toLowerCase()}`">
-        {{ post.date }}
-      </span>
-    </div>
-  </g-link>
+  <div class="post">
+    <g-link
+      class="post__link"
+      :class="{
+        essay: post.collection.toLowerCase() === 'essay',
+        active: isActive,
+      }" 
+      :to="post.path"
+      @mouseover.native.stop.prevent="mouseoverArticle(post)"
+      @mouseleave.native.stop.prevent="mouseleaveArticle()">
+      <div class="post__meta">
+        <span class="subtitle">{{ post.collection }}</span>
+        <template v-if="activelySelected === 'active'">
+          <span class="subtitle">&middot;</span>
+          <span class="subtitle">{{ post.date }}</span>
+          <span class="subtitle">&middot;</span>
+          <span class="subtitle">{{ post.timeToRead }} min read</span>
+        </template>
+      </div>
+      <div class="post__header">
+        <h5 class="post__title">
+          {{ post.title }}
+        </h5>
+        <p
+          v-if="post.excerpt"
+          class="post__excerpt">
+          {{ getExcerpt(post.excerpt) }}
+        </p>
+      </div>
+    </g-link>
+  </div>
 </template>
 
 <script>
@@ -60,10 +60,10 @@ export default {
       }
       return false;
     },
-    getActive() {
-      if (this.isActive) return 'active';
-      return '';
-    }
+    activelySelected() {
+      if (this.isActive && this.collection !== this.collectionNext && this.collectionNext !== 'all') return 'active';
+      return ''
+    },
   },
   methods: {
     mouseoverArticle(post) {
@@ -74,74 +74,66 @@ export default {
       this.revertCollection();
       this.setHoveredPost(null)
     },
+    getExcerpt(excerpt) {
+      if (excerpt.length > 140) return `${excerpt.substring(0, 140)}...`;
+      return excerpt;
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .post {
-  display: grid;
+  border-bottom: 1px solid var(--accent-color);
+  @include daynight;
+  &:first-child { margin-top: -24px; }
+  &:last-child { margin-bottom: 0; }
+}
+
+.post__link {
+  display: block;
   position: relative;
-  min-height: 240px;
-  width: calc(100% - 8px);
-  min-width: 230px;
-  margin: 4px;
-  padding: 20px;
-  background: var(--accent-color);
   color: var(--text-color);
   border-radius: 2px;
+  padding: 28px 0;
   cursor: pointer;
 
-  &.essay  {
-    grid-column: span 2;
-    .post__body {
-      padding: 20px 0;
-    }
-  }
-
-  &.active {
-    opacity: 1;
-    z-index: 11;
-  }
-  &:not(.active) { opacity: .5 }
-
-  @media (max-width: 1360px) {
-    margin: 8px auto;
-    width: 100%;
-    min-width: 100%;
-  }
+  &.active { opacity: 1; }
+  &:not(.active) { opacity: .2 }
 }
-
-.post__meta {
-  .subtitle {
-    display: block;
-    width: 100%;
-  }
-}
-
-.post__body {
+.post__header {
   .post__title {
+    font-size: 17px;
     font-weight: 500;
-    font-size: 21px;
-    line-height: 28px;
-    margin-bottom: 0;
+    margin: 0;
+    @include daynight;
   }
   .post__excerpt {
     padding-bottom: 0;
-    margin-bottom: 0;
-    opacity: .5;
-    margin: 5px 0;
-    font-size: 15px;
-    line-height: 22px;
+    margin: 0;
+    margin-top: 1px;
+    opacity: .6;
+    font-size: 16px;
+    line-height: 24px;
   }
 }
-
-.post__footer {
-  align-self: end;
-}
-
-.subtitle__humanized {
-  color: var(text-color);
-  opacity: .5;
+.post__meta {
+  margin: 0;
+  padding: 0;
+  line-height: 10px;
+  margin-bottom: 8px;
+  .subtitle {
+    vertical-align: top;
+    opacity: .3;
+    font-size: 10px;
+    margin: 0 2px;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    @include daynight;
+    &:first-child { margin-left: 0; }
+    &:first-child { margin-right: 0; }
+  }
 }
 </style>

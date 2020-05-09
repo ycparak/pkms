@@ -28,7 +28,7 @@ export default {
       const { collection } = this.slotProps;
       const posts = this.$static.allPost.edges;
 
-      if (collection === 'all') return this.sortPosts(posts);
+      if (collection === 'all') return posts;
       return posts.filter(post => post.node.collection.toLowerCase() === collection);
     }
   },
@@ -66,7 +66,7 @@ export default {
           id
           path
           title
-          date (format:"MMMM YYYY")
+          date (format:"MM YYYY")
           collection
           excerpt
           timeToRead
@@ -79,11 +79,5 @@ export default {
 <style lang="scss" scoped>
 .post__list {
   margin: 0 auto;
-  @media (min-width: 1360px) {
-    margin: 0 auto;
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-  }
 }
 </style>
