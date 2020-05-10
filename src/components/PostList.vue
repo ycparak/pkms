@@ -71,7 +71,6 @@ export default {
           collection
           excerpt
           timeToRead
-          link
         }
       }
     }

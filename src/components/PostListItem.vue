@@ -36,7 +36,7 @@
         <blockquote 
           class="post__quote"
           :class="{ active: activelySelected === 'active' }">
-          <span>{{ post.quote }}</span>
+          <span class="post__quote--content">{{ post.quote }}</span>
         </blockquote>
       </div>
     </g-link>
@@ -144,9 +144,10 @@ export default {
     border-left: 4px solid var(--accent-color);
     margin-left: -20px;
     padding-bottom: 4px;
+    font-weight: 400;
     @include daynight;
-    span {
-      opacity: .6;
+    .post__quote--content {
+      opacity: .7;
     }
     &.active {
       border-left-color: var(--text-color);
