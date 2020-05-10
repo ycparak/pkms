@@ -66,6 +66,7 @@ export default {
           id
           path
           title
+          quote
           date (format:"MM YYYY")
           collection
           excerpt

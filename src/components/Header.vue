@@ -8,7 +8,7 @@
     </div>
     <div class="header__controls">
       <button
-        @click="darkModeToggle()"
+        @click="$parent.darkModeToggle()"
         class="header__darkmode"
       />
     </div>
@@ -19,38 +19,12 @@
 
 export default {
   name: 'Header',
-  data() {
-    return {
-      darkMode: false
-    }
-  },
-  mounted() {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme)
-      if (currentTheme === 'dark') {
-        this.darkMode = true
-      }
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark')
-      this.darkMode = true
-    }
-  },
+  props: ['darkMode'],
   methods: {
     revertCollection() {
       this.$parent.setCollection('all');
       this.$parent.setNextCollection('all');
     },
-    darkModeToggle() {
-      if (!this.darkMode) {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        localStorage.setItem('theme', 'dark')
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light')
-        localStorage.setItem('theme', 'light')
-      }
-      this.darkMode = !this.darkMode
-    }
   }
 }
 </script>

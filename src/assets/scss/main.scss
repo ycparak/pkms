@@ -24,6 +24,7 @@ html, body {
 }
 html {
   background-color: var(--current-color);
+  scroll-behavior: smooth;
 }
 body {
   &::before, &::after {

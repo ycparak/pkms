@@ -17,7 +17,7 @@ export default function (Vue, { router, head, isClient }) {
       { name: "author", content: 'Yusuf Parak' },
       { name: "description", content: '' },
       { name: "keywords", content: '' },
-    ]
+    ],
   },
 
   // Set default layout as a global component

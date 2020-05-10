@@ -22,7 +22,7 @@ export default {
 }
 .form__input {
   width: 100%;
-  height: 40px;
+  height: 36px;
   border-radius: 2px;
   padding: 0 12px;
   border: 1px solid var(--accent-color);
@@ -46,7 +46,7 @@ export default {
 .form__button {
   border-radius: 2px;
   border: none;
-  height: 40px;
+  height: 36px;
   padding: 0 12px;
   line-height: 28px;
   margin-left: 8px;

@@ -1,8 +1,8 @@
 <template>
-  <div class="categories">
-    <div class="categories__container">
+  <div class="collections">
+    <div class="collections__container">
       <div
-        class="category"
+        class="collection"
         :class="{ 
           current: collection === 'all' && (collectionNext === null || collectionNext === 'all'),
           hovered: collectionNext === 'all' && collection !== 'all',
@@ -10,11 +10,11 @@
         @mouseover="mouseoverCollection('all')"
         @mouseleave="mouseleaveCollection('all')"
         @click="setCollection('all')">
-        <span class="category__color all"></span>
-        <span class="category__text all">All</span>
+        <span class="collection__color all"></span>
+        <span class="collection__text all">All</span>
       </div>
       <div
-        class="category"
+        class="collection"
         :class="{ 
           current: collection === 'essay' && (collectionNext === null || collectionNext === 'essay'),
           hovered: collectionNext === 'essay' && collection !== 'essay',
@@ -22,11 +22,11 @@
         @mouseover="mouseoverCollection('essay')"
         @mouseleave="mouseleaveCollection('essay')"
         @click="setCollection('essay')">
-        <span class="category__color essay"></span>
-        <span class="category__text essay">Essays</span>
+        <span class="collection__color essay"></span>
+        <span class="collection__text essay">Essays</span>
       </div>
       <div
-        class="category"
+        class="collection"
         :class="{ 
           current: collection === 'tweetstorm' && (collectionNext === null || collectionNext === 'tweetstorm'),
           hovered: collectionNext === 'tweetstorm' && collection !== 'tweetstorm',
@@ -34,11 +34,11 @@
         @mouseover="mouseoverCollection('tweetstorm')"
         @mouseleave="mouseleaveCollection('tweetstorm')"
         @click="setCollection('tweetstorm')">
-        <span class="category__color tweetstorm"></span>
-        <span class="category__text tweetstorm">Tweetstorms</span>
+        <span class="collection__color tweetstorm"></span>
+        <span class="collection__text tweetstorm">Tweetstorms</span>
       </div>
       <div
-        class="category"
+        class="collection"
         :class="{ 
           current: collection === 'project' && (collectionNext === null || collectionNext === 'project'),
           hovered: collectionNext === 'project' && collection !== 'project',
@@ -46,8 +46,20 @@
         @mouseover="mouseoverCollection('project')"
         @mouseleave="mouseleaveCollection('project')"
         @click="setCollection('project')">
-        <span class="category__color project"></span>
-        <span class="category__text project">Projects</span>
+        <span class="collection__color project"></span>
+        <span class="collection__text project">Projects</span>
+      </div>
+      <div
+        class="collection"
+        :class="{ 
+          current: collection === 'quote' && (collectionNext === null || collectionNext === 'quote'),
+          hovered: collectionNext === 'quote' && collection !== 'quote',
+        }"
+        @mouseover="mouseoverCollection('quote')"
+        @mouseleave="mouseleaveCollection('quote')"
+        @click="setCollection('quote')">
+        <span class="collection__color quote"></span>
+        <span class="collection__text quote">Quotes</span>
       </div>
     </div>
   </div>
@@ -57,7 +69,7 @@
 import { MailIcon, TwitterIcon } from 'vue-feather-icons';
 
 export default {
-  name: 'FeedCategories',
+  name: 'Feedcollections',
   props: ['collection', 'collectionNext'],
   components: {
     MailIcon,
@@ -82,7 +94,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.categories {
+.collections {
   position: fixed;
   left: 44px;
   bottom: 44px;
@@ -98,13 +110,13 @@ export default {
   }
 }
 
-.categories__container {
+.collections__container {
   pointer-events: visible;
   text-align: left;
   position: relative;
 }
 
-.category {
+.collection {
   display: block;
   font-size: 15px;
   line-height: 15px;
@@ -116,11 +128,11 @@ export default {
   &:first-child { padding-top: 0 }
   &:last-child { padding-bottom: 0 }
 
-  .category__text {
+  .collection__text {
     display: inline-block;
   }
 
-  .category__color {
+  .collection__color {
     display: inline-block;
     width: 6px;
     height: 6px;
@@ -140,13 +152,16 @@ export default {
     &.tweetstorm  {
       background: var(--twitter-color);
     }
+    &.quote  {
+      background: var(--quotes-color);
+    }
   }
 
   &.current, &.hovered {
     font-weight: 500;
     color: var(--text-color);
     @include daynight;
-    .category__color {
+    .collection__color {
       opacity: 1;
       @include daynight;
     }
