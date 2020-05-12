@@ -101,6 +101,10 @@ export default {
           root.style.setProperty('--current-color', 'var(--projects-color)');
           root.style.setProperty('--current-fill-color', 'var(--projects-color)');
           break;
+        case 'note':
+          root.style.setProperty('--current-color', 'var(--notes-color)');
+          root.style.setProperty('--current-fill-color', 'var(--notes-color)');
+          break;
         case 'quote':
           root.style.setProperty('--current-color', 'var(--quotes-color)');
           root.style.setProperty('--current-fill-color', 'var(--quotes-color)');

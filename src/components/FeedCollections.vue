@@ -16,6 +16,18 @@
       <div
         class="collection"
         :class="{ 
+          current: collection === 'project' && (collectionNext === null || collectionNext === 'project'),
+          hovered: collectionNext === 'project' && collection !== 'project',
+        }"
+        @mouseover="mouseoverCollection('project')"
+        @mouseleave="mouseleaveCollection('project')"
+        @click="setCollection('project')">
+        <span class="collection__color project"></span>
+        <span class="collection__text project">Projects</span>
+      </div>
+      <div
+        class="collection"
+        :class="{ 
           current: collection === 'essay' && (collectionNext === null || collectionNext === 'essay'),
           hovered: collectionNext === 'essay' && collection !== 'essay',
         }"
@@ -40,14 +52,14 @@
       <div
         class="collection"
         :class="{ 
-          current: collection === 'project' && (collectionNext === null || collectionNext === 'project'),
-          hovered: collectionNext === 'project' && collection !== 'project',
+          current: collection === 'note' && (collectionNext === null || collectionNext === 'note'),
+          hovered: collectionNext === 'note' && collection !== 'note',
         }"
-        @mouseover="mouseoverCollection('project')"
-        @mouseleave="mouseleaveCollection('project')"
-        @click="setCollection('project')">
-        <span class="collection__color project"></span>
-        <span class="collection__text project">Projects</span>
+        @mouseover="mouseoverCollection('note')"
+        @mouseleave="mouseleaveCollection('note')"
+        @click="setCollection('note')">
+        <span class="collection__color note"></span>
+        <span class="collection__text note">Notes</span>
       </div>
       <div
         class="collection"
@@ -152,7 +164,10 @@ export default {
     &.tweetstorm  {
       background: var(--twitter-color);
     }
-    &.quote  {
+    &.note {
+      background: var(--notes-color);
+    }
+    &.quote {
       background: var(--quotes-color);
     }
   }
