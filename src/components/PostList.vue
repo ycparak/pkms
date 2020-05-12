@@ -1,5 +1,5 @@
 <template>
-  <div class="post__list">
+  <section class="scroll__section">
     <PostListItem
       v-for="(edge, index) in posts"
       :key="edge.node.id"
@@ -11,7 +11,7 @@
       :set-hovered-post="slotProps.setHoveredPost"
       :revert-collection="slotProps.revertCollection"
       />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -78,7 +78,4 @@ export default {
 </static-query>
 
 <style lang="scss" scoped>
-.post__list {
-  margin: 0 auto;
-}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div :class="`site ${getHoveredCollectionState}`">
-    <Sidebar />
     <div class="site__wrapper">
+      <Header />
       <slot
         :collection="collection"
         :collection-next="collectionNext"
@@ -10,18 +10,23 @@
         :set-next-collection="setNextCollection"
         :set-hovered-post="setHoveredPost"
         :revert-collection="revertCollection" />
+      <SocialButtons />
+      <!-- <template v-if="getDelayedDarkmode">
+        <div class="blur__scroll top" />
+        <div class="blur__scroll bottom" />
+      </template> -->
     </div>
   </div>
 </template>
 
 <script>
-import Sidebar from '~/components/Sidebar'
+import Header from '~/components/Header'
 import SocialButtons from '~/components/SocialButtons'
 
 export default {
   name: 'DefaultLayout',
   components: {
-    Sidebar,
+    Header,
     SocialButtons
   },
   data() {
@@ -116,9 +121,10 @@ export default {
 
 <style lang="scss" scoped>
 .site {
+  overflow-x: hidden;
   min-height: 100vh;
 
-  &::before {
+  &::before, &::after {
     background-color: var(--current-color);
     bottom: 0;
     content: "";
@@ -136,14 +142,35 @@ export default {
   &:before {
     left: 0;
   }
-}
-.site__wrapper {
-  @media (min-width: 768px) {
-    position: relative;
-    top: 28px;
-    left: 108px;
-    padding: 0;
-    margin: 0;
+  &:after {
+    right: 0;
   }
 }
+.site__wrapper {
+  padding: 10px;
+  @media (max-width: 576px) {
+    padding: 0;
+  }
+}
+.site__content {
+  padding-top: 144px;
+}
+/* .blur__scroll {
+  position: fixed;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  height: 40px;
+  width: 100%;
+  z-index: 10;
+  &.top { 
+    @include daynight;
+    top: 8px;
+    background-image: linear-gradient(0deg,rgba(0,0,0,0), #171717);
+  }
+  &.bottom { 
+    bottom: 8px;
+    background-image: linear-gradient(180deg,rgba(0,0,0,0), #171717);
+  }
+} */
 </style>

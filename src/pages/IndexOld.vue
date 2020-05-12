@@ -1,9 +1,9 @@
 <template>
   <Layout v-slot:default="slotProps">
-    <div class="site__content">
+    <Container>
       <div class="grid">
-        <div class="grid__column">
-          <section class="scroll__section site__hero">
+        <div class="grid__column grid__column-1">
+          <div class="site__hero">
             <h1 class="site__hero--title title">Hello, I’m Yusuf Parak.</h1>
             <p class="site__hero--paragraph margin-top--20">
               I'm a software developer/designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I’m also the maker of x which does y and has z metric.
@@ -25,13 +25,15 @@
               </p>
             <NewsletterForm />
             <!-- <NewsletterList :slot-props="slotProps" /> -->
-          </section>
+          </div>
         </div>
         <div class="grid__column grid__column-2">
           <PostList :slot-props="slotProps" />
         </div>
       </div>
-    </div>
+    </Container>
+
+    <FeedCollections :collection="slotProps.collection" :collection-next="slotProps.collectionNext" />
   </Layout>
 </template>
 
@@ -39,6 +41,7 @@
 import NewsletterList from '~/components/NewsletterList'
 import NewsletterForm from '~/components/NewsletterForm'
 import PostList from '~/components/PostList'
+import FeedCollections from '~/components/FeedCollections'
 
 export default {
   name: 'Index',
@@ -46,29 +49,40 @@ export default {
     NewsletterList,
     NewsletterForm,
     PostList,
+    FeedCollections
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .grid {
-  display: flex;
-  overflow-x: scroll;
+  padding: 144px 0;
+  display: grid;
+  gap: 60px 0;
 
-  .grid__column {
-    display: flex;
-    max-width: 520px;
-    height: 100%;
-    overflow-y: scroll;
-    margin-left: 40px;
+  @media (min-width: 1160px) {
+    grid-template-columns: 414px 1fr;
+    gap: 0 80px;
+  }
+  @media (min-width: 1428px) {
+    gap: 0 140px;
   }
 
   .grid__column-1 {
-    padding: 20px 40px;
+    @media (min-width: 1160px) {
+      position: fixed;
+      max-width: 414px;
+      height: calc(100vh - 164px);
+      margin-bottom: 0;
+    }
   }
-
-  .site__hero {
-    padding: 20px 40px;
+  .grid__column-2 {
+    @media (min-width: 1160px) {
+      grid-column-start: 2;
+      grid-column-end: 2;
+      width: 100%;
+      padding-bottom: 0;
+    }
   }
 }
 </style>

@@ -97,8 +97,6 @@ export default {
 .post {
   border-bottom: 1px solid var(--accent-color);
   @include daynight;
-  &:first-child { margin-top: -24px; }
-  &:last-child { margin-bottom: 0; }
 }
 
 .post__link {
@@ -106,7 +104,7 @@ export default {
   position: relative;
   color: var(--text-color);
   border-radius: 2px;
-  padding: 28px 0;
+  padding: 20px 40px;
   cursor: pointer;
 
   &.active { opacity: 1; }
@@ -140,9 +138,9 @@ export default {
     font-size: 17px;
     line-height: 24px;
     font-style: italic;
-    padding-left: 18px;
+    padding-left: 12px;
     border-left: 4px solid var(--accent-color);
-    margin-left: -20px;
+    margin-left: -16px;
     padding-bottom: 4px;
     font-weight: 400;
     @include daynight;

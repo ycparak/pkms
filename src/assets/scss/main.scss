@@ -62,3 +62,9 @@ button, input {
   @include colors;
   @include daynight;
 }
+.scroll__section {
+  border: 1px solid var(--accent-color);
+  overflow-y: scroll;
+  height: calc(100vh - 56px);
+  border-radius: 8px;
+}
