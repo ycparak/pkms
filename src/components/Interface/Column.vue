@@ -30,7 +30,7 @@ export default {
   scroll-snap-align: start;
   border: 1px solid var(--accent-color);
   border-radius: 12px;
-  margin-right: 40px;
+  margin-right: 28px;
   @include daynight;
 
   .column-header {

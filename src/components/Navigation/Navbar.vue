@@ -62,10 +62,10 @@ export default {
   @media (min-width: 768px) {
     display: block;
     left: 0;
-    top: 28px;
-    bottom: 28px;
-    padding-left: 28px;
-    width: 48px;
+    top: 0;
+    bottom: 0;
+    padding: 28px 0 28px 28px;
+    width: 100px;
 
     .container {
       flex-direction: column;

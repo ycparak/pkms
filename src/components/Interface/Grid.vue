@@ -21,11 +21,11 @@ export default {
     flex-direction: row;
     position: relative;
     margin: 0;
-    padding-left: 148px;
     padding-right: 0;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
-    scroll-padding: 148px;
+    scroll-padding: 136px;
+    padding-left: 136px;
   }
 }
 </style>
