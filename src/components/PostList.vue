@@ -1,12 +1,11 @@
 <template>
-  <Column>
-    <section class="section">
-      <PostListItem
-        v-for="(edge, index) in posts"
-        :key="edge.node.id"
-        :post="edge.node"
-        />
-    </section>
+  <Column :header="type">
+    <PostListItem
+      v-for="(edge, index) in posts"
+      :key="edge.node.id"
+      :post="edge.node"
+      />
+    </div>
   </Column>
 </template>
 

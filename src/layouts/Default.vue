@@ -1,5 +1,5 @@
 <template>
-  <div :class="`site ${getHoveredCollectionState}`">
+  <div class="site">
     <Navbar />
     <div class="wrapper">
       <slot
@@ -113,9 +113,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
-  @media (min-width: 768px) {
-    padding-right: 28px;
-  }
-}
 </style>

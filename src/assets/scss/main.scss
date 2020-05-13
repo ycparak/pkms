@@ -18,6 +18,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  overflow: hidden;
   @include colors;
   @include daynight;
 }
@@ -46,8 +47,6 @@ button, input {
 
   @media (min-width: 768px) {
     overflow-y: scroll;
-    height: calc(100vh - 58px);
-    border: 1px solid var(--accent-color);
-    border-radius: 12px;
+    height: calc(100vh - 28px - 28px - 40px);
   }
 }

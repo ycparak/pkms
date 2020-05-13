@@ -1,6 +1,6 @@
 <template>
-  <Column>
-    <section class="section hero">
+  <Column :header="'About'">
+    <div class="profile">
       <h1 class="title">Yo, I’m Yusuf. Welcome.</h1>
       <p class="margin-top--20">
         I'm a software developer and designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I’m also the maker of x which does y and has z metric.
@@ -21,7 +21,7 @@
         </g-link>
         </p>
       <NewsletterForm />
-    </section>
+    </div>
   </Column>
 </template>
 
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hero {
-  padding: 24px 36px;
+.profile {
+  padding: 24px 44px;
 }
 </style>

@@ -4,6 +4,7 @@ h1 {
   font-weight: 700;
   color: var(--text-color);
   margin-top: 0;
+  @include daynight;
 }
 h6 {
   font-size: 21px;
