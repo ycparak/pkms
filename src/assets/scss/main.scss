@@ -17,7 +17,6 @@ html, body {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  overscroll-behavior-x: none;
   box-sizing: border-box;
   @include colors;
   @include daynight;
@@ -39,8 +38,16 @@ button, input {
   @include colors;
   @include daynight;
 }
-.scroll__section {
-  overflow-y: scroll;
-  height: calc(100vh - 58px);
+
+.section {
   @include daynight;
+  scroll-snap-type: y mandatory;
+  > * { scroll-snap-align: start; }
+
+  @media (min-width: 768px) {
+    overflow-y: scroll;
+    height: calc(100vh - 58px);
+    border: 1px solid var(--accent-color);
+    border-radius: 12px;
+  }
 }

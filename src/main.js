@@ -2,9 +2,8 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 import DefaultLayout from '~/layouts/Default.vue'
 
-import Container from '~/components/ui/Container.vue'
-import ContainerFluid from '~/components/ui/ContainerFluid.vue'
-import LoadingSpinner from '~/components/ui/LoadingSpinner.vue'
+import Grid from '~/components/Interface/Grid.vue'
+import Column from '~/components/Interface/Column.vue'
 
 import '~/assets/fonts/fonts.css'
 import '~/assets/scss/main.scss'
@@ -22,7 +21,6 @@ export default function (Vue, { router, head, isClient }) {
 
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
-  Vue.component('Container', Container)
-  Vue.component('ContainerFluid', ContainerFluid)
-  Vue.component('LoadingSpinner', LoadingSpinner)
+  Vue.component('Grid', Grid)
+  Vue.component('Column', Column)
 }

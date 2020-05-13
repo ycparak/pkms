@@ -1,11 +1,13 @@
 <template>
-  <section class="scroll__section">
-    <PostListItem
-      v-for="(edge, index) in posts"
-      :key="edge.node.id"
-      :post="edge.node"
-      />
-  </section>
+  <Column>
+    <section class="section">
+      <PostListItem
+        v-for="(edge, index) in posts"
+        :key="edge.node.id"
+        :post="edge.node"
+        />
+    </section>
+  </Column>
 </template>
 
 <script>

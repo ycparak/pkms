@@ -1,7 +1,7 @@
 <template>
   <div :class="`site ${getHoveredCollectionState}`">
-    <Sidebar />
-    <div class="site__wrapper">
+    <Navbar />
+    <div class="wrapper">
       <slot
         :collection="collection"
         :collection-next="collectionNext"
@@ -15,14 +15,12 @@
 </template>
 
 <script>
-import Sidebar from '~/components/Sidebar'
-import SocialButtons from '~/components/SocialButtons'
+import Navbar from '~/components/Navigation/Navbar'
 
 export default {
   name: 'DefaultLayout',
   components: {
-    Sidebar,
-    SocialButtons
+    Navbar,
   },
   data() {
     return {
@@ -115,14 +113,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.site__wrapper {
-  display: flex;
-  flex-grow: 1;
-  overflow-x: scroll;
-  flex-direction: row;
-  position: relative;
-  padding: 0;
-  margin: 0;
-  padding: 28px 0;
+.wrapper {
+  @media (min-width: 768px) {
+    padding-right: 28px;
+  }
 }
 </style>
