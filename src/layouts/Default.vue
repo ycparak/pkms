@@ -115,35 +115,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.site {
-  min-height: 100vh;
-
-  &::before {
-    background-color: var(--current-color);
-    bottom: 0;
-    content: "";
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    width: 8px;
-    height: 100%;
-    z-index: 100;
-    @include daynight;
-    @media (max-width: 576px) {
-      display: none;
-    }
-  }
-  &:before {
-    left: 0;
-  }
-}
 .site__wrapper {
-  @media (min-width: 768px) {
-    position: relative;
-    top: 28px;
-    left: 108px;
-    padding: 0;
-    margin: 0;
-  }
+  display: flex;
+  flex-grow: 1;
+  overflow-x: scroll;
+  flex-direction: row;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  padding: 28px 0;
 }
 </style>

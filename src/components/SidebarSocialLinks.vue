@@ -49,6 +49,8 @@ export default {
 .social__buttons {
   color: var(--text-color);
   @include daynight;
+  position: relative;
+  top: 8px;
 }
 .social__link {
   display: block;
@@ -60,9 +62,10 @@ export default {
   width: 28px;
   border-radius: 50%;
   background: transparent;
-  &:last-child {
-    margin-bottom: 0;
-  }
+
+  &:first-child { margin-top: 0; }
+  &:last-child { margin-bottom: 0; }
+  
   &:hover, &:focus, &:active {
     outline: none;
     box-shadow: none;

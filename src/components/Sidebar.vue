@@ -1,18 +1,20 @@
 <template>
   <div class="sidebar">
-    <div class="sidebar__profile">
-      <g-link 
-        @click.native="revertCollection()"
-        to="/" 
-        class="sidebar__logo" />
+    <div class="sidebar__container">
+      <div class="sidebar__profile">
+        <g-link 
+          @click.native="revertCollection()"
+          to="/" 
+          class="sidebar__logo" />
+      </div>
+      <div class="sidebar__controls">
+        <button
+          @click="$parent.darkModeToggle()"
+          class="sidebar__darkmode"
+        />
+      </div>
+      <SidebarSocialLinks />
     </div>
-    <div class="sidebar__controls">
-      <button
-        @click="$parent.darkModeToggle()"
-        class="sidebar__darkmode"
-      />
-    </div>
-    <SidebarSocialLinks />
   </div>
 </template>
 
@@ -37,14 +39,23 @@ export default {
 <style lang="scss" scoped>
 .sidebar {
   position: fixed;
-  left: 28px;
+  z-index: 100;
+  left: 0;
   top: 28px;
   bottom: 28px;
+  padding-left: 28px;
+  width: 48px;
+  background: var(--background-color);
+  @include daynight;
+}
+.sidebar__container {
+  height: 100%;
   width: 80px;
   display: none;
-  border-radius: 8px;
+  border-radius: 12px;
   color: var(--text-color);
   background: var(--accent-color);
+  box-shadow: var(--grid-column-shadow);
   @include daynight;
   @media (min-width: 768px) {
     display: flex;
@@ -52,7 +63,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    padding: 28px 0;
+    padding: 36px 0;
   }
 }
 .sidebar__controls {
@@ -68,8 +79,8 @@ export default {
 }
 .sidebar__darkmode {
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   overflow: hidden;
   transition-property: box-shadow;

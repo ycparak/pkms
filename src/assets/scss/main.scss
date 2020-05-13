@@ -17,37 +17,14 @@ html, body {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  overscroll-behavior-x: none;
   box-sizing: border-box;
-  overflow-x: hidden;
   @include colors;
   @include daynight;
 }
 html {
-  background-color: var(--current-color);
+  background-color: var(--background-color);
   scroll-behavior: smooth;
-}
-body {
-  &::before, &::after {
-    background-color: var(--current-color);
-    content: "";
-    height: 8px;
-    left: 0;
-    pointer-events: none;
-    position: fixed;
-    right: 0;
-    width: 100%;
-    z-index: 10;
-    @include daynight;
-    @media (max-width: 576px) {
-      display: none;
-    }
-  }
-  &::before {
-    top: 0;
-  }
-  &::after {
-    bottom: 0;
-  }
 }
 button, input {
   margin: 0;
@@ -63,8 +40,7 @@ button, input {
   @include daynight;
 }
 .scroll__section {
-  border: 1px solid var(--accent-color);
   overflow-y: scroll;
-  height: calc(100vh - 56px);
-  border-radius: 8px;
+  height: calc(100vh - 58px);
+  @include daynight;
 }

@@ -2,11 +2,11 @@
   <Layout v-slot:default="slotProps">
     <div class="site__content">
       <div class="grid">
-        <div class="grid__column">
+        <div class="column c1">
           <section class="scroll__section site__hero">
             <h1 class="site__hero--title title">Hello, I’m Yusuf Parak.</h1>
             <p class="site__hero--paragraph margin-top--20">
-              I'm a software developer/designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I’m also the maker of x which does y and has z metric.
+              I'm a software developer and designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I’m also the maker of x which does y and has z metric.
               <g-link to="/story" class="link link__special tweetstorm">
                 <label class="link__special--label">My story</label>
                 <svg class="link__special--svg tweetstorm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -24,11 +24,24 @@
               </g-link>
               </p>
             <NewsletterForm />
-            <!-- <NewsletterList :slot-props="slotProps" /> -->
           </section>
+          <!-- <div class="column__header">
+            <div class="column__header--container">
+              <span class="column__header--text">About me</span>
+            </div>
+          </div> -->
         </div>
-        <div class="grid__column grid__column-2">
-          <PostList :slot-props="slotProps" />
+        <div class="column c2">
+          <PostList :slot-props="slotProps" type="projects" />
+        </div>
+        <div class="column c3">
+          <PostList :slot-props="slotProps" type="tweetstorms" />
+        </div>
+        <div class="column c4">
+          <PostList :slot-props="slotProps" type="notes" />
+        </div>
+        <div class="column c5">
+          <PostList :slot-props="slotProps" type="quotes" />
         </div>
       </div>
     </div>
@@ -53,22 +66,57 @@ export default {
 <style lang="scss" scoped>
 .grid {
   display: flex;
-  overflow-x: scroll;
+  width: 100%;
+  padding-left: 148px;
 
-  .grid__column {
-    display: flex;
-    max-width: 520px;
-    height: 100%;
-    overflow-y: scroll;
-    margin-left: 40px;
+  .column {
+    display: grid;
+    // grid-template-columns: 1fr 32px;
+    min-height: 100%;
+    min-width: 520px;
+    margin-right: 40px;
+    position: sticky;
+    top: 0;
+    background: var(--background-color);
+    box-shadow: var(--grid-column-shadow);
+    border-radius: 12px;
+    border: 1px solid var(--accent-color);
+
+    .column__header {
+      background: var(--accent-color);
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+
+      .column__header--text {
+        display: inline-block;
+        transform: rotate(-90deg);
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 
-  .grid__column-1 {
-    padding: 20px 40px;
+  .c1 {
+    z-index: 10;
+    left: -386px;
+  }
+  .c2 {
+    z-index: 9;
+    left: -356px;
+  }
+  .c3 {
+    z-index: 8;
+    left: -302px;
+  }
+  .c4 {
+    z-index: 7;
+  }
+  .c5 {
+    z-index: 6;
   }
 
   .site__hero {
-    padding: 20px 40px;
+    padding: 28px 40px;
   }
 }
 </style>
