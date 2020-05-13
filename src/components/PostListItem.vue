@@ -2,22 +2,12 @@
   <div class="post">
     <g-link
       class="post__link"
-      :class="{
-        essay: post.collection.toLowerCase() === 'essay',
-        active: isActive,
-      }" 
-      :to="post.path"
-      @mouseover.native.stop.prevent="mouseoverArticle(post)"
-      @mouseleave.native.stop.prevent="mouseleaveArticle()">
+      :to="post.path">
       <div class="post__meta">
-        <span class="subtitle">{{ post.collection }}</span>
-        <template v-if="activelySelected === 'active'">
+        <span class="subtitle">{{ post.date }}</span>
+        <template v-if="!post.quote">
           <span class="subtitle">&middot;</span>
-          <span class="subtitle">{{ post.date }}</span>
-          <template v-if="!post.quote">
-            <span class="subtitle">&middot;</span>
-            <span class="subtitle">{{ post.timeToRead }} min read</span>
-          </template>
+          <span class="subtitle">{{ post.timeToRead }} min read</span>
         </template>
       </div>
       <div
@@ -33,9 +23,7 @@
         </p>
       </div>
       <div v-else-if="post.quote" class="post__body">
-        <blockquote 
-          class="post__quote"
-          :class="{ active: activelySelected === 'active' }">
+        <blockquote class="post__quote">
           <span class="post__quote--content">{{ post.quote }}</span>
         </blockquote>
       </div>
@@ -46,45 +34,8 @@
 <script>
 export default {
   name: 'PostItem',
-  props: [
-    'post',
-    'collection',
-    'collectionNext',
-    'hoveredPost',
-    'setNextCollection',
-    'setHoveredPost',
-    'revertCollection'
-  ],
-  computed: {
-    isActive() {
-      if (this.collection === this.collectionNext || this.collectionNext === 'all') {
-        return true;
-      }
-      else if (this.hoveredPost && this.hoveredPost.id === this.post.id) {
-        return true;
-      }
-      else if (this.hoveredPost && this.collectionNext === this.post.collection.toLowerCase()) {
-        return false;
-      }
-      else if (this.hoveredPost === null && this.collectionNext === this.post.collection.toLowerCase()) {
-        return true;
-      }
-      return false;
-    },
-    activelySelected() {
-      if (this.isActive && this.collection !== this.collectionNext && this.collectionNext !== 'all') return 'active';
-      return ''
-    },
-  },
+  props: ['post'],
   methods: {
-    mouseoverArticle(post) {
-      this.setNextCollection(post.collection.toLowerCase())
-      this.setHoveredPost(post)
-    },
-    mouseleaveArticle() {
-      this.revertCollection();
-      this.setHoveredPost(null)
-    },
     getExcerpt(excerpt) {
       if (excerpt.length > 140) return `${excerpt.substring(0, 140)}...`;
       return excerpt;
@@ -97,8 +48,6 @@ export default {
 .post {
   border-bottom: 1px solid var(--accent-color);
   @include daynight;
-  &:first-child { margin-top: -24px; }
-  &:last-child { margin-bottom: 0; }
 }
 
 .post__link {
@@ -106,17 +55,15 @@ export default {
   position: relative;
   color: var(--text-color);
   border-radius: 2px;
-  padding: 28px 0;
+  padding: 28px 40px;
   cursor: pointer;
-
-  &.active { opacity: 1; }
-  &:not(.active) { opacity: .2 }
 
   &:active, &:hover, &:focus {
     outline: none;
     box-shadow: none;
     border: none;
   }
+  &:hover { background: var(--accent-color); }
 }
 .post__body {
   .post__title {
@@ -140,9 +87,9 @@ export default {
     font-size: 17px;
     line-height: 24px;
     font-style: italic;
-    padding-left: 18px;
+    padding-left: 12px;
     border-left: 4px solid var(--accent-color);
-    margin-left: -20px;
+    margin-left: -16px;
     padding-bottom: 4px;
     font-weight: 400;
     @include daynight;

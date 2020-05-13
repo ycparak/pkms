@@ -1,12 +1,12 @@
 <template>
   <Layout v-slot:default="slotProps">
-    <div class="site__content">
+    <Container>
       <div class="grid">
-        <div class="column c1">
-          <section class="scroll__section site__hero">
+        <div class="grid__column grid__column-1">
+          <div class="site__hero">
             <h1 class="site__hero--title title">Hello, I’m Yusuf Parak.</h1>
             <p class="site__hero--paragraph margin-top--20">
-              I'm a software developer and designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I’m also the maker of x which does y and has z metric.
+              I'm a software developer/designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I’m also the maker of x which does y and has z metric.
               <g-link to="/story" class="link link__special tweetstorm">
                 <label class="link__special--label">My story</label>
                 <svg class="link__special--svg tweetstorm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -24,27 +24,16 @@
               </g-link>
               </p>
             <NewsletterForm />
-          </section>
-          <!-- <div class="column__header">
-            <div class="column__header--container">
-              <span class="column__header--text">About me</span>
-            </div>
-          </div> -->
+            <!-- <NewsletterList :slot-props="slotProps" /> -->
+          </div>
         </div>
-        <div class="column c2">
-          <PostList :slot-props="slotProps" type="projects" />
-        </div>
-        <div class="column c3">
-          <PostList :slot-props="slotProps" type="tweetstorms" />
-        </div>
-        <div class="column c4">
-          <PostList :slot-props="slotProps" type="notes" />
-        </div>
-        <div class="column c5">
-          <PostList :slot-props="slotProps" type="quotes" />
+        <div class="grid__column grid__column-2">
+          <PostList :slot-props="slotProps" />
         </div>
       </div>
-    </div>
+    </Container>
+
+    <FeedCollections :collection="slotProps.collection" :collection-next="slotProps.collectionNext" />
   </Layout>
 </template>
 
@@ -52,6 +41,7 @@
 import NewsletterList from '~/components/NewsletterList'
 import NewsletterForm from '~/components/NewsletterForm'
 import PostList from '~/components/PostList'
+import FeedCollections from '~/components/FeedCollections'
 
 export default {
   name: 'Index',
@@ -59,64 +49,40 @@ export default {
     NewsletterList,
     NewsletterForm,
     PostList,
+    FeedCollections
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .grid {
-  display: flex;
-  width: 100%;
-  padding-left: 148px;
+  padding: 144px 0;
+  display: grid;
+  gap: 60px 0;
 
-  .column {
-    display: grid;
-    // grid-template-columns: 1fr 32px;
-    min-height: 100%;
-    min-width: 520px;
-    margin-right: 40px;
-    position: sticky;
-    top: 0;
-    background: var(--background-color);
-    box-shadow: var(--grid-column-shadow);
-    border-radius: 12px;
-    border: 1px solid var(--accent-color);
+  @media (min-width: 1160px) {
+    grid-template-columns: 414px 1fr;
+    gap: 0 80px;
+  }
+  @media (min-width: 1428px) {
+    gap: 0 140px;
+  }
 
-    .column__header {
-      background: var(--accent-color);
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-
-      .column__header--text {
-        display: inline-block;
-        transform: rotate(-90deg);
-        width: 100%;
-        height: 100%;
-      }
+  .grid__column-1 {
+    @media (min-width: 1160px) {
+      position: fixed;
+      max-width: 414px;
+      height: calc(100vh - 164px);
+      margin-bottom: 0;
     }
   }
-
-  .c1 {
-    z-index: 10;
-    left: -386px;
-  }
-  .c2 {
-    z-index: 9;
-    left: -356px;
-  }
-  .c3 {
-    z-index: 8;
-    left: -302px;
-  }
-  .c4 {
-    z-index: 7;
-  }
-  .c5 {
-    z-index: 6;
-  }
-
-  .site__hero {
-    padding: 28px 40px;
+  .grid__column-2 {
+    @media (min-width: 1160px) {
+      grid-column-start: 2;
+      grid-column-end: 2;
+      width: 100%;
+      padding-bottom: 0;
+    }
   }
 }
 </style>
