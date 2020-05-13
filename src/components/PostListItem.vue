@@ -55,7 +55,7 @@ export default {
   position: relative;
   color: var(--text-color);
   border-radius: 2px;
-  padding: 28px 40px;
+  padding: 28px 36px;
   cursor: pointer;
 
   &:active, &:hover, &:focus {

@@ -16,13 +16,11 @@
 
 <script>
 import Sidebar from '~/components/Sidebar'
-import SocialButtons from '~/components/SocialButtons'
 
 export default {
   name: 'DefaultLayout',
   components: {
     Sidebar,
-    SocialButtons
   },
   data() {
     return {
@@ -116,13 +114,8 @@ export default {
 
 <style lang="scss" scoped>
 .site__wrapper {
-  display: flex;
-  flex-grow: 1;
-  overflow-x: scroll;
-  flex-direction: row;
-  position: relative;
-  padding: 0;
-  margin: 0;
-  padding: 28px 0;
+  @media (min-width: 768px) {
+    padding-right: 28px;
+  }
 }
 </style>

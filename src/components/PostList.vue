@@ -1,5 +1,5 @@
 <template>
-  <section class="scroll__section">
+  <section class="section">
     <PostListItem
       v-for="(edge, index) in posts"
       :key="edge.node.id"
