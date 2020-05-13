@@ -70,7 +70,7 @@ export default {
     .container {
       flex-direction: column;
       align-items: center;
-      padding: 32px 0;
+      padding: 20px 0;
       height: 100%;
       width: 80px;
       box-shadow: var(--grid-column-shadow);

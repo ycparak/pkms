@@ -3,6 +3,8 @@
     <Grid>
       <Profile />
       <PostList :slot-props="slotProps" type="all" />
+      <PostList :slot-props="slotProps" type="projects" />
+      <PostList :slot-props="slotProps" type="essays" />
       <PostList :slot-props="slotProps" type="tweetstorms" />
       <PostList :slot-props="slotProps" type="notes" />
       <PostList :slot-props="slotProps" type="quotes" />

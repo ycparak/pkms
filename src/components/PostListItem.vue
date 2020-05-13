@@ -19,7 +19,7 @@
         <p
           v-if="post.excerpt"
           class="post__content">
-          {{ getExcerpt(post.excerpt) }}
+          {{ cropExcerpt(post.excerpt) }}
         </p>
       </div>
       <div v-else-if="post.quote" class="post__body">
@@ -36,8 +36,8 @@ export default {
   name: 'PostItem',
   props: ['post'],
   methods: {
-    getExcerpt(excerpt) {
-      if (excerpt.length > 140) return `${excerpt.substring(0, 140)}...`;
+    cropExcerpt(excerpt) {
+      if (excerpt.length > 115) return `${excerpt.substring(0, 115)}...`;
       return excerpt;
     }
   }
@@ -55,7 +55,7 @@ export default {
   position: relative;
   color: var(--text-color);
   border-radius: 2px;
-  padding: 28px 36px;
+  padding: 32px 44px;
   cursor: pointer;
 
   &:active, &:hover, &:focus {
@@ -63,7 +63,9 @@ export default {
     box-shadow: none;
     border: none;
   }
-  &:hover { background: var(--accent-color); }
+  &:hover { 
+    background: var(--accent-color);
+  }
 }
 .post__body {
   .post__title {
@@ -87,17 +89,11 @@ export default {
     font-size: 17px;
     line-height: 24px;
     font-style: italic;
-    padding-left: 12px;
-    border-left: 4px solid var(--accent-color);
-    margin-left: -16px;
     padding-bottom: 4px;
     font-weight: 400;
     @include daynight;
     .post__quote--content {
       opacity: .7;
-    }
-    &.active {
-      border-left-color: var(--text-color);
     }
   }
 }
