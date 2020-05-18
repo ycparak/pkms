@@ -2,12 +2,11 @@
   <Layout v-slot:default="slotProps">
     <Grid>
       <Profile />
-      <PostList :slot-props="slotProps" type="all" />
-      <PostList :slot-props="slotProps" type="projects" />
-      <PostList :slot-props="slotProps" type="essays" />
-      <PostList :slot-props="slotProps" type="tweetstorms" />
-      <PostList :slot-props="slotProps" type="notes" />
-      <PostList :slot-props="slotProps" type="quotes" />
+      <PostList
+        v-for="(collection, index) in collections"
+        :key="index"
+        :slot-props="slotProps"
+        :type="collection" />
     </Grid>
   </Layout>
 </template>
@@ -22,6 +21,18 @@ export default {
     Profile,
     PostList,
   },
+  computed: {
+    collections() {
+      return [
+        'all',
+        'projects',
+        'essays',
+        'tweetstorms',
+        'notes',
+        'quotes',
+      ]
+    }
+  }
 }
 </script>
 

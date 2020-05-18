@@ -44,10 +44,10 @@ export default {
   @media (max-width: 767px) {
     display: block; 
     top: 0;
-    left: 28px;
-    right: 28px;
+    left: 16px;
+    right: 16px;
     height: 48px;
-    padding-top: 28px;
+    padding-top: 16px;
 
     .container {
       flex-direction: row;
