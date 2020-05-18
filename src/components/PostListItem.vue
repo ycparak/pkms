@@ -58,6 +58,10 @@ export default {
   padding: 32px 44px;
   cursor: pointer;
 
+  @media (max-width: 767px) {
+    padding: 24px;
+  }
+
   &:active, &:hover, &:focus {
     outline: none;
     box-shadow: none;

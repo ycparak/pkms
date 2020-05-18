@@ -12,20 +12,23 @@ export default {
 
 <style lang="scss" scoped>
 .grid {
-  height: 100%;
+  display: flex;
+  flex-direction: row;
   min-height: 100vh;
-  padding: 28px;
+  overflow: scroll;
+
   @media (min-width: 768px) {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: row;
+    padding: 28px;
     position: relative;
     margin: 0;
-    padding-right: 0;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 136px;
     padding-left: 136px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 16px;
+    padding-top: 92px;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 16px;
   }
 }
 </style>
