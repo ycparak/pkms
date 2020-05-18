@@ -59,7 +59,7 @@ export default {
   cursor: pointer;
 
   @media (max-width: 767px) {
-    padding: 16px 24px;
+    padding: 24px;
   }
 
   &:active, &:hover, &:focus {

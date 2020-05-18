@@ -43,11 +43,10 @@ export default {
 
   @media (max-width: 767px) {
     display: block; 
-    top: 0;
+    top: 16px;
     left: 16px;
     right: 16px;
     height: 48px;
-    padding-top: 16px;
 
     .container {
       flex-direction: row;
@@ -55,7 +54,6 @@ export default {
       padding: 0 28px;
       height: 60px;
       width: 100%;
-      box-shadow: var(--grid-column-shadow);
     }
   }
 

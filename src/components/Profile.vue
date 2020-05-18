@@ -40,7 +40,7 @@ export default {
 .profile {
   padding: 24px 44px;
   @media (max-width: 767px) {
-    padding: 16px 24px;
+    padding: 20px 28px;
   }
 }
 </style>

@@ -43,17 +43,18 @@ export default {
   scroll-snap-align: start;
   border: 1px solid var(--accent-color);
   border-radius: 12px;
-  margin-right: 28px;
   width: 100%;
   @include daynight;
 
   @media (min-width: 768px) {
-    min-width: 520px;
+    min-width: 560px;
+    margin-right: 28px;
   }
 
   @media (max-width: 767px) {
     // min-width: 40s0px;
     min-width: calc(100vw - (28px * 3));
+    margin-right: 16px;
   }
 
   .column-header {

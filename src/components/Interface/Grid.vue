@@ -26,7 +26,7 @@ export default {
 
   @media (max-width: 767px) {
     padding: 16px;
-    padding-top: 96px;
+    padding-top: 92px;
     scroll-snap-type: x mandatory;
     scroll-padding: 16px;
   }
