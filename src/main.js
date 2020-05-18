@@ -7,6 +7,7 @@ import Column from '~/components/Interface/Column.vue'
 import '~/assets/fonts/fonts.css'
 import '~/assets/scss/main.scss'
 
+// import { Plugin } from 'vue-fragment'
 import Vuex from 'vuex'
 
 export default function (Vue, { router, head, isClient, appOptions }) {

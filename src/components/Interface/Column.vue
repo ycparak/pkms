@@ -52,7 +52,7 @@ export default {
 .column {
   background: var(--background-color);
   box-shadow: var(--grid-column-shadow);
-  scroll-snap-align: start;
+  // scroll-snap-align: start;
   border: 1px solid var(--accent-color);
   border-radius: 12px;
   width: 100%;
