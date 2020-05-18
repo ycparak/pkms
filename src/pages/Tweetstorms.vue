@@ -12,11 +12,11 @@
 
 
 export default {
-  name: 'Quotes',
+  name: 'Tweetstorms',
   computed: {
     columns() {
       return [
-        { depth: 1, title: 'Quotes', collection: 'quotes' },
+        { depth: 1, title: 'Tweetstorms', collection: 'tweetstorms' },
       ]
     }
   }

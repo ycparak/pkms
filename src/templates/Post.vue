@@ -1,8 +1,7 @@
 <template>
   <Layout v-slot:default="slotProps">
-    <Container>
-      <div v-html="$page.post.content"></div>
-    </Container>
+    <!-- <Column :column="$page.post" /> -->
+    <div v-html="$page.post.content"></div>
   </Layout>
 </template>
 

@@ -1,26 +1,43 @@
 <template>
   <div class="column">
-    <div v-if="header && false" class="overflow-header">
-      <span>{{ header }}</span>
+    <div v-if="false" class="overflow-header">
+      <span>{{ column.title }}</span>
     </div>
-    <div v-if="header" class="column-header">
-      <span>{{ header }}</span>
+    <div class="column-header">
+      <span>{{ column.title }}</span>
     </div>
     <div class="section">
-      <slot />
+      <Profile 
+        v-if="column.depth === 0" />
+      <PostList 
+        v-else-if="column.depth === 1"
+        :slot-props="slotProps"
+        :type="column.collection" />
     </div>
   </div>
 </template>
 
 <script>
+import Profile from '~/components/Profile';
+import PostList from '~/components/PostList';
+
 export default {
   name: 'Column',
   props: {
-    header: {
-      type: String,
+    column: {
+      type: Object,
       required: false,
       default: null
     },
+    slotProps: {
+      type:  Object,
+      required: false,
+      default: null
+    }
+  },
+  components: {
+    Profile,
+    PostList,
   },
   data() {
     return {
@@ -28,11 +45,6 @@ export default {
       showHeader: false,
     };
   },
-  computed: {
-    determineColumnWidth() {
-
-    }
-  }
 }
 </script>
 
@@ -47,12 +59,13 @@ export default {
   @include daynight;
 
   @media (min-width: 768px) {
+    max-width: 560px;
     min-width: 560px;
     margin-right: 28px;
   }
 
   @media (max-width: 767px) {
-    // min-width: 40s0px;
+    max-width: calc(100vw - (28px * 3));
     min-width: calc(100vw - (28px * 3));
     margin-right: 16px;
   }

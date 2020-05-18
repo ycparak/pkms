@@ -1,35 +1,28 @@
 <template>
   <Layout v-slot:default="slotProps">
-    <Grid>
-      <Profile />
-      <PostList
-        v-for="(collection, index) in collections"
-        :key="index"
-        :slot-props="slotProps"
-        :type="collection" />
-    </Grid>
+    <Column
+      v-for="(column, index) in columns"
+      :key="index"
+      :column="column"
+      :slot-props="slotProps" />
   </Layout>
 </template>
 
 <script>
-import Profile from '~/components/Profile'
-import PostList from '~/components/PostList'
+
 
 export default {
   name: 'Index',
-  components: {
-    Profile,
-    PostList,
-  },
   computed: {
-    collections() {
+    columns() {
       return [
-        'all',
-        'projects',
-        'essays',
-        'tweetstorms',
-        'notes',
-        'quotes',
+        { depth: 0, title: 'About' },
+        { depth: 1, title: 'All', collection: 'all' },
+        { depth: 1, title: 'Projects', collection: 'projects' },
+        { depth: 1, title: 'Essays', collection: 'essays' },
+        { depth: 1, title: 'Tweetstorms', collection: 'tweetstorms' },
+        { depth: 1, title: 'Notes', collection: 'notes' },
+        { depth: 1, title: 'Quotes', collection: 'quotes' },
       ]
     }
   }

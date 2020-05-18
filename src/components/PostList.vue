@@ -1,12 +1,12 @@
 <template>
-  <Column :header="type">
+  <div>
     <PostListItem
       v-for="(edge, index) in posts"
       :key="edge.node.id"
       :post="edge.node"
       />
     </div>
-  </Column>
+  </div>
 </template>
 
 <script>
