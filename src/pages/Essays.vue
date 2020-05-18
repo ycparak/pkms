@@ -13,11 +13,15 @@
 
 export default {
   name: 'Essays',
+  created() {
+    const columns = [
+      { depth: 1, title: 'Essays', collection: 'essays' },
+    ]
+    this.$store.commit('setColumns', columns);
+  },
   computed: {
     columns() {
-      return [
-        { depth: 1, title: 'Essays', collection: 'essays' },
-      ]
+      return this.$store.getters.columns;
     }
   }
 }

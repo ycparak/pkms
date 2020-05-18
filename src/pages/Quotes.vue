@@ -13,11 +13,15 @@
 
 export default {
   name: 'Quotes',
+  created() {
+    const columns = [
+      { depth: 1, title: 'Quotes', collection: 'quotes' },
+    ]
+    this.$store.commit('setColumns', columns);
+  },
   computed: {
     columns() {
-      return [
-        { depth: 1, title: 'Quotes', collection: 'quotes' },
-      ]
+      return this.$store.getters.columns;
     }
   }
 }

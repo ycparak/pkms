@@ -18,10 +18,6 @@ export default {
   data() {
     return {
       darkMode: false,
-      collection: 'all',
-      collectionPrev: 'all',
-      collectionNext: 'all',
-      hoveredPost: null,
     }
   },
   mounted() {

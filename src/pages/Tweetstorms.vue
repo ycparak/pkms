@@ -13,11 +13,15 @@
 
 export default {
   name: 'Tweetstorms',
+  created() {
+    const columns = [
+      { depth: 1, title: 'Tweetstorms', collection: 'tweetstorms' },
+    ]
+    this.$store.commit('setColumns', columns);
+  },
   computed: {
     columns() {
-      return [
-        { depth: 1, title: 'Tweetstorms', collection: 'tweetstorms' },
-      ]
+      return this.$store.getters.columns;
     }
   }
 }
