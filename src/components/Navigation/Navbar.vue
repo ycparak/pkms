@@ -27,7 +27,7 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   position: fixed;
-  z-index: 100;
+  z-index: 999;
   background: var(--background-color);
   @include daynight;
 
@@ -62,7 +62,7 @@ export default {
     left: 0;
     top: 0;
     bottom: 0;
-    padding: 28px 0 28px 28px;
+    padding: 27px 0 27px 28px;
     width: 100px;
 
     .container {

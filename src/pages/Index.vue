@@ -3,25 +3,25 @@
     <Column
       v-for="(column, index) in columns"
       :key="index"
+      :index="index"
       :column="column"
+      :columns="columns"
       :slot-props="slotProps" />
   </Layout>
 </template>
 
 <script>
-
-
 export default {
   name: 'Index',
   created() {
     const columns = [
-      { depth: 0, title: 'About' },
-      { depth: 1, title: 'All', collection: 'all' },
-      { depth: 1, title: 'Projects', collection: 'projects' },
-      { depth: 1, title: 'Essays', collection: 'essays' },
-      { depth: 1, title: 'Tweetstorms', collection: 'tweetstorms' },
-      { depth: 1, title: 'Notes', collection: 'notes' },
-      { depth: 1, title: 'Quotes', collection: 'quotes' },
+      { depth: 0, header: 'About' },
+      { depth: 1, header: 'All', collection: 'all' },
+      { depth: 1, header: 'Projects', collection: 'projects' },
+      { depth: 1, header: 'Essays', collection: 'essays' },
+      { depth: 1, header: 'Tweetstorms', collection: 'tweetstorms' },
+      { depth: 1, header: 'Notes', collection: 'notes' },
+      { depth: 1, header: 'Quotes', collection: 'quotes' },
     ]
     this.$store.commit('setColumns', columns);
   },

@@ -1,10 +1,16 @@
 <template>
-  <div class="column">
-    <div v-if="false" class="overflow-header">
-      <span>{{ column.title }}</span>
+  <div :id="index" class="column">
+    <div
+      v-show="showLeftFixedHeader"
+      class="overflow-header"
+      :style="{ 
+        'left': `${leftFixedHeaderPos}px`,
+        'zIndex': `${leftFixedHeaderZIndex}`,
+      }">
+      <span>{{ column.header }}</span>
     </div>
-    <div class="column-header">
-      <span>{{ column.title }}</span>
+    <div v-if="column.header" class="column-header">
+      <span>{{ column.header }}</span>
     </div>
     <div class="section">
       <Profile 
@@ -24,10 +30,18 @@ import PostList from '~/components/PostList';
 export default {
   name: 'Column',
   props: {
+    index: {
+      type: Number,
+      required: true,
+    },
     column: {
       type: Object,
       required: false,
       default: null
+    },
+    columns: {
+      type: Array,
+      required: true,
     },
     slotProps: {
       type:  Object,
@@ -45,6 +59,35 @@ export default {
       showHeader: false,
     };
   },
+  computed: {
+    showLeftFixedHeader() {
+      const columnXEnd = this.columnXEnd();
+      const xScrollPos = this.$store.getters.xScrollPos + 108;
+      if (xScrollPos >= columnXEnd) return true;
+      return false;
+    },
+    leftFixedHeaderPos() {
+      let colStart = 97;
+      return colStart + (this.index * (32));
+    },
+    leftFixedHeaderZIndex() {
+      return 998 - this.index;
+    }
+  },
+  methods: {
+    columnXStart() {
+      let colStart = 136;
+      let colWidth = 560;
+      let margin = 28;
+
+      return colStart + (this.index * (colWidth + margin));
+    },
+    // The x-coord (in px) end of the collumn
+    columnXEnd() {
+      let colWidth = 560;
+      return this.columnXStart() + colWidth;
+    },
+  }
 }
 </script>
 
@@ -52,7 +95,6 @@ export default {
 .column {
   background: var(--background-color);
   box-shadow: var(--grid-column-shadow);
-  // scroll-snap-align: start;
   border: 1px solid var(--accent-color);
   border-radius: 12px;
   width: 100%;
@@ -88,17 +130,24 @@ export default {
   .overflow-header {
     display: block;
     position: fixed;
+    top: 27px;
+    bottom: 27px;
     writing-mode: vertical-lr;
-    transform: translateX(508px);
-    height: 100%;
-    padding: 16px 4px;
+    padding: 20px 8px;
     text-transform: capitalize;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-    height: calc(100vh - 28px - 28px);
-    border: 1px solid var(--accent-color);
-    background: var(--background-color);
-    z-index: 12;
+    background: var(--accent-color);
+    box-shadow: var(--grid-column-shadow);
+    @media (max-width: 767px) {
+      display: none;
+    }
+
+    span {
+      position: relative;
+      left: 6px;
+      font-size: 14px;
+    }
   }
 }
 </style>

@@ -15,7 +15,7 @@ export default {
   name: 'Tweetstorms',
   created() {
     const columns = [
-      { depth: 1, title: 'Tweetstorms', collection: 'tweetstorms' },
+      { depth: 1, header: 'Tweetstorms', collection: 'tweetstorms' },
     ]
     this.$store.commit('setColumns', columns);
   },

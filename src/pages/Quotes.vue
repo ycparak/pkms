@@ -15,7 +15,7 @@ export default {
   name: 'Quotes',
   created() {
     const columns = [
-      { depth: 1, title: 'Quotes', collection: 'quotes' },
+      { depth: 1, header: 'Quotes', collection: 'quotes' },
     ]
     this.$store.commit('setColumns', columns);
   },

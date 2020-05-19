@@ -15,7 +15,7 @@ export default {
   name: 'Projects',
   created() {
     const columns = [
-      { depth: 1, title: 'Projects', collection: 'projects' },
+      { depth: 1, header: 'Projects', collection: 'projects' },
     ]
     this.$store.commit('setColumns', columns);
   },
