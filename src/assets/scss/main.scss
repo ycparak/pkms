@@ -18,13 +18,16 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  overflow: hidden;
   @include colors;
   @include daynight;
 }
 html {
   background-color: var(--background-color);
   scroll-behavior: smooth;
+}
+body {
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 button, input {
   margin: 0;
@@ -43,7 +46,7 @@ button, input {
 .section {
   @include daynight;
   scroll-snap-type: y mandatory;
-  > * { scroll-snap-align: start; }
+  > .post { scroll-snap-align: start; }
   overflow-y: scroll;
   height: calc(100vh - 16px - 16px - 16px - 108px);
   @media (min-width: 768px) {

@@ -29,8 +29,9 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.use(Vuex)
   appOptions.store = new Vuex.Store({
     state: {
-      columns: [{ depth: 0, title: 'About' }],
+      columns: [{ depth: 0, header: 'About', title: 'About' }],
       columnsTouched: false,
+      xScrollPos: 0,
     },
     mutations: {
       setColumns(state, columns) {
@@ -38,11 +39,17 @@ export default function (Vue, { router, head, isClient, appOptions }) {
       },
       touchColumns(state) {
         state.columnsTouched = true;
+      },
+      setXScrollPos(state, xPos) {
+        state.xScrollPos = xPos;
       }
     },
     getters: {
       columns(state) {
         return state.columns;
+      },
+      xScrollPos(state) {
+        return state.xScrollPos;
       }
     }
   })

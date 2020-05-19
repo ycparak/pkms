@@ -7,6 +7,18 @@
 <script>
 export default {
   name: 'Grid',
+  created() {
+    document.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    document.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      const scrollX = Math.round(window.scrollX);
+      this.$store.commit('setXScrollPos', scrollX);
+    }
+  },
 }
 </script>
 
@@ -14,8 +26,6 @@ export default {
 .grid {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
-  overflow: scroll;
 
   @media (min-width: 768px) {
     padding: 28px;

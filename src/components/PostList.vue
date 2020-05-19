@@ -1,21 +1,22 @@
 <template>
-  <div>
+  <Fragment>
     <PostListItem
       v-for="(edge, index) in posts"
       :key="edge.node.id"
       :post="edge.node"
       />
-    </div>
-  </div>
+  </Fragment>
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment'
 import PostListItem from '~/components/PostListItem';
 
 export default {
   name: 'PostList',
   props: ['slotProps', 'type'],
   components: {
+    Fragment,
     PostListItem
   },
   computed: {
