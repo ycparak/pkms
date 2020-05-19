@@ -29,7 +29,7 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.use(Vuex)
   appOptions.store = new Vuex.Store({
     state: {
-      columns: [{ depth: 0, header: 'About' }],
+      columns: [{ depth: 0, header: 'About', title: 'About' }],
       columnsTouched: false,
       xScrollPos: 0,
     },

@@ -26,7 +26,6 @@ export default {
 .grid {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
 
   @media (min-width: 768px) {
     padding: 28px;

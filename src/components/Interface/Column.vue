@@ -7,7 +7,7 @@
         'left': `${leftFixedHeaderPos}px`,
         'zIndex': `${leftFixedHeaderZIndex}`,
       }">
-      <span>{{ column.header }}</span>
+      <span>{{ column.title }}</span>
     </div>
     <div v-if="column.header" class="column-header">
       <span>{{ column.header }}</span>
@@ -98,6 +98,7 @@ export default {
   border: 1px solid var(--accent-color);
   border-radius: 12px;
   width: 100%;
+  max-height: calc(100vh - 28px - 28px);
   @include daynight;
 
   @media (min-width: 768px) {
@@ -130,14 +131,14 @@ export default {
   .overflow-header {
     display: block;
     position: fixed;
-    top: 27px;
-    bottom: 27px;
+    top: 28px;
+    bottom: 28px;
     writing-mode: vertical-lr;
-    padding: 20px 8px;
+    padding: 22px 8px;
     text-transform: capitalize;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-    background: var(--accent-color);
+    background: var(--accent-color-2);
     box-shadow: var(--grid-column-shadow);
     @media (max-width: 767px) {
       display: none;
