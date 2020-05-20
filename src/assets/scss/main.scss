@@ -26,8 +26,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 button, input {
   margin: 0;

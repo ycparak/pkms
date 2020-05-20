@@ -1,5 +1,5 @@
 <template>
-  <div :id="index" class="column">
+  <div class="column">
     <div
       v-show="showLeftFixedHeader"
       class="overflow-header"
@@ -57,18 +57,24 @@ export default {
     return {
       scrollPos: null,
       showHeader: false,
+      colStart: 136,
+      colWidth: 560,
+      colMargin: 28,
+      fixedHeaderWidth: 32,
     };
   },
   computed: {
     showLeftFixedHeader() {
+      const xScrollPos = this.$store.getters.xScrollPos + (this.colStart - this.colMargin);
       const columnXEnd = this.columnXEnd();
-      const xScrollPos = this.$store.getters.xScrollPos + 108;
-      if (xScrollPos >= columnXEnd) return true;
+      const prevFixedHeaderWidth = this.index * this.fixedHeaderWidth;
+
+      if (xScrollPos >= (columnXEnd - prevFixedHeaderWidth)) return true;
       return false;
     },
     leftFixedHeaderPos() {
-      let colStart = 97;
-      return colStart + (this.index * (32));
+      const { index, colStart, colMargin, fixedHeaderWidth } = this;
+      return (colStart - colMargin - 12) + (this.index * (fixedHeaderWidth));
     },
     leftFixedHeaderZIndex() {
       return 998 - this.index;
@@ -76,16 +82,12 @@ export default {
   },
   methods: {
     columnXStart() {
-      let colStart = 136;
-      let colWidth = 560;
-      let margin = 28;
-
-      return colStart + (this.index * (colWidth + margin));
+      const { index, colStart, colWidth, colMargin } = this;
+      return colStart + (index * (colWidth + colMargin));
     },
     // The x-coord (in px) end of the collumn
     columnXEnd() {
-      let colWidth = 560;
-      return this.columnXStart() + colWidth;
+      return this.columnXStart() + this.colWidth;
     },
   }
 }
@@ -111,6 +113,7 @@ export default {
     max-width: calc(100vw - (28px * 3));
     min-width: calc(100vw - (28px * 3));
     margin-right: 16px;
+    scroll-snap-align: start;
   }
 
   .column-header {
@@ -140,6 +143,8 @@ export default {
     border-bottom-right-radius: 12px;
     background: var(--accent-color-2);
     box-shadow: var(--grid-column-shadow);
+    text-decoration: none;
+
     @media (max-width: 767px) {
       display: none;
     }
