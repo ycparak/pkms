@@ -1,5 +1,5 @@
 <template>
-  <div class="grid">
+  <div @scroll="handleScroll" class="grid">
     <slot />
   </div>
 </template>
@@ -7,15 +7,14 @@
 <script>
 export default {
   name: 'Grid',
-  created() {
-    document.addEventListener('scroll', this.handleScroll);
-  },
-  destroyed() {
-    document.removeEventListener('scroll', this.handleScroll);
+  data() {
+    return {
+      scrollX: 0,
+    }
   },
   methods: {
-    handleScroll() {
-      const scrollX = Math.round(window.scrollX);
+    handleScroll(e) {
+      const scrollX = e.srcElement.scrollLeft;
       this.$store.commit('setXScrollPos', scrollX);
     }
   },
@@ -26,6 +25,7 @@ export default {
 .grid {
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
 
   @media (min-width: 768px) {
     padding: 28px;
@@ -34,6 +34,7 @@ export default {
     padding-left: 136px;
   }
 
+  
   @media (max-width: 767px) {
     padding: 16px;
     padding-top: 92px;
