@@ -2,7 +2,7 @@
   <div class="column">
     <div
       v-show="showLeftFixedHeader"
-      class="overflow-header"
+      class="overflow-header left"
       :style="{ 
         'left': `${leftFixedHeaderPos}px`,
         'zIndex': `${leftFixedHeaderZIndex}`,
@@ -66,10 +66,10 @@ export default {
   computed: {
     showLeftFixedHeader() {
       const xScrollPos = this.$store.getters.xScrollPos + (this.colStart - this.colMargin);
-      const columnXEnd = this.columnXEnd();
+      const xStart = this.columnXStart() + (this.colMargin * 2);
       const prevFixedHeaderWidth = this.index * this.fixedHeaderWidth;
 
-      if (xScrollPos >= (columnXEnd - prevFixedHeaderWidth)) return true;
+      if (xScrollPos >= (xStart - prevFixedHeaderWidth)) return true;
       return false;
     },
     leftFixedHeaderPos() {
@@ -85,7 +85,6 @@ export default {
       const { index, colStart, colWidth, colMargin } = this;
       return colStart + (index * (colWidth + colMargin));
     },
-    // The x-coord (in px) end of the collumn
     columnXEnd() {
       return this.columnXStart() + this.colWidth;
     },
@@ -136,23 +135,29 @@ export default {
     position: fixed;
     top: 28px;
     bottom: 28px;
-    writing-mode: vertical-lr;
-    padding: 22px 8px;
-    text-transform: capitalize;
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
     background: var(--accent-color-2);
+    writing-mode: vertical-lr;
     box-shadow: var(--grid-column-shadow);
-    text-decoration: none;
 
     @media (max-width: 767px) {
       display: none;
     }
 
-    span {
-      position: relative;
-      left: 6px;
-      font-size: 14px;
+    &.left {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+      padding: 22px 8px;
+      span {
+        position: relative;
+        left: 6px;
+        font-size: 14px;
+      }
+    }
+
+    &.right {
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+      padding: 22px 0;
     }
   }
 }

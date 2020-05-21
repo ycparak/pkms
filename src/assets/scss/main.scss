@@ -43,9 +43,7 @@ button, input {
 }
 
 .section {
-  @include daynight;
   scroll-snap-type: y mandatory;
-  > .post { scroll-snap-align: start; }
   overflow-y: scroll;
   height: calc(100vh - 16px - 16px - 16px - 108px);
   @media (min-width: 768px) {
