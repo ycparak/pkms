@@ -34,6 +34,7 @@ export default {
   color: var(--text-color);
   position: relative;
   top: 8px;
+  pointer-events: visible;
   @include daynight;
   @media (max-width: 768px) {
     top: 0;

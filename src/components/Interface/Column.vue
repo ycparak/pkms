@@ -1,6 +1,6 @@
 <template>
   <div class="column">
-    <div
+    <!-- <div
       v-show="showLeftFixedHeader"
       class="overflow-header left"
       :style="{ 
@@ -8,7 +8,7 @@
         'zIndex': `${leftFixedHeaderZIndex}`,
       }">
       <span>{{ column.title }}</span>
-    </div>
+    </div> -->
     <div v-if="column.header" class="column-header">
       <span>{{ column.header }}</span>
     </div>
@@ -95,11 +95,15 @@ export default {
 <style lang="scss" scoped>
 .column {
   background: var(--background-color);
-  box-shadow: var(--grid-column-shadow);
   border: 1px solid var(--accent-color);
   border-radius: 12px;
   width: 100%;
   max-height: calc(100vh - 28px - 28px);
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-shadow: -10px 0px 20px 0px var(--background-color);
+  scroll-snap-align: start;
   @include daynight;
 
   @media (min-width: 768px) {
@@ -112,7 +116,6 @@ export default {
     max-width: calc(100vw - (28px * 3));
     min-width: calc(100vw - (28px * 3));
     margin-right: 16px;
-    scroll-snap-align: start;
   }
 
   .column-header {
@@ -146,18 +149,10 @@ export default {
     &.left {
       border-top-right-radius: 12px;
       border-bottom-right-radius: 12px;
-      padding: 22px 8px;
+      padding: 16px 0 22px 12px;
       span {
-        position: relative;
-        left: 6px;
         font-size: 14px;
       }
-    }
-
-    &.right {
-      border-top-left-radius: 12px;
-      border-bottom-left-radius: 12px;
-      padding: 22px 0;
     }
   }
 }

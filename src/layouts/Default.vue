@@ -1,7 +1,7 @@
 <template>
   <div class="site">
-    <Navbar />
     <Grid>
+      <Navbar />
       <slot />
     </Grid>
   </div>
