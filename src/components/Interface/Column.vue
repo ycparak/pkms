@@ -1,15 +1,10 @@
 <template>
-  <div class="column">
-    <!-- <div
-      v-show="showLeftFixedHeader"
-      class="overflow-header left"
-      :style="{ 
-        'left': `${leftFixedHeaderPos}px`,
-        'zIndex': `${leftFixedHeaderZIndex}`,
-      }">
-      <span>{{ column.title }}</span>
-    </div> -->
-    <div v-if="column.header" class="column-header">
+  <div 
+    class="column"
+    :class="{ large: column.isMaximised }">
+    <div v-if="column.header" class="header">
+      <button @click="closeCol()" class="close"></button>
+      <button @click="maximiseCol()" class="maximise"></button>
       <span>{{ column.header }}</span>
     </div>
     <div class="section">
@@ -53,40 +48,15 @@ export default {
     Profile,
     PostList,
   },
-  data() {
-    return {
-      scrollPos: null,
-      showHeader: false,
-      colStart: 136,
-      colWidth: 560,
-      colMargin: 28,
-      fixedHeaderWidth: 32,
-    };
-  },
-  computed: {
-    showLeftFixedHeader() {
-      const xScrollPos = this.$store.getters.xScrollPos + (this.colStart - this.colMargin);
-      const xStart = this.columnXStart() + (this.colMargin * 2);
-      const prevFixedHeaderWidth = this.index * this.fixedHeaderWidth;
-
-      if (xScrollPos >= (xStart - prevFixedHeaderWidth)) return true;
-      return false;
-    },
-    leftFixedHeaderPos() {
-      const { index, colStart, colMargin, fixedHeaderWidth } = this;
-      return (colStart - colMargin - 12) + (this.index * (fixedHeaderWidth));
-    },
-    leftFixedHeaderZIndex() {
-      return 998 - this.index;
-    }
-  },
   methods: {
-    columnXStart() {
-      const { index, colStart, colWidth, colMargin } = this;
-      return colStart + (index * (colWidth + colMargin));
+    closeCol() {
+      this.$store.commit('removeColumn', this.index);
     },
-    columnXEnd() {
-      return this.columnXStart() + this.colWidth;
+    maximiseCol() {
+      // Scroll to col
+
+      // Increase col width
+      this.$store.commit('toggleMaximiseCol', this.index);
     },
   }
 }
@@ -110,6 +80,10 @@ export default {
     max-width: 560px;
     min-width: 560px;
     margin-right: 28px;
+    &.large {
+      min-width: calc(100vw - (28px * 3) - 80px);
+      max-width: calc(100vw - (28px * 3) - 80px);
+    }
   }
 
   @media (max-width: 767px) {
@@ -118,12 +92,12 @@ export default {
     margin-right: 16px;
   }
 
-  .column-header {
+  .header {
     display: flex;
     align-items: center;
     height: 40px;
     border-bottom: 1px solid var(--accent-color);
-    padding: 6px 44px;
+    padding: 6px 16px;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
@@ -131,27 +105,18 @@ export default {
     @media (max-width: 767px) {
       padding: 6px 24px;
     }
-  }
 
-  .overflow-header {
-    display: block;
-    position: fixed;
-    top: 28px;
-    bottom: 28px;
-    background: var(--accent-color-2);
-    writing-mode: vertical-lr;
-    box-shadow: var(--grid-column-shadow);
-
-    @media (max-width: 767px) {
-      display: none;
-    }
-
-    &.left {
-      border-top-right-radius: 12px;
-      border-bottom-right-radius: 12px;
-      padding: 16px 0 22px 12px;
-      span {
-        font-size: 14px;
+    button {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 6px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      &:nth-child(2) { margin-right: 16px; }
+      &:hover {
+        &.close { background: #FB5F55 }
+        &.maximise { background: #2CC941 }
       }
     }
   }
