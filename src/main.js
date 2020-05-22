@@ -40,6 +40,12 @@ export default function (Vue, { router, head, isClient, appOptions }) {
       touchColumns(state) {
         state.columnsTouched = true;
       },
+      removeColumn(state, index) {
+        state.columns.splice(index, 1);
+      },
+      toggleMaximiseCol(state,index) {
+        state.columns[index].isMaximised = !state.columns[index].isMaximised;
+      },
       setXScrollPos(state, xPos) {
         state.xScrollPos = xPos;
       }

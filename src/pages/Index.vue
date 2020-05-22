@@ -17,11 +17,11 @@ export default {
     const columns = [
       { depth: 0, title: 'About', header: 'About', },
       // { depth: 1, title: 'All', header: 'All', collection: 'all' },
-      { depth: 1, title: 'Projects', header: 'Projects', collection: 'projects' },
-      { depth: 1, title: 'Essays', header: 'Essays', collection: 'essays' },
-      { depth: 1, title: 'Tweetstorms', header: 'Tweetstorms', collection: 'tweetstorms' },
-      { depth: 1, title: 'Notes', header: 'Notes', collection: 'notes' },
-      { depth: 1, title: 'Quotes', header: 'Quotes', collection: 'quotes' },
+      { depth: 1, title: 'Projects', header: 'Projects', collection: 'projects', isMaximised: false },
+      { depth: 1, title: 'Essays', header: 'Essays', collection: 'essays', isMaximised: false },
+      { depth: 1, title: 'Tweetstorms', header: 'Tweetstorms', collection: 'tweetstorms', isMaximised: false },
+      { depth: 1, title: 'Notes', header: 'Notes', collection: 'notes', isMaximised: false },
+      { depth: 1, title: 'Quotes', header: 'Quotes', collection: 'quotes', isMaximised: false },
     ]
     this.$store.commit('setColumns', columns);
   },
