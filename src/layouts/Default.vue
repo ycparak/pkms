@@ -1,23 +1,31 @@
 <template>
   <div class="site">
-    <Navbar />
-    <Grid>
-      <slot />
-    </Grid>
+    <div
+      class="wrapper"
+      :class='{ blur: showControlPanel }'>
+      <Navbar :show-panel="showControlPanel" />
+      <Grid>
+        <slot />
+      </Grid>
+    </div>
+    <ControlPanel :show-panel="showControlPanel" />
   </div>
 </template>
 
 <script>
 import Navbar from '~/components/Navigation/Navbar'
+import ControlPanel from '~/components/Interface/ControlPanel'
 
 export default {
   name: 'DefaultLayout',
   components: {
     Navbar,
+    ControlPanel
   },
   data() {
     return {
       darkMode: false,
+      showControlPanel: false,
     }
   },
   mounted() {
@@ -43,9 +51,21 @@ export default {
       }
       this.darkMode = !this.darkMode
     },
+    toggleControlPanel() {
+      this.showControlPanel = !this.showControlPanel;
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+  filter: blur(0);
+  opacity: 1;
+  @include daynight;
+  &.blur { 
+    filter: blur(0.5px);
+    opacity: .4;
+  }
+}
 </style>
