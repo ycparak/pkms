@@ -2,10 +2,10 @@
   <div 
     class="column"
     :class="{ large: column.isMaximised }">
-    <div v-if="column.header" class="header">
+    <div class="header">
       <button @click="closeCol()" class="close"></button>
       <button @click="maximiseCol()" class="maximise"></button>
-      <span>{{ column.header }}</span>
+      <span v-if="column.header">{{ column.header }}</span>
     </div>
     <div class="section">
       <Profile 
@@ -102,6 +102,7 @@ export default {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
+    @include daynight;
     @media (max-width: 767px) {
       padding: 6px 24px;
     }

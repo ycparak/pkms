@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
+    <NavbarControls :show-panel="showPanel" />
     <NavbarProfile />
-    <NavbarControls />
     <NavbarSocial />
   </div>
 </template>
@@ -13,7 +13,7 @@ import NavbarSocial from '@/components/Navigation/NavbarSocial.vue';
 
 export default {
   name: 'Navbar',
-  props: ['darkMode'],
+  props: ['showPanel'],
   components: {
     NavbarProfile,
     NavbarControls,
@@ -25,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   position: fixed;
-  z-index: 999;
+  z-index: 700;
   display: flex;
   justify-content: space-between;
   align-items: center;

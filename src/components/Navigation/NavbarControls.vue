@@ -1,6 +1,14 @@
 <template>
   <div class="controls">
     <button
+      @click="$parent.$parent.toggleControlPanel()"
+      class="btn-control-panel"
+      :class="{ active : showPanel }">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+    <button
       @click="$parent.$parent.darkModeToggle()"
       class="btn-darkmode"
     />
@@ -10,10 +18,56 @@
 <script>
 export default {
   name: 'NavbarControls',
+  props: ['showPanel']
 }
 </script>
 
 <style lang="scss" scoped>
+.controls {
+  display: flex;
+  flex-direction: column;
+  pointer-events: visible;
+}
+.btn-control-panel {
+  position: relative;
+  display: block;
+  margin-bottom: 18px;
+  width: 16px;
+  height: 16px;
+  z-index: 900;
+  @include daynight;
+  .line {
+    display: block;
+    background: var(--text-color);
+    position: absolute;
+    top: calc(50% - 1px);
+    left: 0;
+    right: 0;
+    height: 2px;
+    transform-origin: center center;
+    @include daynight;
+    &:nth-child(1) { transform: translateY(6px); };
+    &:nth-child(3) { transform: translateY(-6px); };
+  }
+
+  &:hover {
+    .line { background: var(--neutral-color); }
+  }
+
+  &.active {
+    .line {
+      &:nth-child(1) {
+        transform: translateY(0) rotate(45deg) scaleX(1.1);
+      }
+      &:nth-child(2) {
+        transform: scaleX(0);
+      }
+      &:nth-child(3) {
+        transform: translateY(0) rotate(-45deg) scaleX(1.1);
+      }
+    }
+  }
+}
 .btn-darkmode {
   display: inline-block;
   width: 15px;
@@ -27,7 +81,6 @@ export default {
   position: relative;
   top: 1.4px;
   margin: 0;
-  pointer-events: visible;
   &::after {
     background: var(--text-color);
     content: "";
