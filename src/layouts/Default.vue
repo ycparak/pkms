@@ -64,8 +64,8 @@ export default {
   opacity: 1;
   @include daynight;
   &.blur { 
-    filter: blur(0.5px);
-    opacity: .4;
+    filter: blur(12px);
+    opacity: .8;
   }
 }
 </style>

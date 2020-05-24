@@ -1,13 +1,13 @@
 <template>
   <div class="post">
     <g-link
-      class="post__link"
+      class="post-link"
       :to="post.path">
-      <div class="post__meta">
-        <span class="subtitle">{{ post.date }}</span>
+      <div class="meta">
+        <span class="subtitle post-subtitle">{{ post.date }}</span>
         <template v-if="!post.quote">
-          <span class="subtitle">&middot;</span>
-          <span class="subtitle">{{ post.timeToRead }} min read</span>
+          <span class="subtitle post-subtitle">&middot;</span>
+          <span class="subtitle post-subtitle">{{ post.timeToRead }} min read</span>
         </template>
       </div>
       <div
@@ -46,11 +46,12 @@ export default {
 
 <style lang="scss" scoped>
 .post {
+  scroll-snap-align: start;
   border-bottom: 1px solid var(--accent-color);
   @include daynight;
 }
 
-.post__link {
+.post-link {
   display: block;
   position: relative;
   color: var(--text-color);
@@ -101,21 +102,17 @@ export default {
     }
   }
 }
-.post__meta {
+.meta {
   margin: 0;
   padding: 0;
   line-height: 10px;
   margin-bottom: 8px;
   @include daynight;
-  .subtitle {
+  .post-subtitle {
     vertical-align: top;
     opacity: .3;
-    font-size: 10px;
     margin: 0 2px;
     padding: 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
     &:first-child { margin-left: 0; }
     &:first-child { margin-right: 0; }
   }

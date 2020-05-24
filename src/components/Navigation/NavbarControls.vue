@@ -31,7 +31,7 @@ export default {
 .btn-control-panel {
   position: relative;
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   width: 16px;
   height: 16px;
   z-index: 900;

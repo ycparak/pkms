@@ -6,9 +6,11 @@ h1 {
   margin-top: 0;
   @include daynight;
 }
+
 h6 {
   font-size: 21px;
 }
+
 p {
   font-size: 17px;
   margin: 24px 0;
@@ -18,13 +20,23 @@ p {
   color: var(--text-color);
   @include daynight;
 }
+
 a {
   font-size: inherit;
   line-height: inherit;
   font-weight: inherit;
+
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  @include daynight;
+}
+
+.subtitle {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   @include daynight;
 }
 

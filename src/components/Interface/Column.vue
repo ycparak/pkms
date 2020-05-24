@@ -5,7 +5,7 @@
     <div class="header">
       <button @click="closeCol()" class="close"></button>
       <button @click="maximiseCol()" class="maximise"></button>
-      <span v-if="column.header">{{ column.header }}</span>
+      <span v-if="column.header" class="subtitle">{{ column.header }}</span>
     </div>
     <div class="section">
       <Profile 
@@ -98,11 +98,6 @@ export default {
     height: 40px;
     border-bottom: 1px solid var(--accent-color);
     padding: 6px 16px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    @include daynight;
     @media (max-width: 767px) {
       padding: 6px 24px;
     }
