@@ -53,6 +53,7 @@ export default {
     flex-direction: column;
     padding: 20px 0;
     width: 80px;
+    min-height: calc(100vh - 28px - 28px);
   }
 }
 </style>

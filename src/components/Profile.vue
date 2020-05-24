@@ -1,6 +1,6 @@
 <template>
   <div class="profile">
-    <h1 class="title">Yo, I’m Yusuf. Welcome.</h1>
+    <h1 class="site-title">Yo, I’m Yusuf. Welcome.</h1>
     <p class="margin-top--20">
       I'm a software developer and designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I’m also the maker of x which does y and has z metric.
       <g-link to="/story" class="link link__special">
@@ -40,5 +40,13 @@ export default {
   @media (max-width: 767px) {
     padding: 20px 28px;
   }
+}
+.site-title {
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-top: 0;
+  @include daynight;
 }
 </style>

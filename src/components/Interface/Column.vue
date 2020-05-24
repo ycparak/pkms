@@ -14,6 +14,10 @@
         v-else-if="column.depth === 1"
         :slot-props="slotProps"
         :type="column.collection" />
+      <PostItem 
+        v-else-if="column.depth === 2"
+        :slot-props="slotProps"
+        :post="post" />
     </div>
   </div>
 </template>
@@ -21,6 +25,7 @@
 <script>
 import Profile from '~/components/Profile';
 import PostList from '~/components/PostList';
+import PostItem from '~/components/PostItem';
 
 export default {
   name: 'Column',
@@ -42,11 +47,17 @@ export default {
       type:  Object,
       required: false,
       default: null
+    },
+    post: {
+      type: Object,
+      required: false,
+      default: null,
     }
   },
   components: {
     Profile,
     PostList,
+    PostItem
   },
   methods: {
     closeCol() {

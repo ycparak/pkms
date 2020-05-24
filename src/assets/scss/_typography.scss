@@ -1,11 +1,14 @@
 h1 {
-  font-size: 64px;
-  line-height: 1;
-  font-weight: 700;
-  color: var(--text-color);
-  margin-top: 0;
-  @include daynight;
+  &.title {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+    line-height: 50px;
+    @include daynight;
+  }
 }
+
 
 h6 {
   font-size: 21px;
