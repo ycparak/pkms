@@ -1,7 +1,7 @@
 <template>
-  <div class="post">
+  <div class="article">
     <h1 class="title">{{ post.title }}</h1>
-    <div class="content" v-html="post.content"></div>
+    <div class="article-body" v-html="post.content"></div>
   </div>
 </template>
 
@@ -13,7 +13,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.post {
+.title {
   padding: 28px 44px;
+  @media (max-width: 767px) {
+    padding: 20px 28px;
+  }
 }
 </style>

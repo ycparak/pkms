@@ -1,11 +1,14 @@
 <template>
-  <div 
-    class="column"
-    :class="{ large: column.isMaximised }">
+  <div class="column">
     <div class="header">
-      <button @click="closeCol()" class="close"></button>
-      <button @click="maximiseCol()" class="maximise"></button>
-      <span v-if="column.header" class="subtitle">{{ column.header }}</span>
+      <button @click="closeCol()">
+        <XIcon class="icon" />
+      </button>
+      <span v-if="column.header" class="subtitle post-subtitle">{{ column.header }}</span>
+      <template v-if="column.depth === 2">
+        <span class="subtitle post-subtitle muted">&middot;</span>
+        <span class="subtitle post-subtitle">{{ post.date }}</span>
+      </template>
     </div>
     <div class="section">
       <Profile 
@@ -23,6 +26,7 @@
 </template>
 
 <script>
+import { XIcon } from 'vue-feather-icons';
 import Profile from '~/components/Profile';
 import PostList from '~/components/PostList';
 import PostItem from '~/components/PostItem';
@@ -55,6 +59,7 @@ export default {
     }
   },
   components: {
+    XIcon,
     Profile,
     PostList,
     PostItem
@@ -62,12 +67,6 @@ export default {
   methods: {
     closeCol() {
       this.$store.commit('removeColumn', this.index);
-    },
-    maximiseCol() {
-      // Scroll to col
-
-      // Increase col width
-      this.$store.commit('toggleMaximiseCol', this.index);
     },
   }
 }
@@ -91,15 +90,11 @@ export default {
     max-width: 560px;
     min-width: 560px;
     margin-right: 28px;
-    &.large {
-      min-width: calc(100vw - (28px * 3) - 80px);
-      max-width: calc(100vw - (28px * 3) - 80px);
-    }
   }
 
   @media (max-width: 767px) {
-    max-width: calc(100vw - (28px * 3));
-    min-width: calc(100vw - (28px * 3));
+    max-width: calc(100vw - (16px * 3));
+    min-width: calc(100vw - (16px * 3));
     margin-right: 16px;
   }
 
@@ -109,22 +104,41 @@ export default {
     height: 40px;
     border-bottom: 1px solid var(--accent-color);
     padding: 6px 16px;
-    @media (max-width: 767px) {
-      padding: 6px 24px;
-    }
 
     button {
       display: inline-block;
       width: 12px;
       height: 12px;
-      margin-right: 6px;
+      margin: 0;
+      margin-right: 12px;
       border-radius: 50%;
       background: var(--accent-color);
-      &:nth-child(2) { margin-right: 16px; }
-      &:hover {
-        &.close { background: #FB5F55 }
-        &.maximise { background: #2CC941 }
+
+      .icon {
+        vertical-align: top;
+        position: relative;
+        top: 1px;
+        width: 10px;
+        height: 10px;
+        color: var(--background-color);
+        opacity: 0;
       }
+
+      &:hover {
+        background: #FB5F55;
+        .icon {
+          opacity: 1;
+        }
+      }
+    }
+
+    .post-subtitle {
+      vertical-align: top;
+      margin: 0 4px;
+      padding: 0;
+      &:first-child { margin-left: 0; }
+      &:first-child { margin-right: 0; }
+      &.muted { color: var(--neutral-color); }
     }
   }
 }

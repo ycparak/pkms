@@ -18,7 +18,7 @@ query ($path: String!) {
     id
     path
     title
-    date (format:"DD MM YYYY")
+    date (format:"DD MMMM YYYY")
     collection
     tags
     excerpt
