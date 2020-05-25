@@ -7,7 +7,11 @@ collection: Essay
 collections: Essays
 tags: ['Startups', 'Product',]
 ---
-If we can design applications that help people solve their long term goals, we can increase human output. This seems rather wishy-washy, and yet it’s perfectly reasonable, when you think about it, to come to the conclusion that something like Ruby on Rails has helped increase human output. It’s obviously created thousands (millions?) of jobs. It’s helped people create great companies like Github, Airbnb and Twitter. It’s changed people’s lives. I suspect that [DHH](https://en.wikipedia.org/wiki/David_Heinemeier_Hansson) when creating Rails never thought that his baby could change the world quite like it has. 
+If we can design applications that help people solve their long term goals, we can increase human output. This seems rather wishy-washy, and yet it’s perfectly reasonable, when you think about it, to come to the conclusion that something like Ruby on Rails has helped increase human output. It’s obviously created thousands (millions?) of jobs. It’s helped people create great companies like Github, Airbnb and Twitter. It’s changed people’s lives. I suspect that [DHH](https://en.wikipedia.org/wiki/David_Heinemeier_Hansson) when creating Rails never thought that his baby could change the world quite like it has.
+
+- [Kierkegaard](/notes/kierkegaard)
+- [The Un Silicon Valley Way to Make it as a Developer](/tweetstorms/the-un-silicon-valley-way-to-make-it-as-a/)
+- [Nietzsche](/notes/nietzsche/)
 
 Rails made it easy for developers to build web applications really quickly. Much quicker and easier than before. It’s interesting to think about what other things can help people solve hard problems more easily. Usually it’s some new technological break through, like Rails. Occasionally it’s a UX breakthrough, like GUI’s instead of the command line. But I think there’s a more under-appreciated one. A psychological breakthrough, through the use of gamification.
 

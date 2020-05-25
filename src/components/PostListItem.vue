@@ -5,10 +5,6 @@
       :to="post.path">
       <div class="meta">
         <span class="subtitle post-subtitle">{{ post.date }}</span>
-        <template v-if="!post.quote">
-          <span class="subtitle post-subtitle">&middot;</span>
-          <span class="subtitle post-subtitle">{{ post.timeToRead }} min read</span>
-        </template>
       </div>
       <div
         v-if="!post.quote"

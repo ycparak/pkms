@@ -25,22 +25,13 @@ module.exports = {
   siteName: '@ycparak',
   plugins: [
     {
-      use: '@gridsome/source-filesystem',
+      use: '@gridsome/vue-remark',
       options: {
-        typeName: 'Post',
-        path: './content/posts/**/*.md',
-      }
-    },
-    {
-      use: '@gridsome/source-filesystem',
-      options: {
-        typeName: 'Newsletter',
-        path: './content/newsletters/**/*.md',
+        typeName: 'Posts',
+        baseDir: './content/posts',
+        route: '/:collections/:title',
+        template: './src/templates/Post.vue'
       }
     },
   ],
-  templates: {
-    Post: '/:collections/:title',
-    Newsletter: '/newsletter/:issue'
-  }
 }
