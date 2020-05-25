@@ -1,14 +1,14 @@
 <template>
   <div class="article">
     <h1 class="title">{{ post.title }}</h1>
-    <div class="article-body" v-html="post.content"></div>
+    <VueRemarkContent class="article-body" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'PostItem',
-  props: ['post']
+  props: ['post'],
 }
 </script>
 

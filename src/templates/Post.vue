@@ -7,14 +7,14 @@
       :column="column"
       :columns="columns"
       :slot-props="slotProps" 
-      :post="$page.post"
+      :post="$page.posts"
     />
   </Layout>
 </template>
 
 <page-query>
-query ($path: String!) {
-  post (path: $path) {
+query Posts ($id: ID!) {
+  posts(id: $id) {
     id
     path
     title
@@ -27,7 +27,6 @@ query ($path: String!) {
       value
       anchor
     }
-    timeToRead
     content
   }
 }
@@ -37,7 +36,7 @@ query ($path: String!) {
 export default {
   name: 'Post',
   created() {
-    const { title, collection } = this.$page.post;
+    const { title, collection } = this.$page.posts;
     const columns = [
       { depth: 2, title, header: collection, collection, isMaximised: false },
     ]

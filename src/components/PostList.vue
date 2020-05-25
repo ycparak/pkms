@@ -22,7 +22,7 @@ export default {
   computed: {
     posts() {
       const collection = this.type;
-      const posts = this.$static.allPost.edges;
+      const posts = this.$static.allPosts.edges;
 
       if (collection === 'all') return posts;
       return posts.filter(post => post.node.collections.toLowerCase() === collection);
@@ -30,21 +30,18 @@ export default {
   },
 }
 </script>
-
 <static-query>
   {
-    allPost {
+    allPosts {
       edges {
         node {
           id
           path
           title
-          quote
           date (format:"MMM YYYY")
           collection
           collections
           excerpt
-          timeToRead
         }
       }
     }
