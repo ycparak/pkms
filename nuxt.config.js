@@ -40,10 +40,10 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // TODO: Remove when upgrading to nuxt 2.13+
+    '@nuxt/components'
   ],
   /*
   ** Axios module configuration

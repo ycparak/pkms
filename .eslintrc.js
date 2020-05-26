@@ -11,7 +11,8 @@ module.exports = {
     '@nuxtjs',
     'plugin:nuxt/recommended'
   ],
-  // add your custom rules here
   rules: {
+    'no-unused-vars': 'off',
+    'no-console': 'off'
   }
 }
