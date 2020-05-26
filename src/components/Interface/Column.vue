@@ -7,7 +7,7 @@
       <span v-if="column.header" class="subtitle post-subtitle">{{ column.header }}</span>
       <template v-if="column.depth === 2">
         <span class="subtitle post-subtitle muted">&middot;</span>
-        <span class="subtitle post-subtitle">{{ post.date }}</span>
+        <span class="subtitle post-subtitle">{{ column.post.date }}</span>
       </template>
     </div>
     <div class="section">
@@ -20,7 +20,7 @@
       <PostItem 
         v-else-if="column.depth === 2"
         :slot-props="slotProps"
-        :post="post" />
+        :post="column.post" />
     </div>
   </div>
 </template>

@@ -22,7 +22,7 @@ export default {
   computed: {
     posts() {
       const collection = this.type;
-      const posts = this.$static.allPosts.edges;
+      const posts = this.$static.allPost.edges;
 
       if (collection === 'all') return posts;
       return posts.filter(post => post.node.collections.toLowerCase() === collection);
@@ -32,7 +32,7 @@ export default {
 </script>
 <static-query>
   {
-    allPosts {
+    allPost {
       edges {
         node {
           id

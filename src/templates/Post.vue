@@ -6,15 +6,14 @@
       :index="index"
       :column="column"
       :columns="columns"
-      :slot-props="slotProps" 
-      :post="$page.posts"
+      :slot-props="slotProps"
     />
   </Layout>
 </template>
 
 <page-query>
-query Posts ($id: ID!) {
-  posts(id: $id) {
+query Post ($id: ID!) {
+  post(id: $id) {
     id
     path
     title
@@ -36,9 +35,9 @@ query Posts ($id: ID!) {
 export default {
   name: 'Post',
   created() {
-    const { title, collection } = this.$page.posts;
+    const { title, collection } = this.$page.post;
     const columns = [
-      { depth: 2, title, header: collection, collection, isMaximised: false },
+      { depth: 2, title, header: collection, collection, post: this.$page.post },
     ]
     this.$store.commit('setColumns', columns);
   },

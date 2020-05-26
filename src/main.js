@@ -3,6 +3,7 @@
 import DefaultLayout from '~/layouts/Default.vue'
 import Grid from '~/components/Interface/Grid.vue'
 import Column from '~/components/Interface/Column.vue'
+import Link from '~/components/Interface/Link.vue'
 
 import '~/assets/fonts/fonts.css'
 import '~/assets/scss/main.scss'
@@ -24,27 +25,24 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.component('Layout', DefaultLayout)
   Vue.component('Grid', Grid)
   Vue.component('Column', Column)
+  Vue.component('Link', Link)
 
   // Vuex
   Vue.use(Vuex)
   appOptions.store = new Vuex.Store({
     state: {
       columns: [{ depth: 0, header: 'About', title: 'About' }],
-      columnsTouched: false,
       xScrollPos: 0,
     },
     mutations: {
       setColumns(state, columns) {
         state.columns = columns;
       },
-      touchColumns(state) {
-        state.columnsTouched = true;
+      addColumn(state, column) {
+        state.columns.push(column);
       },
       removeColumn(state, index) {
         state.columns.splice(index, 1);
-      },
-      toggleMaximiseCol(state,index) {
-        state.columns[index].isMaximised = !state.columns[index].isMaximised;
       },
       setXScrollPos(state, xPos) {
         state.xScrollPos = xPos;
