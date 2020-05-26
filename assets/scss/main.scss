@@ -1,0 +1,53 @@
+@use 'reset';
+@use 'variables';
+@use 'mixins';
+@use 'helpers';
+@use 'typography';
+
+*, body {
+  font-family: Larsseit, -apple-system, BlinkMacSystemFont, Avenir, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+html, body {
+  font-size: 16px;
+  line-height: 27px;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  font-style: normal;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  @include colors;
+  @include daynight;
+}
+html {
+  background-color: var(--background-color);
+  scroll-behavior: smooth;
+}
+body {
+  // overflow-x: auto;
+  overflow: hidden;
+}
+button, input {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  font-size: 15px;
+  text-decoration: none;
+  @include colors;
+  @include daynight;
+}
+
+.section {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  height: calc(100vh - 16px - 16px - 16px - 108px);
+  @media (min-width: 768px) {
+    height: calc(100vh - 28px - 28px - 40px);
+  }
+}

@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-Bold.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-Medium.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Larsseit";
+  src: url('./Larsseit/Larsseit-Regular.woff2') format('woff2'), 
+    url('./Larsseit/Larsseit-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Freight-Text-Pro";
+  src: url('./FreightTextPro/FreightTextProMedium-Regular.woff2') format('woff2'), 
+    url('./FreightTextPro/FreightTextProMedium-Regular.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Freight-Text-Pro";
+  src: url('./FreightTextPro/FreightTextProMedium-Italic.woff2') format('woff2'), 
+    url('./FreightTextPro/FreightTextProMedium-Italic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Freight-Text-Pro";
+  src: url('./FreightTextPro/FreightTextProBook-Regular.woff2') format('woff2'), 
+    url('./FreightTextPro/FreightTextProBook-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Freight-Text-Pro";
+  src: url('./FreightTextPro/FreightTextProBook-Italic.woff2') format('woff2'), 
+    url('./FreightTextPro/FreightTextProBook-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}

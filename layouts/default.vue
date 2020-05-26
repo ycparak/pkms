@@ -1,55 +1,64 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="site">
+    <div
+      class="wrapper"
+      :class="{ blur: showControlPanel }">
+      <Navbar :show-panel="showControlPanel" />
+      <Grid>
+        <nuxt />
+      </Grid>
+    </div>
+    <ControlPanel :show-panel="showControlPanel" />
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<script>
+export default {
+  name: 'DefaultLayout',
+  data() {
+    return {
+      darkMode: false,
+      showControlPanel: false
+    }
+  },
+  mounted() {
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null
+    if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme)
+      if (currentTheme === 'dark') {
+        this.darkMode = true
+      }
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark')
+      this.darkMode = true
+    }
+  },
+  methods: {
+    darkModeToggle() {
+      if (!this.darkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        localStorage.setItem('theme', 'dark')
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light')
+        localStorage.setItem('theme', 'light')
+      }
+      this.darkMode = !this.darkMode
+    },
+    toggleControlPanel() {
+      this.showControlPanel = !this.showControlPanel
+    }
+  }
 }
+</script>
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+<style lang="scss" scoped>
+.wrapper {
+  filter: blur(0);
+  opacity: 1;
+  @include daynight;
+  &.blur {
+    filter: blur(12px);
+    opacity: .8;
+  }
 }
 </style>

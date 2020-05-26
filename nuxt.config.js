@@ -23,6 +23,8 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/scss/main.scss',
+    '~/assets/fonts/fonts.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -34,23 +36,31 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/style-resources'
   ],
+
+  styleResources: {
+    scss: [
+      '~assets/scss/partials/*.scss'
+    ]
+  },
+
   /*
   ** Nuxt.js modules
   */
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    // TODO: Remove when upgrading to nuxt 2.13+
-    '@nuxt/components'
+    '@nuxt/components', // TODO: Remove when upgrading to nuxt 2.13+
+    '@nuxt/content'
   ],
+
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {
-  },
+  axios: {},
   /*
   ** Build configuration
   */
@@ -58,7 +68,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   }
 }
