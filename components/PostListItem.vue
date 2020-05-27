@@ -5,6 +5,8 @@
       :to="post.path">
       <div class="meta">
         <span class="subtitle post-subtitle">{{ $moment(post.date).format('MMM YYYY') }}</span>
+        <span class="subtitle post-subtitle">&middot;</span>
+        <span class="subtitle post-subtitle">{{ post.readingTime }}</span>
       </div>
       <div
         v-if="!post.quote"

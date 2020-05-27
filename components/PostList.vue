@@ -31,7 +31,7 @@ export default {
 
     // Filter varriables
     const collection = this.type.charAt(0).toUpperCase() + this.type.slice(1)
-    const fieldsRequired = ['title', 'date', 'path', 'excerpt', 'quote']
+    const fieldsRequired = ['title', 'date', 'path', 'excerpt', 'readingTime', 'quote']
 
     if (collection === 'All') {
       posts = await this.$content()
@@ -44,7 +44,6 @@ export default {
         .where({ collections: collection })
         .sortBy('date', 'desc')
         .fetch()
-      console.log(posts)
     }
 
     this.posts = posts

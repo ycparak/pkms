@@ -56,6 +56,15 @@ export default {
     '@nuxt/components', // TODO: Remove when upgrading to nuxt 2.13+
     '@nuxt/content'
   ],
+  hooks: {
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        const readingTime = require('reading-time')
+        const { text } = readingTime(document.text)
+        document.readingTime = text
+      }
+    }
+  },
 
   /*
   ** Axios module configuration

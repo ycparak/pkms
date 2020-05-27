@@ -14,7 +14,7 @@ import { Fragment } from 'vue-fragment'
 
 /**
  * TODO: Add read time
- * TODO: Add correctly formatted date
+ * TODO: Heights of columns
  * TODO: Look at refactoring and perhaps simplifying the code now that we're using Nuxt
  * TODO: Figure out quotes array and better approach to frontmatter
  */
