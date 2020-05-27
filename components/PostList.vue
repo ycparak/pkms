@@ -28,15 +28,19 @@ export default {
   },
   async mounted() {
     let posts = []
+
+    // Filter varriables
     const collection = this.type.charAt(0).toUpperCase() + this.type.slice(1)
-    console.log(collection)
+    const fieldsRequired = ['title', 'date', 'path', 'excerpt', 'quote']
 
     if (collection === 'All') {
       posts = await this.$content()
+        .only(fieldsRequired)
         .sortBy('date', 'desc')
         .fetch()
     } else {
       posts = await this.$content()
+        .only(fieldsRequired)
         .where({ collections: collection })
         .sortBy('date', 'desc')
         .fetch()
