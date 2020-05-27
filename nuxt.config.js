@@ -23,6 +23,8 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/scss/main.scss',
+    '~/assets/fonts/fonts.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -34,23 +36,41 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/moment'
   ],
+
+  styleResources: {
+    scss: [
+      '~assets/scss/partials/*.scss'
+    ]
+  },
+
   /*
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxt/components', // TODO: Remove when upgrading to nuxt 2.13+
+    '@nuxt/content'
   ],
+  hooks: {
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        const readingTime = require('reading-time')
+        const { text } = readingTime(document.text)
+        document.readingTime = text
+      }
+    }
+  },
+
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {
-  },
+  axios: {},
   /*
   ** Build configuration
   */
@@ -58,7 +78,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   }
 }
