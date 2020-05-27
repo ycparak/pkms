@@ -12,13 +12,6 @@
 <script>
 import { Fragment } from 'vue-fragment'
 
-/**
- * TODO: Add read time
- * TODO: Heights of columns
- * TODO: Look at refactoring and perhaps simplifying the code now that we're using Nuxt
- * TODO: Figure out quotes array and better approach to frontmatter
- */
-
 export default {
   name: 'Index',
   components: {
@@ -31,6 +24,7 @@ export default {
     }
   },
   mounted() {
+    // These columns should be togglable at some point
     const columns = [
       { depth: 0, title: 'About', header: 'About' },
       { depth: 1, title: 'All', header: 'All', collection: 'all' },

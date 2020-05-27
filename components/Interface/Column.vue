@@ -68,7 +68,6 @@ export default {
   border: 1px solid var(--accent-color);
   border-radius: 12px;
   width: 100%;
-  max-height: calc(100vh - 28px - 28px);
   position: sticky;
   top: 0;
   left: 0;
@@ -77,12 +76,14 @@ export default {
   @include daynight;
 
   @media (min-width: 768px) {
+    min-height: calc(100vh - 28px - 28px);
     max-width: 560px;
     min-width: 560px;
     margin-right: 28px;
   }
 
   @media (max-width: 767px) {
+    // min-height: calc(100vh - 16px - 16px);
     max-width: calc(100vw - (16px * 3));
     min-width: calc(100vw - (16px * 3));
     margin-right: 16px;
