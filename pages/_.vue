@@ -40,12 +40,12 @@ export default {
     },
     getColumnTitles() {
       const titles = Array.from(new Set(this.columns.map(c => c.title)))
-      return titles.join(' | ')
+      return titles.join(' \u2192 ')
     }
   },
   created() {
     const columns = this.posts.map((post) => {
-      return { depth: 2, header: post.collection, collection: post.collection, post }
+      return { depth: 2, title: post.title, header: post.collection, collection: post.collection, post }
     })
     this.$store.dispatch('columns/setColumns', columns)
   },
