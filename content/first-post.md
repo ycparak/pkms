@@ -1,6 +1,6 @@
 ---
 title: Turning Side Projects into Profitable
-date: 2019-04-06
+date: 2020-04-05
 abstract: b
 excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis."
 collection: Essay

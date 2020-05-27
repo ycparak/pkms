@@ -1,6 +1,6 @@
 ---
 title: Silicon Valley
-date: 2019-04-08
+date: 2020-03-28
 abstract: f
 excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis."
 collection: Tweetstorm

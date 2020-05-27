@@ -1,6 +1,6 @@
 ---
-title: Notetaking
-date: 2019-08-16
+title: Kierkegaard
+date: 2020-04-03
 abstract: c
 excerpt: 'Soren Kierkegaar was a Danish philosopher, theologian, poet, social critic and religious author who is widely considered to be the first existentialist philosopher.'
 collection: Note

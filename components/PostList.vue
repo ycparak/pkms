@@ -27,14 +27,23 @@ export default {
     }
   },
   async mounted() {
-    const collection = this.type
-    const posts = await this.$content().fetch()
+    let posts = []
+    const collection = this.type.charAt(0).toUpperCase() + this.type.slice(1)
+    console.log(collection)
 
-    if (collection === 'all') {
-      this.posts = posts
+    if (collection === 'All') {
+      posts = await this.$content()
+        .sortBy('date', 'desc')
+        .fetch()
     } else {
-      this.posts = posts.filter(post => post.collections.toLowerCase() === collection)
+      posts = await this.$content()
+        .where({ collections: collection })
+        .sortBy('date', 'desc')
+        .fetch()
+      console.log(posts)
     }
+
+    this.posts = posts
   }
 }
 </script>

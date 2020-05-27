@@ -1,6 +1,6 @@
 ---
-title: Nietzsche
-date: 2019-08-16
+title: Notetaking
+date: 2020-03-29
 abstract: d
 excerpt: 'Friedrich Nietzsche (1844–1900) was a German philosopher and cultural critic who published intensively in the 1870s and 1880s.'
 collection: Note

@@ -1,13 +1,5 @@
 export const state = () => ({
-  columns: [
-    { depth: 0, title: 'About', header: 'About' },
-    { depth: 1, title: 'All', header: 'All', collection: 'all' },
-    { depth: 1, title: 'Projects', header: 'Projects', collection: 'projects' },
-    { depth: 1, title: 'Essays', header: 'Essays', collection: 'essays' },
-    { depth: 1, title: 'Tweetstorms', header: 'Tweetstorms', collection: 'tweetstorms' },
-    { depth: 1, title: 'Notes', header: 'Notes', collection: 'notes' },
-    { depth: 1, title: 'Quotes', header: 'Quotes', collection: 'quotes' }
-  ],
+  columns: [],
   xScrollPos: 0
 })
 
