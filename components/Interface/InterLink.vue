@@ -1,6 +1,6 @@
 <template>
   <a
-    :href="href"
+    :href="`/${href}`"
     class="interlink"
     :class="`${getPostClass}`"
     :style="{ marginRight: calcSpaceAfter }"
@@ -32,7 +32,7 @@ export default {
   computed: {
     calcSpaceAfter() {
       const showSpace = this.spaceAfter.toLowerCase()
-      if (showSpace === 'true') { return '4px' }
+      if (showSpace && showSpace === 'true') { return '4px' }
       return '1px'
     },
     getPostClass() {
@@ -44,16 +44,19 @@ export default {
   },
   async mounted() {
     try {
-      const slug = this.href.split('/')[1]
-      this.post = await this.$content(slug).fetch()
+      this.post = await this.$content(this.href).fetch()
     } catch (error) {
       console.log(error)
     }
   },
   methods: {
-    handleInterlink() {
-      const newPath = this.$route.path + this.href
-      this.$router.push({ path: newPath })
+    async handleInterlink() {
+      const currentQueries = this.$route.query.col
+      console.log(this.$route)
+      const newQuery = [].concat(currentQueries, this.href)
+      const column = { depth: 2, title: this.post.title, header: this.post.collection, collection: this.post.collection, post: this.post }
+      await this.$store.dispatch('columns/addColumn', column)
+      await this.$router.push({ name: 'slug', query: { col: newQuery } })
     }
   }
 }
