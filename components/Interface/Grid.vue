@@ -1,23 +1,12 @@
 <template>
-  <div class="grid" @scroll="handleScroll">
+  <div class="grid">
     <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Grid',
-  data() {
-    return {
-      scrollX: 0
-    }
-  },
-  methods: {
-    handleScroll(e) {
-      const scrollX = e.srcElement.scrollLeft
-      this.$store.dispatch('columns/setXScrollPos', scrollX)
-    }
-  }
+  name: 'Grid'
 }
 </script>
 

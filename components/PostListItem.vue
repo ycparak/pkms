@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     cropExcerpt(excerpt) {
-      if (excerpt.length > 115) { return `${excerpt.substring(0, 115)}...` }
+      if (excerpt.length > 140) { return `${excerpt.substring(0, 126)}...` }
       return excerpt
     }
   }

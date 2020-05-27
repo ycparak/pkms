@@ -26,13 +26,12 @@ export default {
   mounted() {
     // These columns should be togglable at some point
     const columns = [
-      { depth: 0, title: 'About', header: 'About' },
-      { depth: 1, title: 'All', header: 'All', collection: 'all' },
-      { depth: 1, title: 'Projects', header: 'Projects', collection: 'projects' },
-      { depth: 1, title: 'Essays', header: 'Essays', collection: 'essays' },
-      { depth: 1, title: 'Tweetstorms', header: 'Tweetstorms', collection: 'tweetstorms' },
-      { depth: 1, title: 'Notes', header: 'Notes', collection: 'notes' },
-      { depth: 1, title: 'Quotes', header: 'Quotes', collection: 'quotes' }
+      { depth: 0, header: 'About' },
+      { depth: 1, header: 'Projects', collection: 'projects' },
+      { depth: 1, header: 'Essays', collection: 'essays' },
+      { depth: 1, header: 'Tweetstorms', collection: 'tweetstorms' },
+      { depth: 1, header: 'Notes', collection: 'notes' },
+      { depth: 1, header: 'Quotes', collection: 'quotes' }
     ]
     this.$store.dispatch('columns/setColumns', columns)
   }

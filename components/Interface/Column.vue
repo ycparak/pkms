@@ -1,18 +1,20 @@
 <template>
   <div class="column">
+    <!-- Column header -->
     <div class="header">
       <button @click="closeCol()">
         <XIcon class="icon" />
       </button>
-      <template v-if="column.depth === 2">
+      <template v-if="column.depth !== 2">
+        <span class="subtitle post-subtitle">{{ column.header }}</span>
+      </template>
+      <template v-else>
         <span class="subtitle post-subtitle">{{ $moment(column.post.date).format('DD MMM YYYY') }}</span>
         <span class="subtitle post-subtitle muted">&middot;</span>
         <span v-if="column.header" class="subtitle post-subtitle muted">{{ column.header }}</span>
       </template>
-      <template v-else>
-        <span v-if="column.header" class="subtitle post-subtitle">{{ column.header }}</span>
-      </template>
     </div>
+    <!-- Column section -->
     <div class="section">
       <Profile
         v-if="column.depth === 0" />
@@ -75,18 +77,18 @@ export default {
   scroll-snap-align: start;
   @include daynight;
 
+  @media (max-width: 767px) {
+    min-height: calc(100vh - (16px * 2) - 80px);
+    max-width: calc(100vw - (16px * 3));
+    min-width: calc(100vw - (16px * 3));
+    margin-right: 16px;
+  }
+
   @media (min-width: 768px) {
     min-height: calc(100vh - 28px - 28px);
     max-width: 560px;
     min-width: 560px;
     margin-right: 28px;
-  }
-
-  @media (max-width: 767px) {
-    // min-height: calc(100vh - 16px - 16px);
-    max-width: calc(100vw - (16px * 3));
-    min-width: calc(100vw - (16px * 3));
-    margin-right: 16px;
   }
 
   .header {

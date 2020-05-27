@@ -19,7 +19,6 @@ export default {
   },
   async asyncData({ $content, params, error }) {
     const slug = params.slug || 'index'
-    console.log(slug)
     const post = await $content(slug).fetch()
 
     return { post }
@@ -27,6 +26,10 @@ export default {
   computed: {
     columns() {
       return this.$store.getters['columns/getColumns']
+    },
+    getColumnTitles() {
+      const titles = Array.from(new Set(this.columns.map(c => c.title)))
+      return titles.join(' | ')
     }
   },
   created() {
@@ -35,6 +38,11 @@ export default {
       { depth: 2, title, header: collection, collection, post: this.post }
     ]
     this.$store.dispatch('columns/setColumns', columns)
+  },
+  head() {
+    return {
+      title: this.getColumnTitles
+    }
   }
 }
 </script>

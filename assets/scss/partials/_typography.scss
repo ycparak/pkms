@@ -27,10 +27,14 @@ a {
   font-size: inherit;
   line-height: inherit;
   font-weight: inherit;
-
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  &:active, &:focus, &:hover {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
   @include daynight;
 }
 
@@ -91,7 +95,7 @@ a {
   }
 }
 
-.article-body {
+.nuxt-content {
   display: grid;
   grid-template-columns: 28px 16px 120px 1fr 120px 16px 28px;
   margin-bottom: 44px;
@@ -106,9 +110,9 @@ a {
     em { font-style: italic; }
     &:first-child { margin-top: 0; }
     &:last-child { margin-bottom: 0; }
-    a {
-      text-decoration: underline;
-    }
+  }
+  a {
+    text-decoration: underline;
   }
   h2 {
     font-size: 26px;

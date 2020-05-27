@@ -2,6 +2,7 @@
   <a
     :href="href"
     class="interlink"
+    :style="{ marginRight: calcSpaceAfter }"
     @click.prevent="handleInterlink()">
     <slot />
   </a>
@@ -16,15 +17,22 @@ export default {
       required: false,
       default: ''
     },
-    title: {
+    spaceAfter: {
       type: String,
       required: false,
-      default: ''
+      default: 'false'
     }
   },
   data() {
     return {
       post: null
+    }
+  },
+  computed: {
+    calcSpaceAfter() {
+      const showSpace = this.spaceAfter.toLowerCase()
+      if (showSpace === 'true') { return '4px' }
+      return '1px'
     }
   },
   async mounted() {
@@ -47,7 +55,11 @@ export default {
 
 <style lang="scss" scoped>
 .interlink {
-  display: block;
-  color: var(--essays-color);
+  background: var(--twitter-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  text-decoration: none !important;
+  padding: 0 4px;
+  margin-left: 4px;
 }
 </style>
