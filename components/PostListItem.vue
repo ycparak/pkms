@@ -4,7 +4,7 @@
       class="post-link"
       :to="post.path">
       <div class="meta">
-        <span class="subtitle post-subtitle">{{ post.date }}</span>
+        <span class="subtitle post-subtitle">{{ $moment(post.date).format('MMM YYYY') }}</span>
       </div>
       <div
         v-if="!post.quote"

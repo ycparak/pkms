@@ -5,10 +5,10 @@
         <XIcon class="icon" />
       </button>
       <span v-if="column.header" class="subtitle post-subtitle">{{ column.header }}</span>
-      <!-- <template v-if="column.depth === 2">
+      <template v-if="column.depth === 2">
         <span class="subtitle post-subtitle muted">&middot;</span>
-        <span class="subtitle post-subtitle">{{ column.post.date }}</span>
-      </template> -->
+        <span class="subtitle post-subtitle">{{ $moment(column.post.date).format('DD MMM YYYY') }}</span>
+      </template>
     </div>
     <div class="section">
       <Profile
