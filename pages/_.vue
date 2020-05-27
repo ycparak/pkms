@@ -18,10 +18,21 @@ export default {
     Fragment
   },
   async asyncData({ $content, params, error }) {
-    const slug = params.slug || 'index'
-    const post = await $content(slug).fetch()
+    const slugs = params.pathMatch.split('/')
 
-    return { post }
+    const promises = await slugs.map(async (slug) => {
+      try {
+        if (slug.length > 0) {
+          const post = await $content(slug).fetch()
+          if (post) { return post }
+        }
+      } catch {
+        return null
+      }
+    })
+
+    const posts = await Promise.all(promises)
+    return { posts }
   },
   computed: {
     columns() {
@@ -33,10 +44,9 @@ export default {
     }
   },
   created() {
-    const { title, collection } = this.post
-    const columns = [
-      { depth: 2, title, header: collection, collection, post: this.post }
-    ]
+    const columns = this.posts.map((post) => {
+      return { depth: 2, header: post.collection, collection: post.collection, post }
+    })
     this.$store.dispatch('columns/setColumns', columns)
   },
   head() {

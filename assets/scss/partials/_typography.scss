@@ -143,27 +143,30 @@ a {
     border-radius: 4px;
     padding: 2px 4px;
     font-size: 14px;
-    color: var(--essays-color);
+    color: var(--essay-color) !important;
+    text-shadow: none;
   }
-  pre {
-    font-family: Consolas, "Andale Mono WT", "Andale Mono", Monaco, "Courier New", Courier, monospace;
-    background-color: var(--accent-color);
+  .nuxt-content-highlight {    
     grid-column-start: 2;
     grid-column-end: 7;
-    padding: 12px 16px 16px 16px;
-    tab-size: 2;
-    white-space: pre-wrap;
-    word-break: normal;
-    hyphens: none;
-    border-radius: 8px;
-    margin: 16px 0;
-    line-height: 20px;
-    code {
-      font-size: 14px;
-      overflow-x: scroll;
-      padding: 0;
-      color: inherit;
-      border: none;
+    pre {
+      font-family: Consolas, "Andale Mono WT", "Andale Mono", Monaco, "Courier New", Courier, monospace;
+      background-color: var(--accent-color);
+      padding: 12px 16px 16px 16px;
+      tab-size: 2;
+      white-space: pre-wrap;
+      word-break: normal;
+      hyphens: none;
+      border-radius: 8px;
+      margin: 16px 0;
+      line-height: 20px;
+      code {
+        font-size: 14px;
+        overflow-x: scroll;
+        padding: 0;
+        color: inherit;
+        border: none;
+      }
     }
   }
   ol, ul {
@@ -171,7 +174,7 @@ a {
     margin: 0;
     margin-left: 16px;
     margin-bottom: 16px;
-    color: var(--essays-color);
+    color: var(--essay-color);
     font-size: 17px;
     line-height: 28px;
   }
