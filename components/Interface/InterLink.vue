@@ -54,6 +54,7 @@ export default {
       const currentQueries = this.$route.query.col
       let newQuery = this.href
       if (currentQueries !== undefined) {
+        if (currentQueries.includes(this.href)) { return }
         newQuery = [].concat(currentQueries, this.href)
       }
       await this.$router.push({ name: 'slug', query: { col: newQuery } })
