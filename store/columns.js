@@ -1,6 +1,5 @@
 export const state = () => ({
-  columns: [],
-  xScrollPos: 0
+  columns: []
 })
 
 export const getters = {
@@ -21,9 +20,6 @@ export const actions = {
   },
   removeColumn(context, index) {
     context.commit('removeColumn', index)
-  },
-  setXScrollPos(context, xPos) {
-    context.commit('setXScrollPos', xPos)
   }
 }
 

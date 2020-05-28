@@ -3,8 +3,8 @@
     <h1 class="title">
       {{ post.title }}
     </h1>
-    <InterLink />
-    <nuxt-content class="article-body" :document="post" />
+    <InterLink v-if="false" />
+    <nuxt-content :document="post" />
   </div>
 </template>
 

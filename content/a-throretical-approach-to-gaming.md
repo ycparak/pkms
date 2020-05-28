@@ -7,13 +7,11 @@ collection: Essay
 collections: Essays
 tags: ['Startups', 'Product',]
 ---
-If we can design applications that help people solve their long term goals, we can increase human output. This seems rather wishy-washy, and yet it’s perfectly reasonable, when you think about it, to come to the conclusion that something like Ruby on Rails has helped increase human output. It’s obviously created thousands (millions?) of jobs. It’s helped people create great companies like Github, Airbnb and Twitter. It’s changed people’s lives. I suspect that [DHH](https://en.wikipedia.org/wiki/David_Heinemeier_Hansson) when creating Rails never thought that his baby could change the world quite like it has.
+If we can design applications that help people solve their long term goals, we can increase human output. This seems rather wishy-washy, and yet it’s perfectly reasonable, <inter-link href='notetaking' space-after="true">Notetaking</inter-link> when you think about it, to come to the conclusion that something like Ruby on Rails has helped increase human output. It’s obviously created thousands (millions?) of jobs. It’s helped people create great companies like Github, Airbnb and Twitter. It’s changed people’s lives. I suspect that [DHH](https://en.wikipedia.org/wiki/David_Heinemeier_Hansson) when creating Rails never thought that his baby could change the world quite like it has. <inter-link href='make'>Make</inter-link>.
 
-<inter-link href='/notetaking'>Notetaking</inter-link>
-<inter-link href='/turning-side-projects-into-profitable-startups/'>Turning Side Projects into Profitable Startups</inter-link>
-<inter-link href='/make'>Make</inter-link>
 
-Rails made it easy for developers to build web applications really quickly. Much quicker and easier than before. It’s interesting to think about what other things can help people solve hard problems more easily. Usually it’s some new technological break through, like Rails. Occasionally it’s a UX breakthrough, like GUI’s instead of the command line. But I think there’s a more under-appreciated one. A psychological breakthrough, through the use of gamification.
+
+Rails made it easy for developers to build web applications really quickly. Much quicker and easier than before. It’s interesting to think about what other things can help people solve hard problems more easily. Usually it’s some new technological break through, like Rails. Occasionally it’s a UX breakthrough <inter-link href='turning-side-projects-into-profitable-startups'>Turning Side Projects into Profitable Startups</inter-link>, like GUI’s instead of the command line. But I think there’s a more under-appreciated one. A psychological breakthrough, through the use of gamification.
 
 Game developers seem to have figured out how gamification works. Most people wouldn’t think resource allocation problems are fun, and yet people really seem to enjoy playing Age of Empires. So fun in fact that kids risk the ire of their parents to spend 5+ hours solving these technical problems. 
 
