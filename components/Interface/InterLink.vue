@@ -52,10 +52,10 @@ export default {
   methods: {
     async handleInterlink() {
       const currentQueries = this.$route.query.col
-      console.log(this.$route)
-      const newQuery = [].concat(currentQueries, this.href)
-      const column = { depth: 2, title: this.post.title, header: this.post.collection, collection: this.post.collection, post: this.post }
-      await this.$store.dispatch('columns/addColumn', column)
+      let newQuery = this.href
+      if (currentQueries !== undefined) {
+        newQuery = [].concat(currentQueries, this.href)
+      }
       await this.$router.push({ name: 'slug', query: { col: newQuery } })
     }
   }
