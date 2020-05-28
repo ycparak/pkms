@@ -17,7 +17,6 @@ export default {
   components: {
     Fragment
   },
-  fetchOnServer: true,
   async fetch() {
     // Get slug, query parameters and use to get our next request strings
     const slug = this.$route.path.split('/')[1]

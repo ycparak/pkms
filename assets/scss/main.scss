@@ -1,5 +1,7 @@
 *, body {
-  font-family: Larsseit, -apple-system, BlinkMacSystemFont, Avenir, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Avenir, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-variant-ligatures: normal;
+  font-feature-settings: "liga1" on;
 }
 html, body {
   font-size: 16px;
