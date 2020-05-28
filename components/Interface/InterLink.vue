@@ -1,17 +1,26 @@
 <template>
-  <a
-    :href="`/${href}`"
-    class="interlink"
-    :class="`${getPostClass}`"
-    :style="{ marginRight: calcSpaceAfter }"
-    @click.prevent="handleInterlink()">
-    <slot />
-  </a>
+  <span
+    class="interlink-container"
+    :class="{ 'space-after' : showSpaceAfter }">
+    <a
+      :href="`/${href}`"
+      class="interlink"
+      :class="`${getPostClass}`"
+      @click.prevent="handleInterlink()">
+      <span class="interlink-symbol"><MaximizeIcon /></span>
+      <slot />
+    </a>
+  </span>
 </template>
 
 <script>
+import { MaximizeIcon } from 'vue-feather-icons'
+
 export default {
   name: 'Link',
+  components: {
+    MaximizeIcon
+  },
   props: {
     href: {
       type: String,
@@ -30,10 +39,10 @@ export default {
     }
   },
   computed: {
-    calcSpaceAfter() {
+    showSpaceAfter() {
       const showSpace = this.spaceAfter.toLowerCase()
-      if (showSpace && showSpace === 'true') { return '4px' }
-      return '1px'
+      if (showSpace && showSpace === 'true') { return true }
+      return false
     },
     getPostClass() {
       if (this.post) {
@@ -64,15 +73,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.interlink-container {
+  &::before { content: " "; }
+  &.space-after {
+    &::after { content: " "; }
+  }
+}
+.interlink-symbol > svg {
+  width: 12px;
+  max-height: 12px;
+  position: relative;
+  top: 1px;
+}
 .interlink {
-  color: var(--text-color);
-  border-radius: 4px;
   text-decoration: none !important;
-  padding: 0 4px;
-  margin-left: 4px;
-  &.essay { background-color: var(--essay-color); }
-  &.tweetstorm { background-color: var(--tweetstorm-color); }
-  &.project { background-color: var(--project-color); }
-  &.note { background-color: var(--note-color); }
+  background: var(--accent-color);
+  padding: 0 6px 2px 6px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  &.essay { color: var(--essay-color); }
+  &.tweetstorm { color: var(--tweetstorm-color); }
+  &.project { color: var(--project-color); }
+  &.note { color: var(--note-color); }
+
+  &:hover {
+    background: var(--accent-color-2);
+    // color: var(--text-color);
+    /* &.essay { background: var(--essay-color); }
+    &.tweetstorm { background: var(--tweetstorm-color); }
+    &.project { background: var(--project-color); }
+    &.note { background: var(--note-color); } */
+  }
 }
 </style>

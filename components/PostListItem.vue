@@ -9,21 +9,20 @@
         <span class="subtitle post-subtitle">{{ post.readingTime }}</span>
       </div>
       <div
-        v-if="!post.quote"
-        class="post__body">
-        <h5 class="post__title">
+        class="post-body">
+        <h5 class="post-item-title">
           {{ post.title }}
         </h5>
         <p
           v-if="post.excerpt"
-          class="post__content">
+          class="post-content">
           {{ cropExcerpt(post.excerpt) }}
         </p>
-      </div>
-      <div v-else-if="post.quote" class="post__body">
-        <blockquote class="post__quote">
-          <span class="post__quote--content">{{ post.quote }}</span>
-        </blockquote>
+        <p
+          v-else-if="post.quote"
+          class="post-content">
+          {{ cropExcerpt(post.quote) }}
+        </p>
       </div>
     </nuxt-link>
   </div>
@@ -40,7 +39,7 @@ export default {
   },
   methods: {
     cropExcerpt(excerpt) {
-      if (excerpt.length > 140) { return `${excerpt.substring(0, 126)}...` }
+      if (excerpt.length > 128) { return `${excerpt.substring(0, 128)}...` }
       return excerpt
     }
   }
@@ -59,7 +58,7 @@ export default {
   position: relative;
   color: var(--text-color);
   border-radius: 2px;
-  padding: 32px 44px;
+  padding: 28px 44px;
   cursor: pointer;
 
   @media (max-width: 767px) {
@@ -75,41 +74,24 @@ export default {
     background: var(--accent-color);
   }
 }
-.post__body {
-  .post__title {
-    font-size: 17px;
-    font-weight: 500;
-    margin: 0;
-    @include daynight;
-  }
-  .post__content {
-    padding-bottom: 0;
-    margin: 0;
-    margin-top: 1px;
-    opacity: .6;
-    font-size: 16px;
-    line-height: 24px;
-    @include daynight;
-  }
-  .post__quote {
-    font-family: freight-text-pro, serif;
-    margin: 0;
-    font-size: 17px;
-    line-height: 24px;
-    font-style: italic;
-    padding-bottom: 4px;
-    font-weight: 400;
-    @include daynight;
-    .post__quote--content {
-      opacity: .7;
-    }
-  }
+.post-item-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 8px 0 4px 0;
+  @include daynight;
+}
+.post-content {
+  padding-bottom: 0;
+  margin: 0;
+  font-size: 15px;
+  line-height: 21px;
+  color: var(--neutral-color);
+  @include daynight;
 }
 .meta {
   margin: 0;
   padding: 0;
-  line-height: 10px;
-  margin-bottom: 8px;
+  line-height: 6px;
   @include daynight;
   .post-subtitle {
     vertical-align: top;

@@ -1,10 +1,10 @@
 h1 {
   &.title {
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 700;
     color: var(--text-color);
     margin: 0;
-    line-height: 50px;
+    line-height: 44px;
     @include daynight;
   }
 }
@@ -14,11 +14,12 @@ h6 {
 }
 
 p {
-  font-size: 17px;
+  font-feature-settings: "liga1" on;
+  font-size: 16px;
   margin: 24px 0;
-  line-height: 28px;
+  line-height: 26px;
   text-align: left;
-  font-weight: 400;
+  font-weight: 425;
   color: var(--text-color);
   @include daynight;
 }
@@ -39,10 +40,9 @@ a {
 }
 
 .subtitle {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
   @include daynight;
 }
 
@@ -107,6 +107,7 @@ a {
   }
   p {
     margin: 16px 0;
+    letter-spacing: -0.2px;
     em { font-style: italic; }
     &:first-child { margin-top: 0; }
     &:last-child { margin-bottom: 0; }
@@ -115,14 +116,14 @@ a {
     text-decoration: underline;
   }
   h2 {
-    font-size: 26px;
-    font-weight: 700;
-    + * { margin-top: 12px; }
+    font-size: 24px;
+    font-weight: 800;
+    + * { margin-top: 8px; }
   }
   h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    + * { margin-top: 8px; }
+    + * { margin-top: 4px; }
   }
   blockquote {
     grid-column-start: 2;
