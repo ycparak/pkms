@@ -58,7 +58,28 @@ export default {
   },
   methods: {
     closeCol() {
-      this.$store.dispatch('columns/removeColumn', this.index)
+      if (this.column.depth === 2) {
+        this.changeRoute()
+      } else {
+        this.$store.dispatch('columns/removeColumn', this.index)
+      }
+    },
+    changeRoute() {
+      const { path } = this.$route
+      const queryParams = this.$route.query.col
+      if (this.index === 0 && (queryParams === undefined || queryParams.length === 0)) {
+        this.$router.push({ name: 'index' })
+      } else if (this.index === 0 && typeof queryParams === 'string') {
+        this.$router.push({ path: `/${queryParams}` })
+      } else if (this.index === 0) {
+        const firstQueryParam = queryParams.shift()
+        this.$router.push({ path: `/${firstQueryParam}`, query: { col: queryParams } })
+      } else if (this.index > 0 && typeof queryParams === 'string') {
+        this.$router.push({ name: 'slug' })
+      } else if (this.index > 0) {
+        const queries = queryParams.filter(query => query !== this.column.slug.split('/')[1])
+        this.$router.push({ name: 'slug', query: { col: queries } })
+      }
     }
   }
 }
