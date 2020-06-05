@@ -107,7 +107,7 @@ export default {
   background: var(--accent-color);
   padding: 0 6px 2px 6px;
   border-radius: 6px;
-  font-size: 15px;
+  font-size: clamp(14px, 2.5vw, 15px);
   font-weight: 600;
   &.essay { color: var(--essay-color); }
   &.tweetstorm { color: var(--tweetstorm-color); }

@@ -25,7 +25,7 @@ It would be interesting to think about, for example, a learning system that is a
 ## How
 So how do you design applications to be more engaging? Well, we’ve established that games are engaging because they’re so fun. Thus to make applications more engaging, we’d just have to make them more like games. That’s what gamification is.
 
-    Gamification = the process of adding elements from games to non-game applications.
+> Gamification = the process of adding elements from games to non-game applications.
 
 And I think I’ve figured out a process, that’s more science than art, for how to do it. It’s a model derived from studying the habit loops of games and the relevant [scientific literature](https://www.researchgate.net/publication/270273830_Gamification_in_Education_A_Systematic_Mapping_Study). There’s seven components to it. All applications with a modicum of user engagement implement at least one component. Most games implement all seven.
 

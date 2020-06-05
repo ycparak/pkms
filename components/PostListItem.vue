@@ -75,7 +75,6 @@ export default {
   }
 }
 .post-item-title {
-  font-size: 16px;
   font-weight: 500;
   margin: 8px 0 4px 0;
   @include daynight;
@@ -83,8 +82,8 @@ export default {
 .post-content {
   padding-bottom: 0;
   margin: 0;
-  font-size: 15px;
-  line-height: 21px;
+  font-size: clamp(14px, 2.5vw, 15px);
+  line-height: 1.4;
   color: var(--neutral-color);
   @include daynight;
 }

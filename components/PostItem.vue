@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .title {
-  padding: 28px 44px;
+  padding: 28px 44px 16px 44px;
   @media (max-width: 767px) {
     padding: 20px 28px;
   }

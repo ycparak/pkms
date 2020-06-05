@@ -5,14 +5,16 @@
       <button @click="closeCol()">
         <XIcon class="icon" />
       </button>
-      <template v-if="column.depth !== 2">
-        <span class="subtitle post-subtitle">{{ column.header }}</span>
-      </template>
-      <template v-else>
-        <span class="subtitle post-subtitle">{{ $moment(column.post.date).format('DD MMM YYYY') }}</span>
-        <span class="subtitle post-subtitle muted">&middot;</span>
-        <span v-if="column.header" class="subtitle post-subtitle muted">{{ column.header }}</span>
-      </template>
+      <div class="header-content">
+        <template v-if="column.depth !== 2">
+          <span class="subtitle post-subtitle">{{ column.header }}</span>
+        </template>
+        <template v-else>
+          <span class="subtitle post-subtitle">{{ $moment(column.post.date).format('DD MMM YYYY') }}</span>
+          <span class="subtitle post-subtitle muted">&middot;</span>
+          <span v-if="column.header" class="subtitle post-subtitle muted">{{ column.header }}</span>
+        </template>
+      </div>
     </div>
     <!-- Column section -->
     <div class="section">
@@ -150,6 +152,7 @@ export default {
       vertical-align: top;
       margin: 0 4px;
       padding: 0;
+      line-height: 39px;
       &:first-child { margin-left: 0; }
       &:first-child { margin-right: 0; }
       &.muted { color: var(--neutral-color); }
