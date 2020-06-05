@@ -2,7 +2,7 @@
   <div class="profile">
     <h1 class="title">
       Yo, I’m Yusuf.<br>
-      Welcome.
+      Welcome. &#x2116;
     </h1>
     <p>
       I'm a software developer and designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I’m also the maker of x which does y and has z metric.

@@ -23,6 +23,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/fonts/fonts.css',
     '@/assets/scss/main.scss'
   ],
   /*
