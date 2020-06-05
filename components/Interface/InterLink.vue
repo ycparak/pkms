@@ -5,20 +5,24 @@
     <a
       :href="`/${href}`"
       class="interlink"
-      :class="`${getPostClass}`"
+      :class="`${getPostClass} ${linkIsActivated}`"
       @click.prevent="handleInterlink()">
-      <span class="interlink-symbol"><MaximizeIcon /></span>
+      <span class="interlink-symbol">
+        <MinimizeIcon v-if="linkIsActivated" />
+        <MaximizeIcon v-else />
+      </span>
       <slot />
     </a>
   </span>
 </template>
 
 <script>
-import { MaximizeIcon } from 'vue-feather-icons'
+import { MinimizeIcon, MaximizeIcon } from 'vue-feather-icons'
 
 export default {
   name: 'Link',
   components: {
+    MinimizeIcon,
     MaximizeIcon
   },
   props: {
@@ -35,10 +39,22 @@ export default {
   },
   data() {
     return {
-      post: null
+      post: null,
+      linkHovered: false
     }
   },
   computed: {
+    linkIsActivated() {
+      const currentQueries = this.$route.query.col
+      if (currentQueries === undefined) {
+        return ''
+      } else if (currentQueries === this.href || currentQueries.includes(this.href)) {
+        return 'active'
+      } else if (this.href === this.$route.path) {
+        return 'active'
+      }
+      return ''
+    },
     showSpaceAfter() {
       const showSpace = this.spaceAfter.toLowerCase()
       if (showSpace && showSpace === 'true') { return true }
@@ -84,6 +100,7 @@ export default {
   max-height: 12px;
   position: relative;
   top: 1px;
+
 }
 .interlink {
   text-decoration: none !important;
@@ -99,11 +116,14 @@ export default {
 
   &:hover {
     background: var(--accent-color-2);
-    // color: var(--text-color);
-    /* &.essay { background: var(--essay-color); }
+  }
+
+  &.active {
+    color: var(--background-color);
+    &.essay { background: var(--essay-color); }
     &.tweetstorm { background: var(--tweetstorm-color); }
     &.project { background: var(--project-color); }
-    &.note { background: var(--note-color); } */
+    &.note { background: var(--note-color); }
   }
 }
 </style>
