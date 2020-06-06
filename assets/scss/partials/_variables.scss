@@ -8,9 +8,9 @@
 
   --icon-toggle-shadow-hover: inset 0px 0px 0px 1.5px var(--neutral-color);
   --icon-toggle-shadow: inset 0px 0px 0px 1.5px var(--text-color);
-  --card-shadow: 10px 10px 21px #ced3d9;
   --grid-column-shadow: 6px 0 16px 0 var(--background-color);
-
+  --card-shadow: 6px 0 16px 0 #eee;
+  
   --tablet: 768px;
 
   /*
@@ -38,7 +38,7 @@
   --current-color: var(--accent-color);
   --current-fill-color: var(--text-color);
 
-  --card-shadow: 10px 10px 21px #000;
+  --card-shadow: 0 0 20px 0 #111;
 
   --darkmode-toggle-translate: -52.5%;
 }
