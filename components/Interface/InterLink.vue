@@ -3,27 +3,32 @@
     class="interlink-container"
     :class="{ 'space-after' : showSpaceAfter }">
     <a
+      ref="popoverReference"
       :href="`/${href}`"
       class="interlink"
       :class="`${getPostClass} ${linkIsActivated}`"
-      @click.prevent="handleInterlink()">
-      <!-- <span class="interlink-symbol">
-        <MinimizeIcon v-if="linkIsActivated" />
-        <MaximizeIcon v-else />
-      </span> -->
+      @click.prevent="handleInterlink()"
+      @mouseover="isPopoverVisible = true"
+      @mouseleave="isPopoverVisible = false">
       <span v-if="post">{{ post.title }}</span>
     </a>
+
+    <!-- Interlink hover popover -->
+    <Popover
+      v-if="post && isPopoverVisible"
+      :popover-options="popoverOptions">
+      <PopoverContent :post="post" />
+    </Popover>
   </span>
 </template>
 
 <script>
-// import { MinimizeIcon, MaximizeIcon } from 'vue-feather-icons'
+import Popover from '@/components/Interface/Popover'
 
 export default {
   name: 'Link',
   components: {
-    // MinimizeIcon,
-    // MaximizeIcon
+    Popover
   },
   props: {
     href: {
@@ -40,7 +45,12 @@ export default {
   data() {
     return {
       post: null,
-      linkHovered: false
+      isPopoverVisible: false,
+      popoverOptions: {
+        popoverReference: null,
+        placement: 'right',
+        offset: [0, 20]
+      }
     }
   },
   computed: {
@@ -70,6 +80,7 @@ export default {
   async mounted() {
     try {
       this.post = await this.$content(this.href).fetch()
+      this.popoverOptions.popoverReference = this.$refs.popoverReference
     } catch (error) {
       console.log(error)
     }

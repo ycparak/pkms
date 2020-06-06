@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/moment": "^1.6.1",
+    "@popperjs/core": "^2.4.0",
     "nuxt": "^2.0.0",
     "reading-time": "^1.2.0",
     "vue-feather-icons": "^5.0.0",
