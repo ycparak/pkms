@@ -7,23 +7,23 @@
       class="interlink"
       :class="`${getPostClass} ${linkIsActivated}`"
       @click.prevent="handleInterlink()">
-      <span class="interlink-symbol">
+      <!-- <span class="interlink-symbol">
         <MinimizeIcon v-if="linkIsActivated" />
         <MaximizeIcon v-else />
-      </span>
-      <slot />
+      </span> -->
+      <span v-if="post">{{ post.title }}</span>
     </a>
   </span>
 </template>
 
 <script>
-import { MinimizeIcon, MaximizeIcon } from 'vue-feather-icons'
+// import { MinimizeIcon, MaximizeIcon } from 'vue-feather-icons'
 
 export default {
   name: 'Link',
   components: {
-    MinimizeIcon,
-    MaximizeIcon
+    // MinimizeIcon,
+    // MaximizeIcon
   },
   props: {
     href: {
@@ -105,18 +105,19 @@ export default {
 .interlink {
   text-decoration: none !important;
   background: var(--accent-color);
-  padding: 0 6px 2px 6px;
-  border-radius: 6px;
+  padding: 0 4px 1px 4px;
+  border-radius: 4px;
   font-size: clamp(14px, 2.5vw, 15px);
   font-weight: 600;
+  hyphens: auto;
+  &:hover {
+    background: var(--accent-color-2);
+  }
+
   &.essay { color: var(--essay-color); }
   &.tweetstorm { color: var(--tweetstorm-color); }
   &.project { color: var(--project-color); }
   &.note { color: var(--note-color); }
-
-  &:hover {
-    background: var(--accent-color-2);
-  }
 
   &.active {
     color: var(--background-color);

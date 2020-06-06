@@ -11,11 +11,10 @@ h1 {
 
 p {
   line-height: 1.7;
-  margin: 24px 0;
   text-align: left;
   font-weight: 449;
   color: var(--text-color);
-  margin: 16px 0;
+  margin: 12px 0;
   letter-spacing: -0.2px;
   em { font-style: italic; }
   &:first-child { margin-top: 0; }
@@ -111,12 +110,12 @@ a {
   h2 {
     font-size: clamp(20px, 2.5vw, 24px);
     font-weight: 800;
-    + * { margin-top: 8px; }
+    + * { margin-top: 4px; }
   }
   h3 {
     font-size: clamp(17px, 2.5vw, 18px);
     font-weight: 700;
-    + * { margin-top: 4px; }
+    + * { margin-top: 2px; }
   }
   blockquote {
     grid-column-start: 2;
@@ -161,17 +160,17 @@ a {
     }
   }
   ol, ul {
-    grid-column-start: 3;
-    margin: 0;
     margin-left: 16px;
-    margin-bottom: 16px;
     color: var(--essay-color);
   }
   ol { list-style-type: decimal; }
-  ul { list-style-type: circle; }
+  ul { list-style-type: disc; }
   li {
-    padding-left: 8px;
+    margin: 8px 0;
+    padding-left: 4px;
     color: var(--text-color);
+    > ul { margin-top: 4px; }
+    &:first-child { margin-top: 0; }
   }
   hr {
     grid-column: 4;
