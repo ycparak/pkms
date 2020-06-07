@@ -31,6 +31,9 @@ export default {
   mounted() {
     this.initPopper()
   },
+  destroyed() {
+    this.destroyPopover()
+  },
   methods: {
     initPopper() {
       const modifiers = {}
@@ -45,16 +48,22 @@ export default {
             {
               name: 'offset',
               options: { offset }
+            },
+            {
+              name: 'arrow',
+              options: {
+                padding: 0
+              }
             }
           ]
         }
       )
     },
     destroyPopover() {
+      console.log(this.popperInstance)
       if (this.popperInstance) {
         this.popperInstance.destroy()
         this.popperInstance = null
-        this.$emit('closePopover')
       }
     }
   }
@@ -64,7 +73,7 @@ export default {
 <style lang="scss" scoped>
 .base-popover {
   position: absolute;
-  z-index: 600;
+  z-index: 999 !important;
   background: var(--accent-color);
   border-radius: 12px;
   color: var(--text-color);
