@@ -89,6 +89,7 @@ export default {
 
 <style lang="scss" scoped>
 .column {
+  display: block;
   background: var(--background-color);
   border: 1px solid var(--accent-color);
   border-radius: 12px;
@@ -98,7 +99,8 @@ export default {
   left: 0;
   box-shadow: -10px 0px 20px 0px var(--background-color);
   scroll-snap-align: start;
-  @include daynight;
+  z-index: 600;
+  // @include daynight;
 
   @media (max-width: 767px) {
     min-height: calc(100vh - (16px * 2) - 80px);

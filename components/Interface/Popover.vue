@@ -64,7 +64,8 @@ export default {
 <style lang="scss" scoped>
 .base-popover {
   position: absolute;
-  z-index: 600;
+  z-index: 999 !important;
+  padding: 12px 20px;
   background: var(--accent-color);
   border-radius: 12px;
   color: var(--text-color);

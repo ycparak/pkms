@@ -1,7 +1,7 @@
 ---
 title: Silicon Valley
 date: 2020-03-28
-abstract: f
+abstract: "Dis parturient montes nascetur ridiculus mus mauris vitae. Auctor neque vitae tempus quam pellentesque nec. Tristique senectus et netus et malesuada fames ac. Odio tempor orci dapibus ultrices in iaculis. Commodo quis imperdiet massa tincidunt nunc pulvinar. Vitae elementum curabitur vitae nunc sed. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Varius sit amet mattis vulputate enim nulla aliquet porttitor lacus. Tortor aliquam nulla facilisi cras. Ac placerat vestibulum lectus mauris ultrices eros."
 excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis."
 collection: Tweetstorm
 collections: Tweetstorms
