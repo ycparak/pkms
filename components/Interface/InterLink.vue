@@ -10,13 +10,14 @@
       @click.prevent="handleInterlink()"
       @mouseover="isPopoverVisible = true"
       @mouseleave="isPopoverVisible = false">
-      <span v-if="post">{{ post.title }}</span>
+      {{ post.title }}
     </a>
 
     <!-- Interlink hover popover -->
     <Popover
-      v-if="post && isPopoverVisible"
-      :popover-options="popoverOptions">
+      v-if="isPopoverVisible"
+      :popover-options="popoverOptions"
+      :is-popover-visible="isPopoverVisible">
       <PopoverContent :post="post" />
     </Popover>
   </span>
@@ -44,12 +45,15 @@ export default {
   },
   data() {
     return {
-      post: null,
+      post: {
+        collection: 'note',
+        title: this.href.split('-').join(' ')
+      },
       isPopoverVisible: false,
       popoverOptions: {
         popoverReference: null,
         placement: 'right',
-        offset: [0, 20]
+        offset: [0, 8]
       }
     }
   },
@@ -58,7 +62,7 @@ export default {
       const currentQueries = this.$route.query.col
       if (currentQueries === undefined) {
         return ''
-      } else if (currentQueries === this.href || currentQueries.includes(this.href)) {
+      } else if (currentQueries === this.href || (currentQueries.includes(this.href) && typeof currentQueries !== 'string')) {
         return 'active'
       } else if (this.href === this.$route.path) {
         return 'active'
@@ -89,8 +93,9 @@ export default {
     async handleInterlink() {
       const currentQueries = this.$route.query.col
       let newQuery = this.href
+      console.log(currentQueries)
       if (currentQueries !== undefined) {
-        if (currentQueries.includes(this.href)) { return }
+        if (currentQueries.includes(this.href) && typeof currentQueries !== 'string') { return }
         newQuery = [].concat(currentQueries, this.href)
       }
       await this.$router.push({ name: 'slug', query: { col: newQuery } })

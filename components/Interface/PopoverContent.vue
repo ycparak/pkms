@@ -1,6 +1,5 @@
 <template>
   <div class="popover">
-    <div class="popover-arrow" x-arrow />
     <div class="popover-content-box">
       <div class="popover-content-title">
         {{ post.title }}
@@ -25,12 +24,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.popover { padding: 12px 20px; }
 .popover-content-title {
   padding-bottom: 0;
   font-weight: 700;
   font-size: 18px;
 }
-
 .popover-content-body {
   font-size: 14px;
 }
