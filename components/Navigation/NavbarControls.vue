@@ -38,7 +38,6 @@ export default {
   margin-bottom: 20px;
   width: 16px;
   height: 16px;
-  z-index: 900;
   @include daynight;
   .line {
     display: block;

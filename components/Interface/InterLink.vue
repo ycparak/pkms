@@ -1,34 +1,38 @@
 <template>
-  <span
-    class="interlink-container"
-    :class="{ 'space-after' : showSpaceAfter }">
-    <a
-      ref="popoverReference"
-      :href="`/${href}`"
-      class="interlink"
-      :class="`${getPostClass} ${linkIsActivated}`"
-      @click.prevent="handleInterlink()"
-      @mouseover="isPopoverVisible = true"
-      @mouseleave="isPopoverVisible = false">
-      {{ post.title }}
-    </a>
+  <Fragment>
+    <span
+      class="interlink-container"
+      :class="{ 'space-after' : showSpaceAfter }">
+      <a
+        ref="popoverReference"
+        :href="`/${href}`"
+        class="interlink"
+        :class="`${getPostClass} ${linkIsActivated}`"
+        @click.prevent="handleInterlink()"
+        @mouseover="isPopoverVisible = true"
+        @mouseleave="isPopoverVisible = false">
+        {{ post.title }}
+      </a>
 
-    <!-- Interlink hover popover -->
+      <!-- Interlink hover popover -->
+    </span>
     <Popover
       v-if="isPopoverVisible"
       :popover-options="popoverOptions"
       :is-popover-visible="isPopoverVisible">
       <PopoverContent :post="post" />
     </Popover>
-  </span>
+  </Fragment>
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment'
 import Popover from '@/components/Interface/Popover'
 
 export default {
   name: 'Link',
   components: {
+    Fragment,
     Popover
   },
   props: {
@@ -91,9 +95,9 @@ export default {
   },
   methods: {
     async handleInterlink() {
+      this.isPopoverVisible = false
       const currentQueries = this.$route.query.col
       let newQuery = this.href
-      console.log(currentQueries)
       if (currentQueries !== undefined) {
         if (currentQueries.includes(this.href) && typeof currentQueries !== 'string') { return }
         newQuery = [].concat(currentQueries, this.href)
@@ -116,7 +120,6 @@ export default {
   max-height: 12px;
   position: relative;
   top: 1px;
-
 }
 .interlink {
   text-decoration: none !important;

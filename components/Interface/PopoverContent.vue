@@ -24,7 +24,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.popover { padding: 12px 20px; }
+.popover {
+  padding: 12px 20px;
+}
 .popover-content-title {
   padding-bottom: 0;
   font-weight: 700;

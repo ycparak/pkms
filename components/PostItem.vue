@@ -9,13 +9,8 @@
 </template>
 
 <script>
-import InterLink from '@/components/Interface/InterLink'
-
 export default {
   name: 'PostItem',
-  components: {
-    InterLink
-  },
   props: {
     post: {
       type: Object,
