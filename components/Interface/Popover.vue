@@ -50,9 +50,9 @@ export default {
               options: { offset }
             },
             {
-              name: 'arrow',
+              name: 'preventOverflow',
               options: {
-                padding: 0
+                altAxis: true
               }
             }
           ]
@@ -60,7 +60,6 @@ export default {
       )
     },
     destroyPopover() {
-      console.log(this.popperInstance)
       if (this.popperInstance) {
         this.popperInstance.destroy()
         this.popperInstance = null
@@ -73,7 +72,8 @@ export default {
 <style lang="scss" scoped>
 .base-popover {
   position: absolute;
-  z-index: 999 !important;
+  display: block;
+  z-index: 800 !important;
   background: var(--accent-color);
   border-radius: 12px;
   color: var(--text-color);

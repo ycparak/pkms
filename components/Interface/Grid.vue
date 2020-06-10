@@ -15,7 +15,7 @@ export default {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  scroll-snap-type: x mandatory;
+  // scroll-snap-type: x mandatory;
 
   @media (min-width: 768px) {
     padding: 28px;

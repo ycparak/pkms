@@ -98,9 +98,8 @@ export default {
   top: 0;
   left: 0;
   box-shadow: -10px 0px 20px 0px var(--background-color);
-  scroll-snap-align: start;
-  z-index: 600;
-  // @include daynight;
+  // scroll-snap-align: start;
+  @include daynight;
 
   @media (max-width: 767px) {
     min-height: calc(100vh - (16px * 2) - 80px);
