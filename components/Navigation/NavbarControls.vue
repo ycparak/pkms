@@ -10,7 +10,7 @@
     </button>
     <button
       class="btn-darkmode"
-      @click="$parent.$parent.darkModeToggle()" />
+      @click="darkModeToggle()" />
   </div>
 </template>
 
@@ -21,6 +21,15 @@ export default {
     showPanel: {
       type: Boolean,
       required: true
+    }
+  },
+  methods: {
+    darkModeToggle() {
+      if (this.$colorMode.value === 'dark') {
+        this.$colorMode.preference = 'light'
+      } else {
+        this.$colorMode.preference = 'dark'
+      }
     }
   }
 }
