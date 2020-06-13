@@ -123,7 +123,7 @@ export default {
 .interlink {
   text-decoration: none !important;
   background: var(--accent-color);
-  padding: 0 4px 1px 4px;
+  padding: 0 0 1px 4px;
   border-radius: 4px;
   font-size: clamp(14px, 2.5vw, 15px);
   font-weight: 600;

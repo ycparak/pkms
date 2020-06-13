@@ -20,7 +20,8 @@
     "nuxt": "^2.0.0",
     "reading-time": "^1.2.0",
     "vue-feather-icons": "^5.0.0",
-    "vue-fragment": "^1.5.1"
+    "vue-fragment": "^1.5.1",
+    "vue-scrollto": "^2.18.1"
   },
   "devDependencies": {
     "@nuxt/components": "^0.3.0",

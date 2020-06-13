@@ -5,13 +5,25 @@
     class="column"
     :style="{ left: `${index * 36}px` }">
     <ColumnHeader :index="index" :column="column" :post="post" />
-    <div
+    <a
       v-if="columnScrolledOver"
+      v-scroll-to="{
+        el: `#column-${index}`,
+        container: '#grid',
+        duration: 500,
+        easing: 'linear',
+        offset: getLeftScrollOffset,
+        force: true,
+        cancelable: true,
+        x: true,
+        y: false
+      }"
+      :href="`#column-${index}`"
       class="sticky-label-left">
       <div class="label">
         {{ column.title }}
       </div>
-    </div>
+    </a>
     <div
       v-else-if="!columnInView"
       class="sticky-label-right"
@@ -19,9 +31,22 @@
       <div class="header">
         <ColumnCloseButton :index="index" :column="column" />
       </div>
-      <div class="label">
+      <a
+        v-scroll-to="{
+          el: `#column-${index}`,
+          container: '#grid',
+          duration: 500,
+          easing: 'linear',
+          offset: getRightScrollOffset,
+          force: true,
+          cancelable: true,
+          x: true,
+          y: false
+        }"
+        class="label"
+        :href="`#column-${index}`">
         {{ column.title }}
-      </div>
+      </a>
     </div>
     <div v-else class="section">
       <Profile
@@ -108,6 +133,15 @@ export default {
     calcRightStickyLabelPos() {
       const nextNumHiddenCols = this.columns.length - this.index - 1
       return `${(nextNumHiddenCols * 36) - 408}px`
+    },
+    getRightScrollOffset() {
+      const { labelSize } = this.dimensions
+      const totLabelWidth = ((this.index) * labelSize) * -2
+      return totLabelWidth
+    },
+    getLeftScrollOffset() {
+      const { colWidth, margin, labelSize } = this.dimensions
+      return (this.columns.length - 1 - this.index) * (colWidth - labelSize - margin) * -1
     }
   }
 }
@@ -150,13 +184,13 @@ export default {
 }
 
 .sticky-label-left {
+  display: block;
   width: 100%;
   height: calc(100vh - 28px - 28px - 40px);
   border-bottom-left-radius: 12px;
-  background-color: var(--accent-color);
   cursor: pointer;
   @include daynight;
-  &:hover { background-color: var(--accent-color-3) }
+  &:hover { background-color: var(--accent-color) }
 }
 
 .sticky-label-right {
@@ -177,16 +211,17 @@ export default {
     height: 40px;
     width: 100%;
     padding: 12px 13px;
+    border-bottom: 1px solid var(--accent-color);
   }
 
   .label {
     width: 100%;
     border-bottom-left-radius: 11px;
-    background-color: var(--accent-color);
+    background-color: var(--background-color);
     height: calc(100% - 40px);
     cursor: pointer;
     @include daynight;
-    &:hover { background-color: var(--accent-color-3) }
+    &:hover { background-color: var(--accent-color) }
   }
 }
 </style>

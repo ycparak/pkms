@@ -55,7 +55,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
     '@nuxt/components', // TODO: Remove when upgrading to nuxt 2.13+
-    '@nuxt/content'
+    '@nuxt/content',
+    ['vue-scrollto/nuxt', { duration: 300 }]
   ],
   hooks: {
     'content:file:beforeInsert': (document) => {
