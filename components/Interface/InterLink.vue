@@ -13,9 +13,8 @@
         @mouseleave="isPopoverVisible = false">
         {{ post.title }}
       </a>
-
-      <!-- Interlink hover popover -->
     </span>
+    <!-- Interlink hover popover -->
     <Popover
       v-if="isPopoverVisible"
       :popover-options="popoverOptions"
@@ -110,9 +109,9 @@ export default {
 
 <style lang="scss" scoped>
 .interlink-container {
-  &::before { content: " "; }
+  &:before { content: " "; }
   &.space-after {
-    &::after { content: " "; }
+    margin-right: 3px;
   }
 }
 .interlink-symbol > svg {
