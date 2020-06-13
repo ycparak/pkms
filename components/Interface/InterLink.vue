@@ -1,39 +1,27 @@
 <template>
-  <Fragment>
-    <span
-      class="interlink-container"
-      :class="{ 'space-after' : showSpaceAfter }">
-      <a
-        ref="popoverReference"
-        :href="`/${href}`"
-        class="interlink"
-        :class="`${getPostClass} ${linkIsActivated}`"
-        @click.prevent="handleInterlink()"
-        @mouseover="isPopoverVisible = true"
-        @mouseleave="isPopoverVisible = false">
-        {{ post.title }}
-      </a>
-    </span>
-    <!-- Interlink hover popover -->
-    <Popover
-      v-if="isPopoverVisible"
-      :popover-options="popoverOptions"
-      :is-popover-visible="isPopoverVisible">
-      <PopoverContent :post="post" />
-    </Popover>
-  </Fragment>
+  <span
+    class="interlink-container"
+    :class="{
+      'space-after' : showSpaceAfter,
+      'space-before' : showSpaceBefore,
+    }">
+    <a
+      ref="popoverReference"
+      :href="`/${href}`"
+      class="interlink"
+      :class="`${getPostClass} ${linkIsActivated}`"
+      @click.prevent="handleInterlink()"
+      @mouseover="handlePopover(true)"
+      @mouseleave="handlePopover(false)">
+      {{ post.title }}
+    </a>
+  </span>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
-import Popover from '@/components/Interface/Popover'
 
 export default {
   name: 'Link',
-  components: {
-    Fragment,
-    Popover
-  },
   props: {
     href: {
       type: String,
@@ -72,6 +60,11 @@ export default {
       }
       return ''
     },
+    showSpaceBefore() {
+      const showSpace = this.spaceAfter.toLowerCase()
+      if (showSpace && showSpace === 'false') { return false }
+      return true
+    },
     showSpaceAfter() {
       const showSpace = this.spaceAfter.toLowerCase()
       if (showSpace && showSpace === 'true') { return true }
@@ -94,7 +87,7 @@ export default {
   },
   methods: {
     async handleInterlink() {
-      this.isPopoverVisible = false
+      this.handlePopover(false)
       const currentQueries = this.$route.query.col
       let newQuery = this.href
       if (currentQueries !== undefined) {
@@ -102,6 +95,15 @@ export default {
         newQuery = [].concat(currentQueries, this.href)
       }
       await this.$router.push({ name: 'slug', query: { col: newQuery } })
+    },
+    handlePopover(show) {
+      this.isPopoverVisible = show
+      const popover = {
+        isPopoverVisible: this.isPopoverVisible,
+        post: this.post,
+        popoverOptions: this.popoverOptions
+      }
+      this.$store.dispatch('columns/setPopover', popover)
     }
   }
 }
@@ -109,21 +111,14 @@ export default {
 
 <style lang="scss" scoped>
 .interlink-container {
-  &:before { content: " "; }
-  &.space-after {
-    margin-right: 3px;
-  }
-}
-.interlink-symbol > svg {
-  width: 12px;
-  max-height: 12px;
-  position: relative;
-  top: 1px;
+  display: inline-block;
+  &.space-before { margin-left: 3px; }
+  &.space-after { margin-right: 3px; }
 }
 .interlink {
   text-decoration: none !important;
   background: var(--accent-color);
-  padding: 0 0 1px 4px;
+  padding: 0 4px 1px 4px;
   border-radius: 4px;
   font-size: clamp(14px, 2.5vw, 15px);
   font-weight: 600;

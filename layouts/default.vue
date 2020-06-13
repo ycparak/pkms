@@ -7,6 +7,12 @@
       <Grid>
         <nuxt />
       </Grid>
+      <Popover
+        v-if="popover && popover.isPopoverVisible"
+        :popover-options="popover.popoverOptions"
+        :is-popover-visible="popover.isPopoverVisible">
+        <PopoverContent :post="popover.post" />
+      </Popover>
     </div>
     <ControlPanel :show-panel="showControlPanel" />
   </div>
@@ -18,6 +24,11 @@ export default {
   data() {
     return {
       showControlPanel: false
+    }
+  },
+  computed: {
+    popover() {
+      return this.$store.getters['columns/getPopover']
     }
   },
   methods: {

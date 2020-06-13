@@ -1,5 +1,6 @@
 export const state = () => ({
   loading: true,
+  popover: null,
   columns: [],
   vw: 0,
   x: 0
@@ -8,6 +9,9 @@ export const state = () => ({
 export const getters = {
   isLoading(state) {
     return state.loading
+  },
+  getPopover(state) {
+    return state.popover
   },
   getColumns(state) {
     return state.columns
@@ -23,6 +27,9 @@ export const getters = {
 export const actions = {
   setLoading(context, loading) {
     context.commit('setLoading', loading)
+  },
+  setPopover(context, popover) {
+    context.commit('setPopover', popover)
   },
   setColumns(context, columns) {
     context.commit('setColumns', columns)
@@ -44,6 +51,13 @@ export const actions = {
 export const mutations = {
   setLoading(state, loading) {
     state.loading = loading
+  },
+  setPopover(state, options) {
+    if (options.isPopoverVisible) {
+      state.popover = options
+    } else {
+      state.popover = null
+    }
   },
   setColumns(state, columns) {
     state.columns = columns

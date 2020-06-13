@@ -75,7 +75,7 @@ export default {
   display: block;
   z-index: 800 !important;
   background: var(--accent-color);
-  border-radius: 12px;
+  border-radius: 8px;
   color: var(--text-color);
   box-shadow: var(--card-shadow);
   max-width: 480px;
