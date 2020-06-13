@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .profile {
-  padding: 28px 44px;
+  padding: 28px 36px;
   @media (max-width: 767px) {
     padding: 20px 28px;
   }

@@ -1,13 +1,14 @@
 export const state = () => ({
-  columns: []
+  columns: [],
+  x: 0
 })
 
 export const getters = {
   getColumns(state) {
     return state.columns
   },
-  getXScrollPos(state) {
-    return state.xScrollPos
+  getScrollPos(state) {
+    return state.x
   }
 }
 
@@ -20,6 +21,9 @@ export const actions = {
   },
   removeColumn(context, index) {
     context.commit('removeColumn', index)
+  },
+  setScrollPos(context, x) {
+    context.commit('setXScrollPos', x)
   }
 }
 
@@ -33,7 +37,7 @@ export const mutations = {
   removeColumn(state, index) {
     state.columns.splice(index, 1)
   },
-  setXScrollPos(state, xPos) {
-    state.xScrollPos = xPos
+  setXScrollPos(state, x) {
+    state.x = x
   }
 }

@@ -1,43 +1,35 @@
 <template>
-  <div class="column">
-    <!-- Column header -->
-    <div class="header">
-      <button @click="closeCol()">
-        <XIcon class="icon" />
-      </button>
-      <div class="header-content">
-        <template v-if="column.depth !== 2">
-          <span class="subtitle post-subtitle">{{ column.header }}</span>
-        </template>
-        <template v-else>
-          <span class="subtitle post-subtitle">{{ $moment(column.post.date).format('DD MMM YYYY') }}</span>
-          <span class="subtitle post-subtitle muted">&middot;</span>
-          <span v-if="column.header" class="subtitle post-subtitle muted">{{ column.header }}</span>
-        </template>
+  <div
+    :id="`column-${index}`"
+    class="column"
+    :style="{ left : `${index * 36}px` }">
+    <ColumnHeader :index="index" :column="column" :post="post" />
+    <transition name="fade" mode="out-in">
+      <div v-if="columnInView" :key="1">
+        <!-- Column section -->
+        <div class="section">
+          <Profile
+            v-if="column.depth === 0" />
+          <PostList
+            v-else-if="column.depth === 1"
+            :type="column.collection" />
+          <PostItem
+            v-else-if="column.depth === 2"
+            :post="column.post" />
+        </div>
       </div>
-    </div>
-    <!-- Column section -->
-    <div class="section">
-      <Profile
-        v-if="column.depth === 0" />
-      <PostList
-        v-else-if="column.depth === 1"
-        :type="column.collection" />
-      <PostItem
-        v-else-if="column.depth === 2"
-        :post="column.post" />
-    </div>
+      <div v-else :key="2" class="column-label">
+        <div class="label">
+          {{ column.title }}
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import { XIcon } from 'vue-feather-icons'
-
 export default {
   name: 'Column',
-  components: {
-    XIcon
-  },
   props: {
     index: {
       type: Number,
@@ -58,30 +50,20 @@ export default {
       default: null
     }
   },
-  methods: {
-    closeCol() {
-      if (this.column.depth === 2) {
-        this.changeRoute()
-      } else {
-        this.$store.dispatch('columns/removeColumn', this.index)
+  computed: {
+    columnInView() {
+      const x = this.$store.getters['columns/getScrollPos']
+      const colWidth = 560
+      const margin = 28
+      const totalColWidth = colWidth + margin
+
+      const colStart = this.index * (colWidth + margin)
+      const colMidPoint = (colStart + (colWidth / 1.7))
+
+      if (x > colMidPoint) {
+        return false
       }
-    },
-    changeRoute() {
-      const { path } = this.$route
-      const queryParams = this.$route.query.col
-      if (this.index === 0 && (queryParams === undefined || queryParams.length === 0)) {
-        this.$router.push({ name: 'index' })
-      } else if (this.index === 0 && typeof queryParams === 'string') {
-        this.$router.push({ path: `/${queryParams}` })
-      } else if (this.index === 0) {
-        const firstQueryParam = queryParams.shift()
-        this.$router.push({ path: `/${firstQueryParam}`, query: { col: queryParams } })
-      } else if (this.index > 0 && typeof queryParams === 'string') {
-        this.$router.push({ name: 'slug' })
-      } else if (this.index > 0) {
-        const queries = queryParams.filter(query => query !== this.column.slug.split('/')[1])
-        this.$router.push({ name: 'slug', query: { col: queries } })
-      }
+      return true
     }
   }
 }
@@ -96,9 +78,7 @@ export default {
   width: 100%;
   position: sticky;
   top: 0;
-  left: 0;
   box-shadow: -10px 0px 20px 0px var(--background-color);
-  // scroll-snap-align: start;
   @include daynight;
 
   @media (max-width: 767px) {
@@ -114,50 +94,33 @@ export default {
     min-width: 560px;
     margin-right: 28px;
   }
+}
 
-  .header {
-    display: flex;
-    align-items: center;
-    height: 40px;
-    border-bottom: 1px solid var(--accent-color);
-    padding: 6px 16px;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0
+}
 
-    button {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      margin: 0;
-      margin-right: 12px;
-      border-radius: 50%;
-      background: var(--accent-color);
-
-      .icon {
-        vertical-align: top;
-        position: relative;
-        top: 1px;
-        width: 10px;
-        height: 10px;
-        color: var(--background-color);
-        opacity: 0;
-      }
-
-      &:hover {
-        background: #FB5F55;
-        .icon {
-          opacity: 1;
-        }
-      }
-    }
-
-    .post-subtitle {
-      vertical-align: top;
-      margin: 0 4px;
-      padding: 0;
-      line-height: 39px;
-      &:first-child { margin-left: 0; }
-      &:first-child { margin-right: 0; }
-      &.muted { color: var(--neutral-color); }
-    }
+.column-label {
+  width: 100%;
+  height: calc(100vh - 28px - 28px - 40px);
+  border-bottom-left-radius: 12px;
+  cursor: pointer;
+  @include daynight;
+  &:hover {
+    background-color: var(--accent-color);
   }
+}
+.label {
+  writing-mode: vertical-lr;
+  padding-top: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: 0.1px;
 }
 </style>
