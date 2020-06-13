@@ -58,7 +58,7 @@ export default {
   position: relative;
   color: var(--text-color);
   border-radius: 2px;
-  padding: 28px 44px;
+  padding: 28px 36px;
   cursor: pointer;
 
   @media (max-width: 767px) {

@@ -1,23 +1,29 @@
 <template>
-  <div class="column">
-    <!-- Column header -->
-    <div class="header">
-      <button @click="closeCol()">
-        <XIcon class="icon" />
-      </button>
-      <div class="header-content">
-        <template v-if="column.depth !== 2">
-          <span class="subtitle post-subtitle">{{ column.header }}</span>
-        </template>
-        <template v-else>
-          <span class="subtitle post-subtitle">{{ $moment(column.post.date).format('DD MMM YYYY') }}</span>
-          <span class="subtitle post-subtitle muted">&middot;</span>
-          <span v-if="column.header" class="subtitle post-subtitle muted">{{ column.header }}</span>
-        </template>
+  <div
+    v-show="!loading"
+    :id="`column-${index}`"
+    class="column"
+    :style="{ left: `${index * 36}px` }">
+    <ColumnHeader :index="index" :column="column" :post="post" />
+    <div
+      v-if="columnScrolledOver"
+      class="sticky-label-left">
+      <div class="label">
+        {{ column.title }}
       </div>
     </div>
-    <!-- Column section -->
-    <div class="section">
+    <div
+      v-else-if="!columnInView"
+      class="sticky-label-right"
+      :style="{ right: calcRightStickyLabelPos }">
+      <div class="header">
+        <ColumnCloseButton :index="index" :column="column" />
+      </div>
+      <div class="label">
+        {{ column.title }}
+      </div>
+    </div>
+    <div v-else class="section">
       <Profile
         v-if="column.depth === 0" />
       <PostList
@@ -31,13 +37,8 @@
 </template>
 
 <script>
-import { XIcon } from 'vue-feather-icons'
-
 export default {
   name: 'Column',
-  components: {
-    XIcon
-  },
   props: {
     index: {
       type: Number,
@@ -58,30 +59,55 @@ export default {
       default: null
     }
   },
-  methods: {
-    closeCol() {
-      if (this.column.depth === 2) {
-        this.changeRoute()
-      } else {
-        this.$store.dispatch('columns/removeColumn', this.index)
+  data() {
+    return {
+      dimensions: {
+        colWidth: 560,
+        margin: 28,
+        gridStartPos: 136,
+        labelSize: 36
       }
+    }
+  },
+  computed: {
+    loading() {
+      return this.$store.getters['columns/isLoading']
     },
-    changeRoute() {
-      const { path } = this.$route
-      const queryParams = this.$route.query.col
-      if (this.index === 0 && (queryParams === undefined || queryParams.length === 0)) {
-        this.$router.push({ name: 'index' })
-      } else if (this.index === 0 && typeof queryParams === 'string') {
-        this.$router.push({ path: `/${queryParams}` })
-      } else if (this.index === 0) {
-        const firstQueryParam = queryParams.shift()
-        this.$router.push({ path: `/${firstQueryParam}`, query: { col: queryParams } })
-      } else if (this.index > 0 && typeof queryParams === 'string') {
-        this.$router.push({ name: 'slug' })
-      } else if (this.index > 0) {
-        const queries = queryParams.filter(query => query !== this.column.slug.split('/')[1])
-        this.$router.push({ name: 'slug', query: { col: queries } })
+    vw() {
+      return this.$store.getters['columns/getViewportWidth']
+    },
+    xScrollPos() {
+      return this.$store.getters['columns/getScrollPos']
+    },
+    columnScrolledOver() {
+      const { index, gridVW, xScrollPos } = this
+      const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
+
+      const adjColEnd = (index + 1) * ((colWidth + margin) - labelSize)
+      const scrollThreshold = adjColEnd - (labelSize)
+
+      if (xScrollPos > scrollThreshold) {
+        return true
       }
+      return false
+    },
+    columnInView() {
+      const { index, vw, xScrollPos, columns } = this
+      const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
+
+      const colStart = index * (colWidth + margin)
+      const gridVW = vw - gridStartPos
+      const nextNumHiddenCols = columns.length - index - 1
+      const sizeOfNextCols = nextNumHiddenCols * labelSize
+
+      if ((colStart + labelSize) > (gridVW + xScrollPos - sizeOfNextCols)) {
+        return false
+      }
+      return true
+    },
+    calcRightStickyLabelPos() {
+      const nextNumHiddenCols = this.columns.length - this.index - 1
+      return `${(nextNumHiddenCols * 36) - 408}px`
     }
   }
 }
@@ -96,9 +122,7 @@ export default {
   width: 100%;
   position: sticky;
   top: 0;
-  left: 0;
   box-shadow: -10px 0px 20px 0px var(--background-color);
-  // scroll-snap-align: start;
   @include daynight;
 
   @media (max-width: 767px) {
@@ -114,50 +138,55 @@ export default {
     min-width: 560px;
     margin-right: 28px;
   }
+}
+
+.label {
+  writing-mode: vertical-lr;
+  padding-top: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: 0.1px;
+}
+
+.sticky-label-left {
+  width: 100%;
+  height: calc(100vh - 28px - 28px - 40px);
+  border-bottom-left-radius: 12px;
+  background-color: var(--accent-color);
+  cursor: pointer;
+  @include daynight;
+  &:hover { background-color: var(--accent-color-3) }
+}
+
+.sticky-label-right {
+  position: fixed;
+  top: 28px;
+  right: 0;
+  bottom: 0;
+  height: calc(100vh - 28px - 26px);
+  box-shadow: -10px 0px 20px 0px var(--background-color);
+  background-color:  var(--background-color);
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  width: 440px;
+  border: 1px solid var(--accent-color);
+  border-right: none;
 
   .header {
-    display: flex;
-    align-items: center;
     height: 40px;
-    border-bottom: 1px solid var(--accent-color);
-    padding: 6px 16px;
+    width: 100%;
+    padding: 12px 13px;
+  }
 
-    button {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      margin: 0;
-      margin-right: 12px;
-      border-radius: 50%;
-      background: var(--accent-color);
-
-      .icon {
-        vertical-align: top;
-        position: relative;
-        top: 1px;
-        width: 10px;
-        height: 10px;
-        color: var(--background-color);
-        opacity: 0;
-      }
-
-      &:hover {
-        background: #FB5F55;
-        .icon {
-          opacity: 1;
-        }
-      }
-    }
-
-    .post-subtitle {
-      vertical-align: top;
-      margin: 0 4px;
-      padding: 0;
-      line-height: 39px;
-      &:first-child { margin-left: 0; }
-      &:first-child { margin-right: 0; }
-      &.muted { color: var(--neutral-color); }
-    }
+  .label {
+    width: 100%;
+    border-bottom-left-radius: 11px;
+    background-color: var(--accent-color);
+    height: calc(100% - 40px);
+    cursor: pointer;
+    @include daynight;
+    &:hover { background-color: var(--accent-color-3) }
   }
 }
 </style>
