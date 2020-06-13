@@ -64,7 +64,8 @@ export default {
       dimensions: {
         colWidth: 560,
         margin: 28,
-        gridStartPos: 136
+        gridStartPos: 136,
+        labelSize: 36
       }
     }
   },
@@ -80,24 +81,26 @@ export default {
     },
     columnScrolledOver() {
       const { index, gridVW, xScrollPos } = this
-      const { colWidth, margin } = this.dimensions
+      const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
 
-      const colStart = index * (colWidth + margin)
-      const colMidPoint = (colStart + (colWidth / 1.5))
+      const adjColEnd = (index + 1) * ((colWidth + margin) - labelSize)
+      const scrollThreshold = adjColEnd - (labelSize)
 
-      if (xScrollPos > colMidPoint || colStart > (gridVW + xScrollPos)) {
+      if (xScrollPos > scrollThreshold) {
         return true
       }
       return false
     },
     columnInView() {
-      const { index, vw, xScrollPos } = this
-      const { colWidth, margin, gridStartPos } = this.dimensions
+      const { index, vw, xScrollPos, columns } = this
+      const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
 
       const colStart = index * (colWidth + margin)
       const gridVW = vw - gridStartPos
+      const nextNumHiddenCols = columns.length - index - 1
+      const sizeOfNextCols = nextNumHiddenCols * labelSize
 
-      if ((colStart + 36) > (gridVW + xScrollPos)) {
+      if ((colStart + labelSize) > (gridVW + xScrollPos - sizeOfNextCols)) {
         return false
       }
       return true
