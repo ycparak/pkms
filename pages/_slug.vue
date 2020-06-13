@@ -110,6 +110,9 @@ export default {
     removeColumn(slug) {
       const columnToRemove = this.columns.findIndex(col => col.slug === slug)
       this.$store.dispatch('columns/removeColumn', columnToRemove)
+    },
+    handlePopover(options) {
+      console.log(options)
     }
   },
   head() {
