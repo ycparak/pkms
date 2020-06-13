@@ -1,5 +1,5 @@
 <template>
-  <div ref="grid" class="grid" @scroll="getScrollPos()">
+  <div id="grid" ref="grid" class="grid" @scroll="getScrollPos()">
     <slot />
   </div>
 </template>
