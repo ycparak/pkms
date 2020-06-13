@@ -1,29 +1,38 @@
 <template>
   <div
+    v-show="!loading"
     :id="`column-${index}`"
     class="column"
-    :style="{ left : `${index * 36}px` }">
+    :style="{ left: `${index * 36}px` }">
     <ColumnHeader :index="index" :column="column" :post="post" />
-    <transition name="fade" mode="out-in">
-      <div v-if="columnInView" :key="1">
-        <!-- Column section -->
-        <div class="section">
-          <Profile
-            v-if="column.depth === 0" />
-          <PostList
-            v-else-if="column.depth === 1"
-            :type="column.collection" />
-          <PostItem
-            v-else-if="column.depth === 2"
-            :post="column.post" />
-        </div>
+    <div
+      v-if="columnScrolledOver"
+      class="sticky-label-left">
+      <div class="label">
+        {{ column.title }}
       </div>
-      <div v-else :key="2" class="column-label">
-        <div class="label">
-          {{ column.title }}
-        </div>
+    </div>
+    <div
+      v-else-if="!columnInView"
+      class="sticky-label-right"
+      :style="{ right: calcRightStickyLabelPos }">
+      <div class="header">
+        <ColumnCloseButton :index="index" :column="column" />
       </div>
-    </transition>
+      <div class="label">
+        {{ column.title }}
+      </div>
+    </div>
+    <div v-else class="section">
+      <Profile
+        v-if="column.depth === 0" />
+      <PostList
+        v-else-if="column.depth === 1"
+        :type="column.collection" />
+      <PostItem
+        v-else-if="column.depth === 2"
+        :post="column.post" />
+    </div>
   </div>
 </template>
 
@@ -50,20 +59,52 @@ export default {
       default: null
     }
   },
+  data() {
+    return {
+      dimensions: {
+        colWidth: 560,
+        margin: 28,
+        gridStartPos: 136
+      }
+    }
+  },
   computed: {
+    loading() {
+      return this.$store.getters['columns/isLoading']
+    },
+    vw() {
+      return this.$store.getters['columns/getViewportWidth']
+    },
+    xScrollPos() {
+      return this.$store.getters['columns/getScrollPos']
+    },
+    columnScrolledOver() {
+      const { index, gridVW, xScrollPos } = this
+      const { colWidth, margin } = this.dimensions
+
+      const colStart = index * (colWidth + margin)
+      const colMidPoint = (colStart + (colWidth / 1.5))
+
+      if (xScrollPos > colMidPoint || colStart > (gridVW + xScrollPos)) {
+        return true
+      }
+      return false
+    },
     columnInView() {
-      const x = this.$store.getters['columns/getScrollPos']
-      const colWidth = 560
-      const margin = 28
-      const totalColWidth = colWidth + margin
+      const { index, vw, xScrollPos } = this
+      const { colWidth, margin, gridStartPos } = this.dimensions
 
-      const colStart = this.index * (colWidth + margin)
-      const colMidPoint = (colStart + (colWidth / 1.7))
+      const colStart = index * (colWidth + margin)
+      const gridVW = vw - gridStartPos
 
-      if (x > colMidPoint) {
+      if ((colStart + 36) > (gridVW + xScrollPos)) {
         return false
       }
       return true
+    },
+    calcRightStickyLabelPos() {
+      const nextNumHiddenCols = this.columns.length - this.index - 1
+      return `${(nextNumHiddenCols * 36) - 408}px`
     }
   }
 }
@@ -96,25 +137,6 @@ export default {
   }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .3s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0
-}
-
-.column-label {
-  width: 100%;
-  height: calc(100vh - 28px - 28px - 40px);
-  border-bottom-left-radius: 12px;
-  cursor: pointer;
-  @include daynight;
-  &:hover {
-    background-color: var(--accent-color);
-  }
-}
 .label {
   writing-mode: vertical-lr;
   padding-top: 16px;
@@ -122,5 +144,46 @@ export default {
   font-weight: 600;
   line-height: 36px;
   letter-spacing: 0.1px;
+}
+
+.sticky-label-left {
+  width: 100%;
+  height: calc(100vh - 28px - 28px - 40px);
+  border-bottom-left-radius: 12px;
+  background-color: var(--accent-color);
+  cursor: pointer;
+  @include daynight;
+  &:hover { background-color: var(--accent-color-3) }
+}
+
+.sticky-label-right {
+  position: fixed;
+  top: 28px;
+  right: 0;
+  bottom: 0;
+  height: calc(100vh - 28px - 26px);
+  box-shadow: -10px 0px 20px 0px var(--background-color);
+  background-color:  var(--background-color);
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  width: 440px;
+  border: 1px solid var(--accent-color);
+  border-right: none;
+
+  .header {
+    height: 40px;
+    width: 100%;
+    padding: 12px 13px;
+  }
+
+  .label {
+    width: 100%;
+    border-bottom-left-radius: 11px;
+    background-color: var(--accent-color);
+    height: calc(100% - 40px);
+    cursor: pointer;
+    @include daynight;
+    &:hover { background-color: var(--accent-color-3) }
+  }
 }
 </style>

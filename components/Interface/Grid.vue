@@ -7,7 +7,19 @@
 <script>
 export default {
   name: 'Grid',
+  mounted() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+    this.$store.dispatch('columns/setLoading', false)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+  },
   methods: {
+    handleResize() {
+      const vw = window.innerWidth
+      this.$store.dispatch('columns/setViewportWidth', vw)
+    },
     getScrollPos() {
       const x = this.$refs.grid.scrollLeft
       this.$store.dispatch('columns/setScrollPos', x)
