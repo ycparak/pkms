@@ -38,11 +38,15 @@ export default {
 
 <style lang="scss" scoped>
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   height: 40px;
   border-bottom: 1px solid var(--accent-color);
   padding: 6px 13px;
+  z-index: 600;
+  box-shadow: 0 12px 20px 0 var(--background-color);
+  @include daynight;
 }
 
 .post-subtitle {

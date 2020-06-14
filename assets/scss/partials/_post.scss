@@ -87,19 +87,3 @@
     grid-template-columns: 20px 16px 100px 1fr 100px 16px 20px;
   }
 }
-
-.nuxt-content.popover {
-  display: grid;
-  grid-template-columns: 12px 8px 80px 1fr 80px 8px 12px;
-  margin-bottom: 20px;
-  
-  p { 
-    margin: 8px 0;
-    &:first-child { margin: 0; }
-    &:last-child { margin: 0; }
-  }
-
-  li {
-    margin: 4px 0;
-  }
-}

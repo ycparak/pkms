@@ -31,18 +31,18 @@ export default {
 
     // Filter varriables
     const collection = this.type.charAt(0).toUpperCase() + this.type.slice(1)
-    const fieldsRequired = ['title', 'date', 'path', 'excerpt', 'readingTime', 'quote']
+    const fieldsRequired = ['title', 'date', 'path', 'excerpt', 'readingTime', 'quote', 'createdAt']
 
     if (collection === 'All') {
       posts = await this.$content()
         .only(fieldsRequired)
-        .sortBy('date', 'desc')
+        .sortBy('createdAt', 'desc')
         .fetch()
     } else {
       posts = await this.$content()
         .only(fieldsRequired)
         .where({ collections: collection })
-        .sortBy('date', 'desc')
+        .sortBy('createdAt', 'desc')
         .fetch()
     }
 

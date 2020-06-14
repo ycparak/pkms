@@ -20,6 +20,9 @@ p {
   &:first-child { margin-top: 0; }
   &:last-child { margin-bottom: 0; }
   @include daynight;
+  strong {
+    background: var(--accent-color-3);
+  }
 }
 
 a {
