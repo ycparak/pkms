@@ -58,6 +58,7 @@
         v-else-if="column.depth === 2"
         :post="column.post" />
     </div>
+    <div class="column-footer" />
   </div>
 </template>
 
@@ -223,5 +224,17 @@ export default {
     @include daynight;
     &:hover { background-color: var(--accent-color) }
   }
+}
+
+.column-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  height: 1px;
+  padding: 12px 13px;
+  z-index: 600;
+  box-shadow: 0 -12px 20px 0 var(--background-color);
 }
 </style>

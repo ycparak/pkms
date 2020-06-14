@@ -28,6 +28,11 @@ export default {
       required: false,
       default: ''
     },
+    spaceBefore: {
+      type: String,
+      required: false,
+      default: 'true'
+    },
     spaceAfter: {
       type: String,
       required: false,
@@ -61,7 +66,7 @@ export default {
       return ''
     },
     showSpaceBefore() {
-      const showSpace = this.spaceAfter.toLowerCase()
+      const showSpace = this.spaceBefore.toLowerCase()
       if (showSpace && showSpace === 'false') { return false }
       return true
     },
@@ -131,6 +136,7 @@ export default {
   &.tweetstorm { color: var(--tweetstorm-color); }
   &.project { color: var(--project-color); }
   &.note { color: var(--note-color); }
+  &.quote { color: var(--quote-color); }
 
   &.active {
     color: var(--background-color);
@@ -138,6 +144,7 @@ export default {
     &.tweetstorm { background: var(--tweetstorm-color); }
     &.project { background: var(--project-color); }
     &.note { background: var(--note-color); }
+    &.quote { background: var(--quote-color); }
   }
 }
 </style>

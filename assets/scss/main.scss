@@ -39,9 +39,11 @@ button, input {
 }
 
 .section {
-  overflow-y: scroll;
   scroll-snap-type: y mandatory;
   height: calc(100vh - 16px - 16px - 16px - 108px);
+  overflow-y: auto;
+  position: relative;
+  z-index: 500;
   @media (min-width: 768px) {
     height: calc(100vh - 28px - 28px - 40px);
   }
