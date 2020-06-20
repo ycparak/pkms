@@ -57,6 +57,7 @@ export default {
       } else if (queryParams) {
         requestStrings.push(queryParams)
       }
+
       return requestStrings
     },
     async fetchAllQueriedPosts(requestStrings) {
