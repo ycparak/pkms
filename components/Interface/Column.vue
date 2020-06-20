@@ -5,6 +5,7 @@
     class="column"
     :style="{ left: `${index * 36}px` }">
     <ColumnHeader :index="index" :column="column" :post="post" />
+    <!-- Left sticky label -->
     <a
       v-if="columnScrolledOver"
       v-scroll-to="{
@@ -24,6 +25,8 @@
         {{ column.title }}
       </div>
     </a>
+
+    <!-- Right sticky label -->
     <div
       v-else-if="!columnInView"
       class="sticky-label-right"
@@ -48,6 +51,8 @@
         {{ column.title }}
       </a>
     </div>
+
+    <!-- Column content -->
     <div v-else class="section">
       <Profile
         v-if="column.depth === 0" />
@@ -83,6 +88,14 @@ export default {
       type: Object,
       required: false,
       default: null
+    },
+    vw: {
+      type: Number,
+      required: true
+    },
+    x: {
+      type: Number,
+      required: true
     }
   },
   data() {
@@ -99,26 +112,20 @@ export default {
     loading() {
       return this.$store.getters['columns/isLoading']
     },
-    vw() {
-      return this.$store.getters['columns/getViewportWidth']
-    },
-    xScrollPos() {
-      return this.$store.getters['columns/getScrollPos']
-    },
     columnScrolledOver() {
-      const { index, gridVW, xScrollPos } = this
+      const { index, gridVW, x } = this
       const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
 
       const adjColEnd = (index + 1) * ((colWidth + margin) - labelSize)
       const scrollThreshold = adjColEnd - (labelSize)
 
-      if (xScrollPos > scrollThreshold) {
+      if (x > scrollThreshold) {
         return true
       }
       return false
     },
     columnInView() {
-      const { index, vw, xScrollPos, columns } = this
+      const { index, vw, x, columns } = this
       const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
 
       const colStart = index * (colWidth + margin)
@@ -126,7 +133,7 @@ export default {
       const nextNumHiddenCols = columns.length - index - 1
       const sizeOfNextCols = nextNumHiddenCols * labelSize
 
-      if ((colStart + labelSize) > (gridVW + xScrollPos - sizeOfNextCols)) {
+      if ((colStart + labelSize) > (gridVW + x - sizeOfNextCols)) {
         return false
       }
       return true
@@ -186,7 +193,7 @@ export default {
 
 .sticky-label-left {
   display: block;
-  width: 100%;
+  width: 32px;
   height: calc(100vh - 28px - 28px - 40px);
   border-bottom-left-radius: 12px;
   cursor: pointer;
