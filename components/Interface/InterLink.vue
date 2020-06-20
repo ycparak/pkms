@@ -55,12 +55,14 @@ export default {
   },
   computed: {
     linkIsActivated() {
+      const slug = this.$route.params.slug
       const currentQueries = this.$route.query.col
+
       if (currentQueries === undefined) {
         return ''
       } else if (currentQueries === this.href || (currentQueries.includes(this.href) && typeof currentQueries !== 'string')) {
         return 'active'
-      } else if (this.href === this.$route.path) {
+      } else if (this.href === this.$route.params.slug) {
         return 'active'
       }
       return ''
@@ -93,10 +95,15 @@ export default {
   methods: {
     async handleInterlink() {
       this.handlePopover(false)
+
+      const slug = this.$route.params.slug
       const currentQueries = this.$route.query.col
       let newQuery = this.href
+
+      if (newQuery === slug) { return }
+
       if (currentQueries !== undefined) {
-        if (currentQueries.includes(this.href) && typeof currentQueries !== 'string') { return }
+        if (newQuery === currentQueries || currentQueries.includes(this.href)) { return }
         newQuery = [].concat(currentQueries, this.href)
       }
       await this.$router.push({ name: 'slug', query: { col: newQuery } })
