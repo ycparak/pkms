@@ -36,7 +36,7 @@ export default {
     if (collection === 'All') {
       posts = await this.$content()
         .only(fieldsRequired)
-        .sortBy('date', 'desc')
+        .sortBy('createdAt', 'desc')
         .fetch()
     } else {
       posts = await this.$content()

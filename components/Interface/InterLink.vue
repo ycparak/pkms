@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import VueScrollTo from 'vue-scrollto'
 
 export default {
   name: 'Link',
@@ -55,17 +56,21 @@ export default {
   },
   computed: {
     linkIsActivated() {
+      if (this.isActiveLink) { return 'active' }
+      return ''
+    },
+    isActiveLink() {
       const slug = this.$route.params.slug
       const currentQueries = this.$route.query.col
 
       if (currentQueries === undefined) {
         return ''
       } else if (currentQueries === this.href || (currentQueries.includes(this.href) && typeof currentQueries !== 'string')) {
-        return 'active'
+        return true
       } else if (this.href === this.$route.params.slug) {
-        return 'active'
+        return true
       }
-      return ''
+      return false
     },
     showSpaceBefore() {
       const showSpace = this.spaceBefore.toLowerCase()
@@ -94,19 +99,44 @@ export default {
   },
   methods: {
     async handleInterlink() {
-      this.handlePopover(false)
+      if (!this.isActiveLink) {
+        this.handlePopover(false)
 
-      const slug = this.$route.params.slug
-      const currentQueries = this.$route.query.col
-      let newQuery = this.href
+        const slug = this.$route.params.slug
+        const currentQueries = this.$route.query.col
+        let newQuery = this.href
 
-      if (newQuery === slug) { return }
+        if (newQuery === slug) { return }
 
-      if (currentQueries !== undefined) {
-        if (newQuery === currentQueries || currentQueries.includes(this.href)) { return }
-        newQuery = [].concat(currentQueries, this.href)
+        if (currentQueries !== undefined) {
+          if (newQuery === currentQueries || currentQueries.includes(this.href)) { return }
+          newQuery = [].concat(currentQueries, this.href)
+        }
+        await this.$router.push({ name: 'slug', query: { col: newQuery } })
+      } else {
+        this.scrollToLink()
       }
-      await this.$router.push({ name: 'slug', query: { col: newQuery } })
+    },
+    scrollToLink() {
+      const cols = this.$store.getters['columns/getColumns']
+      const index = cols.map(c => c.slug).indexOf(`/${this.href}`)
+      const postIndex = cols.map(c => c.slug).indexOf(`/${this.post.slug}`)
+
+      let offset = (index * -32) - 136
+      if (index < postIndex) {
+        offset = -2000
+      }
+
+      const options = {
+        container: '#grid',
+        easing: 'linear',
+        offset,
+        force: true,
+        cancelable: true,
+        x: true,
+        y: false
+      }
+      VueScrollTo.scrollTo(`#column-${index}`, 350, options)
     },
     handlePopover(show) {
       this.isPopoverVisible = show
