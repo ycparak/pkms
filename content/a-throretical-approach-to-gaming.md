@@ -10,7 +10,7 @@ If we can design applications that help people solve their long term goals, we c
 
 
 
-Rails made it easy for developers to build web applications really quickly. Much quicker and easier than before. It’s interesting to think about what other things can help people solve hard problems more easily. Usually it’s some new technological break through, like Rails. Occasionally it’s a UX breakthrough <inter-link href='turning-side-projects-into-profitable-startups'>Turning Side Projects into Profitable Startups</inter-link>, like GUI’s instead of the command line. But I think there’s a more under-appreciated one. A psychological breakthrough, through the use of gamification.
+Rails made it easy for developers to build web applications really quickly. Much quicker and easier than before. It’s interesting to think about what other things can help people solve hard problems more easily. Usually it’s some new technological break through, like Rails. Occasionally it’s a UX breakthrough <inter-link href='turning-side-projects-into-profitable-startups'>Turning Side Projects into Profitable Startups</inter-link>, like GUI’s instead of the command line. But I think there’s a more under-appreciated one. A psychological breakthrough, through the use of gamification. <inter-link href="craig-mod"><inter-link>.
 
 Game developers seem to have figured out how gamification works. Most people wouldn’t think resource allocation problems are fun, and yet people really seem to enjoy playing Age of Empires. So fun in fact that kids risk the ire of their parents to spend 5+ hours solving these technical problems. 
 

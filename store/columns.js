@@ -1,9 +1,7 @@
 export const state = () => ({
   loading: true,
   popover: null,
-  columns: [],
-  vw: 0,
-  x: 0
+  columns: []
 })
 
 export const getters = {
@@ -15,12 +13,6 @@ export const getters = {
   },
   getColumns(state) {
     return state.columns
-  },
-  getViewportWidth(state) {
-    return state.vw
-  },
-  getScrollPos(state) {
-    return state.x
   }
 }
 
@@ -39,12 +31,6 @@ export const actions = {
   },
   removeColumn(context, index) {
     context.commit('removeColumn', index)
-  },
-  setViewportWidth(context, vw) {
-    context.commit('setViewportWidth', vw)
-  },
-  setScrollPos(context, x) {
-    context.commit('setXScrollPos', x)
   }
 }
 
@@ -67,11 +53,5 @@ export const mutations = {
   },
   removeColumn(state, index) {
     state.columns.splice(index, 1)
-  },
-  setViewportWidth(state, vw) {
-    state.vw = vw
-  },
-  setXScrollPos(state, x) {
-    state.x = x
   }
 }

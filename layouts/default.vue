@@ -4,9 +4,7 @@
       class="wrapper"
       :class="{ blur: showControlPanel }">
       <Navbar :show-panel="showControlPanel" />
-      <Grid>
-        <nuxt />
-      </Grid>
+      <nuxt />
       <Popover
         v-if="popover && popover.isPopoverVisible"
         :popover-options="popover.popoverOptions"

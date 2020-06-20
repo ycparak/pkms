@@ -1,22 +1,10 @@
 <template>
-  <Fragment>
-    <Column
-      v-for="(column, index) in columns"
-      :key="index"
-      :index="index"
-      :column="column"
-      :columns="columns" />
-  </Fragment>
+  <Grid />
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
-
 export default {
   name: 'Post',
-  components: {
-    Fragment
-  },
   async fetch() {
     // Get slug, query parameters and use to get our next request strings
     const slug = this.$route.path.split('/')[1]
@@ -110,9 +98,6 @@ export default {
     removeColumn(slug) {
       const columnToRemove = this.columns.findIndex(col => col.slug === slug)
       this.$store.dispatch('columns/removeColumn', columnToRemove)
-    },
-    handlePopover(options) {
-      console.log(options)
     }
   },
   head() {

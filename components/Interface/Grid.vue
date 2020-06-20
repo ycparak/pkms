@@ -1,12 +1,31 @@
 <template>
   <div id="grid" ref="grid" class="grid" @scroll="getScrollPos()">
-    <slot />
+    <Column
+      v-for="(column, index) in columns"
+      :key="index"
+      :index="index"
+      :column="column"
+      :columns="columns"
+      :vw="vw"
+      :x="x" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'Grid',
+  data() {
+    return {
+      vw: 0,
+      x: 0
+    }
+  },
+  computed: {
+    columns() {
+      const cols = this.$store.getters['columns/getColumns']
+      return cols
+    }
+  },
   mounted() {
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
@@ -17,12 +36,10 @@ export default {
   },
   methods: {
     handleResize() {
-      const vw = window.innerWidth
-      this.$store.dispatch('columns/setViewportWidth', vw)
+      this.vw = window.innerWidth
     },
     getScrollPos() {
-      const x = this.$refs.grid.scrollLeft
-      this.$store.dispatch('columns/setScrollPos', x)
+      this.x = this.$refs.grid.scrollLeft
     }
   }
 }

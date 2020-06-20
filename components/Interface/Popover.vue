@@ -48,12 +48,6 @@ export default {
             {
               name: 'offset',
               options: { offset }
-            },
-            {
-              name: 'preventOverflow',
-              options: {
-                altAxis: true
-              }
             }
           ]
         }
