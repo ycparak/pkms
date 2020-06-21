@@ -10,7 +10,7 @@ Craig Mod is a writer, photographer, designer, author and publisher. He was an e
 1. Technology and the [role it plays in my life](https://craigmod.com/essays/offscreen_interview/). 
     - <inter-link href='work-at-a-scale-that-resonates-with-you' space-before="false"></inter-link>
 2. How software [should](https://craigmod.com/essays/fast_software/) [be](https://craigmod.com/essays/software_slump/) built.
-    - <inter-link href="native-software" space-before="false"></inter-link>
-    - <inter-link href="native-software-is-fast-software" space-before="false"></inter-link>
+    - <inter-link href="good-software" space-before="false"></inter-link>
+    - <inter-link href="good-software-is-fast" space-before="false"></inter-link>
 
 Craig, if you're reading this, thanks. And while I’m bad at email, you’re more than welcome to try ;)
