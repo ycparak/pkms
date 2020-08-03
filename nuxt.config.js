@@ -16,10 +16,6 @@ export default {
     ]
   },
   /*
-  ** Custom additions
-  */
-  components: true,
-  /*
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
@@ -89,5 +85,12 @@ export default {
     */
     extend(config, ctx) {
     }
+  },
+  /*
+  ** Custom additions
+  */
+  components: true,
+  content: {
+    liveEdit: false
   }
 }
