@@ -4,7 +4,6 @@
       <h1 class="title">
         {{ post.title }}
       </h1>
-      <InterLink v-if="false" />
       <nuxt-content :document="post" />
     </div>
   </client-only>
