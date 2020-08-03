@@ -16,6 +16,10 @@ export default {
     ]
   },
   /*
+  ** Custom additions
+  */
+  components: true,
+  /*
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
@@ -39,9 +43,13 @@ export default {
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
     '@nuxtjs/color-mode',
-    '@nuxtjs/moment'
+    '@nuxtjs/moment',
+    '@nuxt/components'
   ],
 
+  /*
+  ** Custom additions
+  */
   styleResources: {
     scss: [
       '~assets/scss/partials/*.scss'
@@ -54,7 +62,6 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    '@nuxt/components', // TODO: Remove when upgrading to nuxt 2.13+
     '@nuxt/content',
     ['vue-scrollto/nuxt', { duration: 300 }]
   ],
