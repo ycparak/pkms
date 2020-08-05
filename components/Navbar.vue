@@ -1,20 +1,14 @@
 <template>
   <div class="navbar">
-    <NavbarControls :show-panel="showPanel" />
     <NavbarProfile />
+    <!-- <NavbarControls :show-panel="showPanel" /> -->
     <NavbarSocial />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Navbar',
-  props: {
-    showPanel: {
-      type: Boolean,
-      required: true
-    }
-  }
+  name: 'Navbar'
 }
 </script>
 
@@ -25,17 +19,21 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 0;
   color: var(--text-color);
-  background: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-left: none;
   pointer-events: none;
+  border-radius: 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: var(--accent-color);
   @include daynight;
 
   @media (max-width: 767px) {
     top: 16px;
     left: 16px;
     right: 16px;
-    height: 48px;
     flex-direction: row;
     align-items: center;
     padding: 0 28px;
@@ -44,11 +42,12 @@ export default {
 
   @media (min-width: 768px) {
     top: 28px;
-    left: 28px;
+    left: 0;
     bottom: 28px;
     flex-direction: column;
-    padding: 20px 0;
-    width: 80px;
+    padding: 14px 0;
+    padding-right: 4px;
+    width: 68px;
     min-height: calc(100vh - 28px - 28px);
   }
 }

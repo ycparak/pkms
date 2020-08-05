@@ -63,7 +63,7 @@
         v-else-if="column.depth === 2"
         :post="column.post" />
     </div>
-    <div class="column-footer" />
+    <div v-if="$colorMode.value === 'dark'" class="column-footer" />
   </div>
 </template>
 
@@ -158,8 +158,7 @@ export default {
 <style lang="scss" scoped>
 .column {
   display: block;
-  background: var(--background-color);
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--accent-color-2);
   border-radius: 12px;
   width: 100%;
   position: sticky;

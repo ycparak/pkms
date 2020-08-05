@@ -29,16 +29,17 @@
 }
 
 .dark-mode {
-  --background-color: #171717;
-  --accent-color: #262528;
-  --accent-color-2: #333135;
-  --accent-color-3: #3F3C42;
-  --accent-color-4: #4B474F;
+  --background-color: #202124;
+  --accent-color: #292A2D;
+  --accent-color-1: #2E2F33;
+  --accent-color-2: #35363B;
+  --accent-color-3: #3d3e43;
   --text-color: #fff;
   --current-color: var(--accent-color);
   --current-fill-color: var(--text-color);
 
   --card-shadow: 0 0 20px 0 #111;
+  --btn-shadow: 0 4px 12px 0 var(--background-color);
 
   --darkmode-toggle-translate: -52.5%;
 }

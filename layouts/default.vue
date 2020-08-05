@@ -1,9 +1,7 @@
 <template>
   <div class="site">
-    <div
-      class="wrapper"
-      :class="{ blur: showControlPanel }">
-      <Navbar :show-panel="showControlPanel" />
+    <div class="wrapper">
+      <Navbar />
       <nuxt />
       <Popover
         v-if="popover && popover.isPopoverVisible"
@@ -12,26 +10,15 @@
         <PopoverContent :post="popover.post" />
       </Popover>
     </div>
-    <ControlPanel :show-panel="showControlPanel" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'DefaultLayout',
-  data() {
-    return {
-      showControlPanel: false
-    }
-  },
   computed: {
     popover() {
       return this.$store.getters['columns/getPopover']
-    }
-  },
-  methods: {
-    toggleControlPanel() {
-      this.showControlPanel = !this.showControlPanel
     }
   }
 }

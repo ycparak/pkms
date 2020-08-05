@@ -3,28 +3,11 @@
     <nuxt-link
       class="post-link"
       :to="post.path">
-      <div class="meta">
-        <span class="subtitle post-subtitle">{{ $moment(post.createdAt).format('MMM YYYY') }}</span>
-        <span class="subtitle post-subtitle">&middot;</span>
-        <span class="subtitle post-subtitle">{{ post.readingTime }}</span>
-      </div>
-      <div
-        class="post-body">
-        <h5 class="post-item-title">
-          {{ post.title }}
-        </h5>
-        <p
-          v-if="post.excerpt"
-          class="post-content">
-          {{ cropExcerpt(post.excerpt) }}
-        </p>
-        <p
-          v-else-if="post.quote"
-          class="post-content">
-          {{ cropExcerpt(post.quote) }}
-        </p>
-      </div>
+      {{ post.title }}
     </nuxt-link>
+    <div class="meta">
+      <span class="post-subtitle">{{ $moment(post.createdAt).format('DD.MM.YY') }}</span>
+    </div>
   </div>
 </template>
 
@@ -48,36 +31,28 @@ export default {
 
 <style lang="scss" scoped>
 .post {
-  scroll-snap-align: start;
-  border-bottom: 1px solid var(--accent-color);
-  @include daynight;
+  padding: 20px 36px;
+  &:first-child { margin-top: 8px; }
+  &:last-child { margin-bottom: 8px; }
 }
-
 .post-link {
-  display: block;
+  display: inline-block;
   position: relative;
   color: var(--text-color);
-  border-radius: 2px;
-  padding: 28px 36px;
+  font-weight: 550;
+  line-height: 24px;
+  font-size: 17px;
   cursor: pointer;
-
-  @media (max-width: 767px) {
-    padding: 24px;
-  }
-
+  transition: all .3s ease;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  @include daynight;
   &:active, &:hover, &:focus {
     outline: none;
     box-shadow: none;
     border: none;
+    text-decoration-color: var(--accent-color-4);
   }
-  &:hover {
-    background: var(--accent-color);
-  }
-}
-.post-item-title {
-  font-weight: 500;
-  margin: 8px 0 4px 0;
-  @include daynight;
 }
 .post-content {
   padding-bottom: 0;
@@ -91,14 +66,10 @@ export default {
   margin: 0;
   padding: 0;
   line-height: 6px;
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 8px;
+  opacity: .7;
   @include daynight;
-  .post-subtitle {
-    vertical-align: top;
-    opacity: .3;
-    margin: 0 2px;
-    padding: 0;
-    &:first-child { margin-left: 0; }
-    &:first-child { margin-right: 0; }
-  }
 }
 </style>

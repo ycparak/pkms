@@ -55,8 +55,8 @@ export default {
     padding: 28px;
     position: relative;
     margin: 0;
-    padding-left: 136px;
-    scroll-padding-left: 136px;
+    padding-left: 100px;
+    scroll-padding-left: 100px;
   }
 
   @media (max-width: 767px) {
