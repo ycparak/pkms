@@ -1,6 +1,9 @@
 <template>
   <div class="social">
     <div class="container">
+      <button
+        class="btn-darkmode"
+        @click="darkModeToggle()" />
       <a href="https://aemail.com/vw8" target="_blank" class="btn-social">
         <MailIcon class="icon icon-email" />
       </a>
@@ -25,15 +28,55 @@ export default {
   components: {
     MailIcon,
     TwitterIcon
+  },
+  methods: {
+    darkModeToggle() {
+      if (this.$colorMode.value === 'dark') {
+        this.$colorMode.preference = 'light'
+      } else {
+        this.$colorMode.preference = 'dark'
+      }
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.btn-darkmode {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition-property: box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  box-shadow: var(--icon-toggle-shadow);
+  position: relative;
+  top: -4px;
+  margin: 0;
+  &::after {
+    background: var(--text-color);
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    transform: translateX(var(--darkmode-toggle-translate));
+    @include daynight;
+  }
+  &:hover {
+    box-shadow: var(--icon-toggle-shadow-hover);
+  }
+  &:hover::after {
+    background: var(--neutral-color);
+  }
+}
+
 .social {
   color: var(--text-color);
   position: relative;
-  top: 8px;
   pointer-events: visible;
   @include daynight;
   @media (max-width: 768px) {
@@ -46,7 +89,7 @@ export default {
 }
 .btn-social {
   display: block;
-  margin: 8px 0;
+  margin: 4px 0;
   padding: 0;
   text-decoration: none;
   color: var(--text-color);
@@ -60,23 +103,17 @@ export default {
     outline: none;
     box-shadow: none;
   }
-  @media (max-width: 768px) {
-    display: inline-block;
-    margin: 0 8px;
-    &:first-child { margin-left: 0; }
-    &:last-child { margin-right: 0; }
-  }
 
   // Icons
   .icon {
     fill: var(--text-color);
-    width: 15px;
-    height: 15px;
+    width: 13px;
+    height: 13px;
     @include daynight;
   }
   .icon-email {
-    height: 17px;
-    width: 17px;
+    height: 14px;
+    width: 14px;
     fill: transparent;
     stroke: var(--text-color);
     @media (max-width: 768px) {
@@ -85,14 +122,10 @@ export default {
     }
   }
   .icon-twitter {
-    width: 16px;
-    height: 16px;
+    width: 13px;
+    height: 13px;
     fill: var(--text-color);
     stroke: var(--text-color);
-    @media (min-width: 768px) {
-      position: relative;
-      top: 1px;
-    }
   }
 }
 .btn-social:hover .icon {

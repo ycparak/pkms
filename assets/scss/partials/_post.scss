@@ -63,19 +63,6 @@
       }
     }
   }
-  ol, ul {
-    margin-left: 16px;
-    color: var(--essay-color);
-  }
-  ol { list-style-type: decimal; }
-  ul { list-style-type: disc; }
-  li {
-    margin: 8px 0;
-    padding-left: 4px;
-    color: var(--text-color);
-    > ul { margin-top: 4px; }
-    &:first-child { margin-top: 0; }
-  }
   hr {
     grid-column: 4;
     border: 1px solid var(--accent-color);

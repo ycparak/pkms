@@ -1,28 +1,17 @@
 <template>
   <div class="profile">
     <h1 class="title">
-      Yo, I’m Yusuf.<br>
-      Welcome. &#x2116;
+      Yo, I’m Yusuf. Welcome.
     </h1>
     <p>
-      I'm a software developer and designer working at Thinkst Applied Research. There, I mostly work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around. I’m also the maker of x which does y and has z metric.
-      <nuxt-link to="/story" class="link link__special">
-        <label>My story</label>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
-        </svg>
-      </nuxt-link>
+      I'm a software developer and designer working at Thinkst Applied Research. There, I work on <a href="https://canary.tools" class="link">Canary</a> &mdash; one of the most loved security products around.
     </p>
     <p>
-      I’m obsessed with improving myself, human behaivour, design and bootstrapped startups. If you’re interested in these topics too, I write a short weekly newsletter you’d probably love. It contains some writing by me and 3 curated links I think will go on to pass the <a href="https://en.wikipedia.org/wiki/Lindy_effect" class="link">Lindy test</a>. You can subscribe below.
-      <nuxt-link to="/story" class="link link__special">
-        <label>Previous newsletter issues</label>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
-        </svg>
-      </nuxt-link>
+      If Stripe's goal is to increase the GDP of the internet — I'm interested in finding and researching the areas where GDP growth is arbitrarge-able by small indie teams. My other area of focus is in deeply trying to understand and craft great software.
     </p>
-    <NewsletterForm />
+    <p>
+      If the intersection of that venn diagram (internet opportunity && software craftsmanship) weirdly turns you on — be sure to subscribe to my email list. Alas, I'm not on Facebook, Instagram or LinkedIn but you can also catch me on Twitter.
+    </p>
   </div>
 </template>
 
