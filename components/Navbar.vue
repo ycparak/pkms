@@ -21,13 +21,13 @@ export default {
   align-items: center;
   border-radius: 0;
   color: var(--text-color);
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--accent-color-2);
   border-left: none;
   pointer-events: none;
   border-radius: 12px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color-2);
   @include daynight;
 
   @media (max-width: 767px) {
