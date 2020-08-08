@@ -1,4 +1,5 @@
 ---
+depth: 2
 title: Figma
 date: 2020-06-21
 abstract: "Figma is an interface design and collaboration tool. Figma came out with a browser-first design tool that felt magical to use. It felt magical because until then it seemed crazy that you’d use the browser to do anything as GPU intensive as designing an interface. And what’s even crazier — in some instances the browser based Figma felt faster and lighter to use than the native desktop design tools of the time."

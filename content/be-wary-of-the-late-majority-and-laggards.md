@@ -1,4 +1,5 @@
 ---
+depth: 2
 title: Be Wary of the Late Majority and Laggards
 date: 2020-06-06
 abstract: "Be wary. Be wary, because every new person that now joins your cause didn't have the insight to initially believe in it nor seek it out. And some percentage of these people will join solely because everyone else is — it's these people you have to worry about. 

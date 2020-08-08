@@ -1,4 +1,5 @@
 ---
+depth: 2
 title: Good software
 date: 2020-06-21
 abstract: "What makes good software good?"

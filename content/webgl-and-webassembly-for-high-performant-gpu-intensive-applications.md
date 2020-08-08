@@ -1,4 +1,5 @@
 ---
+depth: 2
 title: WebGL and WebAssembly for high performant GPU intensive applications
 date: 2020-06-21
 abstract: "One of the recent and larger technological advancements in the world of browser based software has been the rise of WebGl and WebAssembly. These technologies allow you to cut past the browser and talk directly to the hardware. Meaning you can now build browser based GPU intensive applications and have them work exactly like a native app in your browser."

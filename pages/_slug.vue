@@ -6,12 +6,15 @@
 export default {
   name: 'Post',
   async fetch() {
-    // Get slug, query parameters and use to get our next request strings
+    // Determine posts to show
     const slug = this.$route.path.split('/')[1]
-    const queryParams = this.$route.query.col
+    let queryParams = this.$route.query.col
+    if (queryParams && typeof queryParams === 'string') {
+      queryParams = [queryParams]
+    }
     const requestStrings = this.determineRequestStrings(slug, queryParams)
 
-    // Determine posts to show
+    // Load and show posts
     if (this.prevRequestStrings === null) {
       // New page load (we don't have a prev query in state) - fetch all posts from query
       const posts = await this.fetchAllQueriedPosts(requestStrings)
@@ -50,15 +53,19 @@ export default {
   },
   methods: {
     determineRequestStrings(slug, queryParams) {
-      // Determine the next query we going to have to run
-      let requestStrings = [slug]
-      if (queryParams && typeof queryParams !== 'string') {
-        requestStrings = [].concat(slug, queryParams)
-      } else if (queryParams) {
-        requestStrings.push(queryParams)
+      if (!slug && !queryParams) {
+        // / (home) — show about column
+        return ['about']
+      } else if (slug && !queryParams) {
+        // /a-specific-post
+        return [slug]
+      } else if (!slug && queryParams) {
+        // /?col=some-query-param
+        return [].concat('about', queryParams)
+      } else if (slug && queryParams) {
+        // /a-specific-post?col=some-query-param
+        return [].concat(slug, queryParams)
       }
-
-      return requestStrings
     },
     async fetchAllQueriedPosts(requestStrings) {
       const queryPromises = requestStrings.map(async (query) => {
@@ -74,31 +81,26 @@ export default {
     },
     setColumns(posts) {
       const columns = posts.map((post) => {
-        return {
-          depth: 2,
-          title: post.title,
-          slug: post.path,
-          header: post.collection,
-          collection: post.collection,
-          post
-        }
+        return this.column(post)
       })
       this.$store.dispatch('columns/setColumns', columns)
     },
     addColumn(post) {
-      const column = {
-        depth: 2,
+      this.$store.dispatch('columns/addColumn', this.column(post))
+    },
+    removeColumn(slug) {
+      const columnToRemove = this.columns.findIndex(col => col.slug === slug)
+      this.$store.dispatch('columns/removeColumn', columnToRemove)
+    },
+    column(post) {
+      return {
+        depth: post.depth,
         title: post.title,
         slug: post.path,
         header: post.collection,
         collection: post.collection,
         post
       }
-      this.$store.dispatch('columns/addColumn', column)
-    },
-    removeColumn(slug) {
-      const columnToRemove = this.columns.findIndex(col => col.slug === slug)
-      this.$store.dispatch('columns/removeColumn', columnToRemove)
     }
   },
   head() {

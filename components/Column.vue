@@ -54,14 +54,7 @@
 
     <!-- Column content -->
     <div v-else class="section">
-      <Profile
-        v-if="column.depth === 0" />
-      <PostList
-        v-else-if="column.depth === 1"
-        :type="column.collection" />
-      <PostItem
-        v-else-if="column.depth === 2"
-        :post="column.post" />
+      <PostItem :post="column.post" />
     </div>
     <div v-if="$colorMode.value === 'dark'" class="column-footer" />
   </div>

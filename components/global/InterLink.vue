@@ -98,21 +98,25 @@ export default {
     }
   },
   methods: {
-    async handleInterlink() {
+    handleInterlink() {
       if (!this.isActiveLink) {
         this.handlePopover(false)
 
-        const slug = this.$route.params.slug
+        let slug = this.$route.params.slug
+        if (!slug) {
+          slug = '/'
+        }
         const currentQueries = this.$route.query.col
-        let newQuery = this.href
 
+        let newQuery = this.href
         if (newQuery === slug) { return }
 
         if (currentQueries !== undefined) {
           if (newQuery === currentQueries || currentQueries.includes(this.href)) { return }
           newQuery = [].concat(currentQueries, this.href)
         }
-        await this.$router.push({ name: 'slug', query: { col: newQuery } })
+
+        this.$router.push({ path: slug, query: { col: newQuery } })
       } else {
         this.scrollToLink()
       }

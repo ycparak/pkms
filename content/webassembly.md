@@ -1,4 +1,5 @@
 ---
+depth: 2
 title: WebAssembly
 date: 2020-06-21
 abstract: "WebAssembly is a binary format for machine code that was specifically designed with browsers in mind. Apps compiled to WebAssembly can run as fast as native apps."

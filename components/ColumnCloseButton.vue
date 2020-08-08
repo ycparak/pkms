@@ -35,7 +35,7 @@ export default {
       const { path } = this.$route
       const queryParams = this.$route.query.col
       if (this.index === 0 && (queryParams === undefined || queryParams.length === 0)) {
-        this.$router.push({ name: 'index' })
+        this.$router.push({ path: '/' })
       } else if (this.index === 0 && typeof queryParams === 'string') {
         this.$router.push({ path: `/${queryParams}` })
       } else if (this.index === 0) {
@@ -60,7 +60,7 @@ button {
   margin: 0;
   margin-right: 13px;
   border-radius: 50%;
-  background: var(--accent-color);
+  background: var(--accent-color-3);
 
   .icon {
     vertical-align: top;

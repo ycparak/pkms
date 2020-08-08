@@ -1,4 +1,5 @@
 ---
+depth: 2
 title: Craig Mod
 date: 2020-06-14
 abstract: "Craig Mod is a writer, author, publisher, designer and photographer. His writing has deeply influenced the way I think about technology and the role it plays in my life."
