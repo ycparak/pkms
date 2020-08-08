@@ -25,11 +25,7 @@ export default {
   },
   methods: {
     closeCol() {
-      if (this.column.depth === 2) {
-        this.changeRoute()
-      } else {
-        this.$store.dispatch('columns/removeColumn', this.index)
-      }
+      this.changeRoute()
     },
     changeRoute() {
       const { path } = this.$route

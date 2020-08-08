@@ -156,6 +156,7 @@ export default {
   width: 100%;
   position: sticky;
   top: 0;
+  background: var(--background-color);
   box-shadow: -10px 0px 20px 0px var(--background-color);
   @include daynight;
 

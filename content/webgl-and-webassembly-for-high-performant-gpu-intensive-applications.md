@@ -6,7 +6,7 @@ abstract: "One of the recent and larger technological advancements in the world 
 collection: Note
 collections: Notes
 ---
-One of the recent and larger technological advancements in the world of browser based software has been the rise of <inter-link href="webgl" space-after="true"></inter-link> and <inter-link href="webassembly"></inter-link>. These technologies allow you to cut past the browser and talk directly to the hardware. Meaning you can now build browser based GPU intensive applications and have them work exactly like a native app in your browser.
+One of the recent and larger technological advancements in the world of browser based software has been the rise of <inter-link href="webgl"></inter-link> and <inter-link href="webassembly"></inter-link>. These technologies allow you to cut past the browser and talk directly to the hardware. Meaning you can now build browser based GPU intensive applications and have them work exactly like a native app in your browser.
 
 One example of a company using this stack is <inter-link href="figma"></inter-link>. They've adopted this as their core stack to create a magical browser based design interface tool. Here’s Figma’s CTO Evan Wallace explaining this in a blog post 4 days after their launch (December 3, 2015):
 

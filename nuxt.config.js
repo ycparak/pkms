@@ -91,6 +91,9 @@ export default {
   */
   components: true,
   content: {
-    liveEdit: false
+    liveEdit: false,
+    markdown: {
+      rehypePlugins: ['rehype-minify-whitespace']
+    }
   }
 }

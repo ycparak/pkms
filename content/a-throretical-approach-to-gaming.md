@@ -6,7 +6,7 @@ abstract: "If we can design applications that help people solve their long term 
 collection: Essay
 collections: Essays
 ---
-If we can design applications that help people solve their long term goals, we can increase human output. This seems rather wishy-washy, and yet it’s perfectly reasonable, <inter-link href='good-software' space-after="true">notetaking</inter-link> when you think about it, to come to the conclusion that something like Ruby on Rails has helped increase human output. It’s obviously created thousands (millions?) of jobs. It’s helped people create great companies like Github, Airbnb and Twitter. It’s changed people’s lives. I suspect that [DHH](https://en.wikipedia.org/wiki/David_Heinemeier_Hansson) when creating Rails never thought that his baby could change the world quite like it has. <inter-link href='the-flywheel-effect-of-protesting-and-rioting'>Protestors may need rioters</inter-link>.
+If we can design applications that help people solve their long term goals, we can increase human output. This seems rather wishy-washy, and yet it’s perfectly reasonable, <inter-link href='good-software'></inter-link> when you think about it, to come to the conclusion that something like Ruby on Rails has helped increase human output. It’s obviously created thousands (millions?) of jobs. It’s helped people create great companies like Github, Airbnb and Twitter. It’s changed people’s lives. I suspect that [DHH](https://en.wikipedia.org/wiki/David_Heinemeier_Hansson) when creating Rails never thought that his baby could change the world quite like it has. <inter-link href='the-flywheel-effect-of-protesting-and-rioting'>Protestors may need rioters</inter-link>.
 
 
 

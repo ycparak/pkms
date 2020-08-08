@@ -1,6 +1,6 @@
 ---
 depth: 1
-title: All Posts
+title: All Notes
 date: 2020-08-04
 abstract:
 collection: Note

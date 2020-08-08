@@ -1,26 +1,16 @@
 <template>
-  <Fragment>
-    <PostListItem
+  <ul>
+    <li
       v-for="post in posts"
-      :key="post.id"
-      :post="post" />
-  </Fragment>
+      :key="post.id">
+      <inter-link :included-post="post" />
+    </li>
+  </ul>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
-
 export default {
   name: 'PostList',
-  components: {
-    Fragment
-  },
-  props: {
-    type: {
-      type: String,
-      required: true
-    }
-  },
   data() {
     return {
       posts: []
@@ -28,23 +18,10 @@ export default {
   },
   async mounted() {
     let posts = []
-
-    // Filter varriables
-    const collection = this.type.charAt(0).toUpperCase() + this.type.slice(1)
-    const fieldsRequired = ['title', 'date', 'path', 'excerpt', 'readingTime', 'quote', 'createdAt']
-
-    if (collection === 'All') {
-      posts = await this.$content()
-        .only(fieldsRequired)
-        .sortBy('createdAt', 'desc')
-        .fetch()
-    } else {
-      posts = await this.$content()
-        .only(fieldsRequired)
-        .where({ collections: collection })
-        .sortBy('createdAt', 'desc')
-        .fetch()
-    }
+    posts = await this.$content()
+      .where({ depth: 2 })
+      .sortBy('createdAt', 'desc')
+      .fetch()
 
     this.posts = posts
   }

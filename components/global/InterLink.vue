@@ -1,28 +1,27 @@
 <template>
-  <span
-    class="interlink-container"
-    :class="{
-      'space-after' : showSpaceAfter,
-      'space-before' : showSpaceBefore,
-    }">
+  <Fragment>
     <a
       ref="popoverReference"
-      :href="`/${href}`"
+      :href="getLink"
       class="interlink"
-      :class="`${getPostClass} ${linkIsActivated}`"
+      :class="`${classnames}` "
       @click.prevent="handleInterlink()"
       @mouseover="handlePopover(true)"
       @mouseleave="handlePopover(false)">
-      {{ post.title }}
+      <slot>{{ post.title }}</slot>
     </a>
-  </span>
+  </Fragment>
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment'
 import VueScrollTo from 'vue-scrollto'
 
 export default {
   name: 'Link',
+  components: {
+    Fragment
+  },
   props: {
     href: {
       type: String,
@@ -34,19 +33,15 @@ export default {
       required: false,
       default: 'true'
     },
-    spaceAfter: {
-      type: String,
+    includedPost: {
+      type: Object,
       required: false,
-      default: 'false'
+      default: null
     }
   },
   data() {
     return {
-      post: {
-        collection: 'note',
-        title: this.href.split('-').join(' ')
-      },
-      isPopoverVisible: false,
+      post: {},
       popoverOptions: {
         popoverReference: null,
         placement: 'right',
@@ -55,9 +50,11 @@ export default {
     }
   },
   computed: {
-    linkIsActivated() {
-      if (this.isActiveLink) { return 'active' }
-      return ''
+    getLink() {
+      if (this.includedPost) {
+        return `/${this.includedPost.path}`
+      }
+      return `/${this.href}`
     },
     isActiveLink() {
       const slug = this.$route.params.slug
@@ -72,30 +69,24 @@ export default {
       }
       return false
     },
-    showSpaceBefore() {
-      const showSpace = this.spaceBefore.toLowerCase()
-      if (showSpace && showSpace === 'false') { return false }
-      return true
-    },
-    showSpaceAfter() {
-      const showSpace = this.spaceAfter.toLowerCase()
-      if (showSpace && showSpace === 'true') { return true }
-      return false
-    },
-    getPostClass() {
-      if (this.post) {
-        return this.post.collection.toLowerCase()
-      }
-      return ''
+    classnames() {
+      let classes = ''
+      if (this.isActiveLink) { classes = 'active' }
+      if (this.spaceBefore) { classes = `${classes} space-before` }
+      return classes
     }
   },
   async mounted() {
-    try {
-      this.post = await this.$content(this.href).fetch()
-      this.popoverOptions.popoverReference = this.$refs.popoverReference
-    } catch (error) {
-      console.log(error)
+    if (this.includedPost) {
+      this.post = this.includedPost
+    } else {
+      try {
+        this.post = await this.$content(this.href).fetch()
+      } catch (error) {
+        console.log(error)
+      }
     }
+    this.popoverOptions.popoverReference = this.$refs.popoverReference
   },
   methods: {
     handleInterlink() {
@@ -143,9 +134,8 @@ export default {
       VueScrollTo.scrollTo(`#column-${index}`, 350, options)
     },
     handlePopover(show) {
-      this.isPopoverVisible = show
       const popover = {
-        isPopoverVisible: this.isPopoverVisible,
+        isPopoverVisible: show,
         post: this.post,
         popoverOptions: this.popoverOptions
       }
@@ -156,36 +146,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.interlink-container {
-  display: inline-block;
-  &.space-before { margin-left: 3px; }
-  &.space-after { margin-right: 3px; }
-}
 .interlink {
   text-decoration: none !important;
-  background: var(--accent-color);
-  padding: 0 4px 1px 4px;
-  border-radius: 4px;
-  font-size: clamp(14px, 2.5vw, 15px);
   font-weight: 600;
-  hyphens: auto;
-  &:hover {
-    background: var(--accent-color-2);
-  }
-
-  &.essay { color: var(--essay-color); }
-  &.tweetstorm { color: var(--tweetstorm-color); }
-  &.project { color: var(--project-color); }
-  &.note { color: var(--note-color); }
-  &.quote { color: var(--quote-color); }
-
-  &.active {
-    color: var(--background-color);
-    &.essay { background: var(--essay-color); }
-    &.tweetstorm { background: var(--tweetstorm-color); }
-    &.project { background: var(--project-color); }
-    &.note { background: var(--note-color); }
-    &.quote { background: var(--quote-color); }
-  }
+  color: var(--note-color);
+  white-space: normal;
+  margin: 0;
 }
 </style>
