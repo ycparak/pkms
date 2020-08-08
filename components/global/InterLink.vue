@@ -151,6 +151,6 @@ export default {
   font-weight: 600;
   color: var(--note-color);
   white-space: normal;
-  margin: 0;
+  // margin: 0;
 }
 </style>
