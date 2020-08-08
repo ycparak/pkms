@@ -2,7 +2,7 @@
   <Fragment>
     <a
       ref="popoverReference"
-      :href="getLink"
+      :href="`/${getLink}`"
       class="interlink"
       :class="`${classnames}` "
       @click.prevent="handleInterlink()"
@@ -52,9 +52,9 @@ export default {
   computed: {
     getLink() {
       if (this.includedPost) {
-        return `/${this.includedPost.path}`
+        return this.includedPost.path.split('/')[1]
       }
-      return `/${this.href}`
+      return this.href
     },
     isActiveLink() {
       const slug = this.$route.params.slug
@@ -62,9 +62,9 @@ export default {
 
       if (currentQueries === undefined) {
         return ''
-      } else if (currentQueries === this.href || (currentQueries.includes(this.href) && typeof currentQueries !== 'string')) {
+      } else if (currentQueries === this.getLink || (currentQueries.includes(this.getLink) && typeof currentQueries !== 'string')) {
         return true
-      } else if (this.href === this.$route.params.slug) {
+      } else if (this.getLink === this.$route.params.slug) {
         return true
       }
       return false
@@ -99,12 +99,12 @@ export default {
         }
         const currentQueries = this.$route.query.col
 
-        let newQuery = this.href
+        let newQuery = this.getLink
         if (newQuery === slug) { return }
 
         if (currentQueries !== undefined) {
-          if (newQuery === currentQueries || currentQueries.includes(this.href)) { return }
-          newQuery = [].concat(currentQueries, this.href)
+          if (newQuery === currentQueries || currentQueries.includes(this.getLink)) { return }
+          newQuery = [].concat(currentQueries, this.getLink)
         }
 
         this.$router.push({ path: slug, query: { col: newQuery } })
@@ -114,7 +114,7 @@ export default {
     },
     scrollToLink() {
       const cols = this.$store.getters['columns/getColumns']
-      const index = cols.map(c => c.slug).indexOf(`/${this.href}`)
+      const index = cols.map(c => c.slug).indexOf(`/${this.getLink}`)
       const postIndex = cols.map(c => c.slug).indexOf(`/${this.post.slug}`)
 
       let offset = (index * -32) - 136

@@ -3,7 +3,9 @@
     <li
       v-for="post in posts"
       :key="post.id">
-      <inter-link :included-post="post" />
+      <inter-link :included-post="post">
+        {{ post.title }}
+      </inter-link>
     </li>
   </ul>
 </template>
