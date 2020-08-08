@@ -54,15 +54,19 @@ a {
 }
 
 ol, ul {
-  margin-left: 16px;
-  color: var(--essay-color);
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 40px;
+  font-size: 16px;
+  line-height: 27px;
+  > ol, ul {
+    margin-left: 28px;
+  }
 }
 ol { list-style-type: decimal; }
 ul { list-style-type: disc; }
 li {
-  margin: 8px 0;
-  padding-left: 4px;
+  padding-left: 0;
   color: var(--text-color);
-  > ul { margin-top: 4px; }
   &:first-child { margin-top: 0; }
 }

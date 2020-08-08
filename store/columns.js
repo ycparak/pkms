@@ -1,5 +1,6 @@
 export const state = () => ({
   loading: true,
+  isPopoverVisible: false,
   popover: null,
   columns: []
 })
