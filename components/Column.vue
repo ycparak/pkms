@@ -126,7 +126,7 @@ export default {
       const nextNumHiddenCols = columns.length - index - 1
       const sizeOfNextCols = nextNumHiddenCols * labelSize
 
-      if ((colStart + labelSize) > (gridVW + x - sizeOfNextCols)) {
+      if (colStart > (gridVW + x - sizeOfNextCols)) {
         return false
       }
       return true
@@ -156,8 +156,8 @@ export default {
   width: 100%;
   position: sticky;
   top: 0;
-  background: var(--background-color);
   box-shadow: -10px 0px 20px 0px var(--background-color);
+  background: var(--background-offset-color);
   @include daynight;
 
   @media (max-width: 767px) {
@@ -201,12 +201,13 @@ export default {
   bottom: 0;
   height: calc(100vh - 28px - 26px);
   box-shadow: -10px 0px 20px 0px var(--background-color);
-  background-color:  var(--background-color);
+  background-color:  var(--background-offset-color);
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   width: 440px;
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--accent-color-2);
   border-right: none;
+  z-index: 900;
 
   .header {
     height: 40px;

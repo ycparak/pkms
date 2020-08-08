@@ -1,18 +1,22 @@
 <template>
-  <ul>
-    <li
+  <Fragment>
+    <post-list-item
       v-for="post in posts"
-      :key="post.id">
-      <inter-link :included-post="post">
-        {{ post.title }}
-      </inter-link>
-    </li>
-  </ul>
+      :key="post.id"
+      :included-post="post">
+      {{ post.title }}
+    </post-list-item>
+  </Fragment>
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment'
+
 export default {
   name: 'PostList',
+  components: {
+    Fragment
+  },
   data() {
     return {
       posts: []

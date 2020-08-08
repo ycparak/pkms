@@ -31,22 +31,16 @@ export default {
       const { path } = this.$route
       const queryParams = this.$route.query.col
       if (this.index === 0 && (queryParams === undefined || queryParams.length === 0)) {
-        console.log(0, 'no query params')
         this.$router.push({ path: '/' })
       } else if (this.index === 0 && typeof queryParams === 'string') {
-        console.log(0, 'string param')
         this.$router.push({ path: `/${queryParams}` })
       } else if (this.index === 0) {
-        console.log(0, 'many params')
         const firstQueryParam = queryParams.shift()
         this.$router.push({ path: `/${firstQueryParam}`, query: { col: queryParams } })
       } else if (this.index > 0 && typeof queryParams === 'string') {
-        console.log(10, 'string params')
         this.$router.push({ name: 'slug' })
       } else if (this.index > 0) {
-        console.log(10, 'many params')
         const queries = queryParams.filter(query => query !== this.column.slug.split('/')[1])
-        console.log(queries)
         this.$router.push({ path, query: { col: queries } })
       }
     }

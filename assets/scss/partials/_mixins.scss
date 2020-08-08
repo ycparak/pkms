@@ -5,7 +5,7 @@
 }
 
 @mixin colors {
-  background-color: var(--background-color);
+  background: var(--background-color);
   color: var(--text-color);
 }
 

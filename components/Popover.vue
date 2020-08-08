@@ -71,7 +71,7 @@ export default {
   background: var(--accent-color);
   border-radius: 8px;
   color: var(--text-color);
-  box-shadow: var(--card-shadow);
   max-width: 480px;
+  box-shadow: var(--tooltip-shadow);
 }
 </style>

@@ -5,7 +5,6 @@
   --icon-toggle-shadow-hover: inset 0px 0px 0px 1.5px var(--neutral-color);
   --icon-toggle-shadow: inset 0px 0px 0px 1.5px var(--text-color);
   --grid-column-shadow: 6px 0 16px 0 var(--background-color);
-  --card-shadow: 6px 0 16px 0 #eee;
   
   --tablet: 768px;
 
@@ -25,7 +24,8 @@
 }
 
 .dark-mode {
-  --background-color: #202124;
+  --background-color: hsl(225, 6%, 13%);
+  --background-offset-color: hsl(235, 6%, 13%);
   --accent-color: #292A2D;
   --accent-color-1: #2E2F33;
   --accent-color-2: #35363B;
@@ -34,7 +34,7 @@
   --current-color: var(--accent-color);
   --current-fill-color: var(--text-color);
 
-  --card-shadow: 0 0 20px 0 #111;
+  --tooltip-shadow: 0 4px 12px 0 var(--background-color);
   --btn-shadow: 0 4px 12px 0 var(--background-color);
 
   --darkmode-toggle-translate: -52.5%;

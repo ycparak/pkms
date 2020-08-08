@@ -1,10 +1,12 @@
 <template>
   <div class="post">
-    <nuxt-link
+    <a
+      :href="`/${getLink}`"
       class="post-link"
-      :to="post.path">
+      :class="`${classnames}`"
+      @click.prevent="handleInterlink()">
       {{ post.title }}
-    </nuxt-link>
+    </a>
     <div class="meta">
       <span class="post-subtitle">{{ $moment(post.createdAt).format('DD.MM.YY') }}</span>
     </div>
@@ -12,18 +14,26 @@
 </template>
 
 <script>
+import interLinks from '@/mixins/interLinks'
+
 export default {
-  name: 'PostItem',
+  name: 'Link',
+  mixins: [interLinks],
   props: {
-    post: {
+    href: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    spaceBefore: {
+      type: String,
+      required: false,
+      default: 'true'
+    },
+    includedPost: {
       type: Object,
-      required: true
-    }
-  },
-  methods: {
-    cropExcerpt(excerpt) {
-      if (excerpt.length > 128) { return `${excerpt.substring(0, 128)}...` }
-      return excerpt
+      required: false,
+      default: null
     }
   }
 }
@@ -31,36 +41,28 @@ export default {
 
 <style lang="scss" scoped>
 .post {
-  padding: 20px 36px;
-  &:first-child { margin-top: 8px; }
-  &:last-child { margin-bottom: 8px; }
+  padding: 16px 0;
+  &:first-child { padding-top: 0; }
+  &:last-child { padding-bottom: 0; }
 }
 .post-link {
   display: inline-block;
   position: relative;
   color: var(--text-color);
-  font-weight: 550;
+  font-weight: 449;
   line-height: 24px;
-  font-size: 17px;
+  font-size: 16px;
   cursor: pointer;
   transition: all .3s ease;
   text-decoration: underline;
-  text-decoration-color: transparent;
+  text-decoration-color: transparent !important;
   @include daynight;
   &:active, &:hover, &:focus {
     outline: none;
     box-shadow: none;
     border: none;
-    text-decoration-color: var(--accent-color-4);
+    text-decoration-color: var(--accent-color-4) !important;
   }
-}
-.post-content {
-  padding-bottom: 0;
-  margin: 0;
-  font-size: clamp(14px, 2.5vw, 15px);
-  line-height: 1.4;
-  color: var(--neutral-color);
-  @include daynight;
 }
 .meta {
   margin: 0;

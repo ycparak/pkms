@@ -20,6 +20,5 @@ export default {
   background: var(--text-color);
   border-radius: 50%;
   pointer-events: visible;
-  box-shadow: var(--btn-shadow);
 }
 </style>
