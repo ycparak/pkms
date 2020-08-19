@@ -32,7 +32,7 @@ export default {
   font-size: 15px;
   font-weight: 500;
   line-height: 28px;
-  background: var(--accent-color);
+  background-color: var(--accent-color);
   color: var(--text-color);
   @include daynight;
 

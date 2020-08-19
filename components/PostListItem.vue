@@ -85,7 +85,7 @@ export default {
 
   &:hover, &.active {
     .icon .icon-circle {
-      background: var(--note-color);
+      background-color: var(--note-color);
     }
   }
 }

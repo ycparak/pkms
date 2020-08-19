@@ -37,8 +37,8 @@ export default {
   },
   computed: {
     getDate() {
-      if (this.column.post && this.column.post.date) {
-        return this.$moment(this.column.post.date).format('DD.MM.YYYY')
+      if (this.column.post && this.column.post.updatedAt) {
+        return this.$moment(this.column.post.updatedAt).format('DD.MM.YYYY')
       }
       return null
     }

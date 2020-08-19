@@ -53,7 +53,7 @@ button {
   margin: 0;
   margin-right: 13px;
   border-radius: 50%;
-  background: var(--accent-color-3);
+  background-color: var(--accent-color-3);
 
   .icon {
     vertical-align: top;
@@ -66,7 +66,7 @@ button {
   }
 
   &:hover {
-    background: #FB5F55;
+    background-color: #FB5F55;
     .icon {
       opacity: 1;
     }

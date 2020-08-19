@@ -41,8 +41,10 @@ export default {
   @include daynight;
   text-decoration: underline;
   text-decoration-color: transparent !important;
+  padding: 0 1px;
+  margin: 0 -.5px;
   &.active {
-    background: var(--note-color);
+    background-color: var(--note-color);
     color: var(--background-color);
   }
   &:hover, &:active, &:focus {

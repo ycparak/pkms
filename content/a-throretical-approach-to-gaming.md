@@ -1,7 +1,6 @@
 ---
 depth: 2
 title: A Theoretical Approach to Gamification
-date: 2020-04-10
 abstract: "If we can design applications that help people solve their long term goals, we can increase human output. This seems rather wishy-washy, and yet it’s perfectly reasonable, notetaking when you think about it, to come to the conclusion that something like Ruby on Rails has helped increase human output. It’s obviously created thousands (millions?) of jobs. It’s helped people create great companies like Github, Airbnb and Twitter. It’s changed people’s lives. I suspect that DHH when creating Rails never thought that his baby could change the world quite like it has."
 collection: Essay
 collections: Essays

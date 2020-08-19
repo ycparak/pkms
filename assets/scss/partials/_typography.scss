@@ -21,7 +21,7 @@ p {
   &:last-child { margin-bottom: 0; }
   @include daynight;
   strong {
-    background: var(--accent-color-3);
+    font-weight: 649;
   }
 }
 
