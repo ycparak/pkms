@@ -1,6 +1,7 @@
 <template>
   <div class="navbar">
     <NavbarProfile />
+    <NavbarControls />
     <NavbarSocial />
   </div>
 </template>

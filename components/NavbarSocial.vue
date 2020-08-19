@@ -1,9 +1,12 @@
 <template>
   <div class="social">
     <div class="container">
-      <button
+      <!-- <button
         class="btn-darkmode"
         @click="darkModeToggle()" />
+      <a href="https://aemail.com/vw8" target="_blank" class="btn-social">
+        <RssIcon class="icon icon-rss" />
+      </a> -->
       <a href="https://aemail.com/vw8" target="_blank" class="btn-social">
         <MailIcon class="icon icon-email" />
       </a>
@@ -21,12 +24,13 @@
 </template>
 
 <script>
-import { MailIcon, TwitterIcon } from 'vue-feather-icons'
+import { MailIcon, RssIcon, TwitterIcon } from 'vue-feather-icons'
 
 export default {
-  name: 'SocialButtons',
+  name: 'NavbarSocial',
   components: {
     MailIcon,
+    // RssIcon,
     TwitterIcon
   },
   methods: {
@@ -120,6 +124,12 @@ export default {
       position: relative;
       top: 1px;
     }
+  }
+  .icon-rss {
+    width: 15px;
+    height: 15px;
+    fill: var(--text-color);
+    stroke: var(--text-color);
   }
   .icon-twitter {
     width: 13px;
