@@ -59,7 +59,38 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
     '@nuxt/content',
+    '@nuxtjs/feed',
     ['vue-scrollto/nuxt', { duration: 300 }]
+  ],
+  feed: [
+    {
+      path: '/feed.xml',
+      async create(feed) {
+        feed.options = {
+          title: 'Yusuf Parak (@ycparak)',
+          description: "Yusuf Parak's brain",
+          link: process.env.NODE_ENV === 'production' ? 'https://www.ycparak.com/feed.xml' : 'localhost:3000/feed.xml'
+        }
+
+        // eslint-disable-next-line global-require
+        const { $content } = require('@nuxt/content')
+        const posts = await $content().fetch()
+
+        posts.forEach((post) => {
+          const url = process.env.NODE_ENV === 'production' ? `https://www.ycparak.com/${post.slug}` : `localhost:3000/${post.slug}`
+          feed.addItem({
+            title: post.title,
+            id: url,
+            link: url,
+            description: post.blurb,
+            content: post.bodyPlainText
+          })
+        })
+      },
+
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2'
+    }
   ],
   hooks: {
     'content:file:beforeInsert': (document) => {
@@ -67,6 +98,7 @@ export default {
         const readingTime = require('reading-time')
         const { text } = readingTime(document.text)
         document.readingTime = text
+        document.bodyPlainText = document.text
       }
     }
   },

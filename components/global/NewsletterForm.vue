@@ -16,7 +16,7 @@ export default {
 <style lang="scss" scoped>
 .form {
   position: relative;
-  margin: 12px -12px 0 -12px;
+  margin: 16px -12px 0 -12px;
   background: var(--accent-color-1);
   border-radius: 6px;
   overflow: hidden;
