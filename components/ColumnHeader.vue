@@ -2,7 +2,10 @@
   <div
     class="header"
     :class="{ dark : $colorMode.value === 'dark' }">
-    <ColumnCloseButton v-if="column.depth !== 0" :index="index" :column="column" />
+    <ColumnCloseButton
+      v-if="column.depth !== 0"
+      :index="index"
+      :column="column" />
     <div
       class="header-content"
       :class="{ push : column.depth === 0 }">
@@ -34,9 +37,6 @@ export default {
   },
   computed: {
     getDate() {
-      if (this.column && this.column.date) {
-        return this.column.date
-      }
       if (this.column.post && this.column.post.date) {
         return this.$moment(this.column.post.date).format('DD.MM.YYYY')
       }

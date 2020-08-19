@@ -1,35 +1,34 @@
 <template>
-  <div class="post">
+  <Fragment>
     <a
       :href="`/${getLink}`"
-      class="post-link"
+      class="post"
       :class="`${classnames}`"
       @click.prevent="handleInterlink()">
-      {{ post.title }}
+      <div class="icon">
+        <span class="icon-circle" />
+      </div>
+      <div class="content">
+        <div class="content-title">{{ includedPost.title }}</div>
+        <div class="content-meta">
+          <span class="post-subtitle">{{ $moment(includedPost.updatedAt).format('DD.MM.YYYY') }}</span>
+        </div>
+      </div>
     </a>
-    <div class="meta">
-      <span class="post-subtitle">{{ $moment(post.createdAt).format('DD.MM.YY') }}</span>
-    </div>
-  </div>
+  </Fragment>
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment'
 import interLinks from '@/mixins/interLinks'
 
 export default {
   name: 'Link',
+  components: {
+    Fragment
+  },
   mixins: [interLinks],
   props: {
-    href: {
-      type: String,
-      required: false,
-      default: ''
-    },
-    spaceBefore: {
-      type: String,
-      required: false,
-      default: 'true'
-    },
     includedPost: {
       type: Object,
       required: false,
@@ -41,37 +40,53 @@ export default {
 
 <style lang="scss" scoped>
 .post {
-  padding: 16px 0;
-  &:first-child { padding-top: 0; }
-  &:last-child { padding-bottom: 0; }
-}
-.post-link {
-  display: inline-block;
-  position: relative;
-  color: var(--text-color);
-  font-weight: 449;
-  line-height: 24px;
-  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none !important;
+  margin: 12px 0;
   cursor: pointer;
-  transition: all .3s ease;
-  text-decoration: underline;
-  text-decoration-color: transparent !important;
   @include daynight;
-  &:active, &:hover, &:focus {
-    outline: none;
-    box-shadow: none;
-    border: none;
-    text-decoration-color: var(--accent-color-4) !important;
+  &:first-child { margin-top: 0; }
+  &:last-child { margin-bottom: 0; }
+
+  .icon {
+    position: relative;
+    margin-right: 24px;
+    &-circle {
+      @include daynight;
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border: 1px solid var(--note-color);
+      border-radius: 50%;
+      top: 7px;
+    }
   }
-}
-.meta {
-  margin: 0;
-  padding: 0;
-  line-height: 6px;
-  font-weight: 400;
-  font-size: 14px;
-  margin-top: 8px;
-  opacity: .7;
-  @include daynight;
+  .content {
+    display: flex;
+    flex-direction: column;
+    &-title {
+      color: var(--text-color);
+      font-weight: 449;
+      line-height: 24px;
+      font-size: 16px;
+    }
+    &-meta {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      line-height: 27px;
+      font-weight: 400;
+      font-size: 14px;
+      opacity: .7;
+      @include daynight;
+    }
+  }
+
+  &:hover, &.active {
+    .icon .icon-circle {
+      background: var(--note-color);
+    }
+  }
 }
 </style>

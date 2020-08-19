@@ -213,7 +213,7 @@ export default {
     height: 40px;
     width: 100%;
     padding: 12px 13px;
-    border-bottom: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color-2);
   }
 
   .label {

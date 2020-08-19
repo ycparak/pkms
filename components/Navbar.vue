@@ -1,7 +1,6 @@
 <template>
   <div class="navbar">
     <NavbarProfile />
-    <!-- <NavbarControls :show-panel="showPanel" /> -->
     <NavbarSocial />
   </div>
 </template>

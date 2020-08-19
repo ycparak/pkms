@@ -1,5 +1,5 @@
 <template>
-  <button @click="closeCol()">
+  <button @click="changeRoute(index, column)">
     <XIcon class="icon" />
   </button>
 </template>
@@ -24,9 +24,6 @@ export default {
     }
   },
   methods: {
-    closeCol() {
-      this.changeRoute()
-    },
     changeRoute() {
       const { path } = this.$route
       const queryParams = this.$route.query.col

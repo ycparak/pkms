@@ -1,11 +1,11 @@
 <template>
   <Fragment>
-    <post-list-item
+    <PostListItem
       v-for="post in posts"
       :key="post.id"
       :included-post="post">
       {{ post.title }}
-    </post-list-item>
+    </PostListItem>
   </Fragment>
 </template>
 
@@ -26,9 +26,8 @@ export default {
     let posts = []
     posts = await this.$content()
       .where({ depth: 2 })
-      .sortBy('createdAt', 'desc')
+      .sortBy('updatedAt', 'desc')
       .fetch()
-
     this.posts = posts
   }
 }

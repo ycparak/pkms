@@ -26,9 +26,9 @@ export default {
       this.addColumn(nextPost)
     } else if (requestStrings.length < this.prevRequestStrings.length) {
       // Next query is shorter than prev query - We don't need to fetch anything rather we have to get rid of a post
-      const postToRemove = this.prevRequestStrings.filter(prevString => !requestStrings.includes(prevString))
+      const postToRemove = await this.prevRequestStrings.filter(prevString => !requestStrings.includes(prevString))
       const postSlug = `/${postToRemove}`
-      this.removeColumn(postSlug)
+      await this.removeColumn(postSlug)
     }
 
     this.prevRequestStrings = requestStrings
@@ -44,6 +44,9 @@ export default {
       return this.$store.getters['columns/getColumns']
     },
     getColumnTitles() {
+      if (this.columns.length === 1 && this.columns[0].slug === '/about') {
+        return 'Yusuf Parak (@ycparak)'
+      }
       const titles = Array.from(new Set(this.columns.map(c => c.title)))
       return titles.join(' \u2192 ')
     }
@@ -88,9 +91,9 @@ export default {
     addColumn(post) {
       this.$store.dispatch('columns/addColumn', this.column(post))
     },
-    removeColumn(slug) {
-      const columnToRemove = this.columns.findIndex(col => col.slug === slug)
-      this.$store.dispatch('columns/removeColumn', columnToRemove)
+    async removeColumn(slug) {
+      const columnToRemove = await this.columns.findIndex(col => col.slug === slug)
+      await this.$store.dispatch('columns/removeColumn', columnToRemove)
     },
     column(post) {
       return {
