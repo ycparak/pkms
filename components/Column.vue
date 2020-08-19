@@ -157,7 +157,7 @@ export default {
   position: sticky;
   top: 0;
   box-shadow: -10px 0px 20px 0px var(--background-color);
-  background: var(--background-offset-color);
+  background-color: var(--background-offset-color);
   @include daynight;
 
   @media (max-width: 767px) {

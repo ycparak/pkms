@@ -68,7 +68,7 @@ export default {
   position: absolute;
   display: block;
   z-index: 800 !important;
-  background: var(--accent-color);
+  background-color: var(--accent-color);
   border-radius: 8px;
   color: var(--text-color);
   max-width: 480px;

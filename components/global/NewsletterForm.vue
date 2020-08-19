@@ -1,10 +1,8 @@
 <template>
   <form class="form">
-    <div class="form__group">
-      <input id="email" type="email" class="form__input" placeholder="Email Address">
-    </div>
-    <button class="form__button" type="submit">
-      Submit
+    <input id="email" type="email" class="input" placeholder="Email">
+    <button class="button" type="submit">
+      Subscribe
     </button>
   </form>
 </template>
@@ -17,44 +15,41 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  width: 100%;
-  margin: 28px 0;
-}
-.form__input {
-  width: 100%;
-  height: 36px;
-  border-radius: 2px;
-  padding: 0 12px;
-  border: 1px solid var(--accent-color);
-  box-shadow: none;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 28px;
-  background: var(--accent-color);
-  color: var(--text-color);
-  @include daynight;
-
-  &::placeholder {
-    color: var(--text-color);
-    opacity: .7;
+  position: relative;
+  margin: 12px -12px 0 -12px;
+  background: var(--accent-color-1);
+  border-radius: 6px;
+  overflow: hidden;
+  .input {
+    background: var(--accent-color-1);
+    color: #fff;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    width: 100%;
+    padding: 0 132px 0 12px;
+    transition: all .3s ease;
+    &::placeholder { color: #fff }
+    &:focus, &:active {
+      font-weight: 600;
+      color: var(--note-color);
+    }
   }
-  &:focus, &:active {
-    outline: none !important;
-    box-shadow: none !important;
+  .button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 20px;
+    font-size: 11px;
+    background: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: var(--accent-color-1);
   }
-}
-.form__button {
-  border-radius: 2px;
-  border: none;
-  height: 36px;
-  padding: 0 12px;
-  line-height: 28px;
-  margin-left: 8px;
-  font-size: 15px;
-  font-weight: 500;
-  @include colors-inverted;
-  background-color: var(--current-fill-color);
 }
 </style>

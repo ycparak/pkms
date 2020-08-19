@@ -56,7 +56,7 @@ export default {
   top: -4px;
   margin: 0;
   &::after {
-    background: var(--text-color);
+    background-color: var(--text-color);
     content: "";
     position: absolute;
     top: -10px;
@@ -70,7 +70,7 @@ export default {
     box-shadow: var(--icon-toggle-shadow-hover);
   }
   &:hover::after {
-    background: var(--neutral-color);
+    background-color: var(--neutral-color);
   }
 }
 
@@ -96,7 +96,7 @@ export default {
   height: 28px;
   width: 28px;
   border-radius: 50%;
-  background: transparent;
+  background-color: none;
   &:first-child { margin-top: 0; }
   &:last-child { margin-bottom: 0; }
   &:hover, &:focus, &:active {
