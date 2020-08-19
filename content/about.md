@@ -14,3 +14,4 @@ If <inter-link href="stripe">Stripe</inter-link>’s goal is to increase the GDP
 
 If the intersection of that venn diagram, `internet opportunity && software craftsmanship`, weirdly turns you on — be sure to subscribe to my email list.
 
+<newsletter-form></newsletter-form>
