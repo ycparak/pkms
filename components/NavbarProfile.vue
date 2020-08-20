@@ -20,5 +20,9 @@ export default {
   background-color: var(--text-color);
   border-radius: 50%;
   pointer-events: visible;
+  @media (max-width: 768px) {
+    height: 28px;
+    width: 28px;
+  }
 }
 </style>

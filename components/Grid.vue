@@ -60,8 +60,7 @@ export default {
   }
 
   @media (max-width: 767px) {
-    padding: 16px;
-    padding-top: 92px;
+    padding: calc(4vw + 60px) 4vw 4vw 4vw;
     scroll-padding-left: 16px;
   }
 }

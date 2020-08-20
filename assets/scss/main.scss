@@ -39,7 +39,7 @@ button, input {
 
 .section {
   scroll-snap-type: y mandatory;
-  height: calc(100vh - 16px - 16px - 16px - 108px);
+  height: calc(100vh - 8vw - 60px - 42px);
   overflow-y: auto;
   position: relative;
   z-index: 500;
