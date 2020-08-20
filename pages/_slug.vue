@@ -45,7 +45,7 @@ export default {
     },
     getColumnTitles() {
       if (this.columns.length === 1 && this.columns[0].slug === '/about') {
-        return 'Yusuf Parak (@ycparak)'
+        return 'Yusuf Parak (@ycpso)'
       }
       const titles = Array.from(new Set(this.columns.map(c => c.title)))
       return titles.join(' \u2192 ')

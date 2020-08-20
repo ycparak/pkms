@@ -1,10 +1,8 @@
 ---
 depth: 2
 title: Craig Mod
-date: 2020-06-14
 abstract: "Craig Mod is a writer, author, publisher, designer and photographer. His writing has deeply influenced the way I think about technology and the role it plays in my life."
 collection: Note
-collections: Notes
 ---
 Craig Mod is a writer, photographer, designer, author and publisher. He was an early member of the original Flipboard team. His writing has deeply influenced the way I think about two things:
 1. Technology and the [role it plays in my life](https://craigmod.com/essays/offscreen_interview/). 

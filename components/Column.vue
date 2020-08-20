@@ -106,8 +106,10 @@ export default {
       return this.$store.getters['columns/isLoading']
     },
     columnScrolledOver() {
-      const { index, gridVW, x } = this
+      const { index, gridVW, vw, x } = this
       const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
+
+      if (vw <= 767) { return false }
 
       const adjColEnd = (index + 1) * ((colWidth + margin) - labelSize)
       const scrollThreshold = adjColEnd - (labelSize)
@@ -120,6 +122,8 @@ export default {
     columnInView() {
       const { index, vw, x, columns } = this
       const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
+
+      if (vw <= 767) { return true }
 
       const colStart = index * (colWidth + margin)
       const gridVW = vw - gridStartPos

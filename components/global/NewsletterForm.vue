@@ -34,6 +34,10 @@ export default {
       font-weight: 600;
       color: var(--note-color);
     }
+    @media (max-width: 767px) {
+      font-size: 13px;
+      padding: 0 96px 0 12px;
+    }
   }
   .button {
     position: absolute;
@@ -50,6 +54,18 @@ export default {
     text-transform: uppercase;
     letter-spacing: 2px;
     background: var(--accent-color-1);
+    @media (max-width: 767px) {
+      padding: 0 12px;
+      letter-spacing: 0.5px;
+    }
+
+    &:hover, &:focus, &:active {
+      outline: none;
+      box-shadow: none;
+      border: none;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--note-color);
+    }
   }
 }
 </style>
