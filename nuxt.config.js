@@ -5,7 +5,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'Yusuf Parak (@ycparak)',
+    title: 'Yusuf Parak (@ycpso)',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -67,7 +67,7 @@ export default {
       path: '/feed.xml',
       async create(feed) {
         feed.options = {
-          title: 'Yusuf Parak (@ycparak)',
+          title: 'Yusuf Parak (@ycpso)',
           description: "Yusuf Parak's brain",
           link: process.env.NODE_ENV === 'production' ? 'https://www.ycparak.com/feed.xml' : 'localhost:3000/feed.xml'
         }

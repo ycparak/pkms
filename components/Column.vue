@@ -106,8 +106,10 @@ export default {
       return this.$store.getters['columns/isLoading']
     },
     columnScrolledOver() {
-      const { index, gridVW, x } = this
+      const { index, gridVW, vw, x } = this
       const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
+
+      if (vw <= 767) { return false }
 
       const adjColEnd = (index + 1) * ((colWidth + margin) - labelSize)
       const scrollThreshold = adjColEnd - (labelSize)
@@ -120,6 +122,8 @@ export default {
     columnInView() {
       const { index, vw, x, columns } = this
       const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
+
+      if (vw <= 767) { return true }
 
       const colStart = index * (colWidth + margin)
       const gridVW = vw - gridStartPos
@@ -161,10 +165,17 @@ export default {
   @include daynight;
 
   @media (max-width: 767px) {
-    min-height: calc(100vh - (16px * 2) - 80px);
-    max-width: calc(100vw - (16px * 3));
-    min-width: calc(100vw - (16px * 3));
-    margin-right: 16px;
+    height: calc(100vh - 8vw - 60px);
+    max-width: 80vw;
+    min-width: 80vw;
+    margin-right: 4vw;
+    position: static;
+    box-shadow: none;
+
+    &:only-child {
+      max-width: 92vw;
+      min-width: 92vw;
+    }
   }
 
   @media (min-width: 768px) {
@@ -172,6 +183,10 @@ export default {
     max-width: 560px;
     min-width: 560px;
     margin-right: 28px;
+  }
+
+  &:last-child {
+    margin-right: 20px;
   }
 }
 
@@ -192,6 +207,10 @@ export default {
   cursor: pointer;
   @include daynight;
   &:hover { background-color: var(--accent-color) }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 
 .sticky-label-right {
@@ -208,6 +227,10 @@ export default {
   border: 1px solid var(--accent-color-2);
   border-right: none;
   z-index: 900;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 
   .header {
     height: 40px;

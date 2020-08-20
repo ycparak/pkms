@@ -1,7 +1,6 @@
 <template>
   <div class="navbar">
     <NavbarProfile />
-    <NavbarControls />
     <NavbarSocial />
   </div>
 </template>
@@ -19,25 +18,24 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0;
   color: var(--text-color);
   border: 1px solid var(--accent-color-2);
   border-left: none;
   pointer-events: none;
   border-radius: 12px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  background-color: var(--accent-color-2);
+  background-color: var(--accent-color-1);
   @include daynight;
 
   @media (max-width: 767px) {
-    top: 16px;
-    left: 16px;
-    right: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
     flex-direction: row;
     align-items: center;
-    padding: 0 28px;
+    padding: 0 4vw;
     height: 60px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--accent-color-2);
   }
 
   @media (min-width: 768px) {
@@ -49,6 +47,8 @@ export default {
     padding-right: 4px;
     width: 68px;
     min-height: calc(100vh - 28px - 28px);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 </style>

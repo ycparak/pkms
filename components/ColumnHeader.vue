@@ -71,5 +71,8 @@ export default {
 .header-content.push {
   position: relative;
   left: 24px;
+  @media (max-width: 767px) {
+    left: 16px;
+  }
 }
 </style>

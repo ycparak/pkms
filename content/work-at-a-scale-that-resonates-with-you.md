@@ -1,10 +1,8 @@
 ---
 depth: 2
 title: Work at A Scale that Resonates to You
-date: 2020-14-06
 abstract: Does affecting one hundred lives turn you on? A thousand? A million? A billion? Why? What does it mean to have a positive impact on a life? How intimate does that connection need to be? Understanding your scale — the scale that moves you — is critical to understanding with whom and how you should work, how you should live.
 collection: Note
-collections: Notes
 ---
 This quote is taken from an [Offscreen Magazine interview](https://craigmod.com/essays/offscreen_interview/) with, the always deeply introspective and thoughtful, <inter-link href="craig-mod"></inter-link>. The whole interview transcript is worth reading.
 
