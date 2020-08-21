@@ -17,8 +17,13 @@ export default {
     // Load and show posts
     if (this.prevRequestStrings === null) {
       // New page load (we don't have a prev query in state) - fetch all posts from query
-      const posts = await this.fetchAllQueriedPosts(requestStrings)
-      this.setColumns(posts)
+      try {
+        const posts = await this.fetchAllQueriedPosts(requestStrings)
+        this.setColumns(posts)
+      } catch {
+        const post = await this.$content('404').fetch()
+        this.addColumn(post)
+      }
     } else if (requestStrings.length > this.prevRequestStrings.length) {
       // Next query is longer than prev query - we going to need to fetch only the next post
       const nextRequest = requestStrings[requestStrings.length - 1]
