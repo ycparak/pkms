@@ -4,6 +4,15 @@
 
 <script>
 export default {
-  name: 'Post'
+  name: 'Post',
+  mounted() {
+    console.log('Hello world!')
+  }
 }
 </script>
+
+<style scoped>
+div {
+  background: blue;
+}
+</style>
