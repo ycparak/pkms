@@ -64,7 +64,6 @@ export default {
       box-shadow: none;
       border: none;
       border-left: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--note-color);
     }
   }
 }

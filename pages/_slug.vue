@@ -1,10 +1,18 @@
 <template>
-  <Grid />
+  <Fragment>
+    <Grid />
+    <OverloadModal />
+  </Fragment>
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment'
+
 export default {
   name: 'Post',
+  components: {
+    Fragment
+  },
   async fetch() {
     // Determine posts to show
     const slug = this.$route.path.split('/')[1]
