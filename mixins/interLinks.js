@@ -52,7 +52,10 @@ export default {
   },
   methods: {
     handleInterlink() {
-      if (!this.isActiveLink) {
+      const cols = this.$store.getters['columns/getColumns']
+      if (cols.length >= 14) {
+        this.$root.$emit('popOverloadModal')
+      } else if (!this.isActiveLink) {
         this.handlePopover(false)
 
         let slug = this.$route.params.slug
