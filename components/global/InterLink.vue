@@ -37,17 +37,18 @@ export default {
 .interlink {
   font-weight: 600;
   color: var(--note-color);
-  border-radius: 4px;
-  @include daynight;
+  border-radius: 2px;
   text-decoration: underline;
   text-decoration-color: transparent !important;
-  padding: 0 1px;
+  padding: 0 1px 1px 1px;
   margin: 0 -.5px;
   &.active {
     background-color: var(--note-color);
     color: var(--background-color);
+    font-weight: 600;
   }
   &:hover, &:active, &:focus {
+    transition: all .3s ease;
     text-decoration-color: var(--note-color) !important;
   }
 }

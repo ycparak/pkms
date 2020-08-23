@@ -2,7 +2,7 @@
   <div
     v-show="!loading"
     :id="`column-${index}`"
-    class="column"
+    :class="`column ${isMultipleColumns}`"
     :style="{ left: `${index * 36}px` }">
     <ColumnHeader :index="index" :column="column" :post="post" />
     <!-- Left sticky label -->
@@ -56,7 +56,7 @@
     <div v-else class="section">
       <PostItem :post="column.post" />
     </div>
-    <div v-if="$colorMode.value === 'dark'" class="column-footer" />
+    <div class="column-footer" />
   </div>
 </template>
 
@@ -104,6 +104,12 @@ export default {
   computed: {
     loading() {
       return this.$store.getters['columns/isLoading']
+    },
+    isMultipleColumns() {
+      if (this.columns.length > 1) {
+        return 'multiple-columns'
+      }
+      return ''
     },
     columnScrolledOver() {
       const { index, gridVW, vw, x } = this
@@ -155,14 +161,15 @@ export default {
 <style lang="scss" scoped>
 .column {
   display: block;
-  border: 1px solid var(--accent-color-2);
+  border: 1px solid var(--line-color);
   border-radius: 12px;
   width: 100%;
   position: sticky;
   top: 0;
-  box-shadow: -10px 0px 20px 0px var(--background-color);
-  background-color: var(--background-offset-color);
-  @include daynight;
+  background-color: var(--background-color);
+  &.multiple-columns {
+    box-shadow: var(--column-shadow);
+  }
 
   @media (max-width: 767px) {
     height: calc(100vh - 8vw - 60px);
@@ -205,7 +212,6 @@ export default {
   height: calc(100vh - 28px - 28px - 40px);
   border-bottom-left-radius: 12px;
   cursor: pointer;
-  @include daynight;
   &:hover { background-color: var(--accent-color) }
 
   @media (max-width: 767px) {
@@ -219,12 +225,12 @@ export default {
   right: 0;
   bottom: 0;
   height: calc(100vh - 28px - 26px);
-  box-shadow: -10px 0px 20px 0px var(--background-color);
-  background-color:  var(--background-offset-color);
+  box-shadow: var(--column-shadow);
+  background-color:  var(--background-color);
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   width: 440px;
-  border: 1px solid var(--accent-color-2);
+  border: 1px solid var(--line-color);
   border-right: none;
   z-index: 900;
 
@@ -236,7 +242,7 @@ export default {
     height: 40px;
     width: 100%;
     padding: 12px 13px;
-    border-bottom: 1px solid var(--accent-color-2);
+    border-bottom: 1px solid var(--line-color);
   }
 
   .label {
@@ -245,7 +251,6 @@ export default {
     background-color: var(--background-color);
     height: calc(100% - 40px);
     cursor: pointer;
-    @include daynight;
     &:hover { background-color: var(--accent-color) }
   }
 }
@@ -259,6 +264,6 @@ export default {
   height: 1px;
   padding: 12px 13px;
   z-index: 600;
-  box-shadow: 0 -12px 20px 0 var(--background-color);
+  box-shadow: var(--column-bottom-shadow)
 }
 </style>

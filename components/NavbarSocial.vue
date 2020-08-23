@@ -47,7 +47,6 @@ export default {
   align-items: center;
   justify-content: space-between;
   width: 28px;
-  @include daynight;
   @media (max-width: 768px) {
     flex-direction: row;
     width: auto;
@@ -67,7 +66,7 @@ export default {
   margin-bottom: 16px;
   @include daynight;
   &::after {
-    background-color: var(--text-color);
+    background-color: var(--icon-color);
     content: "";
     position: absolute;
     top: -10px;
@@ -79,9 +78,11 @@ export default {
   }
   &:hover {
     box-shadow: var(--icon-toggle-shadow-hover);
+    opacity: .5;
   }
   &:hover::after {
-    background-color: var(--neutral-color);
+    background-color: var(--icon-color);
+    opacity: .8;
   }
 }
 .btn-social {
@@ -101,7 +102,7 @@ export default {
 
   // Icons
   .icon {
-    fill: var(--text-color);
+    fill: var(--icon-color);
     width: 13px;
     height: 13px;
     @include daynight;
@@ -110,7 +111,7 @@ export default {
     height: 14px;
     width: 14px;
     fill: transparent;
-    stroke: var(--text-color);
+    stroke: var(--icon-color);
     @media (max-width: 768px) {
       position: relative;
       top: 1px;
@@ -119,29 +120,17 @@ export default {
   .icon-rss {
     width: 15px;
     height: 15px;
-    stroke: var(--text-color);
+    stroke: var(--icon-color);
     fill: transparent;
   }
   .icon-twitter {
     width: 13px;
     height: 13px;
-    fill: var(--text-color);
-    stroke: var(--text-color);
+    fill: var(--icon-color);
+    stroke: var(--icon-color);
   }
   &:hover .icon {
-    fill: var(--neutral-color);
-  }
-  &:hover .icon-rss {
-    fill: transparent;
-    stroke: var(--neutral-color);
-  }
-  &:hover .icon-twitter {
-    fill: var(--neutral-color);
-    stroke: var(--neutral-color);
-  }
-  &:hover .icon-email {
-    fill: transparent;
-    stroke: var(--neutral-color);
+    opacity: .5;
   }
 }
 </style>

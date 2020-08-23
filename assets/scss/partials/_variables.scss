@@ -1,43 +1,56 @@
 :root {
-  --neutral-color: #777;
-  --note-color: #0BD082;
-
-  --icon-toggle-shadow-hover: inset 0px 0px 0px 1.5px var(--neutral-color);
-  --icon-toggle-shadow: inset 0px 0px 0px 1.5px var(--text-color);
-  --post-toggle-shadow: inset 0px 0px 0px 1.5px var(--background-color);
-  --grid-column-shadow: 6px 0 16px 0 var(--background-color);
+  --icon-toggle-shadow: inset 0px 0px 0px 1.5px var(--icon-color);
+  --icon-toggle-shadow-hover: inset 0px 0px 0px 1.5px var(--icon-color);
   
   --tablet: 768px;
 
   /*
   ** Lightmode variables
   */
-  --background-color: #fff;
-  --accent-color: #eee;
-  --accent-color-2: #DDDDDD;
-  --accent-color-3: #D1D1D1;
-  --accent-color-4: #c4c4c4;
+  --tooltip-shadow: 0 4px 12px 0 var(--note-color-9);
+  --column-shadow: -10px 0px 20px 0px var(--note-color-9);
+  --column-top-shadow: 0 12px 20px 0 var(--note-color-5);
+  --column-bottom-shadow: 0 -12px 20px 0 var(--note-color-5);
+  --navbar-shadow: 0 0 20px 0 var(--note-color-9);
+
+  --note-color: red;
+  --neutral-color: #777;
+  --background-color: #F1ECE6;
+  --accent-color: #eee4d7;
+  --accent-color-1: #F1ECE6;
+  --accent-color-2: #ECDDCB;
+  --line-color: var(--note-color);
+  --icon-color: var(--note-color);
   --text-color: #171717;
-  --current-color: var(--accent-color);
-  --current-fill-color: var(--text-color);
+  --newletter-submit-border: var(--note-color);
+
+  --note-color-9: rgba(255, 0, 0, 0.1);
+  --note-color-5: rgba(255, 0, 0, 0.05);
 
   --darkmode-toggle-translate: 50%;
 }
 
 .dark-mode {
-  --background-color: hsl(225, 6%, 13%);
-  --background-offset-color: hsl(235, 6%, 13%);
+  --tooltip-shadow: 0 4px 12px 0 var(--background-color);
+  --column-shadow: -10px 0px 20px 0px var(--background-color);
+  --column-top-shadow: 0 12px 20px 0 var(--background-color);
+  --column-bottom-shadow: 0 -12px 20px 0 var(--background-color);
+  --navbar-shadow: 0 12px 20px 0 var(--background-color);
+
+  --note-color: coral;
+  --neutral-color: #777;
+  --background-color: #201f23;
   --accent-color: #292A2D;
   --accent-color-1: #2E2F33;
   --accent-color-2: #35363B;
-  --accent-color-3: #3d3e43;
+  --line-color: #35363B;
+  --icon-color: #fff;
+  --navbar-color: #2E2F33;
   --text-color: #fff;
-  --current-color: var(--accent-color);
-  --current-fill-color: var(--text-color);
+  --newletter-submit-border: rgba(255, 255, 255, 0.2);
+  
   --backdrop-color: rgba(31, 32, 35, 0.6);
 
-  --tooltip-shadow: 0 4px 12px 0 var(--background-color);
-  --btn-shadow: 0 4px 12px 0 var(--background-color);
 
   --darkmode-toggle-translate: -52.5%;
 }

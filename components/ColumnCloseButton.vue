@@ -53,7 +53,7 @@ button {
   margin: 0;
   margin-right: 13px;
   border-radius: 50%;
-  background-color: var(--accent-color-3);
+  background-color: var(--line-color);
 
   .icon {
     vertical-align: top;
@@ -61,7 +61,7 @@ button {
     top: 1px;
     width: 10px;
     height: 10px;
-    color: var(--background-color);
+    color: #000;
     opacity: 0;
   }
 

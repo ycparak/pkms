@@ -52,11 +52,10 @@ export default {
   display: flex;
   align-items: center;
   height: 40px;
-  border-bottom: 1px solid var(--accent-color-2);
+  border-bottom: 1px solid var(--line-color);
   padding: 6px 13px;
   z-index: 600;
-  @include daynight;
-  &.dark { box-shadow: 0 12px 20px 0 var(--background-color); }
+  box-shadow: var(--column-top-shadow)
 }
 
 .post-subtitle {

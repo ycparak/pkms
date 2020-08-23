@@ -17,7 +17,7 @@ export default {
   display: block;
   width: 36px;
   height: 36px;
-  background-color: var(--text-color);
+  background-color: var(--note-color);
   border-radius: 50%;
   pointer-events: visible;
   @media (max-width: 768px) {

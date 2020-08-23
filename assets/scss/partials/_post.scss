@@ -28,9 +28,10 @@
   blockquote {
     grid-column-start: 2;
     grid-column-end: 6;
-    border-left: 3px solid var(--text-color);
+    border-left: 3px solid var(--icon-color);
     margin: 16px 0;
     padding-left: 13px;
+    padding-bottom: 4px;
     p {
       font-style: italic;
       &:first-child { margin-top: 0; }
@@ -39,11 +40,12 @@
     }
   }
   code {
-    font-family: Menlo, Consolas, "Andale Mono WT", "Andale Mono", Monaco, "Courier New", Courier, monospace;
-    background-color: var(--accent-color-3);
+    font-family: Monaco, "Courier New", Courier, monospace;
+    // background-color: var(--note-color);
+    background-color: rgba(255, 0, 0, 0.05);
     border-radius: 4px;
-    padding: 2px 4px;
-    font-size: 14px;
+    padding: 0 4px 1px 4px;
+    font-size: 15px;
     color: var(--text-color);
     text-shadow: none;
   }
@@ -52,7 +54,7 @@
     grid-column-end: 7;
     pre {
       font-family: Consolas, "Andale Mono WT", "Andale Mono", Monaco, "Courier New", Courier, monospace;
-      background-color: var(--accent-color-2);
+      background-color: var(--accent-color);
       padding: 12px 16px 16px 16px;
       tab-size: 2;
       white-space: pre-wrap;
@@ -64,12 +66,13 @@
       code {
         overflow-x: scroll;
         padding: 0;
+        background: none;
       }
     }
   }
   hr {
     grid-column: 4;
-    border: 1px solid var(--accent-color-2);
+    border: 1px solid var(--line-color);
     margin: 28px 0;
     display: block;
   }

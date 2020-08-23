@@ -45,7 +45,6 @@ export default {
   text-decoration: none !important;
   margin: 12px 0;
   cursor: pointer;
-  @include daynight;
   &:first-child { margin-top: 0; }
   &:last-child { margin-bottom: 0; }
 
@@ -53,13 +52,12 @@ export default {
     position: relative;
     margin-right: 24px;
     &-circle {
-      @include daynight;
       position: absolute;
-      width: 11px;
-      height: 11px;
-      border: 1px solid var(--note-color);
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--note-color);
       border-radius: 50%;
-      top: 7px;
+      top: 6.5px;
     }
   }
   .content {
@@ -67,7 +65,7 @@ export default {
     flex-direction: column;
     &-title {
       color: var(--text-color);
-      font-weight: 449;
+      font-weight: 500;
       line-height: 24px;
       font-size: 16px;
     }
@@ -79,7 +77,6 @@ export default {
       font-weight: 400;
       font-size: 14px;
       opacity: .7;
-      @include daynight;
     }
   }
 

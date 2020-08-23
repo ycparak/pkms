@@ -18,21 +18,22 @@ export default {
   position: relative;
   margin: 16px -12px 0 -12px;
   background: var(--accent-color-1);
-  border-radius: 6px;
-  overflow: hidden;
+  // box-shadow: var(--tooltip-shadow);
   .input {
+    border-radius: 6px;
     background: var(--accent-color-1);
-    color: #fff;
+    color: var(--text-color);
     height: 36px;
     line-height: 36px;
     font-size: 14px;
     width: 100%;
-    padding: 0 132px 0 12px;
-    transition: all .3s ease;
-    &::placeholder { color: #fff }
+    padding: 0 116px 0 12px;
+    border: 1px solid var(--line-color);
+    &::placeholder { color: var(--text-color) }
     &:focus, &:active {
       font-weight: 600;
       color: var(--note-color);
+      transition: all .3s ease;
     }
     @media (max-width: 767px) {
       font-size: 13px;
@@ -43,17 +44,20 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    color: #fff;
     height: 36px;
-    line-height: 36px;
-    padding: 0 20px;
+    line-height: 0;
+    padding: 0 12px;
     font-size: 11px;
     background: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--line-color);
+    border-left: 1px solid var(--newletter-submit-border);
+    color: var(--icon-color);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
     background: var(--accent-color-1);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     @media (max-width: 767px) {
       padding: 0 12px;
       letter-spacing: 0.5px;
@@ -62,8 +66,6 @@ export default {
     &:hover, &:focus, &:active {
       outline: none;
       box-shadow: none;
-      border: none;
-      border-left: 1px solid rgba(255, 255, 255, 0.1);
     }
   }
 }
