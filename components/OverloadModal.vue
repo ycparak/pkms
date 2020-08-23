@@ -69,7 +69,7 @@ export default {
         margin-top: clamp(2vh, 5vh, 7vh);
         margin-bottom: clamp(2vh, 5vh, 7vh);
         width: 60%;
-        border-top: 2px solid var(--accent-color-3);
+        border-top: 2px solid var(--text-color);
       }
     }
     .content {

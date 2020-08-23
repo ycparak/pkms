@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <div :class="`navbar ${isMultipleColumns}`">
     <NavbarProfile />
     <NavbarSocial />
   </div>
@@ -7,7 +7,16 @@
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  computed: {
+    isMultipleColumns() {
+      const cols = this.$store.getters['columns/getColumns'].length
+      if (cols > 1) {
+        return 'multiple-columns'
+      }
+      return ''
+    }
+  }
 }
 </script>
 
@@ -19,12 +28,14 @@ export default {
   justify-content: space-between;
   align-items: center;
   color: var(--text-color);
-  border: 1px solid var(--accent-color-2);
+  border: 1px solid var(--line-color);
   border-left: none;
   pointer-events: none;
   border-radius: 12px;
-  background-color: var(--accent-color-1);
-  @include daynight;
+  background-color: var(--navbar-color);
+  &.multiple-columns {
+    box-shadow: var(--navbar-shadow);
+  }
 
   @media (max-width: 767px) {
     top: 0;
@@ -35,7 +46,9 @@ export default {
     padding: 0 4vw;
     height: 60px;
     border-radius: 0;
-    border-bottom: 1px solid var(--accent-color-2);
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid var(--line-color);
   }
 
   @media (min-width: 768px) {
