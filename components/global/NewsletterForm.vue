@@ -25,8 +25,8 @@ export default {
   .input {
     background: var(--accent-color-1);
     color: var(--text-color);
-    height: 36px;
-    line-height: 36px;
+    height: 32px;
+    line-height: 32px;
     font-size: 14px;
     width: 100%;
     padding: 0 116px 0 12px;
@@ -45,7 +45,7 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    height: 36px;
+    height: 32px;
     line-height: 0;
     padding: 0 12px;
     font-size: 11px;

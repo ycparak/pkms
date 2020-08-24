@@ -2,7 +2,7 @@
   <div
     v-show="!loading"
     :id="`column-${index}`"
-    :class="`column ${isMultipleColumns}`"
+    class="column"
     :style="{ left: `${index * 36}px` }">
     <ColumnHeader :index="index" :column="column" :post="post" />
     <!-- Left sticky label -->
@@ -105,12 +105,6 @@ export default {
     loading() {
       return this.$store.getters['columns/isLoading']
     },
-    isMultipleColumns() {
-      if (this.columns.length > 1) {
-        return 'multiple-columns'
-      }
-      return ''
-    },
     columnScrolledOver() {
       const { index, gridVW, vw, x } = this
       const { colWidth, margin, gridStartPos, labelSize } = this.dimensions
@@ -167,9 +161,7 @@ export default {
   position: sticky;
   top: 0;
   background-color: var(--background-color);
-  &.multiple-columns {
-    box-shadow: var(--column-shadow);
-  }
+  box-shadow: var(--column-shadow);
 
   @media (max-width: 767px) {
     height: calc(100vh - 8vw - 60px);

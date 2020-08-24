@@ -1,5 +1,5 @@
 <template>
-  <div :class="`navbar ${isMultipleColumns}`">
+  <div class="navbar">
     <NavbarProfile />
     <NavbarSocial />
   </div>
@@ -7,16 +7,7 @@
 
 <script>
 export default {
-  name: 'Navbar',
-  computed: {
-    isMultipleColumns() {
-      const cols = this.$store.getters['columns/getColumns'].length
-      if (cols > 1) {
-        return 'multiple-columns'
-      }
-      return ''
-    }
-  }
+  name: 'Navbar'
 }
 </script>
 

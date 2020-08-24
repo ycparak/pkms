@@ -1,10 +1,10 @@
 <template>
   <div class="profile">
-    <nuxt-link
-      to="/"
+    <a
+      href="/"
       class="logo">
       <img src="~/assets/img/logo_low-res.png" width="50px" alt="Logo">
-    </nuxt-link>
+    </a>
   </div>
 </template>
 
@@ -23,16 +23,16 @@ export default {
     height: 36px;
     border-radius: 50%;
     box-shadow: var(--intense-shadow);
+    transition: all .3s ease-out;
     @media (max-width: 768px) {
       height: 28px;
       width: 28px;
     }
     &:hover {
-      transition: all .3s ease-out;
-      width: 56px;
-      height: 56px;
+      width: 52px;
+      height: 52px;
       border-radius: 8px;
-      margin-top: -9px;
+      margin-top: -6px;
     }
   }
 }
