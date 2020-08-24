@@ -1,15 +1,50 @@
 <template>
-  <form class="form">
-    <input id="email" type="email" class="input" placeholder="Email">
-    <button class="button" type="submit">
-      Subscribe
-    </button>
+  <form
+    action="https://buttondown.email/api/emails/embed-subscribe/ycpso"
+    method="post"
+    target="popupwindow"
+    onsubmit="window.open('https://buttondown.email/ycpso', 'popupwindow')"
+    class="form">
+    <input
+      id="bd-email"
+      v-model="email"
+      type="email"
+      name="email"
+      class="input"
+      placeholder="Email">
+    <input type="hidden" value="1" name="embed"></input>
+    <input
+      type="submit"
+      value="Subscribe"
+      class="button"
+      :disabled="isSubmitDisabled">
+    </input>
   </form>
 </template>
 
 <script>
 export default {
-  name: 'NewsletterForm'
+  name: 'NewsletterForm',
+  data() {
+    return {
+      email: null
+    }
+  },
+  computed: {
+    isSubmitDisabled() {
+      if (!this.email || !this.validEmail(this.email)) {
+        return true
+      }
+
+      return false
+    }
+  },
+  methods: {
+    validEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
+    }
+  }
 }
 </script>
 
@@ -24,17 +59,17 @@ export default {
   overflow: hidden;
   .input {
     background: var(--accent-color-1);
-    color: var(--text-color);
     height: 32px;
     line-height: 32px;
     font-size: 14px;
     width: 100%;
     padding: 0 116px 0 12px;
-    &::placeholder { color: var(--text-color) }
-    &:focus, &:active {
-      font-weight: 600;
-      color: var(--note-color);
-      transition: all .3s ease;
+    color: var(--note-color);
+    transition: all .3s ease;
+    font-weight: 600;
+    &::placeholder {
+      color: var(--text-color);
+      font-weight: 400;
     }
     @media (max-width: 767px) {
       font-size: 13px;
@@ -49,23 +84,30 @@ export default {
     line-height: 0;
     padding: 0 12px;
     font-size: 11px;
-    background: none;
     border-left: 1px solid var(--newletter-submit-border);
-    color: var(--icon-color);
-    font-weight: 600;
+    color: var(--background-color);
+    background: var(--note-color);
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
-    background: var(--accent-color-1);
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     @media (max-width: 767px) {
       padding: 0 12px;
       letter-spacing: 0.5px;
     }
-
     &:hover, &:focus, &:active {
       outline: none;
       box-shadow: none;
+    }
+
+    &:disabled {
+      transition: all .3s ease;
+      cursor: not-allowed;
+      color: var(--icon-color);
+      background: var(--accent-color-1);
+      font-weight: 600;
+      transition: all .3s ease;
     }
   }
 }
