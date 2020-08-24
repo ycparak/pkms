@@ -65,7 +65,6 @@ export default {
     width: 100%;
     padding: 0 116px 0 12px;
     color: var(--note-color);
-    transition: all .3s ease;
     font-weight: 600;
     &::placeholder {
       color: var(--text-color);
@@ -87,7 +86,7 @@ export default {
     border-left: 1px solid var(--newletter-submit-border);
     color: var(--background-color);
     background: var(--note-color);
-    font-weight: 800;
+    font-weight: 720;
     text-transform: uppercase;
     letter-spacing: 2px;
     border-top-right-radius: 6px;
@@ -102,12 +101,10 @@ export default {
     }
 
     &:disabled {
-      transition: all .3s ease;
       cursor: not-allowed;
       color: var(--icon-color);
       background: var(--accent-color-1);
       font-weight: 600;
-      transition: all .3s ease;
     }
   }
 }
