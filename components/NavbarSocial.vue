@@ -9,7 +9,7 @@
     <a href="https://aemail.com/vw8" target="_blank" class="btn-social">
       <MailIcon class="icon icon-email" />
     </a>
-    <a href="https://twitter.com/ycparak" target="_blank" class="btn-social">
+    <a href="https://twitter.com/ycpso" target="_blank" class="btn-social">
       <TwitterIcon class="icon icon-twitter" />
     </a>
   </div>
@@ -105,7 +105,6 @@ export default {
     fill: var(--icon-color);
     width: 13px;
     height: 13px;
-    @include daynight;
   }
   .icon-email {
     height: 14px;
@@ -130,6 +129,7 @@ export default {
     stroke: var(--icon-color);
   }
   &:hover .icon {
+    @include daynight;
     opacity: .5;
   }
 }

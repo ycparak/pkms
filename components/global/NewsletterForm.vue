@@ -18,9 +18,11 @@ export default {
   position: relative;
   margin: 16px -12px 0 -12px;
   background: var(--accent-color-1);
-  // box-shadow: var(--tooltip-shadow);
+  border-radius: 6px;
+  border: 1px solid var(--line-color);
+  box-shadow: var(--tooltip-shadow);
+  overflow: hidden;
   .input {
-    border-radius: 6px;
     background: var(--accent-color-1);
     color: var(--text-color);
     height: 36px;
@@ -28,7 +30,6 @@ export default {
     font-size: 14px;
     width: 100%;
     padding: 0 116px 0 12px;
-    border: 1px solid var(--line-color);
     &::placeholder { color: var(--text-color) }
     &:focus, &:active {
       font-weight: 600;
@@ -49,7 +50,6 @@ export default {
     padding: 0 12px;
     font-size: 11px;
     background: none;
-    border: 1px solid var(--line-color);
     border-left: 1px solid var(--newletter-submit-border);
     color: var(--icon-color);
     font-weight: 600;

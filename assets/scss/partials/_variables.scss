@@ -7,14 +7,16 @@
   /*
   ** Lightmode variables
   */
-  --tooltip-shadow: 0 4px 12px 0 var(--note-color-9);
+  --tooltip-shadow: 0 2px 8px 0 var(--note-color-9);
   --column-shadow: -10px 0px 20px 0px var(--note-color-9);
   --column-top-shadow: 0 12px 20px 0 var(--note-color-5);
   --column-bottom-shadow: 0 -12px 20px 0 var(--note-color-5);
   --navbar-shadow: 0 0 20px 0 var(--note-color-9);
+  --intense-shadow: 0 4px 12px var(--note-color-15);
+  --newletter-submit-border: var(--note-color);
 
   --note-color: red;
-  --neutral-color: #777;
+  --neutral-color: red;
   --background-color: #F1ECE6;
   --accent-color: #eee4d7;
   --accent-color-1: #F1ECE6;
@@ -22,8 +24,10 @@
   --line-color: var(--note-color);
   --icon-color: var(--note-color);
   --text-color: #171717;
+  --navbar-color: var(--background-color);
   --newletter-submit-border: var(--note-color);
 
+  --note-color-15: rgba(255, 0, 0, 0.45);
   --note-color-9: rgba(255, 0, 0, 0.1);
   --note-color-5: rgba(255, 0, 0, 0.05);
 
@@ -36,8 +40,9 @@
   --column-top-shadow: 0 12px 20px 0 var(--background-color);
   --column-bottom-shadow: 0 -12px 20px 0 var(--background-color);
   --navbar-shadow: 0 12px 20px 0 var(--background-color);
+  --intense-shadow: var(--tooltip-shadow);
 
-  --note-color: coral;
+  --note-color: hsl(21, 84%, 75%);
   --neutral-color: #777;
   --background-color: #201f23;
   --accent-color: #292A2D;
@@ -45,7 +50,7 @@
   --accent-color-2: #35363B;
   --line-color: #35363B;
   --icon-color: #fff;
-  --navbar-color: #2E2F33;
+  --navbar-color: var(--accent-color);
   --text-color: #fff;
   --newletter-submit-border: rgba(255, 255, 255, 0.2);
   
