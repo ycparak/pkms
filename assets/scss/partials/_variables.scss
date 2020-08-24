@@ -13,8 +13,7 @@
   --column-bottom-shadow: 0 -12px 20px 0 var(--note-color-5);
   --navbar-shadow: 0 0 20px 0 var(--note-color-9);
   --intense-shadow: 0 4px 12px var(--note-color-15);
-  --newletter-submit-border: var(--note-color);
-
+  
   --note-color: red;
   --neutral-color: red;
   --background-color: #F1ECE6;
@@ -26,7 +25,8 @@
   --text-color: #171717;
   --navbar-color: var(--background-color);
   --newletter-submit-border: var(--note-color);
-
+  --code-block: var(--note-color-5);
+  
   --note-color-15: rgba(255, 0, 0, 0.45);
   --note-color-9: rgba(255, 0, 0, 0.1);
   --note-color-5: rgba(255, 0, 0, 0.05);
@@ -53,6 +53,7 @@
   --navbar-color: var(--accent-color);
   --text-color: #fff;
   --newletter-submit-border: rgba(255, 255, 255, 0.2);
+  --code-block: var(--accent-color-1);
   
   --backdrop-color: rgba(31, 32, 35, 0.6);
 

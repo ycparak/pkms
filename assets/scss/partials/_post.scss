@@ -41,8 +41,7 @@
   }
   code {
     font-family: Monaco, "Courier New", Courier, monospace;
-    // background-color: var(--note-color);
-    background-color: rgba(255, 0, 0, 0.05);
+    background-color: var(--code-block);
     border-radius: 4px;
     padding: 0 4px 1px 4px;
     font-size: 15px;

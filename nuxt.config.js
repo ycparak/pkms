@@ -40,8 +40,15 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/color-mode',
     '@nuxtjs/moment',
-    '@nuxt/components'
+    '@nuxt/components',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-176258247-1'
+    }]
   ],
+
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID
+  },
 
   /*
   ** Custom additions
