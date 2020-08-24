@@ -67,11 +67,15 @@ export default {
   &.muted { color: var(--neutral-color); }
 }
 
-.header-content.push {
+.header-content {
   position: relative;
-  left: 24px;
-  @media (max-width: 767px) {
-    left: 16px;
+  top: -1px;
+ &.push {
+    position: relative;
+    left: 24px;
+    @media (max-width: 767px) {
+      left: 16px;
+    }
   }
 }
 </style>

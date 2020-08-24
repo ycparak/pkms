@@ -251,7 +251,10 @@ export default {
     background-color: var(--background-color);
     height: calc(100% - 40px);
     cursor: pointer;
-    &:hover { background-color: var(--accent-color) }
+    &:hover {
+      transition: all .2s ease;
+      background-color: var(--accent-color)
+    }
   }
 }
 
