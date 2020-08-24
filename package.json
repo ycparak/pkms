@@ -17,7 +17,6 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/feed": "^2.0.0",
     "@nuxtjs/moment": "^1.6.1",
-    "@nuxtjs/now-builder": "^0.17.3",
     "@popperjs/core": "^2.4.4",
     "nuxt": "^2.14.0",
     "reading-time": "^1.2.0",
