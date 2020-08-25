@@ -53,17 +53,18 @@ button {
   margin: 0;
   margin-right: 13px;
   border-radius: 50%;
-  background-color: var(--line-color);
+  background-color: var(--close-button);
   position: relative;
 
   .icon {
     position: absolute;
-    left: 1px;
-    top: 1px;
-    width: 10px;
-    height: 10px;
+    left: 0;
+    top: 0;
+    width: 11px;
+    height: 11px;
     color: #000;
     opacity: 0;
+    text-align: center;
   }
 
   &:hover {
