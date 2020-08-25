@@ -46,6 +46,7 @@ export default {
 
     this.prevRequestStrings = requestStrings
   },
+  fetchOnServer: false,
   data() {
     return {
       prevRequestStrings: null,
