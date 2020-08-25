@@ -48,18 +48,17 @@ export default {
 <style lang="scss" scoped>
 button {
   display: inline-block;
-  width: 11.5px;
-  height: 11.5px;
+  width: 11px;
+  height: 11px;
   margin: 0;
   margin-right: 13px;
   border-radius: 50%;
   background-color: var(--line-color);
   position: relative;
-  top: -.5px;
 
   .icon {
-    vertical-align: top;
-    position: relative;
+    position: absolute;
+    left: 1px;
     top: 1px;
     width: 10px;
     height: 10px;

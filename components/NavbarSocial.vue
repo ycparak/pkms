@@ -3,7 +3,7 @@
     <button
       class="darkmode-button"
       @click="darkModeToggle()" />
-    <a href="https://ycparak.com/feed.xml" target="_blank" class="btn-social">
+    <a href="https://ycp.so/feed.xml" target="_blank" class="btn-social">
       <RssIcon class="icon icon-rss" />
     </a>
     <a href="https://aemail.com/vw8" target="_blank" class="btn-social">

@@ -6,7 +6,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'Yusuf Parak (@ycpso)',
+    title: 'Yusuf C Parak (@ycpso)',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -83,9 +83,9 @@ export default {
       path: '/feed.xml',
       async create(feed) {
         feed.options = {
-          title: 'Yusuf Parak (@ycpso)',
-          description: "Yusuf Parak's brain",
-          link: process.env.NODE_ENV === 'production' ? 'https://www.ycparak.com/feed.xml' : 'localhost:3000/feed.xml'
+          title: 'Yusuf C Parak (@ycpso)',
+          description: "Yusuf C Parak's brain",
+          link: process.env.NODE_ENV === 'production' ? 'https://www.ycp.so/feed.xml' : 'localhost:3000/feed.xml'
         }
 
         // eslint-disable-next-line global-require
@@ -93,7 +93,7 @@ export default {
         const posts = await $content().fetch()
 
         posts.forEach((post) => {
-          const url = process.env.NODE_ENV === 'production' ? `https://www.ycparak.com/${post.slug}` : `localhost:3000/${post.slug}`
+          const url = process.env.NODE_ENV === 'production' ? `https://www.ycp.so/${post.slug}` : `localhost:3000/${post.slug}`
           feed.addItem({
             title: post.title,
             id: url,

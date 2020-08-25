@@ -69,7 +69,6 @@ export default {
 
 .header-content {
   position: relative;
-  top: -1px;
  &.push {
     position: relative;
     left: 24px;

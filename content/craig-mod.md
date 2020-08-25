@@ -9,6 +9,6 @@ Craig Mod is a writer, photographer, designer, author and publisher. He was an e
     - <inter-link href='work-at-a-scale-that-resonates-with-you' space-before="false"></inter-link>
 2. How software [should](https://craigmod.com/essays/fast_software/) [be](https://craigmod.com/essays/software_slump/) built.
     - <inter-link href="good-software" space-before="false"></inter-link>
-    - <inter-link href="good-software-is-fast" space-before="false"></inter-link>
+    - Good software is fast
 
 Craig, if you're reading this, thanks. And while I’m bad at email, you’re more than welcome to try ;)

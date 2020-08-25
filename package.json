@@ -1,8 +1,8 @@
 {
-  "name": "ycparak",
+  "name": "ycpso",
   "version": "1.0.0",
-  "description": "Yusuf Parak&#39;s (@ycparak) personal site and blog.",
-  "author": "Yusuf Parak",
+  "description": "Yusuf C Parak&#39;s (@ycpso) personal site and blog.",
+  "author": "Yusuf C Parak",
   "private": true,
   "scripts": {
     "dev": "nuxt",

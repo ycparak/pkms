@@ -53,11 +53,11 @@ export default {
     margin-right: 24px;
     &-circle {
       position: absolute;
-      width: 11px;
-      height: 11px;
-      border: 2px solid var(--note-color);
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--note-color);
       border-radius: 50%;
-      top: 6.5px;
+      top: 7px;
     }
   }
   .content {

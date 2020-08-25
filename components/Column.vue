@@ -32,7 +32,9 @@
       class="sticky-label-right"
       :style="{ right: calcRightStickyLabelPos }">
       <div class="header">
-        <ColumnCloseButton :index="index" :column="column" />
+        <div class="close-button">
+          <ColumnCloseButton :index="index" :column="column" />
+        </div>
       </div>
       <a
         v-scroll-to="{
@@ -235,6 +237,10 @@ export default {
     width: 100%;
     padding: 12px 13px;
     border-bottom: 1px solid var(--line-color);
+    .close-button {
+      position: relative;
+      top: -6px;
+    }
   }
 
   .label {

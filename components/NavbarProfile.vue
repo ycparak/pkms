@@ -3,7 +3,7 @@
     <a
       href="/"
       class="logo">
-      <img src="~/assets/img/logo_low-res.png" width="50px" alt="Logo">
+      <img src="/logo_52x52.png" alt="Logo">
     </a>
   </div>
 </template>
@@ -22,17 +22,15 @@ export default {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    box-shadow: var(--intense-shadow);
-    transition: all .3s ease-out;
+    transition: all .2s ease-out;
     @media (max-width: 768px) {
       height: 28px;
       width: 28px;
     }
     &:hover {
-      width: 52px;
-      height: 52px;
+      width: 40px;
+      height: 40px;
       border-radius: 8px;
-      margin-top: -6px;
     }
   }
 }
