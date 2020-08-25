@@ -10,6 +10,6 @@ This site is a public collection of my notes. I built it after being deeply insp
 
 If <inter-link href="stripe">Stripe</inter-link>’s goal is to increase the GDP of the internet — I'm interested in finding and researching the areas where GDP growth is arbitrageable, particularly by small indie teams. My other area of focus is in deeply trying to understand and craft <inter-link href="good-software">good software</inter-link>.
 
-If the intersection of that venn diagram, `internet opportunity && software craftsmanship`, weirdly turns you on — be sure to subscribe to <inter-link href="my-email-list">my email list</inter-link>. Alas, I'm not on Facebook, Instagram or LinkedIn but you can find me on [Twitter](https://twitter.com/ycpso) (DM's open).
+If the intersection of that venn diagram, `internet opportunity && software craftsmanship`, weirdly turns you on — be sure to subscribe to <inter-link href="email-list">my email list</inter-link>. Alas, I'm not on Facebook, Instagram or LinkedIn but you can find me on [Twitter](https://twitter.com/ycpso) (DM's open).
 
 <newsletter-form></newsletter-form>
