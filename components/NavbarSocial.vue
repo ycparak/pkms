@@ -30,6 +30,11 @@ export default {
       faviconLink: '/favicon.ico'
     }
   },
+  mounted() {
+    if (this.$colorMode.value === 'dark' || this.$colorMode.prefernce === 'dark') {
+      this.faviconLink = '/favicon_dark.ico'
+    }
+  },
   methods: {
     darkModeToggle() {
       if (this.$colorMode.value === 'dark') {
