@@ -11,9 +11,6 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   /*
@@ -42,9 +39,8 @@ export default {
     '@nuxtjs/color-mode',
     '@nuxtjs/moment',
     '@nuxt/components',
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-176258247-1'
-    }]
+    '@aceforth/nuxt-optimized-images',
+    '@nuxtjs/google-analytics'
   ],
 
   googleAnalytics: {

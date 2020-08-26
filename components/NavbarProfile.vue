@@ -3,7 +3,8 @@
     <a
       href="/"
       class="logo">
-      <img src="/logo_52x52.png" alt="Logo">
+      <img v-show="$colorMode.value === 'light'" src="/logo-small.png" alt="Logo">
+      <img v-show="$colorMode.value === 'dark'" src="/logo_dark-small.png" alt="Logo">
     </a>
   </div>
 </template>

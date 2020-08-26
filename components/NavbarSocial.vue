@@ -25,13 +25,27 @@ export default {
     RssIcon,
     TwitterIcon
   },
+  data() {
+    return {
+      faviconLink: '/favicon.ico'
+    }
+  },
   methods: {
     darkModeToggle() {
       if (this.$colorMode.value === 'dark') {
         this.$colorMode.preference = 'light'
+        this.faviconLink = '/favicon.ico'
       } else {
         this.$colorMode.preference = 'dark'
+        this.faviconLink = '/favicon_dark.ico'
       }
+    }
+  },
+  head() {
+    return {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: this.faviconLink }
+      ]
     }
   }
 }
