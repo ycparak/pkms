@@ -35,7 +35,7 @@ export default {
         const firstQueryParam = queryParams.shift()
         this.$router.push({ path: `/${firstQueryParam}`, query: { col: queryParams } })
       } else if (this.index > 0 && typeof queryParams === 'string') {
-        this.$router.push({ name: 'slug' })
+        this.$router.push({ path })
       } else if (this.index > 0) {
         const queries = queryParams.filter(query => query !== this.column.slug.split('/')[1])
         this.$router.push({ path, query: { col: queries } })
