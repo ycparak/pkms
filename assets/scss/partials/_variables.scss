@@ -27,6 +27,7 @@
   --newletter-submit-border: var(--note-color);
   --code-block: var(--note-color-5);
   --close-button: #E4CEB4;
+  --newsletter-backdrop: var(--note-color);
   
   --note-color-45: rgba(255, 0, 0, 0.45);
   --note-color-15: rgba(255, 0, 0, 0.15);
@@ -43,6 +44,7 @@
   --column-bottom-shadow: 0 -12px 20px 0 var(--background-color);
   --navbar-shadow: 0 12px 20px 0 var(--background-color);
   --intense-shadow: var(--tooltip-shadow);
+  --button-shadow: var(--tooltip-shadow);
 
   --note-color: #00FFAA;
   --neutral-color: #777;
@@ -54,9 +56,10 @@
   --icon-color: #fff;
   --navbar-color: var(--accent-color);
   --text-color: #fff;
-  --newletter-submit-border: rgba(255, 255, 255, 0.2);
+  --newletter-submit-border: var(--accent-color-2);
   --code-block: var(--accent-color-1);
   --close-button: var(--accent-color-2);
+  --newsletter-backdrop: var(--background-color);
   
   --backdrop-color: rgba(31, 32, 35, 0.6);
 
