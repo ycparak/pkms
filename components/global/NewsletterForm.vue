@@ -72,7 +72,7 @@ export default {
     transition: all .3s ease;
     .icon-email {
       transition: all .3s ease;
-      stroke: var(--line-color);
+      stroke: var(--background-color);
     }
     &::after {
       transition: all .3s ease;
