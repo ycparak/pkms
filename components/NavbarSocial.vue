@@ -6,7 +6,7 @@
     <a href="https://ycp.so/feed.xml" target="_blank" class="btn-social">
       <RssIcon class="icon icon-rss" />
     </a>
-    <a href="https://aemail.com/vw8" target="_blank" class="btn-social">
+    <a href="https://mailto:yusuf@ycp.so" target="_blank" class="btn-social">
       <MailIcon class="icon icon-email" />
     </a>
     <a href="https://twitter.com/ycpso" target="_blank" class="btn-social">
@@ -28,6 +28,11 @@ export default {
   data() {
     return {
       faviconLink: '/favicon.ico'
+    }
+  },
+  mounted() {
+    if (this.$colorMode.value === 'dark' || this.$colorMode.prefernce === 'dark') {
+      this.faviconLink = '/favicon_dark.ico'
     }
   },
   methods: {

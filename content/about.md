@@ -4,7 +4,7 @@ title: Yo, I’m Yusuf. Welcome.
 abstract: "I'm a software engineer and designer working at Thinkst Applied Research. There, I work on Canary — one of the most loved security products around. If Stripe's goal is to increase the GDP of the internet — I'm interested in finding and researching the areas where GDP growth is arbitrageable by small indie teams. My other area of focus is in deeply trying to understand and craft great software."
 collection: Note
 ---
-I'm a South African software engineer and designer working at Thinkst Applied Research. There, I work on <inter-link href="canary">Canary</inter-link> — one of the [most loved](https://canary.tools/love) security products around.
+I'm a South African software engineer and designer working at Thinkst Applied Research. There, I work on <inter-link href="canary">Canary</inter-link> — one of the most loved security products around.
 
 This site is a public collection of my notes. I built it after being deeply inspired by <inter-link href="andy-matuschak">Andy Matuschak</inter-link> and <inter-link href="andy-matuschaks-note-taking-system">his note taking system</inter-link>. If these notes seem confusing, controversial and/or half-baked, it's probably because I wrote them for myself. You can browse navigational collections of <inter-link href="notes">all my notes</inter-link>, <inter-link href="aphorisms">interesting aphorisms</inter-link> and <inter-link href="influences">personal influences</inter-link>. This site has a <inter-link href="colophon">colophon</inter-link>, and the code is open sourced [here](https://github.com/ycpso/ycpso).
 
