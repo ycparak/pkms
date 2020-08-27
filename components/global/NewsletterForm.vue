@@ -1,12 +1,10 @@
 <template>
-  <div class="text-center">
-    <a
-      class="button"
-      href="https://ycpso.substack.com"
-      target="_blank">
-      <MailIcon class="icon-email" /> Subscribe to email list
-    </a>
-  </div>
+  <a
+    class="button"
+    href="https://ycpso.substack.com"
+    target="_blank">
+    <MailIcon class="icon-email" /> Subscribe to email list
+  </a>
 </template>
 
 <script>
@@ -24,7 +22,7 @@ export default {
 .button {
   position: relative;
   display: inline-block;
-  width: 244px;
+  width: 100%;
   height: 32px;
   text-align: center;
   line-height: 31px;
