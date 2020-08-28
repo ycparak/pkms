@@ -1,5 +1,5 @@
 ---
-depth: 1
+depth: 2
 title: Colophon
 abstract: "This site is built with VueJS and NuxtJS. It uses the fantastic Nuxt Content module under the hood. Nuxt Content allows me to write in markdown, include Vue components in the markdown, and then query those markdown files in a MongoDB like way. I use SCSS as a CSS pre-processor. The site is hosted on Vercel. Initial wireframing was done in Figma. I wanted to use a typeface that felt modern and legible at all screen sizes. I also wanted to play around with variable fonts. Inter designed by Rasmus Andersson fit the bill beautifully."
 collection: Note

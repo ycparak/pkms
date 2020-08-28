@@ -11,3 +11,4 @@ Is violence a separate entity which can be disassociated from a protest? Or are 
 - Inspired by the fervour and growing movement, more protestors join in. This provides further cover for more looters and vandals.
   - <inter-link href="be-wary-of-the-late-majority-and-laggards"></inter-link>.
 - In essence, a sufficiently large protest will have a flywheel effect, created in part, because of bad actors.
+

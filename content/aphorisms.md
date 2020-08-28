@@ -17,3 +17,4 @@ collection: Note
 > For what shall it profit a man, if he shall gain the whole world, but lose his soul? -Mark 8:36
 
 > The brave don't live forever but the cautious don't live at all. The only thing that's truly terrifying is the unlived life. - Unkown
+

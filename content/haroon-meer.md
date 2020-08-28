@@ -15,3 +15,4 @@ Links to this note:
 - <inter-link href="influences">People and things that have influenced me</inter-link>
 - <inter-link href="ruthlessly-eliminate-pages-from-your-software">Ruthlessly eliminate pages from your software</inter-link>
 - <inter-link href="good-software-is-unconscious"></inter-link>
+
