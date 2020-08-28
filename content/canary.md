@@ -15,3 +15,4 @@ Canary is interesting because it's an example of <inter-link href="product-led-g
 Links to this note:
 - <inter-link href="haroon-meer">Haroon Meer</inter-link>
 - <inter-link href="good-software-is-unconscious">Good software is unconscious</inter-link>
+- <inter-link href="influences">People and things that have influenced me</inter-link>

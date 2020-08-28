@@ -1,7 +1,7 @@
 ---
 depth: 2
 title: Good software
-abstract: "What makes good software good?"
+abstract: "Explorations and research into trying to figure out repeatable principles that can be a benchmark for building good software."
 collection: Note
 ---
 - <inter-link href="good-software-is-unconscious">Good software is unconscious</inter-link>
@@ -10,3 +10,9 @@ collection: Note
 - Good software is reliable
 - Good software is designed before being built
 - Good software is not designed with an asthetic in mind
+
+
+---
+Links to this note:
+- <inter-link href="good-software-is-unconscious"></inter-link>
+- <inter-link href="figma">Figma</inter-link>

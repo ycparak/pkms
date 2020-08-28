@@ -1,7 +1,7 @@
 ---
 depth: 1
 title: Colophon
-abstract: "WebGL is a rasterisation engine implemented as a Javascript API. It's designed to compute 2D/3D graphics very fast in a Web browser. It does this by tapping into the processing power of the GPU being used."
+abstract: "This site is built with VueJS and NuxtJS. It uses the fantastic Nuxt Content module under the hood. Nuxt Content allows me to write in markdown, include Vue components in the markdown, and then query those markdown files in a MongoDB like way. I use SCSS as a CSS pre-processor. The site is hosted on Vercel. Initial wireframing was done in Figma. I wanted to use a typeface that felt modern and legible at all screen sizes. I also wanted to play around with variable fonts. Inter designed by Rasmus Andersson fit the bill beautifully."
 collection: Note
 ---
 This site is built with VueJS and NuxtJS. It uses the fantastic [Nuxt Content](https://content.nuxtjs.org/) module under the hood. Nuxt Content allows me to write in markdown, include Vue components in the markdown, and then query those markdown files in a MongoDB like way. I use SCSS as a CSS pre-processor. The site is hosted on Vercel. Initial wireframing was done in <inter-link href="figma">Figma</inter-link>.

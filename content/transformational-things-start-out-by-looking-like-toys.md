@@ -4,4 +4,7 @@ title: Transformational things often start out looking like toys
 abstract: "Transformational things often start out looking like toys"
 collection: Note
 ---
-Transformational things often start out looking like toys.
+
+---
+Links to this note:
+- <inter-link href="andy-matuschaks-note-taking-system"></inter-link>

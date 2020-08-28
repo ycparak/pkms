@@ -42,8 +42,9 @@ button, input {
   position: relative;
   z-index: 500;
   opacity: 1;
+  padding-bottom: 80px !important;
   @media (min-width: 768px) {
     height: calc(100vh - 28px - 28px - 40px);
-    padding-bottom: 80px !important;
+    padding-bottom: 0 !important;
   }
 }

@@ -6,7 +6,7 @@
     <a href="https://ycp.so/feed.xml" target="_blank" class="btn-social">
       <RssIcon class="icon icon-rss" />
     </a>
-    <a href="https://mailto:yusuf@ycp.so" target="_blank" class="btn-social">
+    <a href="mailto:yusuf@ycp.so" class="btn-social">
       <MailIcon class="icon icon-email" />
     </a>
     <a href="https://twitter.com/ycpso" target="_blank" class="btn-social">

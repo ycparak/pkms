@@ -19,3 +19,8 @@ It's also worth noting that — point & click, copy & paste or even pull to refr
 ---
 
 Andy has a Patreon account, I'd highly recommend contributing to it. You can do so [here](https://www.patreon.com/quantumcountry/posts).
+
+---
+
+Links to this note:
+- <inter-link href="colophon"></inter-link>
