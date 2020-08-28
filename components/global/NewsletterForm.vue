@@ -38,21 +38,7 @@ export default {
   border-radius: 4px;
   text-decoration: none !important;
   outline: none;
-  box-shadow: var(--button-shadow);
-
-  &::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    top: 10px;
-    left: 9px;
-    border: 1px solid var(--newsletter-backdrop);
-    z-index: -2;
-    position: absolute;
-    border-radius: 4px;
-    background-color: var(--background-color);
-  }
+  box-shadow: var(--tooltip-shadow);
 
   .icon-email {
     height: 14px;
@@ -73,11 +59,6 @@ export default {
     .icon-email {
       transition: all .3s ease;
       stroke: var(--background-color);
-    }
-    &::after {
-      transition: all .3s ease;
-      top: 0;
-      left: 0;
     }
   }
 }

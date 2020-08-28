@@ -68,7 +68,7 @@ export default {
         if (newQuery === slug) { return }
 
         if (currentQueries !== undefined) {
-          if (newQuery === currentQueries || currentQueries.includes(this.getLink)) { return }
+          if (newQuery === currentQueries || (currentQueries.includes(this.getLink))) { return }
           newQuery = [].concat(currentQueries, this.getLink)
         }
 
