@@ -6,5 +6,6 @@ collection: Note
 ---
 
 ---
+
 Links to this note:
 - <inter-link href="canary">Canary</inter-link>
