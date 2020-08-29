@@ -13,6 +13,5 @@ The design and ux takes inspiration from a bunch of places:
 - Emmad's [Blackout Poetry Generator](https://blackout-poetry-generator.glitch.me/)
 - Frank Chimero's [personal website](https://frankchimero.com/)
 - Sarah Dayan's [website](https://sarahdayan.dev/)
-- [Roam research](https://roamresearch.com/)
 - Maggie Appleton's [illustrations and website](https://maggieappleton.com/)
 - Phil Coffman's [personal website](https://philcoffman.com/)
