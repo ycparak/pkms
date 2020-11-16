@@ -1,6 +1,6 @@
 # ycpso
 
-> Yusuf C Parak&#39;s (@ycpso) personal site and blog.
+> Yusuf C Parak&#39;s (@ycparak) personal site and blog.
 
 ## Build Setup
 
