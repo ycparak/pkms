@@ -11,7 +11,7 @@
         Nice. I <em>love</em> that you’re going down a rabbit hole on my stuff!
       </div>
       <div class="content">
-        Unfortunately, I haven’t yet figured out a clean way to handle opening tons of columns. Close a couple and try again. If you're really liking these notes, send me a DM on <a href="https://twitter.com/ycpso" target="_blank" @click.stop>Twitter</a>, I’d love to hear your feedback and riff on any ideas. 😘
+        Unfortunately, I haven’t yet figured out a clean way to handle opening tons of columns. Close a couple and try again. If you're really liking these notes, send me a DM on <a href="https://twitter.com/ycparak" target="_blank" @click.stop>Twitter</a>, I’d love to hear your feedback and riff on any ideas. 😘
       </div>
     </div>
   </div>

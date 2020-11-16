@@ -1,7 +1,7 @@
 <template>
   <a
     class="button"
-    href="https://ycpso.substack.com"
+    href="https://ycparak.substack.com"
     target="_blank">
     <MailIcon class="icon-email" /> Subscribe to email list
   </a>
