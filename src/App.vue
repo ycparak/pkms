@@ -1,11 +1,12 @@
 <template>
-  <div class="content">
+  <div class="app">
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
-.content {
-  background-color: var(--note-color);
+.app {
+  width: 100%;
+  height: 100%;
 }
 </style>
