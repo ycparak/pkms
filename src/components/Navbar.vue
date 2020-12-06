@@ -26,8 +26,8 @@ export default {
   border: 1px solid var(--line-color);
   border-left: none;
   pointer-events: none;
-  border-radius: 12px;
-  background-color: var(--navbar-color);
+  border-radius: 8px;
+  background-color: var(--background-color);
   &.multiple-columns {
     box-shadow: var(--navbar-shadow);
   }

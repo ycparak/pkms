@@ -17,7 +17,7 @@ body {
   box-sizing: border-box;
   font-variant-ligatures: normal;
   text-rendering: optimizeLegibility;
-  @include colors;
+  background-color: var(--background-color);
 }
 button, input {
   margin: 0;
@@ -29,7 +29,6 @@ button, input {
   border-radius: 0;
   font-size: 15px;
   text-decoration: none;
-  @include colors;
 }
 h1 {
   font-size: 24px;
