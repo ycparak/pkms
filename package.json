@@ -19,6 +19,9 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.24.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-vue": "^7.9.0"
+    "eslint-plugin-vue": "^7.9.0",
+    "fibers": "^5.0.0",
+    "sass": "^1.32.10",
+    "sass-loader": "^10.1.1"
   }
 }

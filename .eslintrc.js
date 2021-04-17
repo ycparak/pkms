@@ -24,5 +24,14 @@ module.exports = {
     }],
     'vue/singleline-html-element-content-newline': 'off',
     'comma-dangle': ['error', 'always-multiline'],
+    'vue/html-self-closing': ['error', {
+      html: {
+        void: 'never',
+        normal: 'never',
+        component: 'always',
+      },
+      svg: 'always',
+      math: 'always',
+    }],
   },
 }

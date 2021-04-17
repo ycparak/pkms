@@ -1,0 +1,10 @@
+body {
+  font-family: Avenir;
+  font-size: 16px;
+}
+a {
+  text-decoration: none;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+}
