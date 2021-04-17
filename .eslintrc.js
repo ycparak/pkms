@@ -9,12 +9,20 @@ module.exports = {
   },
   extends: [
     '@nuxtjs',
-    'prettier',
-    'prettier/vue',
-    'plugin:prettier/recommended',
     'plugin:nuxt/recommended',
   ],
-  plugins: ['prettier'],
-  // add your custom rules here
-  rules: {},
+  rules: {
+    'no-console': 'off',
+    'vue/html-closing-bracket-newline': ['error', {
+      singleline: 'never',
+      multiline: 'never',
+    }],
+    'space-before-function-paren': ['error', {
+      anonymous: 'never',
+      named: 'never',
+      asyncArrow: 'always',
+    }],
+    'vue/singleline-html-element-content-newline': 'off',
+    'comma-dangle': ['error', 'always-multiline'],
+  },
 }
