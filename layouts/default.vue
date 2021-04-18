@@ -1,13 +1,34 @@
 <template>
-  <div class="site">
+  <div class="site" :class="theme">
     <div class="border border-top"></div>
     <div class="border border-left"></div>
     <div class="border border-right"></div>
     <div class="border border-bottom"></div>
-    <TheNavbar />
+    <TheNavbar @toggleTheme="toggleTheme" />
     <Nuxt />
   </div>
 </template>
+
+<script>
+export default {
+  name: 'DefaultLayout',
+  data() {
+    return {
+      prevTheme: 'home',
+      theme: 'home',
+    }
+  },
+  methods: {
+    toggleTheme(theme = null) {
+      if (theme) {
+        this.theme = theme
+      } else {
+        this.theme = this.prevTheme
+      }
+    },
+  },
+}
+</script>
 
 <style lang="scss">
 .site {
@@ -18,7 +39,8 @@
 }
 .border {
   position: fixed;
-  background: var(--home);
+  background: var(--selected);
+  transition: all .2s linear;
   &-top {
     top: 0;
     left: 0;

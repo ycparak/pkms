@@ -1,9 +1,21 @@
 :root {
   --projects: red;
   --essays: blue;
-  --tenkmrr: green;
+  --tenkmrr: teal;
 
   --line: rgba(0, 0, 0, 0.1);
   --text: #000;
-  --subtle-text: #999
+  --subtle-text: #999;
+
+  --selected: var(--text);
+}
+
+.site.projects {
+  --selected: var(--projects);
+}
+.site.essays {
+  --selected: var(--essays);
+}
+.site.tenkmrr {
+  --selected: var(--tenkmrr);
 }

@@ -24,7 +24,7 @@ export default {
       .sortBy('createdAt', 'asc')
       .fetch()
 
-    const posts = { ...essays, ...projects, ...tenKMRR }
+    const posts = [...essays, ...projects, ...tenKMRR]
     return { posts, essays, projects, tenKMRR }
   },
 }

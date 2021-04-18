@@ -3,19 +3,35 @@
     <TheContainer>
       <div class="nav">
         <div class="navigation">
-          <a href="/" class="link active">
+          <a
+            href="/"
+            class="link active"
+            @mouseover="toggleTheme('home')"
+            @mouseout="toggleTheme()">
             <span>home</span>
             <div class="dot dot-home"></div>
           </a>
-          <a href="/projects" class="link">
+          <a
+            href="/projects"
+            class="link"
+            @mouseover="toggleTheme('projects')"
+            @mouseout="toggleTheme()">
             <span>projects</span>
             <div class="dot dot-projects"></div>
           </a>
-          <a href="/essays" class="link">
+          <a
+            href="/essays"
+            class="link"
+            @mouseover="toggleTheme('essays')"
+            @mouseout="toggleTheme()">
             <span>essays</span>
             <div class="dot dot-essays"></div>
           </a>
-          <a href="/10kmrr" class="link">
+          <a
+            href="/10kmrr"
+            class="link"
+            @mouseover="toggleTheme('tenkmrr')"
+            @mouseout="toggleTheme()">
             <span>10k mrr</span>
             <div class="dot dot-tenkmrr"></div>
           </a>
@@ -32,6 +48,17 @@
     </TheContainer>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'TheNavbar',
+  methods: {
+    toggleTheme(theme = null) {
+      this.$emit('toggleTheme', theme)
+    },
+  },
+}
+</script>
 
 <style lang="scss">
 .navbar {

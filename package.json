@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",
+    "@nuxtjs/moment": "^1.6.1",
     "core-js": "^3.10.1",
     "nuxt": "^2.15.4"
   },
