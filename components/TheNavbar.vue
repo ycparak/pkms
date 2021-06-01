@@ -12,6 +12,14 @@
             <div class="dot dot-home"></div>
           </a>
           <a
+            href="/10kmrr"
+            class="link"
+            @mouseover="toggleTheme('tenkmrr')"
+            @mouseout="toggleTheme()">
+            <span>10k mrr</span>
+            <div class="dot dot-tenkmrr"></div>
+          </a>
+          <a
             href="/projects"
             class="link"
             @mouseover="toggleTheme('projects')"
@@ -28,12 +36,12 @@
             <div class="dot dot-essays"></div>
           </a>
           <a
-            href="/10kmrr"
+            href="/thoughts"
             class="link"
-            @mouseover="toggleTheme('tenkmrr')"
+            @mouseover="toggleTheme('thoughts')"
             @mouseout="toggleTheme()">
-            <span>10k mrr</span>
-            <div class="dot dot-tenkmrr"></div>
+            <span>thoughts</span>
+            <div class="dot dot-thoughts"></div>
           </a>
         </div>
         <div class="social">
@@ -102,9 +110,10 @@ export default {
     height: 6px;
     border-radius: 50%;
     &-home { background: var(--text); }
+    &-tenkmrr { background: var(--tenkmrr); }
     &-projects { background: var(--projects); }
     &-essays { background: var(--essays); }
-    &-tenkmrr { background: var(--tenkmrr); }
+    &-thoughts { background: var(--thoughts); }
     @media (max-width: 768px) {
       display: none;
     }

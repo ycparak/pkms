@@ -4,7 +4,7 @@ title: Be Wary of the Late Majority and Laggards
 abstract: "Be wary. Be wary, because every new person that now joins your cause didn't have the insight to initially believe in it nor seek it out. And some percentage of these people will join solely because everyone else is — it's these people you have to worry about. 
 
 The late majority of employees to join a company for example — won't necessarily be joining because they believe in the initial principles the company was founded on. They'll be joining for other reasons. Chief among them will be the prestige and CV trophy, of joining a company of that scale."
-collection: Note
+category: essay
 ---
 There's an oft overlooked consequence of passing the diffusion of innovation tipping point. If you start a cause that reaches this milestone: 
 1. Congratulations i.e. <inter-link href="attention-is-the-best-asset-today">Attention is the Most Important Asset Today</inter-link>.

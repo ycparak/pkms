@@ -2,7 +2,7 @@
 depth: 2
 title: Good software
 abstract: "Explorations and research into trying to figure out repeatable principles that can be a benchmark for building good software."
-collection: Note
+category: essay
 ---
 - <inter-link href="good-software-is-unconscious">Good software is unconscious</inter-link>
 - Good software is purposeful

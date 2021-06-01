@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss">
 .site {
-  padding: 9px;
+  padding: 8px;
   @media (max-width: 768px) {
     padding: 0;
   }
@@ -45,25 +45,25 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    height: 9px;
+    height: 8px;
   }
   &-left {
     top: 0;
     left: 0;
     height: 100%;
-    width: 9px;
+    width: 8px;
   }
   &-right {
     top: 0;
     right: 0;
     height: 100%;
-    width: 9px;
+    width: 8px;
   }
   &-bottom {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 9px;
+    height: 8px;
   }
   @media (max-width: 768px) {
     display: none;

@@ -33,7 +33,7 @@ export default {
 <style lang="scss">
 .grid {
   display: grid;
-  grid-template-columns: minmax(576px, 1fr) 2.5fr;
+  grid-template-columns: 576px 2.5fr;
   @media (max-width: 768px) {
     display: block;
   }

@@ -2,7 +2,7 @@
 depth: 2
 title: Aphorisms
 abstract: "An unordered list of aphorisms. Some are included because of clever wordplay. Others are included because of some unique insight."
-collection: Note
+category: essay
 ---
 > I am not who you think I am; I am not who I think I am; I am who I think you think I am - Thomas Cooley
 

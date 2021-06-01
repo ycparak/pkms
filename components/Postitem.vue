@@ -32,7 +32,7 @@ export default {
   border-bottom: 1px solid var(--line);
   transition: all .3s ease;
   &:hover {
-    box-shadow: 0 0px 16px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0px 12px 1px rgba(0, 0, 0, 0.05);
   }
 }
 .item-box {

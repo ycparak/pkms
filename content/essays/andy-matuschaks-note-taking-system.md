@@ -2,7 +2,7 @@
 depth: 2
 title: Andy Matuschak's note taking sytem
 abstract: "The first time I came across Andy's notes, I recall having a wide grin on my face. Interacting with his notes felt like a lightning bolt moment. I immedietely grokked: (1) How having a system like his could help sift out insights. (2) The elegance of his user experience in facilitating (1). And (3), the importance of evergreen note taking as it contributes to knowledge work."
-collection: Note
+category: 10kmrr
 ---
 The first time I came across Andy's notes, I recall having a wide grin on my face. Interacting with it felt like a lightning bolt moment. I immedietely grokked: 
 1. How having a system like his could help sift out [insights](https://notes.andymatuschak.org/z6cFzJWgj9vZpnrQsjrZ8yCNREzCTgyFeVZTb).

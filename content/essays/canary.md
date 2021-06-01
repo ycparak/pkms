@@ -2,7 +2,7 @@
 depth: 2
 title: Thinkst Canary
 abstract: "Thinkst Canary is an infosec company founded by Haroon Meer. The core thesis is that most companies find out way too late that they've been breached. Canary solves this by providing super simple, easy to deploy, honeypots, that require 0 overhead. The operative words being 'super simple', 'easy to deploy' and '0 overhead'."
-collection: Note
+category: 10kmrr
 ---
 [Thinkst Canary](https://canary.tools/) is an infosec company founded by <inter-link href="haroon-meer">Haroon Meer</inter-link>. The core thesis is that most companies find out way too late that they've been breached. Canary solves this by providing super simple, easy to deploy, honeypots, that require 0 overhead. The operative words being 'super simple', 'easy to deploy' and '0 overhead'.
 

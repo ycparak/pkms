@@ -1,21 +1,20 @@
 :root {
+  --home: #eee;
+  --tenkmrr: teal;
   --projects: red;
   --essays: blue;
-  --tenkmrr: teal;
+  --thoughts: #1E7EFF;
 
   --line: rgba(0, 0, 0, 0.1);
   --text: #000;
   --subtle-text: #999;
 
-  --selected: var(--text);
+  --selected: var(--home);
 }
 
-.site.projects {
-  --selected: var(--projects);
-}
-.site.essays {
-  --selected: var(--essays);
-}
-.site.tenkmrr {
-  --selected: var(--tenkmrr);
+.site {
+  &.tenkmrr { --selected: var(--tenkmrr); }
+  &.projects { --selected: var(--projects); }
+  &.essays { --selected: var(--essays); }
+  &.thoughts { --selected: var(--thoughts); }
 }
