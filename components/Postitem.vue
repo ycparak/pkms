@@ -30,8 +30,9 @@ export default {
 .post-item {
   display: block;
   border-bottom: 1px solid var(--line);
-  transition: all .3s ease;
+  transition: all .3s ease-in-out;
   &:hover {
+    transition: all .3s ease-in-out;
     box-shadow: 0 0px 12px 1px rgba(0, 0, 0, 0.05);
   }
 }
@@ -40,6 +41,7 @@ export default {
   flex-direction: row;
   align-items: center;
   min-height: 60px;
+  transition: all .3s ease-in-out;
   .date {
     color: var(--subtle-text);
     font-size: 12px;
@@ -47,10 +49,12 @@ export default {
     font-weight: 500;
     font-family: 'IBM Plex Mono', monospace;
     margin-right: 24px;
+    transition: all .3s ease-in-out;
   }
   .title {
     font-weight: 500;
     color: var(--text);
+    transition: all .3s ease-in-out;
   }
 }
 </style>

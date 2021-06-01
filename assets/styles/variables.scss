@@ -1,15 +1,28 @@
 :root {
-  --home: #eee;
   --tenkmrr: teal;
   --projects: red;
   --essays: blue;
   --thoughts: #1E7EFF;
 
-  --line: rgba(0, 0, 0, 0.1);
+  --background: #fff;
+  --line: #eee;
   --text: #000;
   --subtle-text: #999;
 
-  --selected: var(--home);
+  --selected: var(--line);
+
+  --darkmode-shadow: inset 0px 0px 0px 2px var(--text);
+  --darkmode-shadow-hover: inset 0px 0px 0px 1.5px var(--text);
+  --darkmode-translate: 50%;
+}
+
+.dark-mode {
+  --background: #00030a;
+  --line: #121e31;
+  --text: #fff;
+  --subtle-text: #84929f;
+
+  --darkmode-translate: -52.5%;
 }
 
 .site {

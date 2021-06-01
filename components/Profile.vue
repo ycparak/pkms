@@ -13,6 +13,7 @@ export default {
 .profile {
   border-right: 1px solid var(--line);
   min-height: calc(100vh - 60px - 18px);
+  transition: all .3s ease-in-out;
   @media (max-width: 768px) {
     border-right: none;
     min-height: auto;
