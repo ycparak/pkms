@@ -4,7 +4,7 @@
     <div class="border border-left"></div>
     <div class="border border-right"></div>
     <div class="border border-bottom"></div>
-    <TheNavbar @toggleTheme="toggleTheme" />
+    <Navbar />
     <Nuxt />
   </div>
 </template>
@@ -17,6 +17,11 @@ export default {
       prevTheme: 'home',
       theme: 'home',
     }
+  },
+  mounted() {
+    this.$root.$on('toggleTheme', (theme = null) => {
+      this.toggleTheme(theme)
+    })
   },
   methods: {
     toggleTheme(theme = null) {

@@ -1,12 +1,12 @@
 <template>
-  <a :href="post.path" class="post-item">
-    <TheContainer>
+  <NuxtLink :to="post.path" class="post-item">
+    <Container>
       <div class="item-box">
         <span class="date post-date">{{ date }}</span>
         <span class="title">{{ post.title }}</span>
       </div>
-    </TheContainer>
-  </a>
+    </Container>
+  </NuxtLink>
 </template>
 
 <script>
