@@ -2,7 +2,7 @@
   <a :href="post.path" class="post-item">
     <TheContainer>
       <div class="item-box">
-        <span class="date">{{ date }}</span>
+        <span class="date post-date">{{ date }}</span>
         <span class="title">{{ post.title }}</span>
       </div>
     </TheContainer>
@@ -45,14 +45,8 @@ export default {
   align-items: center;
   min-height: 60px;
   transition: all .3s ease-in-out;
-  .date {
-    color: var(--subtle-text);
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-family: 'IBM Plex Mono', monospace;
+  .post-date {
     margin-right: 24px;
-    transition: all .3s ease-in-out;
   }
   .title {
     font-weight: 500;

@@ -22,3 +22,11 @@ a {
     text-decoration: none;
   }
 }
+.date {
+  color: var(--subtle-text);
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: 'IBM Plex Mono', monospace;
+  transition: all .3s ease-in-out;
+}

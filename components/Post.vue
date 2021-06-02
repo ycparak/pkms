@@ -2,6 +2,7 @@
   <div class="post">
     <header class="post-header">
       <h1 class="post-title">{{ post.title }}</h1>
+      <time class="date post-date">Published on {{ date }}</time>
     </header>
     <article>
       <slot></slot>
@@ -16,6 +17,11 @@ export default {
     post: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    date() {
+      return this.$moment(this.post.createdAt).format('DD MMMM YYYY')
     },
   },
 }
@@ -36,6 +42,10 @@ export default {
     font-size: 56px;
     font-weight: 900;
   }
+  .post-date {
+    margin-top: 20px;
+    font-size: 13px;
+  }
 }
 .nuxt-content {
   margin-bottom: 10vh;
@@ -44,11 +54,14 @@ export default {
     font-weight: 700;
   }
   p {
-    font-family: 'IBM Plex Serif', Georgia, 'Times New Roman', Times, serif;
-    font-size: 17px;
-    line-height: 23px;
+    font-size: 16px;
+    line-height: 26px;
     margin-bottom: 28px;
     font-weight: 400;
+  }
+  a {
+    color: inherit;
+    text-decoration: underline;
   }
 }
 </style>
