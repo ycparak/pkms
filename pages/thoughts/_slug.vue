@@ -7,7 +7,7 @@
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const post = await $content('10kmrr', params.slug).fetch()
+    const post = await $content('thoughts', params.slug).fetch()
     return { post }
   },
 }

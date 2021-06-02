@@ -1,5 +1,5 @@
 <template>
-  <a :href="post.slug" class="post-item">
+  <a :href="post.path" class="post-item">
     <TheContainer>
       <div class="item-box">
         <span class="date">{{ date }}</span>
@@ -29,11 +29,14 @@ export default {
 <style lang="scss">
 .post-item {
   display: block;
-  border-bottom: 1px solid var(--line);
   transition: all .3s ease-in-out;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  position: relative;
+  top: -1px;
   &:hover {
-    transition: all .3s ease-in-out;
-    box-shadow: 0 0px 12px 1px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
 }
 .item-box {

@@ -9,7 +9,7 @@
 export default {
   name: 'IndexHome',
   async asyncData({ $content, params }) {
-    const essays = await $content('essays')
+    const tenKMRR = await $content('10kmrr')
       .only(['title', 'slug'])
       .sortBy('createdAt', 'asc')
       .fetch()
@@ -19,12 +19,17 @@ export default {
       .sortBy('createdAt', 'asc')
       .fetch()
 
-    const tenKMRR = await $content('10kmrr')
+    const essays = await $content('essays')
       .only(['title', 'slug'])
       .sortBy('createdAt', 'asc')
       .fetch()
 
-    const posts = [...essays, ...projects, ...tenKMRR]
+    const thoughts = await $content('thoughts')
+      .only(['title', 'slug'])
+      .sortBy('createdAt', 'asc')
+      .fetch()
+
+    const posts = [...tenKMRR, ...projects, ...essays, ...thoughts]
     return { posts, essays, projects, tenKMRR }
   },
 }

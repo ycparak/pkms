@@ -12,14 +12,6 @@
             <div class="dot dot-home"></div>
           </a>
           <a
-            href="/10kmrr"
-            class="link"
-            @mouseover="toggleTheme('tenkmrr')"
-            @mouseout="toggleTheme()">
-            <span>10k mrr</span>
-            <div class="dot dot-tenkmrr"></div>
-          </a>
-          <a
             href="/projects"
             class="link"
             @mouseover="toggleTheme('projects')"
@@ -42,6 +34,14 @@
             @mouseout="toggleTheme()">
             <span>thoughts</span>
             <div class="dot dot-thoughts"></div>
+          </a>
+          <a
+            href="/10kmrr"
+            class="link"
+            @mouseover="toggleTheme('tenkmrr')"
+            @mouseout="toggleTheme()">
+            <span>10k mrr</span>
+            <div class="dot dot-tenkmrr"></div>
           </a>
         </div>
         <div class="social">
@@ -103,18 +103,18 @@ export default {
 .link {
   display: flex;
   align-items: center;
-  opacity: .3;
   margin-right: 24px;
   transition: all .3s ease;
-  color: var(--text);
+  color: var(--subtle-text);
   font-weight: 500;
   font-size: 14px;
   line-height: 1;
   transition: all .3s ease-in-out;
-  &.active, &:hover { opacity: 1; }
-  :last-child { margin-right: 0; }
   @media (max-width: 768px) {
     margin-right: 12px;
+  }
+  :last-child {
+    margin-right: 0;
   }
   span {
     display: block;
@@ -125,6 +125,7 @@ export default {
     height: 6px;
     border-radius: 50%;
     transition: all .3s ease-in-out;
+    opacity: .4;
     &-home { background: var(--text); }
     &-tenkmrr { background: var(--tenkmrr); }
     &-projects { background: var(--projects); }
@@ -132,6 +133,12 @@ export default {
     &-thoughts { background: var(--thoughts); }
     @media (max-width: 768px) {
       display: none;
+    }
+  }
+  &.active, &:hover {
+    color: var(--text);
+    .dot {
+      opacity: 1;
     }
   }
 }

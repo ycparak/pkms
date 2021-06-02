@@ -41,6 +41,8 @@ export default {
   position: fixed;
   background: var(--selected);
   transition: all .2s linear;
+  z-index: 999;
+  transition: all .3s ease-in-out;
   &-top {
     top: 0;
     left: 0;

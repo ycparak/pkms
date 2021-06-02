@@ -1,14 +1,14 @@
 <template>
-  <article>
-    <nuxt-content :document="essay" />
-  </article>
+  <post :post="post">
+    <nuxt-content :document="post" />
+  </post>
 </template>
 
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const essay = await $content('essays', params.slug).fetch()
-    return { essay }
+    const post = await $content('essays', params.slug).fetch()
+    return { post }
   },
 }
 </script>
