@@ -1,11 +1,9 @@
 <template>
   <NuxtLink :to="post.path" class="post-item">
-    <Container>
-      <div class="item-box">
-        <span class="date post-date">{{ date }}</span>
-        <span class="title">{{ post.title }}</span>
-      </div>
-    </Container>
+    <div class="item-box">
+      <span class="date post-date">{{ date }}</span>
+      <span class="title">{{ post.title }}</span>
+    </div>
   </NuxtLink>
 </template>
 
@@ -32,21 +30,17 @@ export default {
   transition: all .3s ease-in-out;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
-  position: relative;
-  top: -1px;
-  &:hover {
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
+  padding: 0 28px;
+  border-bottom: 1px solid var(--line);
 }
 .item-box {
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-height: 60px;
+  min-height: 68px;
   transition: all .3s ease-in-out;
   .post-date {
-    margin-right: 24px;
+    margin-right: 28px;
   }
   .title {
     font-weight: 500;

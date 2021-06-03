@@ -38,7 +38,7 @@ export default {
 <style lang="scss">
 .grid {
   display: grid;
-  grid-template-columns: 576px 2fr;
+  grid-template-columns: min(45%, 576px) max(100%, 620px);
   transition: all .3s ease-in-out;
   @media (max-width: 768px) {
     display: block;

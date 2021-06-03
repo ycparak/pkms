@@ -53,12 +53,6 @@ export default {
     font-size: 21px;
     font-weight: 700;
   }
-  p {
-    font-size: 16px;
-    line-height: 26px;
-    margin-bottom: 28px;
-    font-weight: 400;
-  }
   a {
     color: inherit;
     text-decoration: underline;

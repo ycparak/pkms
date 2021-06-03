@@ -56,7 +56,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 68px;
   @media (max-width: 768px) {
     height: 40px;
   }
