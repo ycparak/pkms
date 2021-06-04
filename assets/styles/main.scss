@@ -4,6 +4,7 @@ body {
   background: var(--background);
   color: var(--text);
   transition: all .3s ease-in-out;
+  min-height: 100vh;
 }
 button, input {
   margin: 0;
@@ -24,9 +25,14 @@ a {
 }
 p {
   font-size: 16px;
-  line-height: 26px;
-  margin-bottom: 20px;
+  line-height: 1.6;
+  margin-bottom: 1rem;
   font-weight: 400;
+  @media (max-width: 640px) {
+    p {
+      font-size: 14px;
+    }
+  }
 }
 .date {
   color: var(--subtle-text);

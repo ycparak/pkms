@@ -1,9 +1,11 @@
 <template>
   <NuxtLink :to="post.path" class="post-item">
-    <div class="item-box">
-      <span class="date post-date">{{ date }}</span>
-      <span class="title">{{ post.title }}</span>
-    </div>
+    <Container>
+      <div class="item-box">
+        <span class="date post-date">{{ date }}</span>
+        <span class="title">{{ post.title }}</span>
+      </div>
+    </Container>
   </NuxtLink>
 </template>
 
@@ -28,10 +30,11 @@ export default {
 .post-item {
   display: block;
   transition: all .3s ease-in-out;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  padding: 0 28px;
   border-bottom: 1px solid var(--line);
+  @media (max-width: 990px) {
+    border-top: 1px solid var(--line);
+    border-bottom: none;
+  }
 }
 .item-box {
   display: flex;
@@ -46,6 +49,35 @@ export default {
     font-weight: 500;
     color: var(--text);
     transition: all .3s ease-in-out;
+    line-height: 1.4;
+  }
+  @media (max-width: 1150px) {
+    min-height: 56px;
+    .post-date {
+      margin-right: 20px;
+    }
+    .title {
+      font-size: 15px;
+    }
+  }
+  @media (max-width: 990px) {
+    border-right: none;
+    .title {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 640px) {
+    display: block;
+    min-height: auto;
+    padding: 16px 0;
+    .post-date {
+      margin-right: 0;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .title {
+      font-size: 14px;
+    }
   }
 }
 </style>

@@ -40,7 +40,10 @@ export default {
   display: grid;
   grid-template-columns: min(45%, 576px) max(100%, 620px);
   transition: all .3s ease-in-out;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
+    grid-template-columns: 42% 58%;
+  }
+  @media (max-width: 990px) {
     display: block;
   }
 }

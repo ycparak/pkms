@@ -36,11 +36,11 @@ export default {
 </script>
 
 <style lang="scss">
-.site {
-  /* padding: 8px;
+/* .site {
+  padding: 8px;
   @media (max-width: 768px) {
     padding: 0;
-  } */
+  }
 }
 .border {
   position: fixed;
@@ -75,5 +75,5 @@ export default {
   @media (max-width: 768px) {
     display: none;
   }
-}
+} */
 </style>

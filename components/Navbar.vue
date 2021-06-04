@@ -50,6 +50,7 @@ export default {
 .navbar {
   border-bottom: 1px solid var(--line);
   transition: all .3s ease-in-out;
+  width: 100%;
 }
 .nav {
   display: flex;
@@ -57,8 +58,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 68px;
-  @media (max-width: 768px) {
-    height: 40px;
+  width: 100%;
+  @media (max-width: 1150px) {
+    height: 56px;
   }
 }
 .navigation {
@@ -70,6 +72,9 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
+  @media (max-width: 340px) {
+    display: none;
+  }
   a {
     display: inline-block;
     margin-right: 20px;
@@ -80,6 +85,21 @@ export default {
       width: 14px;
       height: 14px;
     }
+    @media (max-width: 768px) {
+      margin-right: 16px;
+      svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    @media (max-width: 450px) {
+      margin-right: 12px;
+      &:nth-child(2) {
+        margin-right: 0;
+      }
+    }
+  }
+  @media (max-width: 450px) {
   }
 }
 
@@ -99,6 +119,13 @@ export default {
   border: none;
   background: none;
   cursor: pointer;
+  @media (max-width: 768px) {
+    width: 12px;
+    height: 12px;
+  }
+  @media (max-width: 450px) {
+    display: none;
+  }
   &::after {
     background-color: var(--text);
     content: "";

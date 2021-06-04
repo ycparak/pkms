@@ -57,6 +57,10 @@ export default {
   @media (max-width: 768px) {
     margin-right: 12px;
   }
+  @media (max-width: 450px) {
+    font-size: 13px;
+    margin-right: 8px;
+  }
   :last-child {
     margin-right: 0;
   }
