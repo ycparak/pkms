@@ -1,9 +1,9 @@
 <template>
   <div class="site" :class="theme">
-    <div class="border border-top"></div>
+    <!-- <div class="border border-top"></div>
     <div class="border border-left"></div>
     <div class="border border-right"></div>
-    <div class="border border-bottom"></div>
+    <div class="border border-bottom"></div> -->
     <Navbar />
     <Nuxt />
   </div>
@@ -37,10 +37,10 @@ export default {
 
 <style lang="scss">
 .site {
-  padding: 8px;
+  /* padding: 8px;
   @media (max-width: 768px) {
     padding: 0;
-  }
+  } */
 }
 .border {
   position: fixed;

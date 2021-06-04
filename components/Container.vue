@@ -6,7 +6,7 @@
 
 <style lang="scss">
 .container {
-  padding: 0 40px;
+  padding: 0 28px;
   @media (max-width: 768px) {
     padding: 0 12px;
   }
