@@ -18,6 +18,7 @@ export default {
     '@/assets/styles/fonts.scss',
     '@/assets/styles/reset.scss',
     '@/assets/styles/variables.scss',
+    '@/assets/styles/moonshotters.scss',
     '@/assets/styles/main.scss',
   ],
 
