@@ -3,11 +3,11 @@
     <Grid>
       <h1>Hello.</h1>
       <p>
-        I’m Yusuf. I’m a <code>{{ myAge }}</code> y/o South African designer, software developer and as of recently a founder. <code>{{ timeSinceResignation }}</code> days ago I quit my job to build cool shit on the internet with the goal of <nuxt-link to="/10kmrr">getting to $10k MRR</nuxt-link>. I’m currently at <code>$0k</code> with <code>{{ runwayLeft }}</code> days of savings left. Previously I worked at Thinkst Canary, studied CS, and dropped out of an architecture degree.
+        I’m Yusuf. I’m a <code>{{ myAge }}</code> y/o South African designer, software developer and as of recently a founder. <code>{{ timeSinceResignation }}</code> days ago I quit my job to build cool shit on the internet with the goal of <nuxt-link class="link" to="/10kmrr">getting to $10k MRR</nuxt-link>. I’m currently at <code>$0k</code> with <code>{{ runwayLeft }}</code> days of savings left. Previously I worked at Thinkst Canary, studied CS, and dropped out of an architecture degree.
       </p>
-      <p>
+      <!-- <p>
         You’ve stumbled upon my weird slice of the internet. This site is part blog, part PKMS, part journal and part exploration space. It’s very much in 'beta' — most of it is hidden behind <nuxt-link to="/auth-for-me">just-for-me authentication</nuxt-link> but I’m slowly opening it up.
-      </p>
+      </p> -->
     </Grid>
   </div>
 </template>
@@ -52,5 +52,15 @@ export default {
 h1 {
   position: relative;
   left: -2px;
+}
+p {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.link {
+  transition: border .1s ease-in-out;
+}
+code {
+  transition: background-color .1s ease-in-out;
 }
 </style>

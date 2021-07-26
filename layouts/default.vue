@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="site">
     <Navbar />
     <Nuxt />
   </div>
@@ -12,4 +12,7 @@ export default {
 </script>
 
 <style lang="scss">
+.site {
+  padding-bottom: 40px;
+}
 </style>
