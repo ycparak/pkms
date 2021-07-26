@@ -1,9 +1,10 @@
 :root {
   // Colors
   --background: #fff;
-  --text: #121215;
+  --background-alt: #fafafa;
   --line: #eee;
-  --subtle-text: #c3c3c3;
+  --text: #121215;
+  --subtle-text: #b3b3b3;
 
   // Spacing
   --column: 55ch;
@@ -18,8 +19,9 @@
 .dark-mode {
   // Colors
   --background: #121215;
-  --text: #fff;
+  --background-alt: #26262C;
   --line: rgba(255, 255, 255, 0.2);
+  --text: #fff;
   --subtle-text: #bbbbc4;
 
   // Darkmode

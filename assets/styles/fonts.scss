@@ -36,7 +36,7 @@
 }
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--text);
   border-bottom: 1px solid var(--subtle-text);
   transition: all .1s ease-in-out;
   &:hover, &:active, &:focus {
@@ -64,8 +64,8 @@ p {
   margin: 12px 0;
 }
 code {
-  border: 1px solid var(--subtle-text);
-  background-color: var(--line);
+  border: 1px solid var(--line);
+  background-color: var(--background-alt);
   padding: 0 4px;
   border-radius: 2px;
   font-size: 0.85em;
@@ -73,6 +73,8 @@ code {
   top: -1px;
   border-radius: 4px;
   transition: all 0.1s ease-in-out;
+  color: var(--text);
+  font-family: 'Space Mono', monospace;
 }
 blockquote {
   grid-column: 2 / 4;
@@ -80,6 +82,8 @@ blockquote {
   margin: 24px 0;
   padding-left: calc(var(--margin) - 3px);
   padding-bottom: 2px;
+  color: var(--text);
+  transition: all .1s ease-in-out;
   p {
     margin-left: 0;
     margin-right: 0;

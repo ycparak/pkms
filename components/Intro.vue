@@ -60,7 +60,4 @@ p {
 .link {
   transition: border .1s ease-in-out;
 }
-code {
-  transition: background-color .1s ease-in-out;
-}
 </style>
