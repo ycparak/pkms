@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .post-header, .nuxt-content {
   display: grid;
   grid-template-columns: 1fr 32px min(65ch, 100%) 32px 1fr;

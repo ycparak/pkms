@@ -1,11 +1,11 @@
 <template>
   <NuxtLink :to="post.path" class="post-item">
-    <Container>
+    <Grid>
       <div class="item-box">
         <span class="date post-date">{{ date }}</span>
         <span class="title">{{ post.title }}</span>
       </div>
-    </Container>
+    </Grid>
   </NuxtLink>
 </template>
 
@@ -26,10 +26,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .post-item {
   display: block;
-  transition: all .3s ease-in-out;
+  transition: all .1s ease-in-out;
   border-bottom: 1px solid var(--line);
   @media (max-width: 990px) {
     border-top: 1px solid var(--line);
@@ -41,14 +41,14 @@ export default {
   flex-direction: row;
   align-items: center;
   min-height: 68px;
-  transition: all .3s ease-in-out;
+  transition: all .1s ease-in-out;
   .post-date {
     margin-right: 28px;
   }
   .title {
     font-weight: 500;
     color: var(--text);
-    transition: all .3s ease-in-out;
+    transition: all .1s ease-in-out;
     line-height: 1.4;
   }
   @media (max-width: 1150px) {

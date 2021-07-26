@@ -18,10 +18,9 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/styles/fonts.scss',
     '@/assets/styles/reset.scss',
+    '@/assets/styles/fonts.scss',
     '@/assets/styles/variables.scss',
-    '@/assets/styles/moonshotters.scss',
     '@/assets/styles/main.scss',
   ],
 
