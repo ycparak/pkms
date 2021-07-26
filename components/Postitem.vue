@@ -2,7 +2,12 @@
   <NuxtLink :to="post.path" class="post-item">
     <div class="item-box">
       <div class="date">{{ date }}</div>
-      <div class="title">{{ post.title }}</div>
+      <div class="title">
+        <span v-if="post.locked" class="lock">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </span>
+        {{ post.title }}
+      </div>
     </div>
   </NuxtLink>
 </template>
@@ -55,5 +60,12 @@ export default {
 }
 .post-item:hover .title {
   border-bottom: 1px solid var(--text);
+}
+.lock > svg {
+  width: 14px;
+  fill: none;
+  stroke: var(--text);
+  position: relative;
+  top: 1px;
 }
 </style>
