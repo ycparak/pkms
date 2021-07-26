@@ -1,9 +1,9 @@
 ---
-title: Work at A Scale that Resonates to You
+title: Just-for-me auth
 abstract: Does affecting one hundred lives turn you on? A thousand? A million? A billion? Why? What does it mean to have a positive impact on a life? How intimate does that connection need to be? Understanding your scale — the scale that moves you — is critical to understanding with whom and how you should work, how you should live.
-category: essay
+category: Note
 ---
-This transcript is taken from an [Offscreen Magazine interview](https://craigmod.com/essays/offscreen_interview/) with, the always deeply introspective and thoughtful, Craig Mod. The whole interview transcript is worth reading. But this portion really floats my boat.
+This transcript is taken from an [Offscreen Magazine interview](https://craigmod.com/essays/offscreen_interview/) with, the always deeply introspective, Craig Mod. The whole interview transcript is worth reading. But this portion really floats my boat.
 
 ### Question
 Some time after writing those essays you took on a design role at Flipboard, but you eventually went back to being independent so that you could focus on writing. Was working for a tech company not what you expected?

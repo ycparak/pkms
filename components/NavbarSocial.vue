@@ -40,6 +40,10 @@ export default {
 .social-nav-link {
   display: inline-block;
   margin-right: 16px;
+  border-bottom: none;
+  &:hover {
+    border-bottom: none;
+  }
   svg {
     width: 13px;
     height: 13px;

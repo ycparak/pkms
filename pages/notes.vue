@@ -1,15 +1,14 @@
 <template>
   <div class="index">
-    <Intro />
-    <Posts :posts="posts" />
+    <Posts title="Notes." :posts="posts" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Index',
+  name: 'Notes',
   async asyncData({ $content }) {
-    const posts = await $content().fetch();
+    const posts = await $content().where({ category: 'Note' }).fetch();
     return { posts };
   }
 }

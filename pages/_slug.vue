@@ -1,13 +1,14 @@
 <template>
-  <post :post="post">
+  <Post :post="post">
     <nuxt-content :document="post" />
-  </post>
+  </Post>
 </template>
 
 <script>
 export default {
+  name: 'Slug',
   async asyncData({ $content, params }) {
-    const post = await $content('10kmrr', params.slug).fetch()
+    const post = await $content('', params.slug).fetch()
     return { post }
   },
 }

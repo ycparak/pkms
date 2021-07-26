@@ -14,12 +14,23 @@
   font-display: swap;
   src: url("~assets/fonts/Inter/Inter-italic.var.woff2") format("woff2");
 }
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 400;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  font-display: swap;
+  src: url("~assets/fonts/SpaceMono/SpaceMono.ttf") format("ttf");
+}
 
 a {
-  text-decoration: underline;
+  text-decoration: none;
   color: inherit;
+  border-bottom: 1px solid var(--subtle-text);
+  transition: all .1s ease-in-out;
   &:hover, &:active, &:focus {
-    text-decoration: underline;
+    text-decoration: none;
+    border-bottom: 1px solid var(--text);
   }
 }
 h1 {

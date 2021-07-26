@@ -1,9 +1,15 @@
 <template>
-  <NuxtLink
-    :to="path ? path : link"
-    class="nav-link">
-    {{ text }}
-  </NuxtLink>
+  <span>
+    <NuxtLink
+      v-if="isLive"
+      :to="path ? path : link"
+      class="nav-link">
+      {{ text }}
+    </NuxtLink>
+    <span v-else class="nav-link not-live">
+      {{ text }}
+    </span>
+  </span>
 </template>
 
 <script>
@@ -19,10 +25,10 @@ export default {
       required: false,
       default: null,
     },
-    classname: {
-      type: String,
+    isLive: {
+      type: Boolean,
       required: false,
-      default: null,
+      default: true,
     },
   },
   computed: {
@@ -43,6 +49,7 @@ export default {
   transition: all .1s ease-in-out;
   color: var(--subtle-text);
   text-decoration: none;
+  border-bottom: none;
   @media (max-width: 768px) {
     margin-right: 24px;
   }
@@ -55,8 +62,20 @@ export default {
   :last-child {
     margin-right: 0;
   }
-  &.nuxt-link-exact-active, &:hover {
+  &.nuxt-link-exact-active,
+  &:hover, &:focus, &:active {
     color: var(--text);
+    text-decoration: none;
+    border-bottom: none;
+  }
+}
+.not-live {
+  text-decoration: line-through;
+  &.nuxt-link-exact-active,
+  &:hover, &:focus, &:active {
+    color: var(--subtle-text);
+    text-decoration: line-through;
+    border-bottom: none;
   }
 }
 </style>

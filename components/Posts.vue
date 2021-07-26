@@ -1,10 +1,13 @@
 <template>
   <div class="posts">
-    <div
-      v-for="(post, index) in posts"
-      :key="index">
-      <PostItem :post="post" />
-    </div>
+    <Grid>
+      <h1>{{ title }}</h1>
+      <div
+        v-for="(post, index) in posts"
+        :key="index">
+        <PostItem :post="post" />
+      </div>
+    </Grid>
   </div>
 </template>
 
@@ -12,6 +15,11 @@
 export default {
   name: 'Posts',
   props: {
+    title: {
+      type: String,
+      required: false,
+      default: 'Posts.'
+    },
     posts: {
       type: Array,
       required: true,
@@ -21,4 +29,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.posts {
+  margin-top: 40px;
+}
+h1 {
+  margin-bottom: 8px;
+}
 </style>
