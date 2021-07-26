@@ -1,12 +1,13 @@
 <template>
   <div class="post">
-    <header class="post-header">
+    <Grid>
       <h1 class="post-title">{{ post.title }}</h1>
-      <time class="date post-date">Published on {{ date }}</time>
-    </header>
-    <article>
-      <slot></slot>
-    </article>
+      <div class="date">{{ date }}</div>
+      <div v-if="post.locked" class="post-locked">
+        This post is only available to editors for now. It should be up shortly (within a week).
+      </div>
+    </Grid>
+    <slot v-if="!post.locked"></slot>
   </div>
 </template>
 
@@ -27,35 +28,27 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.post-header, .nuxt-content {
-  display: grid;
-  grid-template-columns: 1fr 32px min(65ch, 100%) 32px 1fr;
-  * {
-    grid-column: 3;
-  }
+<style lang="scss" scoped>
+.post {
+  margin-top: 40px;
 }
-.post-header {
-  margin-top: 10vh;
-  margin-bottom: 28px;
-  .post-title {
-    font-size: 56px;
-    font-weight: 900;
-  }
-  .post-date {
-    margin-top: 20px;
-    font-size: 13px;
-  }
+.date {
+  color: var(--subtle-text);
+  font-family: 'Space Mono', menlo, monospace;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  margin-bottom: 12px;
 }
-.nuxt-content {
-  margin-bottom: 10vh;
-  h3 {
-    font-size: 21px;
-    font-weight: 700;
-  }
-  a {
-    color: inherit;
-    text-decoration: underline;
-  }
+.post-locked {
+  grid-column: 2 / 4;
+  padding: var(--margin);
+  border: 1px solid var(--line);
+  background: var(--background-alt);
+  text-align: center;
+  border-radius: 8px;
+  margin-top: var(--margin);
+  line-height: 1.6;
+  font-size: 14px;
 }
 </style>
