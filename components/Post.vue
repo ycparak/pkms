@@ -40,17 +40,4 @@ export default {
   margin-top: 8px;
   margin-bottom: 12px;
 }
-.post-locked {
-  grid-column: 2 / 4;
-  padding: var(--margin);
-  border: 1px solid var(--line);
-  background: var(--background-alt);
-  text-align: center;
-  border-radius: 8px;
-  margin-top: var(--margin);
-  line-height: 1.6;
-  font-size: 14px;
-  color: var(--text);
-  transition: all .1s ease-in-out;
-}
 </style>

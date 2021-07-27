@@ -49,10 +49,6 @@ export default {
 .intro {
   margin-top: 40px;
 }
-h1 {
-  position: relative;
-  left: -2px;
-}
 p {
   margin-top: 8px;
   margin-bottom: 0;

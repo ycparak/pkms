@@ -1,6 +1,10 @@
 <template>
   <div class="index">
-    <Intro />
+    <Grid>
+      <div class="post-locked">
+        This page is currently locked. It should be up shortly (within a week).
+      </div>
+    </Grid>
   </div>
 </template>
 
@@ -10,5 +14,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.post-locked {
+  grid-column: 3;
+}
 </style>
