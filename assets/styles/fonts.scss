@@ -29,7 +29,7 @@
 .nuxt-content {
   display: grid;
   grid-template-columns: 1fr var(--margin) var(--column) var(--margin) 1fr;
-  @media (max-width: 768px) {
+  @media (max-width: 700px) {
     grid-template-columns: 1fr minmax(auto, var(--column)) 1fr;
     padding: 0 20px;
   }
@@ -37,11 +37,11 @@
 a {
   text-decoration: none;
   color: var(--text);
-  border-bottom: 1px solid var(--subtle-text);
   transition: all .1s ease-in-out;
+  text-decoration: underline;
   &:hover, &:active, &:focus {
     text-decoration: none;
-    border-bottom: 1px solid var(--text);
+    text-decoration: underline;
   }
 }
 h1, h2, h3, h4, h5 {
@@ -84,6 +84,9 @@ blockquote {
   padding-bottom: 2px;
   color: var(--text);
   transition: all .1s ease-in-out;
+  @media (max-width: 700px) {
+    grid-column: 2;
+  }
   p {
     margin-left: 0;
     margin-right: 0;

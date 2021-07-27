@@ -2,12 +2,12 @@
   <div class="posts">
     <Grid>
       <h1>{{ title }}</h1>
-      <div
-        v-for="(post, index) in posts"
-        :key="index">
-        <PostsThing :post="post" />
-      </div>
     </Grid>
+    <div
+      v-for="(post, index) in posts"
+      :key="index">
+      <PostsThing :post="post" />
+    </div>
   </div>
 </template>
 

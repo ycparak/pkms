@@ -1,17 +1,15 @@
 <template>
-  <span>
-    <NuxtLink
-      v-if="isLive"
-      :to="path ? path : link"
-      class="nav-link">
-      {{ text }}
-    </NuxtLink>
-    <span
-      v-else
-      v-tooltip="'Coming soon'"
-      class="nav-link not-live">
-      {{ text }}
-    </span>
+  <NuxtLink
+    v-if="isLive"
+    :to="path ? path : link"
+    class="nav-link">
+    {{ text }}
+  </NuxtLink>
+  <span
+    v-else
+    v-tooltip="'Coming soon'"
+    class="nav-link not-live">
+    {{ text }}
   </span>
 </template>
 
@@ -53,7 +51,7 @@ export default {
   color: var(--subtle-text);
   text-decoration: none;
   border-bottom: none;
-  @media (max-width: 768px) {
+  @media (max-width: 700px) {
     margin-right: 24px;
   }
   @media (max-width: 400px) {
@@ -62,7 +60,7 @@ export default {
   @media (max-width: 374px) {
     margin-right: 10px;
   }
-  :last-child {
+  &:last-child {
     margin-right: 0;
   }
   &.nuxt-link-exact-active,

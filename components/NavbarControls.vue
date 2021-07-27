@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .navbar-controls {
-  display: flex !important;
+  display: flex;
   flex-direction: row;
   align-items: center;
   @media (max-width: 500px) {
@@ -70,7 +70,7 @@ export default {
   cursor: pointer;
   position: relative;
   top: 1px;
-  @media (max-width: 768px) {
+  @media (max-width: 700px) {
     width: 12px;
     height: 12px;
   }

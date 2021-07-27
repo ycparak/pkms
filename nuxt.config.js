@@ -14,14 +14,6 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    script: [
-      {
-        defer: true,
-        'data-domain': "ycparak.com",
-        src: "https://plausible.io/js/plausible.js"
-      }
-    ]
-
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -55,6 +47,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    'vue-plausible'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -64,6 +57,9 @@ export default {
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
+  build: {},
+
+  plausible: {
+    domain: 'ycparak.com'
   }
 }
