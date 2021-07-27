@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'ycparak',
+    title: '@ycparak (Yusuf Parak)',
     htmlAttrs: {
       lang: 'en'
     },
@@ -13,7 +13,15 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {
+        defer: true,
+        'data-domain': "ycparak.com",
+        src: "https://plausible.io/js/plausible.js"
+      }
     ]
+
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
