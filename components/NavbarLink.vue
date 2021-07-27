@@ -6,7 +6,10 @@
       class="nav-link">
       {{ text }}
     </NuxtLink>
-    <span v-else class="nav-link not-live">
+    <span
+      v-else
+      v-tooltip="'Coming soon'"
+      class="nav-link not-live">
       {{ text }}
     </span>
   </span>
@@ -71,6 +74,7 @@ export default {
 }
 .not-live {
   text-decoration: line-through;
+  cursor: default;
   &.nuxt-link-exact-active,
   &:hover, &:focus, &:active {
     color: var(--subtle-text);

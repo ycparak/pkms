@@ -50,5 +50,7 @@ export default {
   margin-top: var(--margin);
   line-height: 1.6;
   font-size: 14px;
+  color: var(--text);
+  transition: all .1s ease-in-out;
 }
 </style>

@@ -19,13 +19,15 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/styles/reset.scss',
-    '@/assets/styles/fonts.scss',
     '@/assets/styles/variables.scss',
+    '@/assets/styles/fonts.scss',
+    '@/assets/styles/tooltips.scss',
     '@/assets/styles/main.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/v-tooltip.client.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

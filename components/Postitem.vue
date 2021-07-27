@@ -67,5 +67,6 @@ export default {
   stroke: var(--text);
   position: relative;
   top: 1px;
+  transition: all .1s ease-in-out;
 }
 </style>
