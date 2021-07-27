@@ -4,7 +4,7 @@
       <nav class="nav">
         <div class="links-nav">
           <NavbarLink text="home" path="/" />
-          <NavbarLink text="10k mrr" />
+          <NavbarLink text="10k mrr" :is-live="false" />
           <NavbarLink text="projects" :is-live="false" />
           <NavbarLink text="essays" :is-live="false" />
           <NavbarLink text="notes" />
