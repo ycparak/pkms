@@ -5,7 +5,7 @@
       <div
         v-for="(post, index) in posts"
         :key="index">
-        <PostItem :post="post" />
+        <PostsThing :post="post" />
       </div>
     </Grid>
   </div>

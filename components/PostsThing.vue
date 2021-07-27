@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'PostItem',
+  name: 'PostsThing',
   props: {
     post: {
       type: Object,

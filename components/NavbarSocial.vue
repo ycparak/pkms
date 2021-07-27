@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'Toolbar',
+  name: 'NavbarSocial',
   methods: {
     darkModeToggle() {
       if (this.$colorMode.value === 'dark') {
