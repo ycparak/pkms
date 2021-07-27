@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'NavbarSocial',
+  name: 'NavbarControls',
   methods: {
     darkModeToggle() {
       if (this.$colorMode.value === 'dark') {
@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .social-nav {
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   align-items: center;
   @media (max-width: 500px) {

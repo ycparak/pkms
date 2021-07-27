@@ -8,7 +8,8 @@
           ".nuxt/content/**",
           ".nuxt/color-mode/**",
           "content/**"
-        ]
+        ],
+        "generateStaticRoutes": true
       }
     }
   ]

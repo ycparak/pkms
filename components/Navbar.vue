@@ -9,7 +9,7 @@
           <NavbarLink text="essays" :is-live="false" />
           <NavbarLink text="notes" />
         </div>
-        <NavbarSocial />
+        <NavbarControls />
       </nav>
     </Grid>
   </div>
