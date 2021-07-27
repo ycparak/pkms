@@ -1,6 +1,6 @@
 <template>
-  <div class="social-nav">
-    <a class="social-nav-link" target="_blank" href="https://twitter.com/ycparak">
+  <div class="navbar-controls">
+    <a class="navbar-controls-link" href="https://twitter.com/ycparak">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.social-nav {
+.navbar-controls {
   display: flex !important;
   flex-direction: row;
   align-items: center;
@@ -37,7 +37,7 @@ export default {
     display: none;
   }
 }
-.social-nav-link {
+.navbar-controls-link {
   display: inline-block;
   margin-right: 16px;
   border-bottom: none;
