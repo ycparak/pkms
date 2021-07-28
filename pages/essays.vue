@@ -1,14 +1,14 @@
 <template>
   <div class="index">
-    <Posts title="Notes." :posts="posts" />
+    <Posts title="Essays." :posts="posts" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Notes',
+  name: 'Essays',
   async asyncData({ $content }) {
-    const posts = await $content().where({ category: 'Note' }).sortBy('updatedAt', 'desc').fetch();
+    const posts = await $content().where({ category: 'Essay' }).sortBy('updatedAt', 'desc').fetch();
     return { posts };
   }
 }
