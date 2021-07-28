@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .posts {
-  margin-top: 40px;
+  margin-top: calc(var(--margin) * 2);
 }
 h1 {
   margin-bottom: 8px;

@@ -47,7 +47,7 @@ export default {
 
 <style lang="scss" scoped>
 .intro {
-  margin-top: 40px;
+  margin-top: calc(var(--margin) * 2);
 }
 p {
   margin-top: 8px;

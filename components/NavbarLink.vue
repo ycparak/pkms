@@ -46,14 +46,11 @@ export default {
   display: inline-block;
   font-weight: 500;
   font-size: 14px;
-  margin-right: 32px;
+  margin-right: var(--margin);
   transition: all .1s ease-in-out;
   color: var(--subtle-text);
   text-decoration: none;
   border-bottom: none;
-  @media (max-width: 700px) {
-    margin-right: 24px;
-  }
   @media (max-width: 400px) {
     margin-right: 16px;
   }
