@@ -2,7 +2,7 @@
   <div class="index">
     <Grid>
       <div class="post-locked">
-        This page is currently locked. It should be up shortly (within a week).
+        This page is currently in draft mode and only visible to editors for now.
       </div>
     </Grid>
   </div>
@@ -16,6 +16,6 @@ export default {
 
 <style lang="scss" scoped>
 .post-locked {
-  grid-column: 3;
+  margin-top: 40px;
 }
 </style>

@@ -4,7 +4,7 @@
       <h1 class="post-title">{{ post.title }}</h1>
       <div class="date">{{ date }}</div>
       <div v-if="post.locked" class="post-locked">
-        This post is only available to editors for now. It should be up shortly (within a week).
+        This post is still in draft mode and only available to editors for now.
       </div>
     </Grid>
     <slot v-if="!post.locked"></slot>
