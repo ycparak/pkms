@@ -2,17 +2,19 @@
   <div class="tenk-widget">
     <div class="tenk-widget-header tenk-header">Metrics</div>
     <div class="tenk-widget-content">
-      <TenkMetricsItem title="Monthly Recurring Revenue" metric="$0" />
-      <TenkMetricsItem title="Annual Recurring Revenue" metric="$0" />
-      <TenkMetricsItem title="Days Since Starting" metric="0" />
-      <TenkMetricsItem title="Days of Savings Left" metric="920" />
+      <TenkMetricsItem title="Monthly Recurring Revenue" :metric="`$${mrr}`" />
+      <TenkMetricsItem title="Annual Recurring Revenue" :metric="`$${arr}`" />
+      <TenkMetricsItem title="Days of Savings Left" :metric="runwayLeft" />
     </div>
   </div>
 </template>
 
 <script>
+import metrics from '@/mixins/metrics';
+
 export default {
   name: 'Metrics',
+  mixins: [metrics]
 }
 </script>
 

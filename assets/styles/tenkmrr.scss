@@ -1,7 +1,7 @@
 .tenk-widget {
   border: 1px solid var(--line);
   border-radius: 8px;
-  margin-bottom: var(--margin);
+  margin-bottom: calc(var(--margin) + 12px);
   color: var(--text);
   transition: all 0.1s ease-in-out;
   position: relative;

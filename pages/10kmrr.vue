@@ -1,15 +1,12 @@
 <template>
   <div class="tenkmrr">
     <div class="targets">
+      <TenKMetrics />
       <TenKMilestones />
     </div>
 
     <div class="main">
       <TenKChallenge />
-    </div>
-
-    <div class="numbers">
-      <TenKMetrics />
     </div>
   </div>
 </template>
@@ -24,7 +21,6 @@ export default {
 .tenkmrr {
   display: grid;
   grid-template-columns: 1fr 256px calc(var(--column) + (var(--margin) * 2)) 256px 1fr;
-  grid-template-rows: 1fr auto;
   column-gap: var(--margin);
   row-gap: var(--margin);
   margin-top: var(--margin);

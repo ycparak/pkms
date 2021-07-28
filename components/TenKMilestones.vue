@@ -2,9 +2,9 @@
   <div class="tenk-widget">
     <div class="tenk-widget-header tenk-header">Milestones</div>
     <div class="tenk-widget-content milestones-content">
-      <TenKMilestonesItem title="Save 3 years runway" date="12 May 2021" :complete="true" />
-      <TenKMilestonesItem title="Resign from job" date="12 May 2021" :complete="true" />
-      <TenKMilestonesItem title="Start" date="01 Aug 2021" :complete="false" />
+      <TenKMilestonesItem title="Save 2.5 years runway" date="25 May 2021" :complete="true" />
+      <TenKMilestonesItem title="Leave job" date="16 Jul 2021" :complete="true" />
+      <TenKMilestonesItem title="Start challenge" date="01 Aug 2021" :complete="false" />
       <TenKMilestonesItem title="First sale / bit of revenue" date="Don’t care how" :complete="false" />
       <TenKMilestonesItem title="$1k MRR" date="Ramen profitability" :complete="false" />
       <TenKMilestonesItem title="$4k MRR" date="Replicates old base salary" :complete="false" />
