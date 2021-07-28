@@ -19,6 +19,8 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-right: var(--margin);
+  margin-top: 8px;
   .name {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -41,6 +43,9 @@ export default {
       top: 4px;
       width: 28px;
       height: 28px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      color: var(--subtle-text);
     }
   }
 }
