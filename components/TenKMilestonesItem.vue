@@ -3,7 +3,10 @@
     <div class="milestone-marker"></div>
     <div class="milestone-content">
       <div class="milestone-title">{{ title }}</div>
-      <div class="milestone-subtitle">{{ date }}</div>
+      <div class="tenk-var milestone-subtitle">
+        {{ date }}
+        <span v-if="complete" class="tick">&#10003;</span>
+      </div>
     </div>
   </div>
 </template>
@@ -74,16 +77,6 @@ export default {
     position: relative;
     top: 1px;
   }
-  .milestone-content {
-    .milestone-subtitle {
-      font-size: 11px;
-      font-family: 'Space Mono', monospace;
-      text-transform: uppercase;
-      color: var(--subtle-text);
-      margin-top: 4px;
-    }
-  }
-
   &.complete {
     &::before { display: none; }
     &::after { background: var(--text); }
@@ -97,7 +90,7 @@ export default {
   }
 
   &:last-child { 
-    padding-bottom: 0;
+    padding-bottom: 8px;
     &::after {
       background: var(--line);
     }

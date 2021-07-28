@@ -27,8 +27,8 @@ export default {
   // border-bottom: 1px solid var(--line);
   // border-right: 1px solid var(--line);
   // border-left: 1px solid var(--line);
-  // border-bottom-right-radius: 16px;
-  // border-bottom-left-radius: 16px;
+  // border-bottom-right-radius: 8px;
+  // border-bottom-left-radius: 8px;
   grid-column: 2 / 5;
   padding: 0 var(--margin);
   color: var(--text);
