@@ -20,10 +20,11 @@ export default {
   flex-direction: row;
   align-items: center;
   margin-right: var(--margin);
-  margin-top: 12px;
+  transition: all .1s ease-in-out;
   .name {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    transition: all .1s ease-in-out;
   }
   .form-group {
     flex-grow: 7;
@@ -36,6 +37,7 @@ export default {
       border-bottom-left-radius: 0;
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
+      transition: all .1s ease-in-out;
     }
     .submit {
       position: absolute;
@@ -46,6 +48,7 @@ export default {
       background: var(--line);
       border: 1px solid var(--line);
       color: var(--subtle-text);
+      transition: all .1s ease-in-out;
     }
   }
 }

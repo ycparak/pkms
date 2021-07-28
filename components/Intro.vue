@@ -26,7 +26,6 @@ export default {
   margin-top: calc(var(--margin) * 2);
 }
 p {
-  margin-top: 8px;
   margin-bottom: 0;
 }
 </style>

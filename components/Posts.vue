@@ -32,7 +32,4 @@ export default {
 .posts {
   margin-top: calc(var(--margin) * 2);
 }
-h1 {
-  margin-bottom: 8px;
-}
 </style>
