@@ -20,7 +20,7 @@ export default {
   flex-direction: row;
   align-items: center;
   margin-right: var(--margin);
-  margin-top: 8px;
+  margin-top: 12px;
   .name {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
