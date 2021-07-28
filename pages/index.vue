@@ -9,7 +9,7 @@
 export default {
   name: 'Index',
   async asyncData({ $content }) {
-    const posts = await $content().fetch();
+    const posts = await $content().sortBy('updatedAt', 'desc').fetch();
     return { posts };
   }
 }

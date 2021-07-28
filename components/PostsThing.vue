@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     date() {
-      return this.$moment(this.post.createdAt).format('MMM YYYY')
+      return this.$moment(this.post.updatedAt).format('MMM YYYY')
     },
   },
 }
@@ -76,8 +76,6 @@ export default {
     width: 13px;
     fill: none;
     stroke: var(--subtle-text);
-    position: relative;
-    top: 1px;
     transition: all .1s ease-in-out;
   }
 }

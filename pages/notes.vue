@@ -8,7 +8,7 @@
 export default {
   name: 'Notes',
   async asyncData({ $content }) {
-    const posts = await $content().where({ category: 'Note' }).fetch();
+    const posts = await $content().sortBy('updatedAt', 'desc').fetch();
     return { posts };
   }
 }
