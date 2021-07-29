@@ -30,7 +30,7 @@ export default {
     flex-grow: 7;
     position: relative;
     .email {
-      width: 100%;
+      width: calc(100% - 24px);
       display: block;
       border-left: none;
       border-top-left-radius: 0;
@@ -38,6 +38,7 @@ export default {
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
       transition: all .1s ease-in-out;
+      padding-right: 24px;
     }
     .submit {
       position: absolute;
