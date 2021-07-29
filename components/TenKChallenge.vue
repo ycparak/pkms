@@ -18,7 +18,7 @@
         <li>I don’t have a co-founder.</li>
         <li>I don’t plan on hiring anyone.</li>
         <li>
-          I do know how to code and design products:
+          I do know how to code and design:
           <ul>
             <li>My frontend skills are very good</li>
             <li>My backend/infrastructure skills aren’t good</li>
@@ -45,8 +45,8 @@
     <p><strong>Why $10,000?</strong> At $10k I can live very comfortably. I can take care of family, I can travel and I can easily pay for everything I need and want. $10,000 also happens to go a long way when living in South Africa. And I know if I can get to $10k MRR, I can get to $100k MRR  and who doesn’t want a $100k MRR :)</p>
     <p><strong>Why do this in public?</strong> Because I want people to see me succeed. I want to build an audience. I want to meet people who also like building cool shit. I want lot’s of Twitter followers. I dunno, I want to be a cool kid.</p>
     <p><strong>When is the first update?</strong> 1st of August 2021, will be the week 0 update. It will probably be about me picking / validating an idea.</p>
-    <p><strong>What if you fail?</strong> I doubt a fail will be an outright fail. Through this I will have 1) improved my skills, 2) made more friends / improved my network, and 3) it’s very likely I would have gotten to at least some bit of revenue.</p>
-    <p><strong>Anything else?</strong> While this is definitely about the revenue, I genuinely enjoy building software projects. So for me to now finally be able to focus on this full time is pretty exciting. If you have the same passion or have any other questions, please email me at <code>first_name @ ycparak.com</code>, I’d love to hear from you.</p>
+    <p><strong>What if you fail?</strong> I doubt a fail will be an outright fail. Through this I will have 1) learned a lot and improved my skills, 2) made more friends / improved my network, and 3) it’s very likely I would have gotten to at least some bit of revenue.</p>
+    <p><strong>Anything else?</strong> While this is definitely about the revenue, I genuinely enjoy building cool software. So for me to now finally be able to focus on this full time is pretty exciting. If you have the same passion or have any other questions, please email me at <code>first_name @ ycparak.com</code>, I’d love to hear from you.</p>
   </div>
 </template>
 

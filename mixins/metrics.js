@@ -32,6 +32,12 @@ export default {
     },
     arr() {
       return this.mrr * 12;
+    },
+    defaultAliveOrDead() {
+      if (this.mrr > 1000) {
+        return 'Alive'
+      }
+      return 'Dead';
     }
   },
   methods: {

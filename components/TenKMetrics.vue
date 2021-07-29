@@ -5,6 +5,7 @@
       <TenkMetricsItem title="Monthly Recurring Revenue" :metric="`$${mrr}`" />
       <TenkMetricsItem title="Annual Recurring Revenue" :metric="`$${arr}`" />
       <TenkMetricsItem title="Days of Savings Left" :metric="runwayLeft" />
+      <TenkMetricsItem title="Default alive/dead" :metric="defaultAliveOrDead" />
     </div>
   </div>
 </template>
