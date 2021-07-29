@@ -7,7 +7,6 @@
 
     <div class="main">
       <TenKChallenge />
-      <TenKBody />
     </div>
 
     <div class="numbers">
