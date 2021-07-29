@@ -32,10 +32,12 @@ export default {
 .targets {
   grid-row: 1;
   grid-column: 2;
+  margin-top: 6px;
 }
 .numbers {
   grid-row: 1;
   grid-column: 4;
+  margin-top: 6px;
 }
 .main {
   grid-row: 1;

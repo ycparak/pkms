@@ -38,6 +38,6 @@ export default {
   font-size: 14px;
   text-transform: uppercase;
   margin-top: -4px;
-  margin-bottom: 12px;
+  margin-bottom: 28px;
 }
 </style>
