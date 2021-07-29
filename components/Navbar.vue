@@ -24,14 +24,10 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   transition: all .1s ease-in-out;
-  // border-bottom: 1px solid var(--line);
-  // border-right: 1px solid var(--line);
-  // border-left: 1px solid var(--line);
-  // border-bottom-right-radius: 8px;
-  // border-bottom-left-radius: 8px;
-  grid-column: 2 / 5;
-  padding: 0 var(--margin);
   color: var(--text);
+  @media (max-width: 912px) {
+    padding: 0;
+  }
 }
 .nav {
   display: flex;

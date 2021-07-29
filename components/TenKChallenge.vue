@@ -9,7 +9,7 @@
     <Newsletter />
     <h4 class="post-newsletter">Backstory.</h4>
     <p>For a few years now I’ve been itching to start my own bootstrapped startup. In fact I’ve tried to on many occasions. Predictably though, after a few weeks of enthusiastic coding I’d lose interest. Either something would come up at home/work or I’d be onto some new idea. About a year ago I realised that If I actually wanted to do it, I’d have to make it a priority.</p>
-    <p>And so I saved up 2.5 years of runway, reduced any outside responsibilities and I’m now giving this thing a proper shot. The goal is by January 31st 2024, to have $10,000 in monthly recurring revenue from one (or a combination of) project(s).</p>
+    <p>And so I saved up 2.5 years of runway, reduced most of my responsibilities and I’m now giving this thing a proper shot. The goal is by January 31st 2024, to have $10,000 in monthly recurring revenue from one (or a combination of) project(s).</p>
     <p>Depending on how much time you spend on HN that timeline might seem conservative to you. In general I agree and optimistically I think I can get there quicker. But I’d rather plan for this to be a marathon and be happy if it turns out to be a sprint.</p>
     <p>I’m going to do this thing while being as transparent as possible. I’ll be posting weekly updates here where I try to show all the inner workings (revenue, mockups, challenges, all of it). Mostly because I think it would be cool to have a record of this, if only for posterity. But also because, I’ve been burned by working in stealth before and I’d like to avoid that this time. I tend to use stealth mode as an excuse to never show my work to anyone. It’s stupid and mostly comes from a fear of failure.</p>
     <h4>Quick FAQ.</h4>
@@ -58,9 +58,11 @@ export default {
 
 <style lang="scss" scoped>
 .challenge {
-  padding: 0 var(--margin);
   border-radius: 8px;
   margin-bottom: 32px;
+  @media (max-width: 912px) {
+    padding: 0;
+  }
 }
 strong {
   line-height: 1;
