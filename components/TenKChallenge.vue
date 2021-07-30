@@ -1,6 +1,6 @@
 <template>
   <div class="challenge">
-    <h1>The Challenge: $10k MRR in 2.5 years</h1>
+    <h1>The Challenge: $10k MRR in 2.5 Years</h1>
     <p>For a few years now I’ve been itching to start my own bootstrapped startup. In fact I’ve tried to on many occasions. Predictably though, after a few weeks of enthusiastic coding I’d lose interest. Either something would come up at home/work or I’d get infatuated with some new idea.</p>
     <p>About a year ago I realised that If I actually wanted to do it, I’d have to make it a priority. Some people can manage a job, family, excercise and a bunch of other responsibilities while bootstrapping their own company. I am not one of them. If I’m going to do something it has to have my full focus. And so I’ve saved up 912 days / 2.5 years of runway, reduced most of my responsibilities and plan to now giving this thing a proper shot.</p>
     <p class="goal">
@@ -36,7 +36,7 @@
       <li>I do have healtchare coverage. I pay monthly for this and it’s worked into my budget.</li>
     </ul>
     <h4>Participate in the challenge.</h4>
-    <p>I think it would be awesome to have a Slack group filled with other people also somewhere along the journey to $10K MRR (timeframe doesn’t matter). If that sounds interesting to you, fill <a target="_blank" href="https://l5p77i9dm17.typeform.com/to/KdTTRXJE">this form</a> out to join. I’ll cap the Slack at 50 people so it stays nice and intimate.</p>
+    <p>I’d love to get a Slack group going filled with other people also also somewhere along the journey to $10k MRR. If that sounds like something you’d like to be in on, <a target="_blank" href="https://l5p77i9dm17.typeform.com/to/KdTTRXJE">fill this form in</a> to join. I’ll cap it at 50 people so it stays nice and intimate.</p>
     <h4>Long FAQ.</h4>
     <p><strong>What are you going to build?</strong> Honestly, I have no clue. It could be a B2B saas app or a consumer thing. I do know though that it will be niche and opinionated. There’s something very alluring about a one/two person team that focuses on building really great, really simple, opinionated software. I’d like to do the same. I do have a few other requirements though (mostly crib noted from <a target="_blank" href="https://www.derrickreimer.com/essays/2019/05/28/finding-my-next-bootstrapped-business-idea.html">Derrick Reimer</a>):</p>
     <ul>
