@@ -6,7 +6,7 @@
           <NavbarLink text="home" path="/" />
           <NavbarLink text="10k mrr" />
           <NavbarLink text="projects" :is-live="false" />
-          <NavbarLink text="essays" />
+          <NavbarLink text="essays" :is-live="false" />
           <NavbarLink text="notes" />
         </div>
         <NavbarControls />

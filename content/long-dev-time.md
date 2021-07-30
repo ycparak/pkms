@@ -1,5 +1,5 @@
 ---
-title: Good software may increasingly require long development time
+title: Long development time as a requirement for good software
 category: Note
 draft: False
 locked: False

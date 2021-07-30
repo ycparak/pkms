@@ -1,5 +1,5 @@
 <template>
-  <Post :post="post">
+  <Post v-if="post" :post="post">
     <nuxt-content :document="post" />
   </Post>
 </template>

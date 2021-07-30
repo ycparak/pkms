@@ -3,8 +3,8 @@ title: Work at a scale that resonates to you
 category: Note
 draft: False
 locked: False
-createdAt: "2021-06-24"
-updatedAt: "2021-06-24"
+createdAt: "2021-07-24"
+updatedAt: "2021-07-24"
 ---
 This quote snippet is taken from an [Offscreen Magazine interview](https://craigmod.com/essays/offscreen_interview/) with, the always deeply introspective, Craig Mod. The whole interview transcript is worth reading. But this portion really floats my boat.
 
