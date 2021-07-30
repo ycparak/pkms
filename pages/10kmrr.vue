@@ -26,8 +26,7 @@ export default {
 <style lang="scss" scoped>
 .tenkmrr {
   display: grid;
-  grid-template-columns: 1fr 256px var(--margin) var(--column) var(--margin) 256px 1fr;
-  column-gap: var(--margin);
+  grid-template-columns: 1fr 256px var(--margin) var(--margin) var(--column) var(--margin) var(--margin) 256px 1fr;
   row-gap: var(--margin);
   margin-top: calc(var(--margin) * 2);
 }
@@ -41,12 +40,12 @@ export default {
 }
 .numbers {
   grid-row: 1;
-  grid-column: 6;
+  grid-column: 8;
   margin-top: 6px;
 }
 .main {
   grid-row: 1;
-  grid-column: 4;
+  grid-column: 4 / 7;
 }
 
 @media (max-width: 1192px) {
