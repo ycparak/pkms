@@ -78,29 +78,6 @@ code {
   color: var(--text);
   font-family: 'Space Mono', monospace;
 }
-blockquote {
-  grid-column: 2 / 4;
-  border-left: 3px solid var(--text);
-  margin: 24px 0;
-  padding-left: calc(var(--margin) - 3px);
-  padding-bottom: 2px;
-  color: var(--text);
-  transition: all .1s ease-in-out;
-  @media (max-width: 700px) {
-    grid-column: 2;
-  }
-  p {
-    margin-left: 0;
-    margin-right: 0;
-    font-style: italic;
-    &:first-child { margin-top: 0; }
-    &:last-child { margin-bottom: 0; }
-    &:only-child { 
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-}
 .nuxt-content-container {
   grid-column: 1 / -1;
 }
@@ -112,7 +89,7 @@ blockquote {
     padding: 0 20px;
   }
   p {
-    margin: 16px 0;
+    margin: 8px 0;
     margin-left: 0;
     margin-right: 0;
     &:first-child { margin-top: 0; }
@@ -127,5 +104,29 @@ blockquote {
   }
   h1, h2, h3, h4, h5 {
     margin-bottom: 0px;
+  }
+  blockquote {
+    grid-column: 2 / 4;
+    border-left: 3px solid var(--text);
+    margin: 24px 0;
+    padding-left: calc(var(--margin) - 3px);
+    padding-bottom: 2px;
+    color: var(--text);
+    transition: all .1s ease-in-out;
+    @media (max-width: 700px) {
+      grid-column: 2;
+    }
+    p {
+      margin-left: 0;
+      margin-right: 0;
+      margin: 20px 0;
+      font-style: italic;
+      &:first-child { margin-top: 0; }
+      &:last-child { margin-bottom: 0; }
+      &:only-child { 
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
   }
 }

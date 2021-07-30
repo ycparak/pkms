@@ -34,9 +34,9 @@ export default {
   display: block;
   transition: all .1s ease-in-out;
   text-decoration: none;
-  line-height: 26px;
   border-bottom: none;
   margin-bottom: 12px;
+  line-height: 1.3;
   &:hover { border-bottom: none; }
 }
 .date {
@@ -46,16 +46,15 @@ export default {
   text-transform: uppercase;
   grid-column: 3;
   margin-right: 12px;
-  // background: blue;
   min-width: 80px;
   line-height: 18px;
+  transition: all .1s ease-in-out;
+  margin-top: 4px;
 }
 .title {
   font-weight: 400;
-  // font-size: 18px;
   color: var(--text);
   transition: all .1s ease-in-out;
-  line-height: 0;
   text-decoration: none;
   grid-column: 3;
   &:hover {

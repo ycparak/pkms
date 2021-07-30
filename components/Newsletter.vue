@@ -32,9 +32,13 @@ export default {
   margin-right: var(--margin);
   transition: all .1s ease-in-out;
   .name {
+    flex-grow: 1;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     transition: all .1s ease-in-out;
+    @media (max-width: 700px) {
+      max-width: 80px;
+    }
   }
   .form-group {
     flex-grow: 7;
