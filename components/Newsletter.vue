@@ -1,11 +1,21 @@
 <template>
-  <div class="newsletter">
-    <input id="name" class="name" type="name" name="name" placeholder="First name">
+  <form
+    action="https://buttondown.email/api/emails/embed-subscribe/ycparak"
+    method="post"
+    target="popupwindow"
+    class="newsletter">
+    <input
+      id="name"
+      class="name"
+      type="text"
+      name="metadata__first-name"
+      placeholder="First name"
+      required />
     <div class="form-group">
       <input id="email" class="email" type="email" name="email" placeholder="Email address">
       <button class="submit" type="submit">&rarr;</button>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -46,9 +56,6 @@ export default {
       top: 4px;
       width: 28px;
       height: 28px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      color: var(--subtle-text);
       transition: all .1s ease-in-out;
     }
   }

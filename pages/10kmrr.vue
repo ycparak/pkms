@@ -50,7 +50,7 @@ export default {
 
 @media (max-width: 1192px) {
   .tenkmrr {
-    grid-template-columns: minmax(12px, var(--margin)) 256px calc(var(--column) + (var(--margin) * 2)) 1fr;
+    grid-template-columns: minmax(12px, var(--margin)) 256px var(--margin) calc(var(--column) + (var(--margin) * 2)) 1fr;
   }
   .targets {
     grid-column: 2;
@@ -62,13 +62,14 @@ export default {
     display: block;
   }
   .main {
-    grid-column: 3;
+    grid-column: 4;
   }
 }
 
 @media (max-width: 912px) {
   .tenkmrr {
     grid-template-columns: 1fr minmax(auto, calc(var(--column))) 1fr;
+    gap: 20px;
   }
   .targets {
     display: none;

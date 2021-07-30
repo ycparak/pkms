@@ -54,6 +54,8 @@ p {
   }
 }
 ul {
+  margin-left: var(--margin);
+  > li > ul { margin-left: 0; }
   + h1, + h2, + h3, + h4, + h5 {
     margin-top: 36px;
   }
@@ -109,9 +111,9 @@ blockquote {
     padding: 0 20px;
   }
   p {
+    margin: 16px 0;
     margin-left: 0;
     margin-right: 0;
-    font-style: italic;
     &:first-child { margin-top: 0; }
     &:last-child { margin-bottom: 0; }
     &:only-child { 

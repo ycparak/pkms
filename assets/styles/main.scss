@@ -29,6 +29,14 @@ button {
   background: var(--text);
   color: var(--background);
   border: 1px solid var(--text);
+  cursor: pointer;
+  background: var(--line);
+  border: 1px solid var(--line);
+  color: var(--subtle-text);
+  &:hover, &:focus, &:active {
+    background: var(--text);
+    color: var(--background);
+  }
 }
 input {
   padding: 0 12px;

@@ -5,8 +5,8 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
       </span>
       <div class="post-item-content">
-        <span class="date">{{ date }}</span>
         <NuxtLink :to="post.path" class="title">{{ post.title }}</NuxtLink>
+        <div class="date">{{ date }} &middot; {{ post.category }}</div>
       </div>
     </Grid>
   </div>
@@ -36,32 +36,27 @@ export default {
   text-decoration: none;
   line-height: 26px;
   border-bottom: none;
+  margin-bottom: 12px;
   &:hover { border-bottom: none; }
-}
-.post-item-content {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
 }
 .date {
   color: var(--subtle-text);
   font-family: 'Space Mono', menlo, monospace;
-  font-size: 14px;
+  font-size: 11px;
   text-transform: uppercase;
-  vertical-align: top;
   grid-column: 3;
   margin-right: 12px;
   // background: blue;
-  min-width: 69px;
-  position: relative;
-  top: -1px;
+  min-width: 80px;
+  line-height: 18px;
 }
 .title {
   font-weight: 400;
+  // font-size: 18px;
   color: var(--text);
   transition: all .1s ease-in-out;
-  line-height: 1.4;
-  text-decoration: underline;
+  line-height: 0;
+  text-decoration: none;
   grid-column: 3;
   &:hover {
     color: var(--subtle-text);
