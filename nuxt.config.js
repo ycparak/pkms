@@ -22,6 +22,7 @@ export default {
     '@/assets/styles/variables.scss',
     '@/assets/styles/fonts.scss',
     '@/assets/styles/tooltips.scss',
+    '@/assets/styles/tenkmrr.scss',
     '@/assets/styles/main.scss',
   ],
 

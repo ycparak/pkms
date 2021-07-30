@@ -1,18 +1,18 @@
 <template>
-  <div class="navbar">
-    <Grid>
+  <Grid>
+    <div class="navbar">
       <nav class="nav">
         <div class="links-nav">
           <NavbarLink text="home" path="/" />
-          <NavbarLink text="10k mrr" :is-live="false" />
+          <NavbarLink text="10k mrr" />
           <NavbarLink text="projects" :is-live="false" />
           <NavbarLink text="essays" />
           <NavbarLink text="notes" />
         </div>
         <NavbarControls />
       </nav>
-    </Grid>
-  </div>
+    </div>
+  </Grid>
 </template>
 
 <script>
@@ -24,8 +24,10 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   transition: all .1s ease-in-out;
-  border-bottom: 1px solid var(--line);
   color: var(--text);
+  @media (max-width: 912px) {
+    padding: 0;
+  }
 }
 .nav {
   display: flex;

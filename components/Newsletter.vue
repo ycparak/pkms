@@ -1,54 +1,63 @@
 <template>
-  <div class="newsletter" :class="{ 'no-border' : noBorder }">
-    <p><strong>The Email Newsletter</strong>. Get new posts, new projects, and other significant updates delivered to your inbox. Alternatively, you can follow me on <a href="https://twitter.com/ycparak" target="_blank">Twitter</a>.</p>
+  <form
+    action="https://buttondown.email/api/emails/embed-subscribe/ycparak"
+    method="post"
+    target="popupwindow"
+    class="newsletter">
+    <input
+      id="name"
+      class="name"
+      type="text"
+      name="metadata__first-name"
+      placeholder="First name"
+      required />
     <div class="form-group">
-      <input id="email" type="email" name="email" placeholder="Email address">
-      <button type="submit">Subscribe</button>
+      <input id="email" class="email" type="email" name="email" placeholder="Email address">
+      <button class="submit" type="submit">&rarr;</button>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
 export default {
   name: 'Newsletter',
-  props: {
-    noBorder: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
 }
 </script>
 
 <style lang="scss" scoped>
 .newsletter {
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: calc(var(--margin) - 6px) var(--margin);
-  &.no-border {
-    padding: 0;
-    border: none;
-  }
-}
-.form-group {
-  margin: 16px 0 6px 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  input {
-    flex-grow: 5;
-    background: var(--line);
-    color: var(--text);
-    border-radius: 4px;
+  margin-right: var(--margin);
+  transition: all .1s ease-in-out;
+  .name {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: all .1s ease-in-out;
   }
-  button {
-    flex-grow: 1;
-    margin-left: 16px;
+  .form-group {
+    flex-grow: 7;
+    position: relative;
+    .email {
+      width: calc(100% - 24px);
+      display: block;
+      border-left: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      transition: all .1s ease-in-out;
+      padding-right: 24px;
+    }
+    .submit {
+      position: absolute;
+      right: -21px;
+      top: 4px;
+      width: 28px;
+      height: 28px;
+      transition: all .1s ease-in-out;
+    }
   }
-}
-.no-border .form-group {
-  margin-bottom: 0;
 }
 </style>

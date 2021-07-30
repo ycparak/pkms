@@ -16,7 +16,7 @@ export default {
   grid-template-columns: 1fr var(--margin) var(--column) var(--margin) 1fr;
   @media (max-width: 700px) {
     grid-template-columns: 1fr minmax(auto, var(--column)) 1fr;
-    padding: 0 20px;
+    column-gap: 20px;
   }
 }
 </style>
