@@ -23,6 +23,7 @@ export default {
   margin-top: calc(var(--margin) * 2);
 }
 p {
+  margin-top: 0;
   margin-bottom: 0;
 }
 </style>

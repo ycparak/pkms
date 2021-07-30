@@ -43,7 +43,9 @@ input {
   padding-bottom: 2px;
   border: 1px solid var(--line);
   background: transparent;
+  transition: all .1s ease-in-out;
   &::placeholder {
+    transition: all .1s ease-in-out;
     color: var(--subtle-text);
   }
 }

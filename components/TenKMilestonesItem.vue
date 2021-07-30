@@ -74,8 +74,12 @@ export default {
     height: 16px;
     transition: all .1s ease-in-out;
     background: var(--background);
+    color: var(--background);
     position: relative;
     top: 1px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 700;
   }
   &.complete {
     &::before { display: none; }

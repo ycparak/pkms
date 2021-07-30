@@ -84,6 +84,7 @@ strong {
   margin-top: 8px;
   padding: 0;
   font-style: italic;
+  transition: all .1s ease-in-out;
 }
 .pre-newsletter {
   margin-bottom: 12px;
