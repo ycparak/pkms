@@ -31,6 +31,7 @@ export default {
   align-items: center;
   margin-right: var(--margin);
   transition: all .1s ease-in-out;
+  margin-top: 12px;
   .name {
     flex-grow: 1;
     border-top-right-radius: 0;

@@ -1,5 +1,5 @@
 <template>
-  <div class="tenk-widget">
+  <div class="tenk-widget metrics">
     <div class="tenk-widget-header tenk-header">Metrics</div>
     <div class="tenk-widget-content">
       <TenkMetricsItem title="Monthly Recurring Revenue" :metric="`$${mrr}`" />
@@ -20,4 +20,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* .metrics {
+  position: sticky;
+  top: 40px;
+  @media (max-width: 1192px) {
+    position: relative;
+    top: 0;
+  }
+} */
 </style>

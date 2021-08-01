@@ -24,7 +24,7 @@
 }
 a {
   text-decoration: none;
-  color: var(--text);
+  color: inherit;
   transition: all .1s ease-in-out;
   text-decoration: underline;
   &:hover, &:active, &:focus {
@@ -88,22 +88,11 @@ code {
     grid-template-columns: 1fr minmax(auto, var(--column)) 1fr;
     padding: 0 20px;
   }
-  p {
-    margin: 8px 0;
-    margin-left: 0;
-    margin-right: 0;
-    &:first-child { margin-top: 0; }
-    &:last-child { margin-bottom: 0; }
-    &:only-child { 
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    + h1, + h2, + h3, + h4, + h5 {
-      margin-top: 16px;
-    }
-  }
   h1, h2, h3, h4, h5 {
     margin-bottom: 0px;
+  }
+  p {
+    margin: 8px 0;
   }
   blockquote {
     grid-column: 2 / 4;
@@ -126,6 +115,47 @@ code {
       &:only-child { 
         margin-top: 0;
         margin-bottom: 0;
+      }
+    }
+  }
+}
+.update-content-post {
+  .nuxt-content-container {
+    grid-column: 3;
+    .nuxt-content {
+      @media (max-width: 700px) {
+        display: block;
+        padding: 0
+      }
+      display: block !important;
+      h1, h2, h3, h4, h5 {
+        margin-bottom: 0px;
+      }
+      p {
+        margin: 20px 0;
+      }
+      strong {
+        line-height: 1;
+        font-size: 16px;
+        color: var(--subtle-text);
+        font-weight: 400;
+        margin-top: 8px;
+        padding: 0;
+        font-style: italic;
+        transition: all .1s ease-in-out;
+      }
+      ol, ul {
+        margin: 0;
+        margin-top: -16px;
+        padding-left: var(--margin);
+        > li > ul { margin-left: 0; }
+        + h1, + h2, + h3, + h4, + h5 {
+          margin-top: 36px;
+        }
+      }
+      li {
+        font-size: 16px;
+        line-height: 1.6;
       }
     }
   }

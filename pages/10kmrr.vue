@@ -9,6 +9,7 @@
 
     <div class="main">
       <TenKChallenge />
+      <TenKUpdates :posts="posts" />
     </div>
 
     <div class="numbers">
@@ -20,6 +21,10 @@
 <script>
 export default {
   name: 'Index',
+  async asyncData({ $content }) {
+    const posts = await $content().where({ category: '$10kmrr' }).sortBy('createdAt', 'desc').fetch();
+    return { posts };
+  },
   head() {
     return {
       title: 'The Challenge: $10k MRR in 2.5 Years | Yusuf Parak (@ycparak)',

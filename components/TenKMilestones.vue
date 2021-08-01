@@ -1,5 +1,5 @@
 <template>
-  <div class="tenk-widget">
+  <div class="tenk-widget milestones">
     <div class="tenk-widget-header tenk-header">Milestones</div>
     <div class="tenk-widget-content milestones-content">
       <TenKMilestonesItem title="Save 2.5 years runway" date="25 May 2021" :complete="true" />
@@ -22,6 +22,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* .milestones {
+  position: sticky;
+  top: 40px;
+  @media (max-width: 1192px) {
+    position: relative;
+    top: 0;
+  }
+} */
 .milestones-content {
   padding: var(--margin) 0;
 }
