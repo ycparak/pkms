@@ -6,8 +6,8 @@
       <div v-if="post.locked" class="post-locked">
         This post is still in draft mode and only available to editors for now.
       </div>
+      <slot v-if="!post.locked"></slot>
     </Grid>
-    <slot v-if="!post.locked"></slot>
   </div>
 </template>
 

@@ -73,6 +73,7 @@ export default {
   width: 100%;
 }
 .update-content-header {
+  margin-bottom: 20px;
   .update-title {
     font-weight: 700;
     font-size: 18px;

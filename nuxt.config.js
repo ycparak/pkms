@@ -22,6 +22,7 @@ export default {
     '@/assets/styles/reset.scss',
     '@/assets/styles/variables.scss',
     '@/assets/styles/fonts.scss',
+    '@/assets/styles/typography.scss',
     '@/assets/styles/tooltips.scss',
     '@/assets/styles/tenkmrr.scss',
     '@/assets/styles/main.scss',
@@ -51,6 +52,10 @@ export default {
     '@nuxt/content',
     'vue-plausible'
   ],
+
+  generate: {
+    cache: false,
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
