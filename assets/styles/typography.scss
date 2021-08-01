@@ -1,6 +1,6 @@
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--text);
   transition: all .1s ease-in-out;
   text-decoration: underline;
   &:hover, &:active, &:focus {
@@ -76,6 +76,10 @@ code {
     padding: 0;
     font-style: italic;
     transition: all .1s ease-in-out;
+    a {
+      color: var(--subtle-text);
+      transition: all .1s ease-in-out;
+    }
   }
   ol, ul {
     margin: 0;
