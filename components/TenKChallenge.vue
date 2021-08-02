@@ -14,7 +14,7 @@
       a bunch of other responsibilities while bootstrapping their own company. I
       am not one of them. If I’m going to do something it has to have my full
       focus. And so I’ve saved up 912 days / 2.5 years of runway, reduced most
-      of my responsibilities and plan to now giving this thing a proper shot.
+      of my responsibilities and plan to now give this thing a proper shot.
     </p>
     <p class="goal">
       <strong
