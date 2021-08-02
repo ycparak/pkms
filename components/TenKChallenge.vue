@@ -94,7 +94,8 @@
         href="https://docs.google.com/forms/d/e/1FAIpQLSfJ5nzDAuzoaFi2XSHaCx6IxgbltqfRRh8As0PwynCSq4_F2w/viewform?usp=sf_link"
         >fill this form in</a
       >
-      to join. I’ll cap it at 50 people so it stays nice and intimate.
+      to join. I’ll cap it at 50 people so it stays nice and intimate. And I‘ll
+      curate it so we avoid the spammers.
     </p>
     <h4>Long FAQ.</h4>
     <p>
