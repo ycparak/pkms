@@ -1,6 +1,6 @@
 <template>
   <div class="challenge">
-    <h1>The Challenge: $10k MRR in 2.5 Years</h1>
+    <h1>The Challenge: $10k MRR in 30 Months</h1>
     <p>
       For a few years now I’ve been itching to start my own bootstrapped
       startup. In fact I’ve semi-tried to on many occasions. Predictably though,
@@ -13,15 +13,15 @@
       to make it a priority. Some people can manage a job, family, excercise and
       a bunch of other responsibilities while bootstrapping their own company. I
       am not one of them. If I’m going to do something it has to have my full
-      focus. And so I’ve saved up 912 days / 2.5 years of runway, reduced most
-      of my responsibilities and plan to now give this thing a proper shot.
+      focus. And so I’ve saved up 30 months of runway, reduced most of my
+      responsibilities and plan to now give this thing a proper shot.
     </p>
     <p class="goal">
-      <strong
-        >The goal is by January 31st 2024 (912 days / 2.5 years) to have $10,000
-        in monthly recurring revenue from one (or a combination of)
-        project(s).</strong
-      >
+      <strong>
+        The goal is by January 31st 2024 (912 days / 30 months / 2.5 years) to
+        have $10,000 in monthly recurring revenue from one (or a combination of)
+        project(s).
+      </strong>
     </p>
     <p>
       Depending on how much time you spend on HN that timeline might seem
@@ -84,19 +84,6 @@
         into my budget.
       </li>
     </ul>
-    <h4>Participate in the challenge.</h4>
-    <p>
-      I’d love to get a Slack group going filled with other people also also
-      somewhere along the journey to $10k MRR. If that sounds like something
-      you’d like to be in on,
-      <a
-        target="_blank"
-        href="https://docs.google.com/forms/d/e/1FAIpQLSfJ5nzDAuzoaFi2XSHaCx6IxgbltqfRRh8As0PwynCSq4_F2w/viewform?usp=sf_link"
-        >fill this form in</a
-      >
-      to join. I’ll cap it at 50 people so it stays nice and intimate. And I‘ll
-      curate it so we avoid the spammers.
-    </p>
     <h4>Long FAQ.</h4>
     <p>
       <strong>What are you going to build?</strong> Honestly, I have no clue. It
@@ -164,6 +151,19 @@
       be able to focus on this full time is pretty exciting. If you have the
       same love for craftsmanship or have any other questions, please email me
       at <code>first_name @ ycparak.com</code>, I’d love to hear from you.
+    </p>
+    <h4>Participate in the challenge.</h4>
+    <p>
+      I’d love to get a Slack group going filled with other people also also
+      somewhere along the journey to $10k MRR. If that sounds like something
+      you’d like to be in on,
+      <a
+        target="_blank"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfJ5nzDAuzoaFi2XSHaCx6IxgbltqfRRh8As0PwynCSq4_F2w/viewform?usp=sf_link"
+        >fill this form in</a
+      >
+      to join. I’ll cap it at 50 people so it stays nice and intimate. And I‘ll
+      curate it so we avoid the spammers.
     </p>
   </div>
 </template>

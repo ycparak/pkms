@@ -3,9 +3,7 @@
     <!-- <h1>Weekly updates.</h1> -->
     <div class="updates tenk-widget">
       <div class="tenk-widget-header tenk-header">Weekly updates</div>
-      <div
-        v-for="(post, index) in posts"
-        :key="index">
+      <div v-for="(post, index) in posts" :key="index">
         <TenKUpdatesItem :post="post" />
       </div>
     </div>
@@ -30,6 +28,6 @@ h1 {
   margin-right: var(--margin);
 }
 .updates {
-  margin-bottom: 200px;
+  margin-top: 60px;
 }
 </style>

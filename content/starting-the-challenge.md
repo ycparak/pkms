@@ -3,8 +3,8 @@ title: Starting the challenge
 category: $10kmrr
 draft: False
 locked: False
-createdAt: "2021-08-01"
-updatedAt: "2021-08-01"
+createdAt: '2021-08-01'
+updatedAt: '2021-08-01'
 week: 0
 mrr: 0
 arr: 0
@@ -13,7 +13,8 @@ defaultAlive: false
 ---
 
 In the introduction to [the challenge](/10kmrr), I mentioned I had a list of semi-formed ideas that I was thinking about. Here they are:
-1. **A tool for recruiters/companies to better source software developers they’d like to hire.** The way companies currently hire seems to fall into 2 categories. _The passive way:_ Post job ads everywhere, get a list of applicants and filter to find the one. _The proactive way:_ Actively source candidates that may fit the role. The latter results in better signal/noise ratio but is harder to pull of. Partly because it’s a search problem but also because it requires convincing the candidate that you’re a good fit. I have a few thoughts on how to solve both of those challenges.
+
+1. **A tool for recruiters/companies to better source software developers they’d like to hire.** The way companies currently hire seems to fall into two categories. _The passive way:_ Post job ads everywhere, get a list of applicants and filter to find the one. _The proactive way:_ Actively source candidates that may fit the role. The latter results in better signal/noise ratio but is harder to pull of. Partly because it’s a search problem but also because it requires convincing the candidate that you’re a good fit. I have a few thoughts on how to solve both of those challenges.
 2. **Simple tool for assessing cultural NPS.** Culture surveys are surprisingly a big market. I didn’t initially grok this but execs want to know team morale and the state of their employees. This is even more true in a remote world. Currently the tools for doing these surveys are clunky and annoying, I think I know of a way to make them simpler, more lightweight and potentially more reliable.
 3. **A tool for individuals who want to grow their Twitter.** There are some great tools that help solve this problem. Most of them though focus on analytics and scheduling. There’s so much more that’s possible though with just a bit better use of the API, approached from the perspective of the individual tweeter.
 4. **Building the [Indie Hackers](https://indiehackers.com) for people who want to start high growth startups.** Indie Hackers grew by giving Hacker News the content it wanted to read. I think I have a unique way to do the same but with slightly different content. The end goal would be a site like Indiehackers but for people who want to play the startup olympics.
