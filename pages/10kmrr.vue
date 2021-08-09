@@ -22,32 +22,72 @@
 export default {
   name: 'Index',
   async asyncData({ $content }) {
-    const posts = await $content().where({ category: '$10kmrr' }).sortBy('createdAt', 'desc').fetch();
-    return { posts };
+    const posts = await $content()
+      .where({ category: '$10kmrr' })
+      .sortBy('createdAt', 'asc')
+      .fetch()
+    return { posts }
   },
   head() {
     return {
       title: 'The Challenge: $10k MRR in 2.5 Years | Yusuf Parak (@ycparak)',
       meta: [
-        { hid: 'description', name: 'description', content: "I’ve saved up 2.5 years of runway with the goal of bootstrapping a project to $10,000 in monthly recurring revenue in 2.5 years / 912 days. View my weekly progress here." },
-        { hid: 'og:title', name: 'og:title', content: "The Challenge: $10k MRR in 2.5 Years" },
-        { hid: 'og:description', property: 'og:description', content: "I’ve saved up 2.5 years of runway with the goal of bootstrapping a project to $10,000 in monthly recurring revenue in 2.5 years / 912 days. View my weekly progress here." },
-        { hid: 'og:image', name: 'og:image', content: "https://ycparak.com/10k-mrr-pic.png" },
-        { hid: 'og:url', name: 'og:url', content: "https://ycparak.com/10kmrr" },
-        { hid: 'og:site_name', name: 'og:site_name', content: "Yusuf Parak (@ycparak)" },
-        { hid: 'og:type', name: 'og:type', content: "website" },
-        { hid: 'twitter:title', name: 'twitter:title', content: 'The Challenge: $10k MRR in 2.5 Years' },
-        { hid: 'twitter:description', name: 'twitter:description', content: 'I’ve saved up 2.5 years of runway with the goal of bootstrapping a project to $10,000 in monthly recurring revenue in 2.5 years / 912 days. View my weekly progress here.' }
-      ]
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'I’ve saved up 2.5 years of runway with the goal of bootstrapping a project to $10,000 in monthly recurring revenue in 2.5 years / 912 days. View my weekly progress here.',
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: 'The Challenge: $10k MRR in 2.5 Years',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'I’ve saved up 2.5 years of runway with the goal of bootstrapping a project to $10,000 in monthly recurring revenue in 2.5 years / 912 days. View my weekly progress here.',
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: 'https://ycparak.com/10k-mrr-pic.png',
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: 'https://ycparak.com/10kmrr',
+        },
+        {
+          hid: 'og:site_name',
+          name: 'og:site_name',
+          content: 'Yusuf Parak (@ycparak)',
+        },
+        { hid: 'og:type', name: 'og:type', content: 'website' },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'The Challenge: $10k MRR in 2.5 Years',
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content:
+            'I’ve saved up 2.5 years of runway with the goal of bootstrapping a project to $10,000 in monthly recurring revenue in 2.5 years / 912 days. View my weekly progress here.',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .tenkmrr {
   display: grid;
-  grid-template-columns: 1fr 256px var(--margin) var(--margin) var(--column) var(--margin) var(--margin) 256px 1fr;
+  grid-template-columns: 1fr 256px var(--margin) var(--margin) var(--column) var(
+      --margin
+    ) var(--margin) 256px 1fr;
   row-gap: var(--margin);
   margin-top: calc(var(--margin) * 2);
 }
@@ -71,7 +111,9 @@ export default {
 
 @media (max-width: 1192px) {
   .tenkmrr {
-    grid-template-columns: minmax(12px, var(--margin)) 256px var(--margin) calc(var(--column) + (var(--margin) * 2)) 1fr;
+    grid-template-columns: minmax(12px, var(--margin)) 256px var(--margin) calc(
+        var(--column) + (var(--margin) * 2)
+      ) 1fr;
   }
   .targets {
     grid-column: 2;

@@ -3,8 +3,13 @@
     <div class="update-marker"></div>
     <div class="update-content">
       <div class="update-content-header">
-        <div :id="`update-${post.week}`" class="update-title">Week {{ post.week }}: {{ post.title }}</div>
-        <div class="tenk-var update-subtitle">{{ date }} &middot; ${{ post.mrr }} MRR &middot; {{ post.savingsLeft }} days of savings left</div>
+        <div :id="`update-${post.week}`" class="update-title">
+          Week {{ post.week }}: {{ post.title }}
+        </div>
+        <div class="tenk-var update-subtitle">
+          {{ date }} &middot; ${{ post.mrr }} MRR &middot;
+          {{ post.savingsLeft }} days of savings left
+        </div>
       </div>
       <div class="update-content-post">
         <nuxt-content :document="post" />
@@ -19,7 +24,7 @@ export default {
   props: {
     post: {
       type: Object,
-      required: true
+      required: true,
     },
   },
   computed: {
@@ -38,17 +43,6 @@ export default {
   padding: var(--margin);
   padding-left: 0;
   position: relative;
-  &::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: calc(100% - (var(--margin) * 2) - 16px);
-    // background: var(--text);
-    position: absolute;
-    left: 8px;
-    top: calc(var(--margin) + 16px);
-    transition: all .1s ease-in-out;
-  }
   &:last-child {
     padding-bottom: 4px;
   }
@@ -59,7 +53,7 @@ export default {
   border-radius: 50%;
   width: 16px;
   height: 16px;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   background: var(--text);
   color: var(--background);
   position: relative;
