@@ -12,9 +12,7 @@ savingsLeft: 905
 defaultAlive: false
 ---
 
-Last week was my first week solo and it was great! To kick of the week, my post on starting the [$10k MRR challenge](/10kmrr) went mini-viral. I submitted the post to Hacker News but it didn’t get traction. So when I submitted it to Indiehackers on Sunday night I didn’t think much of it and went to sleep. On Monday afternoon I was busy with work when my phone started going off. I had people following me on Twitter, people were signing up to my newsletter and people were applying to join the Slack channel.
-
-All told, over the whole of last week, I had ~1000 unique visitors. I went from 0 email subscribers to 61. 134 Twitter followers to 195. And I had over 80 applications to join the Slack channel. Even though these aren’t astronomical numbers I think it’s pretty cool to see how many people resonated with the post. So thanks to all of you.
+All told, over the whole of last week, I had ~1000 unique visitors on my site. I went from 0 email subscribers to 61. 134 Twitter followers to 195. And I had over 80 applications to join the Slack channel. Even though these aren’t astronomical numbers I think it’s pretty cool to see how many people resonated with the post. So thanks to all of you!
 
 Now, onto the real work.
 
@@ -46,6 +44,10 @@ Here’s the mail template I’ve been using, crib noted from [Pioneer](https://
 >
 > Best,
 > Yusuf
+
+The goal of this template is to spark a conversation. Nothing more. The Mom Test typically advocates against asking people if they find an idea useful (and I agree). But in cold emailing I realised I need to first and foremost get a response before I can even have the conversation about their pains. And this email is short and sweet enough that it lends itself well to that.
+
+#### Plan for next week
 
 Over the next week I’m gonna try setting up calls with each of the people that responded to me. Through that, I should learn more about their needs which will ultimately help me build a better product. If all goes well I may even start building next week!
 
