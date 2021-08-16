@@ -12,6 +12,8 @@ savingsLeft: 905
 defaultAlive: false
 ---
 
+To kick the week of, my post on starting the $10k MRR challenge went mini-viral. I submitted the post to Hacker News but it didn’t get traction. So when I submitted it to Indiehackers on Sunday night I didn’t think much of it and went to sleep. On Monday afternoon I was busy with work when my phone started going off. I had people following me on Twitter, people were signing up to my newsletter and people were applying to join the Slack channel.
+
 All told, over the whole of last week, I had ~1000 unique visitors on my site. I went from 0 email subscribers to 61. 134 Twitter followers to 195. And I had over 80 applications to join the Slack channel. Even though these aren’t astronomical numbers I think it’s pretty cool to see how many people resonated with the post. So thanks to all of you!
 
 Now, onto the real work.
