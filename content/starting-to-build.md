@@ -12,13 +12,13 @@ savingsLeft: 890
 defaultAlive: false
 ---
 
-Last week wasn’t my most productive. My uncles kids have been staying with me while his house undergoes construction. To all the parents out there I have no idea how you manage to remain productive while having kids mucking about, but I applaud your magical abilities. Regardless I still did get some stuff done, so let’s get into it.
+Last week wasn’t my most productive. My uncle’s kids have been staying with me while his house undergoes construction. To all the parents out there I have no idea how you manage to remain productive while having kids mucking about, but I applaud your magical abilities. Regardless I still did get some stuff done, so let’s get into it.
 
 #### Recap of the past few weeks
 
-I started of [the challenge](https://www.ycparak.com/10kmrr) with a few ideas. I wanted to dissect each one, do research and speak to potential users for each of my ideas. The goal of which was to validate each idea and pick the one with the most potential. In doing that I settled on an idea — a tool for recruiters/companies to better source software developers they’d like to hire. I’ll go into more detail on the implementation details of the idea next week but suffice to say I think I have a unique enough take that this could become a pretty profitable saas business.
+I started off [the challenge](https://www.ycparak.com/10kmrr) with a few ideas. I wanted to dissect each one, do research and speak to potential users for each of my ideas. The goal of which was to validate each idea and pick the one with the most potential. In doing that I settled on my first idea — a tool for recruiters/companies to better source software developers they’d like to hire. I’ll go into more detail on the implementation details of the idea next week but suffice to say I think I have a unique enough take that this could become a pretty profitable saas business.
 
-After researching the idea I spent the whole of last week doing cold outreach. I reached out to over 160 strangers in total. From that I found 5 people who showed a lot of interest in the idea and were extremely enthusiastic about being early 'beta' users. They each had the problem I was aiming to solve and were willing to invest their time in helping me build a solution.
+After researching the idea I spent the whole of last week doing cold outreach. I reached out to over 160 strangers in total. From that I found 5 people who showed a lot of interest in the idea and were extremely enthusiastic about being early alpha users. They each had the problem I was aiming to solve and were willing to invest their time in helping me build a solution.
 
 #### This past week
 
@@ -26,7 +26,7 @@ I got each of the 5 users into a Twitter group. Together they’ve been really h
 
 Its also been such a pleasure to not have to worry about doing sales. I can focus on the thing I love most about this work — programming and designing. For now I’ve paused all of my sales efforts until I get an initial version up and running. And since I’m planning on charging $249 per month for the service, if the 5 users convert I’ll hit ramen profitability ($1000 MRR) much quicker than I anticipated when starting this challenge.
 
-Hitting ramen profitability will mean I’m not relying on the savings I’ve built up and that would be a massive relief for me. So I’m working as fast as possible to get the initial version up. I sketched out the architecture and started building it out. I’ve got the authentication system working along with the user onboarding flow. So at least some progress has been made.
+Hitting ramen profitability will mean I’m not relying on the savings I’ve built up and that would be a massive relief for me. So I’m working as fast as possible to get the initial version up. I sketched out the architecture and started building it out. I’ve got the authentication system working along with the user onboarding flow. So even though progress has been slow, I’ve at least got that initial bit of the ground.
 
 I’ve set the deadline to get the initial version up and running in 10 weeks. So by the end of October. If 10 weeks seems slow, it’s because there’s some complexity I don’t yet know how to solve. But I do at least know that it is solvable.
 
