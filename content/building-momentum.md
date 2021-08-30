@@ -37,7 +37,7 @@ It’s been sucky because one of the benefits of not having a job is the promise
 
 - I Have the auth system and onboarding flow setup
 - I’m now building out the main core bits of the product
-- There’s still a ton left to do but my goal is to have an initial version out in 9 weeks time (end of october)
+- There’s still a ton left to do but my goal is to have an initial version out in 9 weeks time (end of October)
 
 #### Plan for the next nine weeks until the 31st of October
 
