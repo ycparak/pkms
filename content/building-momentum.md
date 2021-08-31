@@ -12,7 +12,7 @@ savingsLeft: 890
 defaultAlive: false
 ---
 
-Since starting the [the challenge](https://www.ycparak.com/10kmrr) I haven’t really gotten a chance to sink my teeth from that into programming and design. I initially focused on validating my ideas and finding my first few users and my plan was to seamlessly transition into building. Unfortunately that hasn’t been the case. I’ve been interrupted by a few things in my personal life that’s held me back from the unobstructed time I really need to make solid progress.
+Since starting [the challenge](/10kmrr) I haven’t really gotten a chance to sink my teeth into programming and design. I initially focused on validating my idea, finding my first few users and my plan was to then seamlessly transition into building. Unfortunately that hasn’t been the case. I’ve been interrupted by a few things in my personal life thats held me back from the unobstructed time I really need to make solid progress.
 
 It’s been sucky because one of the benefits of not having a job is the promise of that unobstructed time. But alas life will inevitably throw up other things you have to think about. The good news is that I managed to get that unobstructed time towards the end of last week. And it looks like for now all of the personal things holding me back are gone! So this means it’s full steam ahead.
 
@@ -76,7 +76,7 @@ This past week I took some time to plan and scope out the things needed to get t
 - Dashboard profile
 - Dashboard profile starring
 
-**Week 8 - 9: Core dashboard**
+**Week 8 - 9: Meta bits**
 
 - Transactional mails
 - Security improvements
