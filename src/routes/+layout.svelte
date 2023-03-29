@@ -8,13 +8,16 @@
 			<nav>
 				<h1>Yusuf Parak</h1>
 				<div class="nav-links">
-					<a target="_blank" href="mailto:yusuf@ycparak.com">Email</a>
-					<a target="_blank" href="https://twitter.com/ycparak">Twitter</a>
-					<a target="_blank" href="https://github.com/ycparak">Github</a>
-					<a target="_blank" href="https://pinched.io">Pinched.io</a>
+					<a class="external-link" target="_blank" href="mailto:yusuf@ycparak.com">Email</a>
+					<a class="external-link" target="_blank" href="https://twitter.com/ycparak">Twitter</a>
+					<a class="external-link" target="_blank" href="https://github.com/ycparak">Github</a>
+					<a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a>
 				</div>
 			</nav>
-			<footer>2023 · Source code</footer>
+			<footer>
+				2023 · Source
+				<a class="external-link" target="_blank" href="https://github.com/ycparak/ycparak">code</a>
+			</footer>
 		</div>
 	</div>
 	<main>
@@ -64,6 +67,11 @@
 						line-height: 1;
 						color: var(--text-muted);
 						text-decoration: none;
+						width: fit-content;
+						&::after {
+							font-size: 12px;
+						}
+
 						&:hover {
 							color: var(--text);
 						}
@@ -72,11 +80,22 @@
 			}
 	
 			footer {
-				font-size: 12px;
-				padding: 20px 40px;
+				font-size: 13px;
+				padding: 28px 40px;
 				font-weight: 550;
 				line-height: 1;
 				color: var(--text-muted);
+				a {
+					color: var(--text-muted);
+					text-decoration: underline;
+					text-decoration-color: var(--text_muted);
+					&::after {
+						font-size: 10px;
+					}
+					&:hover {
+						color: var(--text);
+					}
+				}
 			}
 		}
 	}

@@ -40,3 +40,22 @@ main, body {
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
 }
+
+.external-link {
+  transition: all .2s ease;
+  &::after {
+    display: inline-block;
+    content: "→";
+    color: var(--text);
+    will-change: transform, opacity;
+    opacity:0;
+    transition: all .2s ease;
+  }
+
+  &:hover {
+    &::after {
+      transform: rotate(-45deg) translateY(-1px) translateX(4px);
+      opacity:1;
+    }
+  }
+}
