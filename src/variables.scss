@@ -1,1 +1,14 @@
 /* Variables and mixins declared here will be available in all other SCSS files */
+:root {
+  --bg: #fff;
+  --text-header: #000;
+  --text: #3A3A3A;
+  --text-muted: #AAAAAA;
+  --line: #F2F2F2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --blue: #1c1c1c;
+  }
+}
