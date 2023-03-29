@@ -3,7 +3,6 @@
 	font-family: 'Satoshi';
 	font-style: normal;
 	font-weight: 300 900;
-  font-display: swap;
 	src:
     url('/fonts/satoshi/Satoshi-Variable.woff2') format('woff2 supports variations'),
     url('/fonts/satoshi/Satoshi-Variable.woff2') format('woff2-variations');
@@ -12,7 +11,6 @@
 	font-family: 'Satoshi';
 	font-style: italic;
 	font-weight: 300 900;
-  font-display: swap;
 	src:
     url('/fonts/satoshi/Satoshi-VariableItalic.woff2') format('woff2 supports variations'),
     url('/fonts/satoshi/Satoshi-VariableItalic.woff2') format('woff2-variations');
@@ -23,6 +21,8 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   font-family: var(--font);
+  user-select: none;
+  margin: 0;
 }
 
 main, body {
@@ -30,15 +30,34 @@ main, body {
   color: var(--text);
   display: block;
   width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+body {
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
 }
 
 .external-link {

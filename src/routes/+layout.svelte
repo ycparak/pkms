@@ -1,17 +1,22 @@
 <script>
 	import '../app.scss';
+	import { fly } from 'svelte/transition'
+	import { expoIn, expoOut } from 'svelte/easing'
+
+	export let data
 </script>
 
 <div class="grid">
 	<div class="sidebar">
 		<div class="sidebar-container">
 			<nav>
-				<h1>Yusuf Parak</h1>
+				<h1><a class="logo" href="/">Yusuf Parak</a></h1>
 				<div class="nav-links">
 					<a class="external-link" target="_blank" href="mailto:yusuf@ycparak.com">Email</a>
 					<a class="external-link" target="_blank" href="https://twitter.com/ycparak">Twitter</a>
 					<a class="external-link" target="_blank" href="https://github.com/ycparak">Github</a>
-					<a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a>
+					<!-- <a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a> -->
+					<a class="external-link" href="/about">About</a>
 				</div>
 			</nav>
 			<footer>
@@ -20,9 +25,14 @@
 			</footer>
 		</div>
 	</div>
-	<main>
+
+	{#key data.pathname}
+	<main 
+		in:fly={{ x: 600, easing: expoOut, duration: 450, delay: 475 }}
+    out:fly={{ x: -600, easing: expoIn, duration: 450 }}>
 		<slot />
 	</main>
+	{/key}
 </div>
 
 <style lang="scss">
@@ -32,9 +42,12 @@
 		width: 100%;
 	}
 	.sidebar {
+		position: relative;
 		display: block;
 		flex-shrink: 0;
 		width: 220px;
+		z-index: 1;
+		background: var(--bg);
 		border-right: 1px solid var(--line);
 
 		&-container {
@@ -49,20 +62,25 @@
 			nav {
 				padding: 32px 40px;
 				h1 {
-					font-size: 15px;
+					font-size: 16px;
 					font-weight: 550;
 					line-height: 1;
 					color: var(--text-header);
-					margin-bottom: 40px;
 					margin-top: 0;
+					margin-bottom: 28px;
+					.logo {
+						display: block;
+						text-decoration: none;
+						color: inherit;
+					}
 				}
 	
 				.nav-links {
 					display: flex;
 					flex-direction: column;
-					gap: 16px;
+					gap: 12px;
 					a {
-						font-size: 15px;
+						font-size: 16px;
 						font-weight: 550;
 						line-height: 1;
 						color: var(--text-muted);
@@ -103,7 +121,5 @@
 	main {
 		display: block;
 		flex-grow: 1;
-		padding: 40px;
-		min-height: 200vh;
 	}
 </style>
