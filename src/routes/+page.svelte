@@ -21,7 +21,7 @@
 		</div>
 	</section>
 	<section class="about">
-		<p>Crafting interfaces. Is that if you want to rely on donations you either have to set your expectations very low or you have to constantly remind people that they can—and should—throw a dollar or two towards projects they care about. But, from my point of view, that's exhausting. Constantly bothering people to ask for support is a pain, which is why I removed the link to my Donorbox from the site. It was pointless to have it there and the vast majority of the people will never consider donating unless presented with an annoying modal or popup.</p>
+		<p>The broad through line of my work is designing software that makes people feel a sense of awe. Currently I’m building <a target="_blank" href="https://pinched.io">Pinched.io</a>, a sourcing tool that helps cool folks find their next hire, sales lead, or founder to invest in (we’re backed by Pioneer). Before that I was a design engineer at <a target="_blank" href="https://blog.thinkst.com/2020/08/something-fresh.html">Thinkst Canary</a>. Before that I studied CS. Before that I dropped out of an architecture degree. Before that I was a deeply unmotivated student that only loved one subject — art. If I have to connect the dots going backward, taking art class is probably the thing that got me into the game.</p>
 	</section>
 	<section class="projects">
 		<h2>Projects</h2>
@@ -56,7 +56,9 @@
 	</section>
 	<section class="now">
 		<h2>Now</h2>
-		<p>Constantly bothering people to ask for support is a pain, which is why I removed the link to my Donorbox from the site. It was pointless to have it there and the vast majority of the people will never consider donating unless presented with an annoying modal or popup.</p>
+		<p>Currently learning and exploring Svelte, DuckDB, LLM’s, interaction design, typography, local-first software and performance.</p>
+		<p>Trying to build awe-inspiring software by mastering design & engineering. Most of my learning is done on the job by building side projects, chief of which is <a target="_blank" href="https://pinched.io">Pinched.io</a>.</p>
+		<p>I’ll be traveling to SF sometime between May and July, I’ll be there for a month and will then spend a couple weeks exploring the rest of the west coast (from Seattle to San Diego). If you’re reading this and you’ll also be in town, I’d love to link, DM me!</p>
 	</section>
 	<footer>
 		© 2023 &middot; Code open sourced <a class="external-link" target="_blank" href="https://github.com/ycparak">here</a>
@@ -104,6 +106,7 @@
 		font-size: 16px;
 		font-weight: 450;
 		line-height: var(--line-height-base);
+		margin-bottom: 20px;
 		a {
 			color: inherit;
 			text-decoration: underline;
@@ -152,7 +155,7 @@
 		display: flex;
 		flex-direction: row;
 		width: 100%;
-		margin-bottom: 28px;
+		margin-bottom: 8px;
 
 		&:last-of-type {
 			margin-bottom: 0;
