@@ -1,22 +1,22 @@
 <script>
 	import '../app.scss';
-	import { fly } from 'svelte/transition'
-	import { expoIn, expoOut } from 'svelte/easing'
+	import { fly, blur } from 'svelte/transition'
+	import { expoIn, expoOut, expoInOut } from 'svelte/easing'
 
 	export let data
 </script>
 
-<div class="grid">
+<!-- <div class="grid">
 	<div class="sidebar">
 		<div class="sidebar-container">
 			<nav>
-				<h1><a class="logo" href="/">Yusuf Parak</a></h1>
+				<h1><a class="logo" href="/" data-sveltekit-noscroll>Yusuf Parak</a></h1>
 				<div class="nav-links">
 					<a class="external-link" target="_blank" href="mailto:yusuf@ycparak.com">Email</a>
 					<a class="external-link" target="_blank" href="https://twitter.com/ycparak">Twitter</a>
 					<a class="external-link" target="_blank" href="https://github.com/ycparak">Github</a>
-					<!-- <a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a> -->
-					<a class="external-link" href="/about">About</a>
+					<a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a>
+					<a class="external-link" href="/about" data-sveltekit-noscroll>About</a>
 				</div>
 			</nav>
 			<footer>
@@ -25,18 +25,21 @@
 			</footer>
 		</div>
 	</div>
+</div> -->
+
 
 	{#key data.pathname}
 	<main 
-		in:fly={{ x: 600, easing: expoOut, duration: 450, delay: 475 }}
-    out:fly={{ x: -600, easing: expoIn, duration: 450 }}>
-		<slot />
+		in:fly={{ x: 700, easing: expoOut, duration: 500, delay: 520 }}
+    out:fly={{ x: -700, easing: expoIn, duration: 500 }}>
+		<div in:blur={{ easing: expoInOut, duration: 500, delay: 350 }}>
+			<slot />
+		</div>
 	</main>
 	{/key}
-</div>
 
 <style lang="scss">
-	.grid {
+/* 	.grid {
 		display: flex;
 		flex-direction: row;
 		width: 100%;
@@ -116,10 +119,15 @@
 				}
 			}
 		}
-	}
+	} */
 
 	main {
 		display: block;
 		flex-grow: 1;
+		padding-left: 180px;
+		// Media query when smaller than 660px
+		@media (max-width: 840px) {
+			padding: 0 7vw;
+		}
 	}
 </style>

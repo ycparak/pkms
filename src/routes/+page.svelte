@@ -1,3 +1,7 @@
+<script>
+	import "@fontsource/newsreader/400-italic.css";
+</script>
+
 <svelte:head>
 	<title>Yusuf Parak • @ycparak</title>
 
@@ -8,10 +12,15 @@
 
 <div id="page">
 	<section class="hero">
-		<h2>Design engineer, building Pinched.io</h2>
+		<h1>Yusuf Parak, <br /> design engineer <br /> building pinched.</h1>
+		<div class="nav-links">
+			<a class="external-link" target="_blank" href="mailto:yusuf@ycparak.com">Email</a>
+			<a class="external-link" target="_blank" href="https://twitter.com/ycparak">Twitter</a>
+			<a class="external-link" target="_blank" href="https://github.com/ycparak">Github</a>
+			<a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a>
+		</div>
 	</section>
 	<section class="about">
-		<h2>About</h2>
 		<p>Crafting interfaces. Is that if you want to rely on donations you either have to set your expectations very low or you have to constantly remind people that they can—and should—throw a dollar or two towards projects they care about. But, from my point of view, that's exhausting. Constantly bothering people to ask for support is a pain, which is why I removed the link to my Donorbox from the site. It was pointless to have it there and the vast majority of the people will never consider donating unless presented with an annoying modal or popup.</p>
 	</section>
 	<section class="projects">
@@ -19,8 +28,8 @@
 		<div class="project">
 			<div class="date">2022–Now</div>
 			<div class="content">
-				<h3><a class="external-link" target="_blank" href="https://pinched.io">Co-founder at Pinched.io</a></h3>
-				<p>Network based sourcing tool for finding your next hire, sales lead, or founder to invest in (backed by Pioneer).</p>
+				<h3><a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a></h3>
+				<p>Network based sourcing tool for finding your next hire, sales lead, or founder to invest in, starting with Twitter.</p>
 			</div>
 		</div>
 		<div class="project">
@@ -33,8 +42,8 @@
 		<div class="project">
 			<div class="date">2020</div>
 			<div class="content">
-				<h3><a class="external-link" target="_blank" href="https://twitter.com/ycparak/status/1299506072160546816">PKMS</a></h3>
-				<p>PKMS inspired by Roam Research and Andy Matuschak’s note taking system.</p>
+				<h3><a class="external-link" target="_blank" href="https://twitter.com/ycparak/status/1299506072160546816">Personal Knowledge Management System</a></h3>
+				<p>PKMS inspired by Roam Research and Andy Matuschak’s note taking system. Served as my own CRM, notes app and task manager.</p>
 			</div>
 		</div>
 		<div class="project">
@@ -49,10 +58,21 @@
 		<h2>Now</h2>
 		<p>Constantly bothering people to ask for support is a pain, which is why I removed the link to my Donorbox from the site. It was pointless to have it there and the vast majority of the people will never consider donating unless presented with an annoying modal or popup.</p>
 	</section>
+	<footer>
+		© 2023 &middot; Code open sourced <a class="external-link" target="_blank" href="https://github.com/ycparak">here</a>
+	</footer>
 </div>
 
 <style lang="scss">
-	h1, h3 {
+	h1 {
+		font-family: 'Newsreader', serif;
+		font-style: italic;
+		font-weight: 400;
+		font-size: 36px;
+		line-height: 46px;
+		color: var(--text-header);
+	}
+	h3 {
 		font-size: 16px;
 		font-weight: 550;
 		line-height: 1;
@@ -84,7 +104,6 @@
 		font-size: 16px;
 		font-weight: 450;
 		line-height: var(--line-height-base);
-		max-width: 480px;
 		a {
 			color: inherit;
 			text-decoration: underline;
@@ -99,17 +118,34 @@
 	}
 
 	.hero {
-		padding: 32px 24px 0 120px;
-		margin-bottom: 120px;
+		margin-top: 160px;
+		margin-bottom: 80px;
 		h2 { 
 			color: var(--text-muted);
 			margin-bottom: 0;
 		}
+		.nav-links {
+			margin-top: 20px;
+			a {
+				color: var(--text-muted);
+				font-size: 14px;
+				font-weight: 550;
+				line-height: 1;
+				text-decoration: none;
+				margin-right: 10px;
+				&::after {
+					font-size: 10px;
+					color: var(--text);
+				}
+				&:hover {
+					color: var(--text);
+				}
+			}
+		}
 	}
 	.about, .projects, .now {
-		padding: 0 24px 0 120px;
-		margin-bottom: 80px;
-		max-width: 624px;
+		margin-bottom: 68px;
+		max-width: 480px;
 	}
 
 	.project {
@@ -117,6 +153,7 @@
 		flex-direction: row;
 		width: 100%;
 		margin-bottom: 28px;
+
 		&:last-of-type {
 			margin-bottom: 0;
 		}
@@ -134,6 +171,38 @@
 				padding: 0;
 			}
 			width: 100%;
+		}
+
+		@media (max-width: 556px) {
+			flex-direction: column;
+			.date {
+				font-size: 13px;
+				font-weight: 650;
+				margin-bottom: 4px;
+			}
+		}
+	}
+
+	footer {
+		margin-bottom: 160px;
+		font-size: 14px;
+		font-weight: 550;
+		line-height: 1;
+		color: var(--text-muted);
+		a {
+			color: var(--text-muted);
+			font-size: 14px;
+			font-weight: 550;
+			line-height: 1;
+			text-decoration: underline;
+			margin-right: 10px;
+			&::after {
+				font-size: 10px;
+				color: var(--text);
+			}
+			&:hover {
+				color: var(--text);
+			}
 		}
 	}
 </style>

@@ -21,7 +21,6 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   font-family: var(--font);
-  user-select: none;
   margin: 0;
 }
 
@@ -39,8 +38,7 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  text-size-adjust: 100%;
+  text-rendering: geometricPrecision;
 }
 
 img, picture, video, canvas, svg {
