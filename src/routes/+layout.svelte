@@ -1,5 +1,5 @@
 <script>
-	import '../app.scss';
+	import '$styles/app.scss';
 	import { fly } from 'svelte/transition'
 	import { expoIn, expoOut } from 'svelte/easing'
 
@@ -12,11 +12,11 @@
 			<nav>
 				<h1><a class="logo" href="/">Yusuf Parak</a></h1>
 				<div class="nav-links">
-					<a class="external-link" target="_blank" href="mailto:yusuf@ycparak.com">Email</a>
-					<a class="external-link" target="_blank" href="https://twitter.com/ycparak">Twitter</a>
-					<a class="external-link" target="_blank" href="https://github.com/ycparak">Github</a>
-					<!-- <a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a> -->
-					<a class="external-link" href="/about">About</a>
+					<!-- <a class="external-link" href="/about">About</a> -->
+					<a class="external-link" target="_blank" href="mailto:yusuf@ycparak.com">Essays</a>
+					<a class="external-link" target="_blank" href="https://twitter.com/ycparak">Design & Craft</a>
+					<a class="external-link" target="_blank" href="https://github.com/ycparak">Projects</a>
+					<a class="external-link" target="_blank" href="https://pinched.io">Bookmarks</a>
 				</div>
 			</nav>
 			<footer>
@@ -28,8 +28,8 @@
 
 	{#key data.pathname}
 	<main 
-		in:fly={{ x: 600, easing: expoOut, duration: 450, delay: 475 }}
-    out:fly={{ x: -600, easing: expoIn, duration: 450 }}>
+		in:fly={{ x: 600, easing: expoOut, duration: 400, delay: 475 }}
+    out:fly={{ x: -600, easing: expoIn, duration: 400 }}>
 		<slot />
 	</main>
 	{/key}
@@ -62,8 +62,8 @@
 			nav {
 				padding: 32px 40px;
 				h1 {
-					font-size: 16px;
-					font-weight: 550;
+					font-size: 18px;
+					font-weight: 500;
 					line-height: 1;
 					color: var(--text-header);
 					margin-top: 0;
@@ -78,10 +78,9 @@
 				.nav-links {
 					display: flex;
 					flex-direction: column;
-					gap: 12px;
+					gap: 10px;
 					a {
-						font-size: 16px;
-						font-weight: 550;
+						font-size: 18px;
 						line-height: 1;
 						color: var(--text-muted);
 						text-decoration: none;
@@ -100,7 +99,7 @@
 			footer {
 				font-size: 13px;
 				padding: 28px 40px;
-				font-weight: 550;
+				font-weight: 500;
 				line-height: 1;
 				color: var(--text-muted);
 				a {

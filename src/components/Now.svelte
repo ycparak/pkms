@@ -1,0 +1,3 @@
+<p>Traveling to SF between June and July, I’ll be there for a month and will then spend 3 weeks exploring the rest of the west coast (from Seattle to San Diego). If you’re reading this and you’ll also be in town, I’d love to link, DM me!</p>
+<p>Building out a V2 of Pinched.io with Victor. It has a new analytics engine powered by DuckDB for faster and more-performant querying, semantic search for finding people with closely related terms, a frontend re-write in Svelte(kit) and a bunch of smaller quality of life improvements.</p>
+<p>Improving my craft. Learning about local-first software, LLM’s and reading about economics (Good Economics for Hard Times and Capital).</p>

@@ -14,7 +14,6 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
@@ -22,16 +21,19 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"mdsvex": "^0.10.6",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
+		"sass": "^1.53.0",
 		"svelte": "^3.54.0",
 		"svelte-check": "^3.0.1",
+		"svelte-preprocess": "^4.10.7",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
-		"vite": "^4.2.0",
-		"vitest": "^0.25.3",
-		"sass": "^1.53.0",
-		"svelte-preprocess": "^4.10.7"
+		"vite": "^4.2.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@unsass/breakpoint": "^2.3.0"
+	}
 }
