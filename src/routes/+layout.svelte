@@ -13,10 +13,10 @@
 				<h1><a class="logo" href="/">Yusuf Parak</a></h1>
 				<div class="nav-links">
 					<!-- <a class="external-link" href="/about">About</a> -->
-					<a class="external-link" target="_blank" href="mailto:yusuf@ycparak.com">Essays</a>
-					<a class="external-link" target="_blank" href="https://twitter.com/ycparak">Design & Craft</a>
-					<a class="external-link" target="_blank" href="https://github.com/ycparak">Projects</a>
-					<a class="external-link" target="_blank" href="https://pinched.io">Bookmarks</a>
+					<a href="/essays">Essays</a>
+					<a href="/design">Design & Craft</a>
+					<a href="/projects">Projects</a>
+					<a href="/bookmarks">Bookmarks</a>
 				</div>
 			</nav>
 			<footer>
@@ -85,6 +85,8 @@
 						color: var(--text-muted);
 						text-decoration: none;
 						width: fit-content;
+						transition: all .2s ease;
+						font-weight: 500;
 						&::after {
 							font-size: 12px;
 						}
@@ -97,7 +99,7 @@
 			}
 	
 			footer {
-				font-size: 13px;
+				font-size: 15px;
 				padding: 28px 40px;
 				font-weight: 500;
 				line-height: 1;
@@ -105,7 +107,7 @@
 				a {
 					color: var(--text-muted);
 					text-decoration: underline;
-					text-decoration-color: var(--text_muted);
+					text-decoration-color: var(--line-underline);
 					&::after {
 						font-size: 10px;
 					}
