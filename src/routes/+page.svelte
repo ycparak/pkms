@@ -15,7 +15,7 @@
 	<section class="about">
 		<About />
 	</section>
-	<section class="timeline">
+	<section class="essays timeline">
 		<h2>Essays</h2>
 		<Essays />
 	</section>
@@ -23,7 +23,7 @@
 		<h2>Design &amp; Craft</h2>
 		<Design />
 	</section>
-	<section class="timeline">
+	<section class="projects timeline">
 		<h2>Projects</h2>
 		<Projects />
 	</section>

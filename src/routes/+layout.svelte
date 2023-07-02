@@ -12,7 +12,6 @@
 			<nav>
 				<h1><a class="logo" href="/">Yusuf Parak</a></h1>
 				<div class="nav-links">
-					<!-- <a class="external-link" href="/about">About</a> -->
 					<a href="/essays">Essays</a>
 					<a href="/design">Design & Craft</a>
 					<a href="/projects">Projects</a>
