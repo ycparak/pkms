@@ -1,0 +1,60 @@
+// Box sizing model
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+}
+
+html {
+	touch-action: manipulation;
+	font-feature-settings: 'rlig' 1, 'calt' 0;
+}
+
+body {
+	line-height: 1.5;
+	text-rendering: optimizeLegibility;
+	text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+#root {
+	isolation: isolate;
+}

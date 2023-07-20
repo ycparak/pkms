@@ -1,0 +1,44 @@
+@mixin lhTrim($line-height) {
+	// Top space
+	&::before {
+		content: '';
+		display: block;
+		height: 0;
+		width: 0;
+		margin-top: calc((1 - #{$line-height}) * 0.5em);
+	}
+}
+
+@mixin header {
+	font-size: toRem(13.9276);
+	line-height: toRem(20px);
+
+	&::before {
+		content: '';
+		margin-bottom: -0.403em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: -0.315em;
+		display: table;
+	}
+}
+
+@mixin element {
+	font-size: toRem(13.9276);
+	line-height: toRem(10px);
+
+	&::before {
+		content: '';
+		margin-bottom: -0.044em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: 0.044em;
+		display: table;
+	}
+}
