@@ -1,5 +1,23 @@
-@use 'functions';
-@import 'mixins';
-@import 'fonts';
-@import 'variables';
-@import 'reset';
+@use 'functions' as *;
+@use 'mixins';
+@use 'fonts';
+@use 'variables';
+@use 'reset';
+
+html,
+body {
+	font-family: var(--font-primary);
+	font-size: 16px;
+	font-feature-settings: 'ss02' on;
+}
+
+/* body {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#root {
+	flex-grow: 1;
+}
+ */

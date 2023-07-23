@@ -12,12 +12,14 @@
 html,
 body,
 #root {
+	overscroll-behavior: none;
 	height: 100%;
 }
 
 html {
 	touch-action: manipulation;
-	font-feature-settings: 'rlig' 1, 'calt' 0;
+	font-feature-settings: normal;
+	font-variant-ligatures: common-ligatures;
 }
 
 body {
