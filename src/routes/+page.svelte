@@ -98,16 +98,3 @@
   Previously, I created Pinched.io, a sourcing tool built on top of Twitter’s social graph. Before that, I was a design engineer at Thinkst where I worked on Canary, a tool used by security teams in detecting network attackers. In university, I studied Computer Science after a brief stint as an architecture student.
 </p> -->
 </div>
-
-<style lang="scss">
-  /* .text {
-    margin: 200px 100px;
-    max-width: 420px;
-    p {
-      font-size: 15px;
-      line-height: 25px;
-      margin: 1.8em 0;
-      color: #151515;
-    }
-  } */
-</style>

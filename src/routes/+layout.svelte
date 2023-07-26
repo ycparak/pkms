@@ -56,7 +56,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      max-height: functions.toRem(41px);
+      max-height: functions.toRem(42px);
       background-color: var(--color-background);
       z-index: 100;
       width: 100%;
@@ -83,7 +83,7 @@
           content: '';
           position: absolute;
           left: 0;
-          top: functions.toRem(40px);
+          top: functions.toRem(41px);
           width: 100%;
           height: functions.toRem(1px);
           background-color: var(--color-line);
@@ -93,6 +93,7 @@
     }
 
     &.open {
+      background-color: var(--color-background-accent);
       max-height: 100%;
       .header-container {
         overflow-y: auto;
