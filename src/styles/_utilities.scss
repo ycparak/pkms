@@ -2,3 +2,7 @@
 	height: var(--spacer-md);
 	grid-column: full-start / full-end;
 }
+.spacer-lg {
+	height: calc(var(--spacer-md) * 2);
+	grid-column: full-start / full-end;
+}

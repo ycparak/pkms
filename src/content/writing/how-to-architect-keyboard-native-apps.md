@@ -1,5 +1,5 @@
 ---
-title: How To Architect Keyboard Native Apps
+title: Architecting Keyboard Native Applications
 date: '2023-07-23'
 categories: [essay]
 published: true

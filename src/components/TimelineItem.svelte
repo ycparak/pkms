@@ -2,12 +2,19 @@
 	export let link = '';
 	export let linkTitle = '';
 	export let linkExternal = '_self';
+	export let linkBio = '';
 </script>
 
 <div class="item">
   <h5 class="date"><slot name="date"></slot></h5>
   <p class="content">
-    <a href={link} target={linkExternal}>{linkTitle}</a><br>
+    <a href={link} target={linkExternal}>
+			{linkTitle}
+		</a>
+		{#if linkBio}
+			<span>— {linkBio}</span>
+		{/if}
+		<br>
     <slot name="description"></slot>
   </p>
 </div>
@@ -27,7 +34,12 @@
 			color: var(--color-text-dark);
 			text-decoration: none;
 			text-decoration: underline;
-			text-decoration-color: var(--color-line);
+			text-decoration-color: var(--color-underline);
+		}
+
+		span {
+			font-style: italic;
+			color: var(--color-text-light);
 		}
 	}
 </style>

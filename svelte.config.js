@@ -20,7 +20,7 @@ const config = {
 	preprocess: [
 		preprocess({
 			scss: {
-				prependData: '@use "src/styles/_functions.scss"; @use "../styles/mixins" as mixins;'
+				prependData: '@use "src/styles/_functions.scss"; @use "src/styles/mixins" as mixins;'
 			}
 		}),
 		// vitePreprocess(),
