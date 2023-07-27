@@ -1,8 +1,26 @@
 @use 'functions';
 
+@mixin lh-trim-p {
+	font-size: functions.toRem(15.3203px);
+	line-height: functions.toRem(26px);
+	letter-spacing: -0.009em;
+
+	&::before {
+		content: '';
+		margin-bottom: -0.5335em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: -0.4455em;
+		display: table;
+	}
+}
+
 @mixin lh-trim-element {
 	font-size: functions.toRem(13.9276px);
-	line-height: functions.toRem(19px);
+	line-height: functions.toRem(20px);
 	letter-spacing: -0.009em;
 
 	&::before {
@@ -14,23 +32,6 @@
 	&::after {
 		content: '';
 		margin-top: -0.315em;
-		display: table;
-	}
-}
-
-@mixin element-md {
-	font-size: 15.4725px;
-	line-height: 20px;
-
-	&::before {
-		content: '';
-		margin-bottom: -0.2772em;
-		display: table;
-	}
-
-	&::after {
-		content: '';
-		margin-top: -0.3045em;
 		display: table;
 	}
 }

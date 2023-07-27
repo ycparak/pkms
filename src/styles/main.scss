@@ -1,8 +1,10 @@
-@use 'functions' as *;
+@use 'functions';
 @use 'mixins';
 @use 'fonts';
 @use 'variables';
 @use 'reset';
+@use 'typography';
+@use 'utilities';
 
 html,
 body {
@@ -11,13 +13,6 @@ body {
 	font-feature-settings: 'ss02' on;
 }
 
-/* body {
-	min-height: 100%;
-	display: flex;
-	flex-direction: column;
-}
-
 #root {
-	flex-grow: 1;
+	font-size: functions.toRem(15.3203px);
 }
- */

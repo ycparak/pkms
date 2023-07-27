@@ -1,18 +1,10 @@
 <script lang="ts">
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
-  import * as config from '$lib/config'
   import { Logo, Menu, MenuToggle, ThemePicker } from '$components'
 
   let showMenu = false;
 </script>
-
-<svelte:head>
-	<title>{config.title}</title>
-	<meta name="twitter:title" content="{config.title}" />
-	<meta name="twitter:description" content="{config.description}" />
-	<meta name="Description" content="{config.description}" />
-</svelte:head>
 
 <div class="grid">
   <header class:open={showMenu}>
@@ -34,7 +26,6 @@
   .grid {
     display: grid;
     grid-template-columns: functions.toRem(204px) 1fr;
-    gap: functions.toRem(40px);
     @media (max-width: functions.toRem(768px)) {
       display: block;
     }
@@ -73,7 +64,7 @@
       height: 100%;
       overflow-y: auto;
       padding: functions.toRem(24px);
-      gap: 40px;
+      gap: var(--spacer-lg);
       @media (max-width: functions.toRem(768px)) {
         overflow: hidden;
         width: 100%;
@@ -108,7 +99,10 @@
 
 
   main {
-    position: relative;
-    z-index: 20;
+    display: grid;
+    grid-template-columns: [full-start] 1fr [main-start content-start] functions.toRem(28px) [body-start] functions.toRem(432px) [body-end] functions.toRem(28px) [content-end] functions.toRem(28px) [aside-start] functions.toRem(280px) [aside-end main-end] functions.toRem(28px) 1fr [full-end];
+    height: fit-content;
+    padding: 124px 0;
+    font-size: functions.toRem(15.3203px);
   }
 </style>

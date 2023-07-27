@@ -27,7 +27,7 @@
   .menus {
     display: flex;
     flex-direction: column;
-    gap: functions.toRem(40px);
+    gap: var(--spacer-lg);
     margin-bottom: functions.toRem(24px);
     @media (max-width: functions.toRem(768px)) {
       transition: all .25s ease-in-out;
@@ -48,7 +48,7 @@
     line-height: 1;
     font-weight: 400;
     color: var(--color-text-light);
-    margin-bottom: functions.toRem(14px);
+    margin-bottom: functions.toRem(20px);
   }
 
   ul {
@@ -57,7 +57,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: functions.toRem(10px);
+    gap: functions.toRem(11px);
   }
 
   li {

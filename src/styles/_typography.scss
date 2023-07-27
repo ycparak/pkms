@@ -1,0 +1,36 @@
+@use 'functions';
+@use 'mixins';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	@include mixins.lh-trim-p;
+	margin-bottom: var(--spacer-md);
+	color: var(--color-text-normal);
+	grid-column: body;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--color-text-dark);
+	font-weight: 500;
+}
+
+aside {
+	grid-column: aside;
+	@include mixins.lh-trim-element;
+	color: var(--color-text-light);
+
+	&.callout {
+		border-top: 1px solid var(--color-line);
+		padding-top: 1.5em;
+	}
+}
