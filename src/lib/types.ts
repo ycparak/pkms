@@ -1,4 +1,4 @@
-export type Categories = 'sveltekit' | 'svelte';
+export type Categories = 'essay' | 'note' | 'case-study';
 
 export type Post = {
 	title: string;

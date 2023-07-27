@@ -30,8 +30,9 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$routes: './src/routes',
 			$components: './src/components',
+			$content: './src/content',
+			$routes: './src/routes',
 			$styles: './src/styles'
 		}
 	}
