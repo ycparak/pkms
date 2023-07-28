@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let link = '';
 	export let linkTitle = '';
-	export let linkExternal = '_self';
+	export let linkExternal = '';
 	export let linkBio = '';
 </script>
 

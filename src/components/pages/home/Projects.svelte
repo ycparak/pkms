@@ -9,7 +9,7 @@
     link={project.link}
     linkTitle={project.title}
     linkBio={project.linkBio ? project.linkBio : ''}
-    linkExternal={project.external ? '_blank' : '_self'}>
+    linkExternal={project.external ? '_blank' : ''}>
 		<svelte:fragment slot="date">{project.date}</svelte:fragment>
 		<svelte:fragment slot="description">{project.description}</svelte:fragment>
 	</TimelineItem>

@@ -12,7 +12,7 @@
 
 <h3>Writing</h3>
 {#each posts as post}
-	<TimelineItem link={`/${post.slug}`} linkTitle={post.title} linkExternal={'_self'}>
+	<TimelineItem link={`/${post.slug}`} linkTitle={post.title}>
 		<svelte:fragment slot="date">{getYear(post.date)}</svelte:fragment>
 		<svelte:fragment slot="description">{post.description}</svelte:fragment>
 	</TimelineItem>

@@ -1,12 +1,17 @@
 <script lang="ts">
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
+  import { fly } from 'svelte/transition'
+	import { expoOut, expoIn } from 'svelte/easing'
   import { Logo, Menu, MenuToggle, ThemePicker } from '$components'
+
+  export let data;
+  $: pathname = data.pathname;
 
   let showMenu = false;
 </script>
 
-<div class="grid">
+<div class="grid" data-sveltekit-noscroll>
   <header class:open={showMenu}>
     <div class="header-container">
       <Logo showMenu={showMenu} />
@@ -17,9 +22,13 @@
         showMenu={showMenu} />
     </div>
   </header>
-  <main>
+  {#key pathname}
+  <main
+    in:fly={{ x: 175, easing: expoOut, duration: 1500, delay: 500 }}
+    out:fly={{ x: -2000, easing: expoIn, duration: 500 }}>
     <slot />
   </main>
+  {/key}
 </div>
 
 <style lang="scss">
@@ -35,6 +44,7 @@
     position: sticky;
     top: 0;
     height: 100vh;
+    z-index: 2;
     &::after {
       content: '';
       position: absolute;
@@ -100,6 +110,8 @@
 
 
   main {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: [full-start] 1fr [main-start content-start] functions.toRem(28px) [body-start] functions.toRem(432px) [body-end] functions.toRem(28px) [content-end] functions.toRem(28px) [aside-start] functions.toRem(280px) [aside-end main-end] functions.toRem(28px) 1fr [full-end];
     height: fit-content;
