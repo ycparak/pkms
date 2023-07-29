@@ -6,3 +6,7 @@
 	height: calc(var(--spacer-md) * 2);
 	grid-column: full-start / full-end;
 }
+.spacer-xl {
+	height: calc(var(--spacer-md) * 3);
+	grid-column: full-start / full-end;
+}

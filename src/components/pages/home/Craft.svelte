@@ -1,41 +1,42 @@
 <h3>Craft</h3>
 <div class="designs">
   <div class="design"></div>
-  <div class="design"></div>
-  <div class="design"></div>
-  <div class="design"></div>
-  <div class="design"></div>
-  <div class="design"></div>
-  <div class="design"></div>
-  <div class="design"></div>
-  <div class="design"></div>
-  <div class="design"></div>
+  <nav></nav>
 </div>
-<div class="spacer-lg"></div>
+<aside>
+  <ul>
+    <li class="active">AI word picker</li>
+    <li>Link Preview</li>
+    <li>Search history</li>
+    <li>Bionic reading</li>
+    <li>Radial Menu</li>
+  </ul>
+</aside>
+<div class="spacer-xl"></div>
 
 <style lang="scss">
   .designs {
-    grid-column: full-start / full-end;
-    scroll-snap-type: x mandatory;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: min-content;
-    overflow-x: auto;
-    overflow-y: hidden;
-    // margin-left: calc(-340px - 4px + 120px);
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    grid-column: body-start / body-end;
     .design {
-      scroll-snap-align: start;
       background: var(--color-background-accent);
-      width: 340px;
-      height: 340px;
-      min-width: 340px;
-      min-height: 340px;
-      margin-right: 4px;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      border: functions.toRem(1px) solid var(--color-line);
+    }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: functions.toRem(10px);
+  }
+  li {
+    padding: 0;
+    &.active {
+      color: var(--color-text-dark);
     }
   }
 </style>

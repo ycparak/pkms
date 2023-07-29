@@ -22,7 +22,7 @@
 <style lang="scss">
   h6 {
     font-size: functions.toRem(12px);
-    line-height: 1;
+    line-height: functions.toRem(12px);
     font-weight: 400;
     color: var(--color-text-light);
     margin-bottom: functions.toRem(20px);

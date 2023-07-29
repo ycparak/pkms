@@ -25,7 +25,10 @@
     @include mixins.lh-trim-element;
     margin: 0;
   }
-  span {
-    color: var(--color-text-light);
+  h2 {
+    margin-bottom: 1px;
+    span {
+      color: var(--color-text-light);
+    }
   }
 </style>
