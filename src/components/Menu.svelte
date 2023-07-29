@@ -9,7 +9,7 @@
       {#each menuBlock.links as link}
         <li hidden={link.hide}>
           <a 
-            href='/writing'
+            href={link.href}
             target={link.external ? "_blank" : ""}>
             {link.name}
           </a>

@@ -7,6 +7,24 @@
 
   export let data;
   $: pathname = data.pathname;
+  let prevPath = data.pathname;
+
+  // Calculate fly transition x value and duration
+  let screenWidth = 0;
+  $: x = 768 + 204 + (screenWidth - 768 - 204) / 2;
+  $: duration = x / 3 + 100;
+
+  // Calculate transition direction
+  $: depth = pathname === '/' ? 0 : pathname.split('/').length - 1;
+  let prevDepth = prevPath === '/' ? 0 : prevPath.split('/').length - 1;
+  $: transitionForward = depth > prevDepth;
+  const updatePrevDepth = () => {
+    if (depth === 1)  prevDepth = 0;
+    else {
+      prevDepth = depth;
+    }
+  };
+
 </script>
 
 <!-- Large screen header -->
@@ -19,14 +37,19 @@
 <!-- Main content -->
 {#key pathname}
 <main
-  in:fly={{ x: 175, easing: expoOut, duration: 1500, delay: 500 }}
-  out:fly={{ x: -2000, easing: expoIn, duration: 500 }}
+  in:fly={{ x: transitionForward ? 150 : -150, easing: expoOut, duration: x, delay: duration }}
+  out:fly={{ x: transitionForward ? -x : x, easing: expoIn, duration, delay: 0 }}
+  on:outroend={() => window.scrollTo(0, 0)}
+  on:introend={updatePrevDepth}
   data-sveltekit-noscroll>
   <slot />
 </main>
 {/key}
 
 <!-- Small screen footer -->
+
+<!-- Get window size -->
+<svelte:window bind:innerWidth={screenWidth} />
 
 <style lang="scss">
   header {
