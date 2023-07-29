@@ -30,7 +30,7 @@ aside {
 	color: var(--color-text-light);
 
 	&.callout {
-		border-top: 1px solid var(--color-line);
+		border-top: functions.toRem(1px) solid var(--color-line);
 		padding-top: 1.5em;
 	}
 }

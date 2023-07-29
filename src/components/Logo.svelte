@@ -1,10 +1,9 @@
 <script lang="ts">
-  export let showMenu : boolean;
 </script>
 
 <a href="/">
   <h1>Yusuf Parak</h1>
-  <h2 class:open={showMenu}>
+  <h2>
     <span>Design Engineer</span>
   </h2>
 </a>
@@ -26,20 +25,7 @@
     @include mixins.lh-trim-element;
     margin: 0;
   }
-  h2 {
-    span {
-      color: var(--color-text-light);
-    }
-    @media (max-width: functions.toRem(768px)) {
-      transition: transform .25s ease-in-out;
-      visibility: hidden;
-      transform: translateX(-100vw);
-    }
-
-    &.open {
-      visibility: visible;
-      transform: translateX(0);
-      transition-delay: .25s;
-    }
+  span {
+    color: var(--color-text-light);
   }
 </style>
