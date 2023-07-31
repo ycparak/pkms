@@ -24,6 +24,10 @@ h6 {
 	font-weight: 500;
 }
 
+a {
+	text-decoration: none;
+}
+
 aside {
 	grid-column: aside;
 	@include mixins.lh-trim-element;
@@ -32,5 +36,14 @@ aside {
 	&.callout {
 		border-top: functions.toRem(1px) solid var(--color-line);
 		padding-top: 1.5em;
+	}
+
+	@media (max-width: functions.toRem(880px)) {
+		grid-column: body;
+		display: none;
+		&.callout {
+			border-top: none;
+			padding-top: 0;
+		}
 	}
 }

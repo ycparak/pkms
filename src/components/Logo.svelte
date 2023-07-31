@@ -59,7 +59,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    transform: translate(functions.toRem(1px), functions.toRem(-1px));
+    transform: translateY(functions.toRem(-1px));
     line-height: 1;
     border-radius: functions.toRem(30px) 0 0 functions.toRem(30px);
     height: functions.toRem(30px);

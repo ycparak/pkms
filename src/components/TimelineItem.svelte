@@ -26,7 +26,7 @@
 		width: 100%;
 		grid-column: body-start;
 		.date {
-			min-width: functions.toRem(112px);
+			min-width: functions.toRem(120px);
 			color: var(--color-text-light);
 		}
 		a {
