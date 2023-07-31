@@ -2,24 +2,32 @@
   import { menu } from '$lib/config'
 </script>
 
-{#each menu as menuBlock}
-  <nav>
-    <h6>{menuBlock.title}</h6>
-    <ul>
-      {#each menuBlock.links as link}
-        <li hidden={link.hide}>
-          <a 
-            href={link.href}
-            target={link.external ? "_blank" : ""}>
-            {link.name}
-          </a>
-        </li>
-      {/each}
-    </ul>
-  </nav>
-{/each}
+<div class="menu">
+  {#each menu as menuBlock}
+    <nav>
+      <h6>{menuBlock.title}</h6>
+      <ul>
+        {#each menuBlock.links as link}
+          <li hidden={link.hide}>
+            <a 
+              href={link.href}
+              target={link.external ? "_blank" : ""}>
+              {link.name}
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </nav>
+  {/each}
+</div>
 
 <style lang="scss">
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-lg);
+    padding: 0 functions.toRem(24px);
+  }
   h6 {
     font-size: functions.toRem(12px);
     line-height: functions.toRem(12px);

@@ -12,7 +12,7 @@
     <li>Radial Menu</li>
   </ul>
 </aside>
-<div class="spacer-xl"></div>
+<div class="spacer-lg"></div>
 
 <style lang="scss">
   .designs {

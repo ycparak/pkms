@@ -1,6 +1,7 @@
 import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
-// import { vitePreprocess } from '@sveltejs/kit/vite';
+import { preprocessMeltUI } from '@melt-ui/pp';
+import sequence from 'svelte-sequential-preprocessor';
 import { mdsvex } from 'mdsvex';
 
 /** @type {import('mdsvex').MdsvexOptions} */
@@ -17,15 +18,15 @@ const mdsvexConfig = {
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	extensions: ['.svelte', '.md'],
-	preprocess: [
+	preprocess: sequence([
 		preprocess({
 			scss: {
 				prependData: '@use "src/styles/_functions.scss"; @use "src/styles/mixins" as mixins;'
 			}
 		}),
-		// vitePreprocess(),
-		mdsvex(mdsvexConfig)
-	],
+		mdsvex(mdsvexConfig),
+		preprocessMeltUI()
+	]),
 
 	kit: {
 		adapter: adapter(),
