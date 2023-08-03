@@ -16,7 +16,6 @@
 
 <style lang="scss">
   .designs {
-    grid-column: body-start / body-end;
     .design {
       background: var(--color-background-accent);
       width: 100%;

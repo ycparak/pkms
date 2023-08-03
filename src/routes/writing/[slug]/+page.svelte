@@ -8,4 +8,6 @@
   <meta property="og:title" content={data.meta.title} />
 </svelte:head>
 
-<svelte:component this={data.content} />
+<article class="grid">
+  <svelte:component this={data.content} />
+</article>

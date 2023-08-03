@@ -1,6 +1,10 @@
 @use 'functions';
 @use 'mixins';
 
+* {
+	grid-column: body;
+}
+
 h1,
 h2,
 h3,
@@ -11,7 +15,6 @@ p {
 	@include mixins.lh-trim-p;
 	margin-bottom: var(--spacer-md);
 	color: var(--color-text-normal);
-	grid-column: body;
 }
 
 h1,

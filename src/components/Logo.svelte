@@ -59,10 +59,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    transform: translateY(functions.toRem(-1px));
     line-height: 1;
-    border-radius: functions.toRem(30px) 0 0 functions.toRem(30px);
-    height: functions.toRem(30px);
+    border-radius: functions.toRem(28px) 0 0 functions.toRem(28px);
+    height: functions.toRem(28px);
     width: 100%;
     max-width: functions.toRem(23px);
     border: functions.toRem(1px) solid var(--color-line);
@@ -76,7 +75,7 @@
       transition: all .35s ease-in;
       transition-delay: .2s;
       @include mixins.lh-trim-element;
-      transform: translateX(functions.toRem(3.5px)) scale(1);
+      transform: translateX(functions.toRem(3.5px)) translateY(functions.toRem(1px)) scale(1);
     }
     &.inactive {
       pointer-events: none;

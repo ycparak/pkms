@@ -24,7 +24,6 @@
 		display: flex;
 		flex-direction: row;
 		width: 100%;
-		grid-column: body-start;
 		.date {
 			min-width: functions.toRem(120px);
 			color: var(--color-text-light);

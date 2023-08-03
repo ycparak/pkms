@@ -21,7 +21,6 @@
 @mixin lh-trim-p {
 	font-size: functions.toRem(15.3203px);
 	line-height: functions.toRem(26px);
-	letter-spacing: -0.009em;
 
 	&::before {
 		content: '';

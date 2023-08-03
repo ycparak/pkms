@@ -31,6 +31,9 @@ devDependencies:
   '@playwright/test':
     specifier: ^1.28.1
     version: 1.36.1
+  '@svelte-put/dragscroll':
+    specifier: ^3.0.0
+    version: 3.0.0
   '@sveltejs/adapter-auto':
     specifier: ^2.0.0
     version: 2.1.0(@sveltejs/kit@1.22.3)
@@ -470,6 +473,10 @@ packages:
 
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
+    dev: true
+
+  /@svelte-put/dragscroll@3.0.0:
+    resolution: {integrity: sha512-h9MkYBQ9pDmCo/zHtMPzKrTSjGIogbbtRjtoTJH9hjBZGxPhpcGKgS3UA8wLF+IqB47Hcp97LblB855iZlo5nA==}
     dev: true
 
   /@sveltejs/adapter-auto@2.1.0(@sveltejs/kit@1.22.3):

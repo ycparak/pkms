@@ -45,11 +45,11 @@ export const menu = [
 export const projects = [
 	{
 		date: '2023',
-		title: 'Svonner',
-		link: 'https://svonner.ycparak.com',
+		title: 'Svbmit',
+		link: 'https://svbmit.com',
 		external: true,
 		description:
-			'Opinionated Svelte component library with a focus on notoriously complicated UI patterns and interactions.'
+			'Opinionated and unusual Svelte component library, with a focus on interface patterns that improve the user experience.'
 	},
 	{
 		date: '2022–2023',
@@ -61,12 +61,20 @@ export const projects = [
 			'A sourcing tool built on top of Twitter’s social graph. e.g. “Find all designers in LA following me or one of my investors”. Backed by Pioneer.'
 	},
 	{
+		date: '2022',
+		title: 'Mouseless HN',
+		link: 'https://hn.ycparak.com',
+		external: true,
+		description:
+			'A Hacker News client that can be navigated entirely with the keyboard. Built for understanding how prefetching works and how to architect mouseless user interfaces.'
+	},
+	{
 		date: '2021',
 		title: 'Bookmarks',
 		link: 'https://ycparak.com/bookmarks',
 		external: false,
 		description:
-			'A personally curated list of articles, essays, and videos that I’ve found interesting and would like to revisit.'
+			'Using the Pocket API and chrome extension to curate a list of articles, essays, and videos that I’ve found interesting and would like to revisit.'
 	},
 	{
 		date: '2020',

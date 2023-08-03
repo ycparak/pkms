@@ -6,7 +6,6 @@
   let posts = data?.posts;
 </script>
 
-
 <svelte:head>
 	<title>{config.title}</title>
 	<meta name="twitter:title" content="{config.title}" />
@@ -14,7 +13,9 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
-<About />
-<Writing posts={posts} />
-<Craft />
-<Projects />
+<div class="grid">
+	<About />
+	<Writing posts={posts} />
+	<Craft />
+	<Projects />
+</div>
