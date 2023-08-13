@@ -11,9 +11,10 @@ body {
 	font-family: var(--font-primary);
 	font-size: 16px;
 	font-feature-settings: 'ss02' on;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 #root {
+	height: 100%;
 	font-size: functions.toRem(15.3203px);
 }
