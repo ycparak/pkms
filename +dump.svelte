@@ -7,20 +7,25 @@
   let screenWidth = 0;
   let tabOffsets = [] as number[];
   let tabOpacities = [] as number[];
+  let tabActiveIndex = spring(0, { 
+    stiffness: 0.04,
+    damping: 0.4,
+  });
   let tabActiveOffset = spring(0, { 
-    stiffness: 0.045,
+    stiffness: 0.04,
     damping: 0.4,
   });
 
   $: if($tabActiveOffset) {
     tabOpacities = tabOffsets.map((offset) => {
       const distance = Math.abs(offset - $tabActiveOffset);
-      const opacity = distance < 100 ? 1.0 - (distance / 100) * 0.6 : 0.6;
+      const opacity = distance < 100 ? 1.0 - (distance / 100) * 0.5 : 0.5;
       return opacity;
     });
   }
 
   onMount(() => {
+    tabActiveIndex.set(0);
     calcTabOffsets();
     tabActiveOffset.set(tabOffsets[0]);
   });
@@ -35,6 +40,7 @@
   }
 
   function setActive(index : number) {
+    tabActiveIndex.set(index);
     tabActiveOffset.set(tabOffsets[index]);
   }
 
@@ -64,10 +70,11 @@
 </div>
 
 <div class="contents">
-  <nav style="transform: translate3d({$tabActiveOffset}px, 0px, 0px);">
+  <nav style="transform: translateX({$tabActiveOffset}px);">
     {#each links as link, index}
       <a
         id="{index.toString()}"
+        class:active={index === $tabActiveIndex}
         style="opacity: {tabOpacities[index]};"
         href="#{link.href}"
         on:click|preventDefault={() => setActive(index)}
@@ -142,7 +149,7 @@
     a {
       box-sizing: border-box;
       width: fit-content;
-      padding: 20px 25px;
+      padding: 20px 30px;
       margin: 0;
       font-size: 18px;
       cursor: default;
