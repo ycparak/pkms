@@ -48,6 +48,7 @@
     width: fit-content;
     padding: 10px 30px;
     margin: 0;
+    line-height: 1;
     font-size: 18px;
     cursor: default;
     color: #000;

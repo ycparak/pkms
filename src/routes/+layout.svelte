@@ -1,28 +1,27 @@
 <script lang="ts">
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
-  import { setContext } from 'svelte';
-  import { writable } from 'svelte/store';
   import { Nav } from '$components'
 
-  type Size = number;
-
-  let screenWidth = writable<Size>(0);
-  let screenHeight = writable<Size>(0);
-  setContext('screenWidth', screenWidth);
-  setContext('screenHeight', screenHeight);
-
   const links = [
-    { href: 'link-preview', title: 'Link Preview' },
-    { href: 'table-of-contents', title: 'Table of Contents' },
-    { href: 'bionic-reading', title: 'Bionic Reading' },
-    { href: 'radial-menu', title: 'Radial Menu' },
-    { href: 'color-picker', title: 'Colour Picker' },
-    { href: 'boolean-search', title: 'Boolean Search' },
-    { href: 'magnified-doc', title: 'Magnified Doc' },
-    { href: 'animated-counter', title: 'Animated Counter' },
-    { href: 'craft-slider', title: 'Craft Slider' },
+    { date: '2023-08-16', href: 'link-preview', title: 'Link Preview' },
+    { date: '2023-08-14', href: 'table-of-contents', title: 'Table of Contents' },
+    { date: '2023-06-21', href: 'bionic-reading', title: 'Bionic Reading' },
+    { date: '2023-06-01', href: 'radial-menu', title: 'Radial Menu' },
+    { date: '2023-02-15', href: 'color-picker', title: 'Colour Picker' },
+    { date: '2022-08-06', href: 'boolean-search', title: 'Boolean Search' },
+    { date: '2022-02-12', href: 'magnified-doc', title: 'Magnified Doc' },
+    { date: '2021-12-16', href: 'animated-counter', title: 'Animated Counter' },
+    { date: '2020-9-11', href: 'craft-slider', title: 'Craft Slider' },
   ]
+
+  let activeTab = 0;
+  $: activeLink = links[activeTab];
+
+  function setActiveTab(event : CustomEvent) {
+    console.log(event.detail)
+    activeTab = event.detail;
+  }
 </script>
 
 <div class="outer">
@@ -38,15 +37,16 @@
 </div>
 
 <div class="contents">
-  <Nav links={links} />
+  <Nav
+    links={links}
+    tabActive={activeTab}
+    linkActive={activeLink}
+    on:setActiveTab={setActiveTab} />
   <slot></slot>
   <div class="output">
     <!-- <pre>{tabOpacities}</pre> -->
   </div>
 </div>
-
-<!-- Get window size -->
-<svelte:window bind:innerWidth={$screenWidth} bind:innerHeight={$screenHeight} />
 
 <style lang="scss">
   .outer {
