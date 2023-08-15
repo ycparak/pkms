@@ -14,20 +14,29 @@
     stiffness: 0.045,
     damping: 0.4,
   });
+  const springScale = spring(1, {
+    stiffness: 0.045,
+    damping: 0.4,
+  });
 
   onMount(() => {
     springOpacity.set(0.35);
   });
 
   $: springOpacity.set(opacity);
+
+  const scaleDown = () => springScale.set(0.9);
+  const scaleUp = () => springScale.set(1);
 </script>
 
 <a
   id="{index.toString()}"
-  style="opacity: {$springOpacity};"
+  style="opacity: {$springOpacity}; transform: scale({$springScale});)"
   class:active={active}
   href="#{href}"
   on:click|preventDefault={() => dispatch('setActive')}
+  on:mousedown={scaleDown}
+  on:mouseup={scaleUp}
   tabindex="-1"
   draggable="false">
   {title}
@@ -37,7 +46,7 @@
   a {
     box-sizing: border-box;
     width: fit-content;
-    padding: 20px 30px;
+    padding: 10px 30px;
     margin: 0;
     font-size: 18px;
     cursor: default;

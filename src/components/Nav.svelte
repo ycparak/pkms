@@ -63,5 +63,6 @@
     list-style: none;
     overflow-x: hidden;
     white-space: nowrap;
+    padding: 10px 0 0 0;
   }
 </style>
