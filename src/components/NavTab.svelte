@@ -1,17 +1,17 @@
 <script lang="ts">
   import { spring } from 'svelte/motion';
-  import { createEventDispatcher, onMount } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 
-  export let index: number;
   export let active: boolean;
-  export let opacity: number;
   export let href: string;
   export let title: string;
+  export let tabOffset: number;
+  export let tabActiveOffset: number;
 
-  const springOpacity = spring(0.35, {
-    stiffness: 0.045,
+  const springOpacity = spring(0.3, {
+    stiffness: 0.035,
     damping: 0.4,
   });
   const springScale = spring(1, {
@@ -19,18 +19,18 @@
     damping: 0.4,
   });
 
-  onMount(() => {
-    springOpacity.set(0.35);
-  });
-
-  $: springOpacity.set(opacity);
+  $: if (tabActiveOffset) {
+    const distanceFromOffset = Math.abs(tabOffset - tabActiveOffset);
+    const opacity = distanceFromOffset < 100 ? 1.0 - (distanceFromOffset / 100) * 0.3 : 0.3;
+    springOpacity.set(opacity < 0.3 ? 0.3 : opacity);
+  }
 
   const scaleDown = () => springScale.set(0.9);
   const scaleUp = () => springScale.set(1);
 </script>
 
 <a
-  id="{index.toString()}"
+  id={href}
   style="opacity: {$springOpacity}; transform: scale({$springScale});)"
   class:active={active}
   href="#{href}"
@@ -50,10 +50,10 @@
     margin: 0;
     font-size: 18px;
     cursor: default;
-    color: #212329;
+    color: #000;
     text-decoration: none;
     text-transform: lowercase;
-    font-weight: 400;
+    font-weight: 300;
     white-space: nowrap;
     &:focus, &:focus-within {
       outline: none;

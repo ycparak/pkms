@@ -7,22 +7,12 @@
 
   let tabActive = 0;
   let tabOffsets = [] as number[];
-  let tabOpacities = [] as number[];
   let tabActiveOffset = spring(0, { 
     stiffness: 0.045,
     damping: 0.4,
   });
 
-  $: if($tabActiveOffset) {
-    tabOpacities = tabOffsets.map((offset) => {
-      const distance = Math.abs(offset - $tabActiveOffset);
-      const opacity = distance < 100 ? 1.0 - (distance / 100) * 0.35 : 0.35;
-      return opacity;
-    });
-  }
-
   onMount(() => {
-    tabActive = 0;
     calcTabOffsets();
     tabActiveOffset.set(tabOffsets[0]);
   });
@@ -45,11 +35,11 @@
 <nav style="transform: translate3d({$tabActiveOffset}px, 0px, 0px);">
   {#each links as link, index}
     <NavTab
-      index={index}
       active={index === tabActive}
       href={link.href}
       title={link.title}
-      opacity={tabOpacities[index]}
+      tabOffset={tabOffsets[index]}
+      tabActiveOffset={$tabActiveOffset}
       on:setActive={() => setActive(index)}
     />
   {/each}

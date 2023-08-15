@@ -1,9 +1,16 @@
 <script lang="ts">
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
+  import { setContext } from 'svelte';
+  import { writable } from 'svelte/store';
   import { Nav } from '$components'
 
-  let screenWidth = 0;
+  type Size = number;
+
+  let screenWidth = writable<Size>(0);
+  let screenHeight = writable<Size>(0);
+  setContext('screenWidth', screenWidth);
+  setContext('screenHeight', screenHeight);
 
   const links = [
     { href: 'link-preview', title: 'Link Preview' },
@@ -39,7 +46,7 @@
 </div>
 
 <!-- Get window size -->
-<svelte:window bind:innerWidth={screenWidth} />
+<svelte:window bind:innerWidth={$screenWidth} bind:innerHeight={$screenHeight} />
 
 <style lang="scss">
   .outer {
