@@ -1,42 +1,9 @@
 <script lang="ts">
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
-  import { onMount } from 'svelte';
-	import { spring } from 'svelte/motion';
+  import { Nav } from '$components'
 
   let screenWidth = 0;
-  let tabOffsets = [] as number[];
-  let tabOpacities = [] as number[];
-  let tabActiveOffset = spring(0, { 
-    stiffness: 0.045,
-    damping: 0.4,
-  });
-
-  $: if($tabActiveOffset) {
-    tabOpacities = tabOffsets.map((offset) => {
-      const distance = Math.abs(offset - $tabActiveOffset);
-      const opacity = distance < 100 ? 1.0 - (distance / 100) * 0.6 : 0.6;
-      return opacity;
-    });
-  }
-
-  onMount(() => {
-    calcTabOffsets();
-    tabActiveOffset.set(tabOffsets[0]);
-  });
-
-  function calcTabOffsets() {
-    const tabs = document.querySelectorAll('nav a');
-    tabOffsets = Array.from(tabs).map((tab) => {
-      const tabWidth = tab.getBoundingClientRect().width;
-      const prevTabsWidth = Array.from(tabs).slice(0, Array.from(tabs).indexOf(tab)).reduce((acc, curr) => acc + curr.getBoundingClientRect().width, 0);
-      return -(prevTabsWidth + (tabWidth / 2));
-    });
-  }
-
-  function setActive(index : number) {
-    tabActiveOffset.set(tabOffsets[index]);
-  }
 
   const links = [
     { href: 'link-preview', title: 'Link Preview' },
@@ -64,19 +31,7 @@
 </div>
 
 <div class="contents">
-  <nav style="transform: translate3d({$tabActiveOffset}px, 0px, 0px);">
-    {#each links as link, index}
-      <a
-        id="{index.toString()}"
-        style="opacity: {tabOpacities[index]};"
-        href="#{link.href}"
-        on:click|preventDefault={() => setActive(index)}
-        tabindex="-1"
-        draggable="false">
-        {link.title}
-      </a>
-    {/each}
-  </nav>
+  <Nav links={links} />
   <slot></slot>
   <div class="output">
     <!-- <pre>{tabOpacities}</pre> -->
@@ -93,7 +48,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #d9dae0;
+    background-color: #D9DBE0;
   }
   .inner {
     position: fixed;
@@ -103,7 +58,7 @@
     bottom: 10px;
     border-radius: 8px;
     background-color: #f5f7f9;
-    background: linear-gradient(180deg, #d9dae0 0%, #a0a0a2 100%);
+    background: linear-gradient(180deg, #D4D4D9 0%, #A2A3A6 100%);
     isolation: isolate;
   }
 
@@ -130,27 +85,5 @@
     overflow-x: hidden;
     z-index: 0;
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.55) inset, 1.5px 1.5px 0px 0px rgba(0, 0, 0, 0.35) inset, -1.25px -1.25px 2px 0px rgba(0, 0, 0, 0.34) inset, -1px -1px 2px 0px rgba(255, 255, 255, 0.86) inset;
-  }
-
-  nav {
-    position: relative;
-    left: 50%;
-    display: flex;
-    list-style: none;
-    overflow-x: hidden;
-    white-space: nowrap;
-    a {
-      box-sizing: border-box;
-      width: fit-content;
-      padding: 20px 25px;
-      margin: 0;
-      font-size: 18px;
-      cursor: default;
-      color: #212329;
-      text-decoration: none;
-      text-transform: lowercase;
-      font-weight: 300;
-      white-space: nowrap;
-    }
   }
 </style>
