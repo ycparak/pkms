@@ -14,7 +14,19 @@ body {
 	overflow: hidden;
 }
 
+body {
+	background-color: #f5f3f3;
+	// background-color: #d9dbe0;
+	/* background: var(
+		--background-inner,
+		radial-gradient(60% 85.66% at 41.16% 9.07%, #d9dbe0 0%, #bcbdc2 100%)
+	); */
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
 #root {
 	height: 100%;
 	font-size: functions.toRem(15.3203px);
+	isolation: isolate;
 }

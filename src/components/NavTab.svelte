@@ -9,8 +9,9 @@
   export let title: string;
   export let tabOffset: number;
   export let tabActiveOffset: number;
+  let opacityFaded = 0.25;
 
-  const springOpacity = spring(0.3, {
+  const springOpacity = spring(opacityFaded, {
     stiffness: 0.035,
     damping: 0.4,
   });
@@ -21,8 +22,8 @@
 
   $: if (tabActiveOffset) {
     const distanceFromOffset = Math.abs(tabOffset - tabActiveOffset);
-    const opacity = distanceFromOffset < 100 ? 1.0 - (distanceFromOffset / 100) * 0.3 : 0.3;
-    springOpacity.set(opacity < 0.3 ? 0.3 : opacity);
+    const opacity = distanceFromOffset < 100 ? 1.0 - (distanceFromOffset / 100) * opacityFaded : opacityFaded;
+    springOpacity.set(opacity < opacityFaded ? opacityFaded : opacity);
   }
 
   const scaleDown = () => springScale.set(0.9);
@@ -31,7 +32,7 @@
 
 <a
   id={href}
-  style="opacity: {$springOpacity}; transform: scale({$springScale});)"
+  style="opacity: {$springOpacity}; transform: scale({$springScale});"
   class:active={active}
   href="#{href}"
   on:click|preventDefault={() => dispatch('setActive')}
@@ -46,9 +47,9 @@
   a {
     box-sizing: border-box;
     width: fit-content;
-    padding: 10px 30px;
+    padding: 0 30px;
     margin: 0;
-    line-height: 1;
+    line-height: 22px;
     font-size: 18px;
     cursor: default;
     color: #000;
