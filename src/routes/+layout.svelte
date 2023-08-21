@@ -19,7 +19,6 @@
   $: activeLink = links[activeTab];
 
   function setActiveTab(event : CustomEvent) {
-    console.log(event.detail)
     activeTab = event.detail;
   }
 </script>
@@ -32,12 +31,14 @@
   <rect width="100%" height="100%" filter="url(#noise)"></rect>
 </svg>
 
+<main>
 <Nav
   links={links}
   tabActive={activeTab}
   linkActive={activeLink}
   on:setActiveTab={setActiveTab} />
 <slot></slot>
+</main>
 
 <style lang="scss">
   .noise {
@@ -49,5 +50,11 @@
     height: 100%;
     opacity: 0.3;
     filter: brightness(120%) contrast(120%);
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
   }
 </style>

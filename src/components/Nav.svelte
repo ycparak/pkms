@@ -9,16 +9,17 @@
 
   export let links = [] as { href: string, title: string, date: string, button: string }[];
   export let tabActive = 0;
-  export let linkActive = links[tabActive];
+  // export let linkActive = links[tabActive];
 
+  let nav: HTMLElement;
   let tabOffsets = [] as number[];
   let tabActiveOffset = spring(0, { 
-    stiffness: 0.045,
-    damping: 0.4,
+    stiffness: 0.03,
+    damping: 0.27,
   });
 
-  $: date = linkActive.date && new Date(linkActive.date).toLocaleDateString('en-GB', { month: 'numeric', year: 'numeric' }).split('/').join('.');
-  $: button = linkActive.button && linkActive.button;
+  // $: date = linkActive.date && new Date(linkActive.date).toLocaleDateString('en-GB', { month: 'numeric', year: 'numeric' }).split('/').join('.');
+  // $: button = linkActive.button && linkActive.button;
 
   onMount(() => {
     calcTabOffsets();
@@ -26,7 +27,7 @@
   });
 
   function calcTabOffsets() {
-    const tabs = document.querySelectorAll('nav a');
+    let tabs = nav.children;
     tabOffsets = Array.from(tabs).map((tab) => {
       const tabWidth = tab.getBoundingClientRect().width;
       const prevTabsWidth = Array.from(tabs).slice(0, Array.from(tabs).indexOf(tab)).reduce((acc, curr) => acc + curr.getBoundingClientRect().width, 0);
@@ -40,7 +41,7 @@
   }
 </script>
 
-<nav style="transform: translate3d({$tabActiveOffset}px, 0px, 0px);">
+<nav bind:this={nav} style="transform: translate3d({$tabActiveOffset}px, 0px, 0px);">
   {#each links as link, index}
     <NavTab
       active={index === tabActive}
