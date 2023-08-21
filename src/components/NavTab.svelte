@@ -41,7 +41,7 @@
     padding: 0 20px;
     margin: 0;
     line-height: 22px;
-    font-size: 18px;
+    font-size: clamp(1.00rem, calc(0.96rem + 0.22vw), 1.125rem);
     cursor: default;
     color: #000;
     text-decoration: none;

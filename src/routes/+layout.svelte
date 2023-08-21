@@ -1,6 +1,7 @@
 <script lang="ts">
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
+  import "@phosphor-icons/web/fill";
   import { Nav } from '$components'
 
   const links = [
@@ -23,6 +24,9 @@
   }
 </script>
 
+<div class="fader left"></div>
+<div class="fader right"></div>
+
 <svg class="noise">
   <filter id="noise">
     <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"></feTurbulence>
@@ -31,16 +35,38 @@
   <rect width="100%" height="100%" filter="url(#noise)"></rect>
 </svg>
 
+<button class="button-menu button-primary button-icon">
+  <div class="inner"><i class="icon ph-fill ph-list"></i></div>
+</button>
+
 <main>
+<!-- linkActive={activeLink} -->
 <Nav
   links={links}
   tabActive={activeTab}
-  linkActive={activeLink}
   on:setActiveTab={setActiveTab} />
 <slot></slot>
 </main>
 
 <style lang="scss">
+  .fader {
+    position: fixed;
+    top: 22px;
+    width: 100px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 99;
+    &.left {
+      --start: calc(22px + 32px);
+      --width: calc(var(--start) + 100px);
+      width: var(--width);
+      background: linear-gradient(to right, rgba(245, 243, 243, 1) var(--start), rgba(245, 243, 243, 0));
+    }
+    &.right {
+      right: 0;
+      background: linear-gradient(to left, rgba(245, 243, 243, 1), rgba(245, 243, 243, 0));
+    }
+  }
   .noise {
     position: fixed;
     z-index: -1;
@@ -50,6 +76,13 @@
     height: 100%;
     opacity: 0.3;
     filter: brightness(120%) contrast(120%);
+  }
+
+  .button-menu {
+    position: fixed;
+    top: 22px;
+    left: 22px;
+    z-index: 99;
   }
 
   main {
