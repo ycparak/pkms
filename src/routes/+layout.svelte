@@ -2,7 +2,16 @@
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
   import "@phosphor-icons/web/fill";
+  import { setContext } from 'svelte';
+  import { writable } from 'svelte/store';
   import { Nav } from '$components'
+
+  type Size = number;
+
+  let screenWidth = writable<Size>(0);
+  let screenHeight = writable<Size>(0);
+  setContext('screenWidth', screenWidth);
+  setContext('screenHeight', screenHeight);
 
   const links = [
     { date: '2023-08-16', href: 'link-preview', title: 'Link Preview', button: 'View prototype ⏵' },
@@ -45,8 +54,10 @@
   links={links}
   tabActive={activeTab}
   on:setActiveTab={setActiveTab} />
-<slot></slot>
+  <slot></slot>
 </main>
+
+<svelte:window bind:innerWidth={$screenWidth} bind:innerHeight={$screenHeight} />
 
 <style lang="scss">
   .fader {

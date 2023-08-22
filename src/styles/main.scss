@@ -7,11 +7,14 @@
 @use 'buttons';
 @use 'utilities';
 
+html {
+	overflow-x: hidden;
+}
+
 html,
 body {
 	font-family: var(--font-primary);
 	font-size: 16px;
-	overflow: hidden;
 }
 
 body {
@@ -28,5 +31,4 @@ body {
 #root {
 	height: 100%;
 	font-size: functions.toRem(15.3203px);
-	isolation: isolate;
 }

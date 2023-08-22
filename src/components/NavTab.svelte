@@ -15,20 +15,30 @@
     stiffness: 0.02,
     damping: 0.19,
   });
+  const springScale = spring(1, {
+    stiffness: 0.05,
+    damping: 0.2,
+  });
 
   $: if (tabActiveOffset) {
     const distanceFromOffset = Math.abs(tabOffset - tabActiveOffset);
-    const opacity = distanceFromOffset < 80 ? 1.0 - (distanceFromOffset / 80) * opacityFaded : opacityFaded;
+    const opacity = distanceFromOffset < 100 ? 1.0 - (distanceFromOffset / 100) * opacityFaded : opacityFaded;
     springOpacity.set(opacity < opacityFaded ? opacityFaded : opacity);
   }
+
+  const scaleDown = () => springScale.set(0.92);
+  const scaleUp = () => springScale.set(1);
 </script>
 
 <a
   id={href}
-  style="opacity: {$springOpacity};"
+  style="opacity: {$springOpacity}; transform: scale({$springScale});"
   class:active={active}
   href="#{href}"
   on:click|preventDefault={() => dispatch('setActive')}
+  on:mousedown={scaleDown}
+  on:mouseup={scaleUp}
+  on:mouseleave={scaleUp}
   tabindex="-1"
   draggable="false">
   {title}
@@ -48,15 +58,10 @@
     text-transform: lowercase;
     font-weight: 300;
     white-space: nowrap;
-    transition: transform .3s ease-in;
+    user-select: none;
     &:focus, &:focus-within, &:active {
       outline: none;
       box-shadow: none;
-    }
-
-    &:active {
-      transform: scale(0.9);
-      transition: transform .3s ease-out;
     }
 
     &::selection, &::-moz-selection {
