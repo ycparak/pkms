@@ -1,39 +1,40 @@
 <script lang="ts">
   import type { Writable } from 'svelte/store';
-  import { getContext, onMount } from 'svelte';
+  import { getContext } from 'svelte';
   import { spring } from 'svelte/motion';
+  import { createEventDispatcher } from 'svelte';
 
+	const dispatch = createEventDispatcher();
   type Context = Writable<number>
 
   export let slides = [] as { href: string, title: string, date: string, button: string }[];
+  export let slideIndex = 0;
   let screenWidth = getContext<Context>('screenWidth')
-  let slideIndex = 0;
   let shouldSlide = true;
   let xPosition = spring(0, { 
-    stiffness: 0.03,
-    damping: 0.27,
+    stiffness: 0.05,
+    damping: 0.49,
   });
 
-  onMount(() => {
-    xPosition.set(slideIndex * -$screenWidth)
-  })
+  $: {
+    xPosition.set(slideIndex * -$screenWidth);
+  }
 
   function wheel(e : Event) {
-    const deltaX = (e as WheelEvent).deltaX;
     if (shouldSlide) {
       shouldSlide = false;
-      slide(deltaX);
+      slide((e as WheelEvent).deltaX);
       setTimeout(() => shouldSlide = true, 1000);
     }
   }
 
   function slide(deltaX : number) {
     if (deltaX > 1 && slideIndex < slides.length - 1) {
-      slideIndex++;
-      xPosition.set(slideIndex * -$screenWidth);
+      const newIndex = slideIndex + 1;
+      dispatch('setActiveIndex', newIndex);
     } else if (deltaX < -1 && slideIndex > 0) {
-      slideIndex--;
-      xPosition.set(slideIndex * -$screenWidth);
+      const newIndex = slideIndex - 1;
+      dispatch('setActiveIndex', newIndex);
     }
   }
 </script>
@@ -62,7 +63,6 @@
     min-height: 100%;
     width: 100%;
     flex-shrink: 0;
-    padding-bottom: 200px;
     .img {
       width: 768px;
       aspect-ratio: 16 / 9;

@@ -12,8 +12,8 @@
   let opacityFaded = 0.25;
 
   const springOpacity = spring(opacityFaded, {
-    stiffness: 0.02,
-    damping: 0.19,
+    stiffness: 0.09,
+    damping: 0.87,
   });
   const springScale = spring(1, {
     stiffness: 0.05,
@@ -22,7 +22,7 @@
 
   $: if (tabActiveOffset) {
     const distanceFromOffset = Math.abs(tabOffset - tabActiveOffset);
-    const opacity = distanceFromOffset < 100 ? 1.0 - (distanceFromOffset / 100) * opacityFaded : opacityFaded;
+    const opacity = distanceFromOffset < 80 ? 1.0 - (distanceFromOffset / 80) * opacityFaded : opacityFaded;
     springOpacity.set(opacity < opacityFaded ? opacityFaded : opacity);
   }
 
@@ -39,6 +39,9 @@
   on:mousedown={scaleDown}
   on:mouseup={scaleUp}
   on:mouseleave={scaleUp}
+  on:touchstart={scaleDown}
+  on:touchend={scaleUp}
+  on:touchcancel={scaleUp}
   tabindex="-1"
   draggable="false">
   {title}
