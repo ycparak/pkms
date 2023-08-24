@@ -1,8 +1,13 @@
 <script lang="ts">
   import * as config from '$lib/config'
-	import { Nav, Slides } from '$components'
+  import type { Writable } from 'svelte/store';
+  import { getContext } from 'svelte';
+  import { spring } from 'svelte/motion';
+	import { Nav, Slide } from '$components'
 
-	const links = [
+  type Context = Writable<number>
+  let screenWidth = getContext<Context>('screenWidth')
+	const items = [
     { date: '2023-08-16', href: 'link-preview', title: 'Link Preview', button: 'View prototype ⏵' },
     { date: '2023-08-14', href: 'table-of-contents', title: 'Table of Contents', button: 'View essay ⏵' },
     { date: '2023-06-21', href: 'bionic-reading', title: 'Bionic Reading', button: 'View prototype ⏵' },
@@ -13,22 +18,53 @@
     { date: '2021-12-16', href: 'animated-counter', title: 'Animated Counter', button: 'View essay ⏵' },
     { date: '2022-02-12', href: 'craft-slider', title: 'Craft Slider', button: 'View prototype ⏵' },
   ]
+
   let index = 0;
+  let shouldSlide = true;
+  let initialKeypress = true;
+	let isRubberBanding = false;
+  
+  let xPositionSpring = spring(0, { 
+    stiffness: 0.05,
+    damping: 0.49,
+  });
+  $: xPositionSpring.set(index * -$screenWidth);
 
   function setActiveIndex(event : CustomEvent) {
     index = event.detail;
   }
 
-  function keydown(event : KeyboardEvent) {
-    if (event.key === 'ArrowRight' && index < links.length - 1) {
-      index++;
-    } else if (event.key === 'ArrowLeft' && index > 0) {
-      index--;
+  function keydown(event: KeyboardEvent) {
+    const maxRubberbandDistance = 0.03;
+    const isArrowRight = event.key === 'ArrowRight';
+    const isArrowLeft = event.key === 'ArrowLeft';
+    const arrowVal = isArrowRight ? 1 : -1;
+
+    if (isArrowRight && index < items.length - 1 || isArrowLeft && index > 0) {
+      index += arrowVal;
+    } else if (initialKeypress) {
+      isRubberBanding = true;
+      xPositionSpring.set($xPositionSpring + arrowVal * maxRubberbandDistance * $screenWidth);
     }
-  }
+
+    initialKeypress = false;
+}
 
   function keyup(event : KeyboardEvent) {
-    console.log('keyup')
+    if (!isRubberBanding && !(event.key === 'ArrowRight' || event.key === 'ArrowLeft')) return;
+    isRubberBanding = false;
+    xPositionSpring.set(index * -$screenWidth);
+    initialKeypress = true;
+  }
+
+  function wheel(e : Event) {
+    const deltaX = (e as WheelEvent).deltaX;
+    if (shouldSlide) {
+      shouldSlide = false;
+      if (deltaX > 1 && index < items.length - 1) index++;
+      else if (deltaX < -1 && index > 0) index--;
+      setTimeout(() => shouldSlide = true, 1000);
+    }
   }
 </script>
 
@@ -40,26 +76,32 @@
 </svelte:head>
 
 <Nav
-  links={links}
+  links={items}
   tabActive={index}
   on:setActiveTab={setActiveIndex} />
 
-<Slides 
-  slides={links} 
-  slideIndex={index}
-  on:setActiveIndex={setActiveIndex} />
+<div
+  class="slides"
+  on:wheel|preventDefault={wheel}
+  style="transform: translate3d({$xPositionSpring}px, 0px, 0px);">
+  {#each items as slide, index}
+    <Slide index={index} />
+  {/each}
+</div>
 
 {#if index !== 0}
 <button
   on:click={() => index--}
+  disabled={index === 0}
   class="button-left button-primary button-icon">
   <div class="inner"><i class="icon ph-bold ph-arrow-left"></i></div>
 </button>
 {/if}
 
-{#if index !== links.length - 1}
+{#if index !== items.length - 1}
 <button
   on:click={() => index++}
+  disabled={index === items.length - 1}
   class="button-right button-primary button-icon">
   <div class="inner"><i class="icon ph-bold ph-arrow-right"></i></div>
 </button>
@@ -67,10 +109,15 @@
 
 <div class="fader left"></div>
 <div class="fader right"></div>
-
 <svelte:window on:keydown={keydown} on:keyup={keyup} />
 
 <style lang="scss">
+  .slides {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    cursor: grab;
+  }
   .fader {
     position: fixed;
     top: 22px;

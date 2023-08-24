@@ -43,7 +43,8 @@
   on:wheel|preventDefault={wheel}
   style="transform: translate3d({$xPositionSpring}px, 0px, 0px);">
   {#each slides as slide, index}
-    <Slide index={index} />
+    <Slide
+      index={index} />
   {/each}
 </div>
 
