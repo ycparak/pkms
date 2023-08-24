@@ -37,16 +37,20 @@
   }
 
   function keydown(event: KeyboardEvent) {
-    const maxRubberBandDistance = 0.03;
     const isArrowRight = event.key === 'ArrowRight';
     const isArrowLeft = event.key === 'ArrowLeft';
-    const arrowVal = isArrowRight ? 1 : -1;
+    if (!(isArrowRight || isArrowLeft)) return;
+
+    const maxRubberBandDistance = 0.03;
+    const step = isArrowRight ? 1 : -1;
+		const positionTolerance = 0.05;
+    const isRubberBandRegion = $mainSpring < positionTolerance || $mainSpring > items.length - 1 - positionTolerance;
 
     if (isArrowRight && index < items.length - 1 || isArrowLeft && index > 0) {
-      index += arrowVal;
-    } else if (initialKeypress) {
+      index += step;
+    } else if (initialKeypress && isRubberBandRegion) {
       isRubberBanding = true;
-      mainSpring.set($mainSpring + (arrowVal * maxRubberBandDistance));
+      mainSpring.set($mainSpring + (step * maxRubberBandDistance));
     }
 
     initialKeypress = false;
@@ -77,6 +81,7 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
+<!-- mainSpring={$mainSpring} -->
 <Nav
   links={items}
   tabActive={index}

@@ -8,14 +8,15 @@
   export let links = [] as { href: string, title: string, date: string, button: string }[];
   export let tabActive = 0;
 
-  let navEl: HTMLElement;
+  let nav: HTMLElement;
   let tabOffsets = [] as number[];
   let tabActiveOffset = spring(0, { 
-    stiffness: 0.09,
-    damping: 0.87,
+    stiffness: 0.075,
+    damping: 0.8,
+    precision: 0,
   });
 
-  $: calcTabOffsets(navEl);
+  $: calcTabOffsets(nav);
   $: tabActiveOffset.set(tabOffsets[tabActive]);
 
 
@@ -38,7 +39,7 @@
   }
 </script>
 
-<nav bind:this={navEl} style="transform: translate3d({$tabActiveOffset}px, 0px, 0px)">
+<nav bind:this={nav} style="transform: translate3d({$tabActiveOffset}px, 0px, 0px)">
   {#each links as link, index}
     <NavTab
       active={index === tabActive}
