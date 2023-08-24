@@ -16,14 +16,25 @@
     damping: 0.87,
   });
 
+  $: tabActiveOffset.set(tabOffsets[tabActive]);
+
   onMount(() => {
     calcTabOffsets();
     tabActiveOffset.set(tabOffsets[tabActive]);
   });
 
-  $: {
-    tabActiveOffset.set(tabOffsets[tabActive]);
-  }
+  /* 
+  const slideCenter = index * $screenWidth + ($screenWidth / 2);
+    const viewportCenter = $screenWidth / 2;
+    const distanceFromCenter = Math.abs(viewportCenter - slideCenter);
+    const scale = distanceFromCenter < $screenWidth / 2 ? 1.0 - (distanceFromCenter / ($screenWidth / 2)) * 0.08 : 0.45;
+    springScale.set(scale < 0.45 ? 0.45 : scale);
+
+    const scale = distanceFromCenter < $screenWidth / 2 ? 1.0 - (distanceFromCenter / ($screenWidth / 2)) * 0.08 : 0.45;
+    springScale.set(scale < 0.45 ? 0.45 : scale);
+
+
+    console.log(index, $springScale) */
 
   function calcTabOffsets() {
     let tabs = nav.children;
