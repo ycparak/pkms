@@ -23,19 +23,21 @@
   let shouldSlide = true;
   let initialKeypress = true;
 	let isRubberBanding = false;
-  
-  let xPositionSpring = spring(0, { 
-    stiffness: 0.05,
-    damping: 0.49,
+  let mainSpring = spring(0, { 
+    stiffness: 0.075,
+    damping: 0.8,
+    precision: 0,
   });
-  $: xPositionSpring.set(index * -$screenWidth);
+
+  $: mainSpring.set(index);
+  $: xPosSlide = $mainSpring * -$screenWidth;
 
   function setActiveIndex(event : CustomEvent) {
     index = event.detail;
   }
 
   function keydown(event: KeyboardEvent) {
-    const maxRubberbandDistance = 0.03;
+    const maxRubberBandDistance = 0.03;
     const isArrowRight = event.key === 'ArrowRight';
     const isArrowLeft = event.key === 'ArrowLeft';
     const arrowVal = isArrowRight ? 1 : -1;
@@ -44,7 +46,7 @@
       index += arrowVal;
     } else if (initialKeypress) {
       isRubberBanding = true;
-      xPositionSpring.set($xPositionSpring + arrowVal * maxRubberbandDistance * $screenWidth);
+      mainSpring.set($mainSpring + (arrowVal * maxRubberBandDistance));
     }
 
     initialKeypress = false;
@@ -53,7 +55,7 @@
   function keyup(event : KeyboardEvent) {
     if (!isRubberBanding && !(event.key === 'ArrowRight' || event.key === 'ArrowLeft')) return;
     isRubberBanding = false;
-    xPositionSpring.set(index * -$screenWidth);
+    mainSpring.set(index);
     initialKeypress = true;
   }
 
@@ -83,7 +85,7 @@
 <div
   class="slides"
   on:wheel|preventDefault={wheel}
-  style="transform: translate3d({$xPositionSpring}px, 0px, 0px);">
+  style="transform: translate3d({xPosSlide}px, 0px, 0px);">
   {#each items as slide, index}
     <Slide index={index} />
   {/each}
