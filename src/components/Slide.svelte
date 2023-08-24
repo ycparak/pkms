@@ -46,9 +46,8 @@
     min-height: 100%;
   }
   .img {
-    width: 553px;
-    height: 1069px;
-    // aspect-ratio: 16 / 9;
+    width: 720px;
+    aspect-ratio: 16 / 9;
     margin: 0 auto;
     background-color: #fff;
     border-radius: 12px;

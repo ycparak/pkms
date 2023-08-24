@@ -1,12 +1,6 @@
 <script lang="ts">
   import * as config from '$lib/config'
-	import { Nav } from '$components'
-
-  let index = 0;
-
-  function setActiveIndex(event : CustomEvent) {
-    index = event.detail;
-  }
+	import { Nav, Slides } from '$components'
 
 	const links = [
     { date: '2023-08-16', href: 'link-preview', title: 'Link Preview', button: 'View prototype ⏵' },
@@ -19,6 +13,23 @@
     { date: '2021-12-16', href: 'animated-counter', title: 'Animated Counter', button: 'View essay ⏵' },
     { date: '2022-02-12', href: 'craft-slider', title: 'Craft Slider', button: 'View prototype ⏵' },
   ]
+  let index = 0;
+
+  function setActiveIndex(event : CustomEvent) {
+    index = event.detail;
+  }
+
+  function keydown(event : KeyboardEvent) {
+    if (event.key === 'ArrowRight' && index < links.length - 1) {
+      index++;
+    } else if (event.key === 'ArrowLeft' && index > 0) {
+      index--;
+    }
+  }
+
+  function keyup(event : KeyboardEvent) {
+    console.log('keyup')
+  }
 </script>
 
 <svelte:head>
@@ -28,18 +39,36 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
-<div class="fader left"></div>
-<div class="fader right"></div>
-
 <Nav
   links={links}
   tabActive={index}
   on:setActiveTab={setActiveIndex} />
 
-<!-- <Slides 
+<Slides 
   slides={links} 
   slideIndex={index}
-  on:setActiveIndex={setActiveIndex} /> -->
+  on:setActiveIndex={setActiveIndex} />
+
+{#if index !== 0}
+<button
+  on:click={() => index--}
+  class="button-left button-primary button-icon">
+  <div class="inner"><i class="icon ph-bold ph-arrow-left"></i></div>
+</button>
+{/if}
+
+{#if index !== links.length - 1}
+<button
+  on:click={() => index++}
+  class="button-right button-primary button-icon">
+  <div class="inner"><i class="icon ph-bold ph-arrow-right"></i></div>
+</button>
+{/if}
+
+<div class="fader left"></div>
+<div class="fader right"></div>
+
+<svelte:window on:keydown={keydown} on:keyup={keyup} />
 
 <style lang="scss">
   .fader {
@@ -59,5 +88,16 @@
       right: 0;
       background: linear-gradient(to left, rgba(245, 243, 243, 1), rgba(245, 243, 243, 0));
     }
+  }
+
+  .button-left {
+    position: fixed;
+    bottom: 22px;
+    left: 22px;
+  }
+  .button-right {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
   }
 </style>

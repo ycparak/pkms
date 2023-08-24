@@ -16,7 +16,7 @@
     damping: 0.87,
   });
   const springScale = spring(1, {
-    stiffness: 0.05,
+    stiffness: 0.1,
     damping: 0.2,
   });
 
