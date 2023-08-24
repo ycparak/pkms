@@ -1,6 +1,6 @@
 <script lang="ts">
   import * as config from '$lib/config'
-	import { Nav, Slides } from '$components'
+	import { Nav } from '$components'
 
   let index = 0;
 
@@ -36,10 +36,10 @@
   tabActive={index}
   on:setActiveTab={setActiveIndex} />
 
-<Slides 
+<!-- <Slides 
   slides={links} 
   slideIndex={index}
-  on:setActiveIndex={setActiveIndex} />
+  on:setActiveIndex={setActiveIndex} /> -->
 
 <style lang="scss">
   .fader {
