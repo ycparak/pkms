@@ -30,11 +30,7 @@
   });
 
   $: mainSpring.set(index);
-  $: xPosSlide = $mainSpring * -$screenWidth;
-
-  function setActiveIndex(event : CustomEvent) {
-    index = event.detail;
-  }
+  $: xPosSlides = $mainSpring * -$screenWidth;
 
   function keydown(event: KeyboardEvent) {
     const isArrowRight = event.key === 'ArrowRight';
@@ -81,16 +77,15 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
-<!-- mainSpring={$mainSpring} -->
 <Nav
   links={items}
   tabActive={index}
-  on:setActiveTab={setActiveIndex} />
+  on:setActiveIndex={(e) => index = e.detail} />
 
 <div
   class="slides"
   on:wheel|preventDefault={wheel}
-  style="transform: translate3d({xPosSlide}px, 0px, 0px);">
+  style="transform: translate3d({xPosSlides}px, 0px, 0px);">
   {#each items as slide, index}
     <Slide index={index} />
   {/each}
@@ -123,7 +118,6 @@
     flex-grow: 1;
     display: flex;
     flex-wrap: nowrap;
-    cursor: grab;
   }
   .fader {
     position: fixed;

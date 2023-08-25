@@ -10,14 +10,14 @@
 
   let nav: HTMLElement;
   let tabOffsets = [] as number[];
-  let tabActiveOffset = spring(0, { 
+  let xPosNav = spring(0, { 
     stiffness: 0.075,
     damping: 0.8,
     precision: 0,
   });
 
   $: calcTabOffsets(nav);
-  $: tabActiveOffset.set(tabOffsets[tabActive]);
+  $: xPosNav.set(tabOffsets[tabActive]);
 
 
   function calcTabOffsets(nav : HTMLElement) {
@@ -33,21 +33,17 @@
       tabOffsets[i] = -(tabWidthsCumulative[i] - (tabWidths[i] / 2));
     });
   }
-
-  function setActive(index : number) {
-    dispatch('setActiveTab', index);
-  }
 </script>
 
-<nav bind:this={nav} style="transform: translate3d({$tabActiveOffset}px, 0px, 0px)">
+<nav bind:this={nav} style="transform: translate3d({$xPosNav}px, 0px, 0px)">
   {#each links as link, index}
     <NavTab
       active={index === tabActive}
       href={link.href}
       title={link.title}
       tabOffset={tabOffsets[index]}
-      tabActiveOffset={$tabActiveOffset}
-      on:setActive={() => setActive(index)}
+      tabActiveOffset={$xPosNav}
+      on:setActive={() => dispatch('setActiveIndex', index)}
     />
   {/each}
 </nav>
