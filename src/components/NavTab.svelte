@@ -9,7 +9,7 @@
   export let title: string;
   export let tabOffset: number;
   export let tabActiveOffset: number;
-  let opacityFaded = 0.25;
+  let opacityFaded = 0.2;
 
   const springOpacity = spring(opacityFaded, {
     stiffness: 0.09,
@@ -49,18 +49,17 @@
 
 <style lang="scss">
   a {
-    box-sizing: border-box;
     width: fit-content;
-    padding: 0 20px;
+    padding: 8px 20px;
     margin: 0;
-    line-height: 22px;
     font-size: clamp(1.00rem, calc(0.96rem + 0.22vw), 1.125rem);
+    line-height: 1;
     cursor: default;
     color: #000;
     text-decoration: none;
     text-transform: lowercase;
     font-weight: 300;
-    white-space: nowrap;
+    // white-space: nowrap;
     user-select: none;
     &:focus, &:focus-within, &:active {
       outline: none;

@@ -10,7 +10,7 @@
 
   let nav: HTMLElement;
   let tabOffsets = [] as number[];
-  let xPosNav = spring(0, { 
+  let xPosNav = spring(-67.109375, { 
     stiffness: 0.075,
     damping: 0.8,
     precision: 0,
@@ -50,13 +50,12 @@
 
 <style lang="scss">
   nav {
-    position: absolute;
+    position: relative;
     left: 50%;
     display: flex;
     list-style: none;
-    overflow: hidden;
     white-space: nowrap;
-    padding: 25px 0 0 0;
+    padding: 16px 0 0 0;
     width: fit-content;
     z-index: 97;
   }

@@ -9,24 +9,13 @@
   // export let xPosition = 0;
   let screenWidth = getContext<Context>('screenWidth')
   let slide : HTMLElement;
-  let scaleSpring = tweened(1);
-
-  /* $: {
-    const slidePosition = index * $screenWidth;
-    const xPositionCenter = Math.abs(xPosition) + ($screenWidth / 2);
-    const slideCenter = Math.abs(slidePosition) + ($screenWidth / 2);
-    const distanceFromCenter = xPositionCenter - slideCenter;
-    const scale = 1 - (Math.abs(distanceFromCenter) / $screenWidth);
-    const scaleValue = scale < 0.6 ? 0.6 : scale;
-    scaleSpring.set(scaleValue);
-  } */
 </script>
 
 <div 
   bind:this={slide}
   id="slide-{index}"
   class="slide">
-  <div class="wrapper" style="transform: scale({$scaleSpring});">
+  <div class="wrapper">
     <div class="img">{index + 1}</div>
   </div>
 </div>

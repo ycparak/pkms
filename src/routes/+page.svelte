@@ -3,23 +3,19 @@
   import type { Writable } from 'svelte/store';
   import { getContext } from 'svelte';
   import { spring } from 'svelte/motion';
-	import { Nav, Slide } from '$components'
+	import { Slide } from '$components'
+	import type { LayoutData } from './$types';
 
+  // Context
   type Context = Writable<number>
+  let index = getContext<Context>('index')
   let screenWidth = getContext<Context>('screenWidth')
-	const items = [
-    { date: '2023-08-16', href: 'link-preview', title: 'Link Preview', button: 'View prototype ⏵' },
-    { date: '2023-08-14', href: 'table-of-contents', title: 'Table of Contents', button: 'View essay ⏵' },
-    { date: '2023-06-21', href: 'bionic-reading', title: 'Bionic Reading', button: 'View prototype ⏵' },
-    { date: '2023-06-01', href: 'radial-menu', title: 'Radial Menu', button: 'View essay ⏵' },
-    { date: '2023-02-15', href: 'color-picker', title: 'Colour Picker', button: 'View prototype ⏵' },
-    { date: '2022-08-06', href: 'boolean-search', title: 'Boolean Search', button: 'View essay ⏵' },
-    { date: '2022-02-12', href: 'magnified-doc', title: 'Magnified Doc', button: 'View prototype ⏵' },
-    { date: '2021-12-16', href: 'animated-counter', title: 'Animated Counter', button: 'View essay ⏵' },
-    { date: '2022-02-12', href: 'craft-slider', title: 'Craft Slider', button: 'View prototype ⏵' },
-  ]
+  
+  // Layout data
+	export let data: LayoutData;
+  const items = data.items;
 
-  let index = 0;
+  // State
   let shouldSlide = true;
   let initialKeypress = true;
 	let isRubberBanding = false;
@@ -29,7 +25,7 @@
     precision: 0,
   });
 
-  $: mainSpring.set(index);
+  $: mainSpring.set($index);
   $: xPosSlides = $mainSpring * -$screenWidth;
 
   function keydown(event: KeyboardEvent) {
@@ -42,8 +38,8 @@
 		const positionTolerance = 0.05;
     const isRubberBandRegion = $mainSpring < positionTolerance || $mainSpring > items.length - 1 - positionTolerance;
 
-    if (isArrowRight && index < items.length - 1 || isArrowLeft && index > 0) {
-      index += step;
+    if (isArrowRight && $index < items.length - 1 || isArrowLeft && $index > 0) {
+      index.set($index += step);
     } else if (initialKeypress && isRubberBandRegion) {
       isRubberBanding = true;
       mainSpring.set($mainSpring + (step * maxRubberBandDistance));
@@ -55,7 +51,7 @@
   function keyup(event : KeyboardEvent) {
     if (!isRubberBanding && !(event.key === 'ArrowRight' || event.key === 'ArrowLeft')) return;
     isRubberBanding = false;
-    mainSpring.set(index);
+    mainSpring.set($index);
     initialKeypress = true;
   }
 
@@ -63,8 +59,8 @@
     const deltaX = (e as WheelEvent).deltaX;
     if (shouldSlide) {
       shouldSlide = false;
-      if (deltaX > 1 && index < items.length - 1) index++;
-      else if (deltaX < -1 && index > 0) index--;
+      if (deltaX > 1 && $index < items.length - 1) index.set($index += 1);
+      else if (deltaX < -1 && $index > 0) index.set($index -= 1);
       setTimeout(() => shouldSlide = true, 1000);
     }
   }
@@ -77,40 +73,32 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
-<Nav
-  links={items}
-  tabActive={index}
-  on:setActiveIndex={(e) => index = e.detail} />
-
 <div
   class="slides"
   on:wheel|preventDefault={wheel}
   style="transform: translate3d({xPosSlides}px, 0px, 0px);">
-  {#each items as slide, index}
-    <Slide index={index} />
+  {#each items as slide, i}
+    <Slide index={i} />
   {/each}
 </div>
 
-{#if index !== 0}
+{#if $index !== 0}
 <button
-  on:click={() => index--}
-  disabled={index === 0}
+  on:click={() => index.set($index -= 1)}
+  disabled={$index === 0}
   class="button-left button-primary button-icon">
   <div class="inner"><i class="icon ph-bold ph-arrow-left"></i></div>
 </button>
 {/if}
-
-{#if index !== items.length - 1}
+{#if $index !== items.length - 1}
 <button
-  on:click={() => index++}
-  disabled={index === items.length - 1}
+  on:click={() => index.set($index += 1)}
+  disabled={$index === items.length - 1}
   class="button-right button-primary button-icon">
   <div class="inner"><i class="icon ph-bold ph-arrow-right"></i></div>
 </button>
 {/if}
 
-<div class="fader left"></div>
-<div class="fader right"></div>
 <svelte:window on:keydown={keydown} on:keyup={keyup} />
 
 <style lang="scss">
@@ -119,25 +107,6 @@
     display: flex;
     flex-wrap: nowrap;
   }
-  .fader {
-    position: fixed;
-    top: 22px;
-    width: 100px;
-    height: 32px;
-    pointer-events: none;
-    z-index: 98;
-    &.left {
-      --start: calc(22px + 32px);
-      --width: calc(var(--start) + 100px);
-      width: var(--width);
-      background: linear-gradient(to right, rgba(245, 243, 243, 1) var(--start), rgba(245, 243, 243, 0));
-    }
-    &.right {
-      right: 0;
-      background: linear-gradient(to left, rgba(245, 243, 243, 1), rgba(245, 243, 243, 0));
-    }
-  }
-
   .button-left {
     position: fixed;
     bottom: 22px;
