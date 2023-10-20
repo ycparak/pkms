@@ -9,7 +9,7 @@
   export let title: string;
   export let tabOffset: number;
   export let tabActiveOffset: number;
-  let opacityFaded = 0.2;
+  let opacityFaded = 0.275;
 
   const springOpacity = spring(opacityFaded, {
     stiffness: 0.09,
@@ -55,7 +55,7 @@
     font-size: clamp(1.00rem, calc(0.96rem + 0.22vw), 1.125rem);
     line-height: 1;
     cursor: default;
-    color: #000;
+    color: rgb(66, 51, 46);
     text-decoration: none;
     text-transform: lowercase;
     font-weight: 300;
