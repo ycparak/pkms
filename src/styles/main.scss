@@ -1,11 +1,8 @@
 @use 'functions';
-@use 'mixins';
-@use 'fonts';
+// @use 'fonts';
 @use 'variables';
 @use 'reset';
-@use 'typography';
 @use 'buttons';
-@use 'utilities';
 
 html {
 	overflow-x: hidden;
@@ -15,15 +12,11 @@ html,
 body {
 	font-family: var(--font-primary);
 	font-size: 16px;
+	color: var(--color-text);
 }
 
 body {
-	background-color: #f5f3f3;
-	// background-color: #d9dbe0;
-	/* background: var(
-		--background-inner,
-		radial-gradient(60% 85.66% at 41.16% 9.07%, #d9dbe0 0%, #bcbdc2 100%)
-	); */
+	background-color: var(--color-background);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }

@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Writable } from 'svelte/store';
   import { getContext } from 'svelte';
-  import { tweened } from 'svelte/motion';
 
   type Context = Writable<number>
 
@@ -16,7 +15,9 @@
   id="slide-{index}"
   class="slide">
   <div class="wrapper">
-    <div class="img">{index + 1}</div>
+    <div class="img">
+      <!-- {index + 1} -->
+    </div>
   </div>
 </div>
 
@@ -34,12 +35,12 @@
     width: 100%;
     min-height: 100%;
   }
-  .img {
+  /* .img {
     width: 720px;
     aspect-ratio: 16 / 9;
     margin: 0 auto;
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.002) 0px 0.7px 0.7px, rgba(0, 0, 0, 0.005) 0px 1.9px 1.9px, rgba(0, 0, 0, 0.012) 0px 3.6px 3.6px, rgba(0, 0, 0, 0.02) 0px 6.3px 6.3px, rgba(0, 0, 0, 0.035) 0px 11px 11px, rgba(0, 0, 0, 0.1) 0px 20.2px 20.2px, rgba(0, 0, 0, 0.125) 0px 40px 40px;
-  }
+    filter: drop-shadow(0px 11px 22px rgba(0,0,0,0.3));
+  } */
 </style>

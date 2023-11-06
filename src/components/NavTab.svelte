@@ -9,9 +9,9 @@
   export let title: string;
   export let tabOffset: number;
   export let tabActiveOffset: number;
-  let opacityFaded = 0.275;
+  let opacityFaded = 0.225;
 
-  const springOpacity = spring(opacityFaded, {
+  const springOpacity = spring(active ? 1 : opacityFaded, {
     stiffness: 0.09,
     damping: 0.87,
   });
@@ -22,11 +22,11 @@
 
   $: if (tabActiveOffset) {
     const distanceFromOffset = Math.abs(tabOffset - tabActiveOffset);
-    const opacity = distanceFromOffset < 80 ? 1.0 - (distanceFromOffset / 80) * opacityFaded : opacityFaded;
+    const opacity = distanceFromOffset < 88 ? 1.0 - (distanceFromOffset / 88) * opacityFaded : opacityFaded;
     springOpacity.set(opacity < opacityFaded ? opacityFaded : opacity);
   }
 
-  const scaleDown = () => springScale.set(0.92);
+  const scaleDown = () => springScale.set(0.94);
   const scaleUp = () => springScale.set(1);
 </script>
 
@@ -50,16 +50,15 @@
 <style lang="scss">
   a {
     width: fit-content;
-    padding: 8px 20px;
+    padding: 0.5rem 1.75rem;
     margin: 0;
-    font-size: clamp(1.00rem, calc(0.96rem + 0.22vw), 1.125rem);
+    font-size: functions.toRem(18px);
     line-height: 1;
     cursor: default;
-    color: rgb(66, 51, 46);
+    color: var(--color-text);
+    letter-spacing: -0.02rem;
     text-decoration: none;
-    text-transform: lowercase;
     font-weight: 300;
-    // white-space: nowrap;
     user-select: none;
     &:focus, &:focus-within, &:active {
       outline: none;

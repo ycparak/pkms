@@ -82,7 +82,7 @@
   {/each}
 </div>
 
-{#if $index !== 0}
+<!-- {#if $index !== 0}
 <button
   on:click={() => index.set($index -= 1)}
   disabled={$index === 0}
@@ -97,7 +97,7 @@
   class="button-right button-primary button-icon">
   <div class="inner"><i class="icon ph-bold ph-arrow-right"></i></div>
 </button>
-{/if}
+{/if} -->
 
 <svelte:window on:keydown={keydown} on:keyup={keyup} />
 
@@ -107,7 +107,7 @@
     display: flex;
     flex-wrap: nowrap;
   }
-  .button-left {
+  /* .button-left {
     position: fixed;
     bottom: 22px;
     left: 22px;
@@ -116,5 +116,5 @@
     position: fixed;
     bottom: 22px;
     right: 22px;
-  }
+  } */
 </style>

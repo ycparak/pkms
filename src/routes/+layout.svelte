@@ -22,10 +22,12 @@
 <Noise />
 
 <main>
+  {#if data.items}
   <Nav
     links={data.items}
     tabActive={$index}
     on:setActiveIndex={(e) => index.set(e.detail)} />
+  {/if}
   <slot></slot>
 </main>
 
@@ -37,5 +39,6 @@
     flex-direction: column;
     min-height: 100%;
     width: 100%;
+    max-width: 100vw;
   }
 </style>

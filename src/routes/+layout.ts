@@ -4,40 +4,61 @@ export const load = (async ({ url }) => {
 	const { pathname } = url;
 
 	const items = [
-		{ date: '2023-08-16', href: 'link-preview', title: 'Link Preview', button: 'View prototype ⏵' },
+		{ date: '2023-08-16', href: 'link-preview', title: 'yusuf parak', button: 'View prototype ⏵' },
 		{
 			date: '2023-08-14',
 			href: 'table-of-contents',
-			title: 'Table of Contents',
+			title: 'pinched',
 			button: 'View essay ⏵'
 		},
 		{
 			date: '2023-06-21',
 			href: 'bionic-reading',
-			title: 'Bionic Reading',
+			title: 'redacted app',
 			button: 'View prototype ⏵'
 		},
-		{ date: '2023-06-01', href: 'radial-menu', title: 'Radial Menu', button: 'View essay ⏵' },
+		{
+			date: '2023-06-01',
+			href: 'rauno-radial-menu',
+			title: 'rauno’s radial menu',
+			button: 'View essay ⏵'
+		},
+		{
+			date: '2022-08-06',
+			href: 'boolean-search',
+			title: 'hn.shortcut',
+			button: 'View essay ⏵'
+		},
 		{
 			date: '2023-02-15',
 			href: 'color-picker',
-			title: 'Colour Picker',
+			title: 'boolean search',
 			button: 'View prototype ⏵'
 		},
-		{ date: '2022-08-06', href: 'boolean-search', title: 'Boolean Search', button: 'View essay ⏵' },
 		{
 			date: '2022-02-12',
 			href: 'magnified-doc',
-			title: 'Magnified Doc',
+			title: 'pinched landing page',
 			button: 'View prototype ⏵'
 		},
 		{
 			date: '2021-12-16',
 			href: 'animated-counter',
-			title: 'Animated Counter',
+			title: 'blog experiment',
 			button: 'View essay ⏵'
 		},
-		{ date: '2022-02-12', href: 'craft-slider', title: 'Craft Slider', button: 'View prototype ⏵' }
+		{
+			date: '2022-02-12',
+			href: 'craft-slider',
+			title: 'canary graph view',
+			button: 'View prototype ⏵'
+		},
+		{
+			date: '2022-02-12',
+			href: 'craft-slider',
+			title: 'canary copy & paste',
+			button: 'View prototype ⏵'
+		}
 	];
 
 	return {

@@ -14,7 +14,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
+    opacity: 0;
     filter: brightness(120%) contrast(120%);
   }
 </style>
