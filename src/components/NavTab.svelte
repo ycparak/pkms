@@ -10,6 +10,7 @@
   export let tabOffset: number;
   export let tabActiveOffset: number;
   let opacityFaded = 0.225;
+  let slug = href.split('/')[1];
 
   const springOpacity = spring(active ? 1 : opacityFaded, {
     stiffness: 0.09,
@@ -25,16 +26,15 @@
     const opacity = distanceFromOffset < 88 ? 1.0 - (distanceFromOffset / 88) * opacityFaded : opacityFaded;
     springOpacity.set(opacity < opacityFaded ? opacityFaded : opacity);
   }
-
+  
   const scaleDown = () => springScale.set(0.94);
   const scaleUp = () => springScale.set(1);
 </script>
 
-<a
-  id={href}
+<button
+  id={slug}
   style="opacity: {$springOpacity}; transform: scale({$springScale});"
   class:active={active}
-  href="#{href}"
   on:click|preventDefault={() => dispatch('setActive')}
   on:mousedown={scaleDown}
   on:mouseup={scaleUp}
@@ -45,13 +45,16 @@
   tabindex="-1"
   draggable="false">
   {title}
-</a>
+</button>
 
 <style lang="scss">
-  a {
+  button {
+    // reset all button styles
+    all: unset;
     width: fit-content;
-    padding: 0.5rem 1.75rem;
+    padding: functions.toRem(2px) 1.75rem;
     margin: 0;
+    border: none;
     font-size: functions.toRem(18px);
     line-height: 1;
     cursor: default;
@@ -60,6 +63,11 @@
     text-decoration: none;
     font-weight: 300;
     user-select: none;
+    text-transform: lowercase;
+    backface-visibility: hidden;
+    box-shadow: none;
+    // font-smooth: auto;
+    // -webkit-font-smoothing: auto;
     &:focus, &:focus-within, &:active {
       outline: none;
       box-shadow: none;

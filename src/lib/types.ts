@@ -1,10 +1,9 @@
-export type Categories = 'essay' | 'note' | 'case-study';
+export type Category = 'homepage' | 'essay' | 'note' | 'design' | 'craft';
 
 export type Post = {
 	title: string;
 	slug: string;
-	description: string;
 	date: string;
-	categories: Categories[];
-	published: boolean;
+	category: string;
+	hasLink: boolean;
 };

@@ -1,7 +1,7 @@
 import Noise from './Noise.svelte';
 import Nav from './Nav.svelte';
 import NavTab from './NavTab.svelte';
-import Slides from './Slides.svelte';
 import Slide from './Slide.svelte';
+import About from './About.svelte';
 
-export { Noise, Nav, NavTab, Slides, Slide };
+export { Noise, Nav, NavTab, Slide, About };

@@ -2,14 +2,16 @@
   import NavTab from './NavTab.svelte';
 	import { spring } from 'svelte/motion';
   import { createEventDispatcher, onMount } from 'svelte';
+  import type { Post } from '$lib/types'
 
 	const dispatch = createEventDispatcher();
 
-  export let links = [] as { href: string, title: string, date: string, button: string }[];
+  export let links = [] as Post[];
   export let tabActive = 0;
 
   let nav: HTMLElement;
-  let firstPos = -72.5390625;
+  let firstPos = -73;
+  let date = links[tabActive].date;
   let tabOffsets = [firstPos] as number[];
   let xPosNav = spring(firstPos, { 
     stiffness: 0.075,
@@ -18,6 +20,7 @@
   });
 
   $: xPosNav.set(tabOffsets[tabActive]);
+  $: setDate(tabActive)
 
   onMount(() => {
     calcTabOffsets(nav);
@@ -33,35 +36,57 @@
     tabs.forEach((tab, i) => {
       tabWidths[i] = tab.getBoundingClientRect().width;
       tabWidthsCumulative[i] = tabWidths[i] + (tabWidthsCumulative[i - 1] || 0);
-      tabOffsets[i] = -(tabWidthsCumulative[i] - (tabWidths[i] / 2));
+      let offset = -(tabWidthsCumulative[i] - (tabWidths[i] / 2));
+      tabOffsets[i] = Math.round(offset);
     });
-    console.log(tabOffsets)
+  }
+
+  function setDate(tabActive : number) {
+    const newDate = new Date(links[tabActive].date);
+    // return date in the format mm.yyyy (e.g. 01.2021 ensuring that the month is always 2 digits)
+    date = `${(newDate.getMonth() + 1).toString().padStart(2, '0')}.${newDate.getFullYear()}`;
   }
 </script>
 
-<nav bind:this={nav} style="transform: translate3d({$xPosNav}px, 0px, 0px)">
-  {#each links as link, index}
-    <NavTab
-      active={index === tabActive}
-      href={link.href}
-      title={link.title}
-      tabOffset={tabOffsets[index]}
-      tabActiveOffset={$xPosNav}
-      on:setActive={() => dispatch('setActiveIndex', index)}
-    />
-  {/each}
-</nav>
+<header>
+  <nav bind:this={nav} style="transform: translate3d({$xPosNav}px, 0px, 0px)">
+    {#each links as link, index}
+      <NavTab
+        active={index === tabActive}
+        href={link.slug}
+        title={link.title}
+        tabOffset={tabOffsets[index]}
+        tabActiveOffset={$xPosNav}
+        on:setActive={() => dispatch('setActiveIndex', index)}
+      />
+    {/each}
+  </nav>
+  <time>{date}</time>
+</header>
 
 <style lang="scss">
+  header {
+    padding: functions.toRem(18px) 0 0 0;
+    text-align: center;
+  }
   nav {
     position: relative;
     left: 50%;
     display: flex;
     list-style: none;
     white-space: nowrap;
-    padding: 12px 0 0 0;
     margin: 0;
     z-index: 97;
     will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  time {
+    font-size: functions.toRem(13px);
+    opacity: 0.4;
+    line-height: 1;
+    letter-spacing: -0.02rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 300;
   }
 </style>

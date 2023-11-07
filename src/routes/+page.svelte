@@ -13,7 +13,7 @@
   
   // Layout data
 	export let data: LayoutData;
-  const items = data.items;
+  const posts = data.posts;
 
   // State
   let shouldSlide = true;
@@ -36,9 +36,9 @@
     const maxRubberBandDistance = 0.03;
     const step = isArrowRight ? 1 : -1;
 		const positionTolerance = 0.05;
-    const isRubberBandRegion = $mainSpring < positionTolerance || $mainSpring > items.length - 1 - positionTolerance;
+    const isRubberBandRegion = $mainSpring < positionTolerance || $mainSpring > posts.length - 1 - positionTolerance;
 
-    if (isArrowRight && $index < items.length - 1 || isArrowLeft && $index > 0) {
+    if (isArrowRight && $index < posts.length - 1 || isArrowLeft && $index > 0) {
       index.set($index += step);
     } else if (initialKeypress && isRubberBandRegion) {
       isRubberBanding = true;
@@ -59,7 +59,7 @@
     const deltaX = (e as WheelEvent).deltaX;
     if (shouldSlide) {
       shouldSlide = false;
-      if (deltaX > 1 && $index < items.length - 1) index.set($index += 1);
+      if (deltaX > 1 && $index < posts.length - 1) index.set($index += 1);
       else if (deltaX < -1 && $index > 0) index.set($index -= 1);
       setTimeout(() => shouldSlide = true, 1000);
     }
@@ -77,28 +77,10 @@
   class="slides"
   on:wheel|preventDefault={wheel}
   style="transform: translate3d({xPosSlides}px, 0px, 0px);">
-  {#each items as slide, i}
+  {#each posts as slide, i}
     <Slide index={i} />
   {/each}
 </div>
-
-<!-- {#if $index !== 0}
-<button
-  on:click={() => index.set($index -= 1)}
-  disabled={$index === 0}
-  class="button-left button-primary button-icon">
-  <div class="inner"><i class="icon ph-bold ph-arrow-left"></i></div>
-</button>
-{/if}
-{#if $index !== items.length - 1}
-<button
-  on:click={() => index.set($index += 1)}
-  disabled={$index === items.length - 1}
-  class="button-right button-primary button-icon">
-  <div class="inner"><i class="icon ph-bold ph-arrow-right"></i></div>
-</button>
-{/if} -->
-
 <svelte:window on:keydown={keydown} on:keyup={keyup} />
 
 <style lang="scss">
@@ -107,14 +89,4 @@
     display: flex;
     flex-wrap: nowrap;
   }
-  /* .button-left {
-    position: fixed;
-    bottom: 22px;
-    left: 22px;
-  }
-  .button-right {
-    position: fixed;
-    bottom: 22px;
-    right: 22px;
-  } */
 </style>

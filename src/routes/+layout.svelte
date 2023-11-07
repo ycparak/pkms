@@ -2,7 +2,7 @@
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
   import "@phosphor-icons/web/fill";
-  import { Noise, Nav } from '$components';
+  import { Nav } from '$components';
   import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
 	import type { LayoutData } from './$types';
@@ -17,14 +17,13 @@
   setContext('index', index);
 
   export let data: LayoutData;
+  const posts = data;
 </script>
 
-<Noise />
-
 <main>
-  {#if data.items}
+  {#if posts}
   <Nav
-    links={data.items}
+    links={data.posts}
     tabActive={$index}
     on:setActiveIndex={(e) => index.set(e.detail)} />
   {/if}
