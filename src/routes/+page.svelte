@@ -77,8 +77,8 @@
   class="slides"
   on:wheel|preventDefault={wheel}
   style="transform: translate3d({xPosSlides}px, 0px, 0px);">
-  {#each posts as slide, i}
-    <Slide index={i} />
+  {#each posts as post, i}
+    <Slide index={i} {post} />
   {/each}
 </div>
 <svelte:window on:keydown={keydown} on:keyup={keyup} />
@@ -88,5 +88,7 @@
     flex-grow: 1;
     display: flex;
     flex-wrap: nowrap;
+    background-color: var(--color-background);
+    border: none;
   }
 </style>

@@ -52,13 +52,12 @@
     // reset all button styles
     all: unset;
     width: fit-content;
-    padding: functions.toRem(2px) 1.75rem;
+    padding: functions.toRem(4px) 1.75rem;
     margin: 0;
     border: none;
     font-size: functions.toRem(18px);
-    line-height: 1;
+    line-height: functions.toRem(13px);
     cursor: default;
-    color: var(--color-text);
     letter-spacing: -0.02rem;
     text-decoration: none;
     font-weight: 300;
@@ -66,8 +65,7 @@
     text-transform: lowercase;
     backface-visibility: hidden;
     box-shadow: none;
-    // font-smooth: auto;
-    // -webkit-font-smoothing: auto;
+    color: var(--color-text);
     &:focus, &:focus-within, &:active {
       outline: none;
       box-shadow: none;

@@ -12,11 +12,11 @@ html,
 body {
 	font-family: var(--font-primary);
 	font-size: 16px;
+	background-color: var(--color-background);
 	color: var(--color-text);
 }
 
 body {
-	background-color: var(--color-background);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }

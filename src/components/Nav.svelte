@@ -66,8 +66,10 @@
 
 <style lang="scss">
   header {
-    padding: functions.toRem(18px) 0 0 0;
+    position: fixed;
+    padding: functions.toRem(18px) 0 functions.toRem(14px) 0;
     text-align: center;
+    z-index: 97;
   }
   nav {
     position: relative;
@@ -76,17 +78,19 @@
     list-style: none;
     white-space: nowrap;
     margin: 0;
-    z-index: 97;
     will-change: transform;
     backface-visibility: hidden;
   }
 
   time {
-    font-size: functions.toRem(13px);
+    display: block;
+    font-size: functions.toRem(12px);
     opacity: 0.4;
     line-height: 1;
     letter-spacing: -0.02rem;
     font-variant-numeric: tabular-nums;
-    font-weight: 300;
+    font-weight: 600;
+    padding: functions.toRem(6px) 0;
+    margin: 0;
   }
 </style>

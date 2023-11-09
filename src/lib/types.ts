@@ -6,4 +6,7 @@ export type Post = {
 	date: string;
 	category: string;
 	hasLink: boolean;
+	previewImage: string | null;
+	previewVideo: string | null;
+	hasPreviewComponent: boolean | null;
 };

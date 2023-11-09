@@ -3,7 +3,7 @@ import type { PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	try {
-		const post = await import(`../../../content/writing/${params.slug}.md`);
+		const post = await import(`../../../content/${params.slug}.md`);
 		return {
 			content: post.default,
 			meta: post.metadata
