@@ -10,18 +10,13 @@ html {
 
 html,
 body {
+	background-color: var(--color-background);
 	font-family: var(--font-primary);
 	font-size: 16px;
-	background-color: var(--color-background);
 	color: var(--color-text);
-}
-
-body {
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	line-height: 1.45;
 }
 
 #root {
-	height: 100%;
 	font-size: functions.toRem(15.3203px);
 }

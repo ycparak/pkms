@@ -9,7 +9,7 @@
   export let title: string;
   export let tabOffset: number;
   export let tabActiveOffset: number;
-  let opacityFaded = 0.225;
+  let opacityFaded = 0.2;
   let slug = href.split('/')[1];
 
   const springOpacity = spring(active ? 1 : opacityFaded, {
@@ -52,20 +52,20 @@
     // reset all button styles
     all: unset;
     width: fit-content;
-    padding: functions.toRem(4px) 1.75rem;
-    margin: 0;
+    padding: functions.toRem(4px) functions.toRem(24px);
     border: none;
     font-size: functions.toRem(18px);
-    line-height: functions.toRem(13px);
+    line-height: 1;
     cursor: default;
-    letter-spacing: -0.02rem;
+    letter-spacing: -0.01em;
     text-decoration: none;
-    font-weight: 300;
     user-select: none;
     text-transform: lowercase;
     backface-visibility: hidden;
     box-shadow: none;
     color: var(--color-text);
+    border-radius: 6px;
+
     &:focus, &:focus-within, &:active {
       outline: none;
       box-shadow: none;

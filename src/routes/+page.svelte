@@ -73,9 +73,9 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
+<!-- on:wheel|preventDefault={wheel} -->
 <div
   class="slides"
-  on:wheel|preventDefault={wheel}
   style="transform: translate3d({xPosSlides}px, 0px, 0px);">
   {#each posts as post, i}
     <Slide index={i} {post} />
@@ -90,5 +90,6 @@
     flex-wrap: nowrap;
     background-color: var(--color-background);
     border: none;
+    height: fit-content;
   }
 </style>

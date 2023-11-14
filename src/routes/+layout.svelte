@@ -2,7 +2,7 @@
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
   import "@phosphor-icons/web/fill";
-  import { Nav } from '$components';
+  import { Nav, Guidelines } from '$components';
   import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
 	import type { LayoutData } from './$types';
@@ -17,16 +17,14 @@
   setContext('index', index);
 
   export let data: LayoutData;
-  const posts = data;
 </script>
 
+<!-- <Guidelines /> -->
+<Nav
+  links={data.posts}
+  tabActive={$index}
+  on:setActiveIndex={(e) => index.set(e.detail)} />
 <main>
-  {#if posts}
-  <Nav
-    links={data.posts}
-    tabActive={$index}
-    on:setActiveIndex={(e) => index.set(e.detail)} />
-  {/if}
   <slot></slot>
 </main>
 
@@ -34,10 +32,9 @@
 
 <style lang="scss">
   main {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    width: 100%;
-    max-width: 100vw;
+    // display: flex;
+    // flex-direction: column;
+    // min-height: 100%;
+    // width: 100%;
   }
 </style>

@@ -12,8 +12,8 @@
 html,
 body,
 #root {
-	overscroll-behavior: none;
-	height: 100%;
+	overscroll-behavior-x: none;
+	min-height: 100%;
 }
 
 html {

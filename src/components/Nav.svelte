@@ -1,7 +1,7 @@
 <script lang="ts">
   import NavTab from './NavTab.svelte';
 	import { spring } from 'svelte/motion';
-  import { createEventDispatcher, onMount } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
   import type { Post } from '$lib/types'
 
 	const dispatch = createEventDispatcher();
@@ -10,7 +10,7 @@
   export let tabActive = 0;
 
   let nav: HTMLElement;
-  let firstPos = -73;
+  let firstPos = -70;
   let date = links[tabActive].date;
   let tabOffsets = [firstPos] as number[];
   let xPosNav = spring(firstPos, { 
@@ -19,12 +19,9 @@
     precision: 0,
   });
 
+  $: calcTabOffsets(nav);
   $: xPosNav.set(tabOffsets[tabActive]);
   $: setDate(tabActive)
-
-  onMount(() => {
-    calcTabOffsets(nav);
-  })
 
   async function calcTabOffsets(nav : HTMLElement) {
     if (!nav) return;
@@ -67,7 +64,11 @@
 <style lang="scss">
   header {
     position: fixed;
-    padding: functions.toRem(18px) 0 functions.toRem(14px) 0;
+    top: 0;
+    left: 0;
+    height: fit-content;
+    width: 100%;
+    padding: functions.toRem(10px) 0;
     text-align: center;
     z-index: 97;
   }
@@ -75,22 +76,19 @@
     position: relative;
     left: 50%;
     display: flex;
-    list-style: none;
     white-space: nowrap;
-    margin: 0;
     will-change: transform;
     backface-visibility: hidden;
   }
-
   time {
     display: block;
     font-size: functions.toRem(12px);
     opacity: 0.4;
     line-height: 1;
-    letter-spacing: -0.02rem;
+    letter-spacing: -0.01em;
     font-variant-numeric: tabular-nums;
-    font-weight: 600;
-    padding: functions.toRem(6px) 0;
+    padding: functions.toRem(2px) 0 0 0;
     margin: 0;
+    user-select: none;
   }
 </style>

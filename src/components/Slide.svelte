@@ -17,15 +17,17 @@
 <div 
   id="slide-{index}"
   class="slide">
-  <div class="wrapper">
-    {#if post.previewImage}
+  {#if post.previewImage}
+    <div class="asset-wrapper">
       <img src="/images/previews/{post.previewImage}" alt="Apple XDR" draggable="false" loading="lazy">
-    {:else if post.hasPreviewComponent && previewComponent}
-      <svelte:component this={previewComponent} />
-    {:else if post.previewVideo}
+    </div>
+  {:else if post.hasPreviewComponent && previewComponent}
+    <svelte:component this={previewComponent} />
+  {:else if post.previewVideo}
+    <div class="asset-wrapper">
       <video src={post.previewVideo} autoplay loop muted playsinline></video>
-    {/if}
-  </div>
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -35,21 +37,21 @@
     width: 100%;
     flex-shrink: 0;
   }
-  .wrapper {
+
+  .asset-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-grow: 1;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-height: 100vh;
-
+    height: 100vh;
+    height: 100dvh;
+    padding: functions.toRem(50px) 0 0 0;
     img {
       object-fit: contain;
       object-position: center;
       max-height: 100%;
       max-width: 100%;
       user-select: none;
-      padding: functions.toRem(60px) 0;
     }
   }
 </style>
