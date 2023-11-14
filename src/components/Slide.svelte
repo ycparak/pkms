@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Post } from "$lib/types";
 	import { onMount } from "svelte";
+	import { get } from "svelte/store";
 
   export let index = 0;
   export let post: Post;
@@ -12,6 +13,8 @@
       previewComponent = (await import(/* @vite-ignore */ `./content/${slug}Preview.svelte`)).default
     }
   });
+
+  const getImgUrl = (name: string) => new URL(`../lib/images/${name}`, import.meta.url).href;
 </script>
 
 <div 
@@ -19,7 +22,7 @@
   class="slide">
   {#if post.previewImage}
     <div class="asset-wrapper">
-      <img src="/images/previews/{post.previewImage}" alt="Apple XDR" draggable="false" loading="lazy">
+      <img class="img" src={getImgUrl(post.previewImage)} alt="Apple XDR" draggable="false"  loading="lazy">
     </div>
   {:else if post.hasPreviewComponent && previewComponent}
     <svelte:component this={previewComponent} />
@@ -46,7 +49,7 @@
     height: 100vh;
     height: 100dvh;
     padding: functions.toRem(50px) 0 0 0;
-    img {
+    .img {
       object-fit: contain;
       object-position: center;
       max-height: 100%;
