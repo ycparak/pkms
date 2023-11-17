@@ -68,7 +68,7 @@
     left: 0;
     height: fit-content;
     width: 100%;
-    padding: functions.toRem(10px) 0;
+    padding: functions.toRem(14px) 0;
     text-align: center;
     z-index: 97;
   }

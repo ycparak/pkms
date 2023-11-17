@@ -6,7 +6,7 @@
 <style lang="scss">
   .circle {
     position: absolute;
-    top: 15px;
+    top: 33px;
     width: 100%;
     z-index: 9999;
     height: 1px;

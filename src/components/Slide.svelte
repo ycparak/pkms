@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Post } from "$lib/types";
 	import { onMount } from "svelte";
-	import { get } from "svelte/store";
 
   export let index = 0;
   export let post: Post;
@@ -48,7 +47,7 @@
     align-items: center;
     height: 100vh;
     height: 100dvh;
-    padding: functions.toRem(50px) 0 0 0;
+    padding: functions.toRem(72px) 0;
     .img {
       object-fit: contain;
       object-position: center;

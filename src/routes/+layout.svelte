@@ -2,7 +2,7 @@
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
   import "@phosphor-icons/web/fill";
-  import { Nav, Guidelines } from '$components';
+  import { Nav } from '$components';
   import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
 	import type { LayoutData } from './$types';
@@ -31,10 +31,4 @@
 <svelte:window bind:innerWidth={$screenWidth} bind:innerHeight={$screenHeight} />
 
 <style lang="scss">
-  main {
-    // display: flex;
-    // flex-direction: column;
-    // min-height: 100%;
-    // width: 100%;
-  }
 </style>
