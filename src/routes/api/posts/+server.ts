@@ -18,9 +18,17 @@ async function getPosts() {
 		}
 	}
 
+	// Sort posts by date
 	posts = posts.sort(
 		(first, second) => new Date(second.date).getTime() - new Date(first.date).getTime()
 	);
+
+	// Find post with slug 'homepage' and move it to the front
+	const homepageIndex = posts.findIndex((post) => post.slug === '/homepage');
+	if (homepageIndex > -1) {
+		const homepage = posts.splice(homepageIndex, 1)[0];
+		posts.unshift(homepage);
+	}
 
 	return posts;
 }

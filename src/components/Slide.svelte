@@ -34,6 +34,7 @@
 
 <style lang="scss">
   .slide {
+    flex-grow: 1;
     display: flex;
     min-height: 100%;
     width: 100%;
@@ -41,13 +42,16 @@
   }
 
   .asset-wrapper {
+    --nav-height: functions.toRem(68px);
     display: flex;
     flex-grow: 1;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    height: 100dvh;
-    padding: functions.toRem(72px) 0;
+    width: 100%;
+    max-height: calc(100vh - functions.toRem(68px));
+    max-height: calc(100dvh - functions.toRem(68px));
+    // padding: functions.toRem(56px) 0 functions.toRem(68px) 0;
+    padding: 0 0 functions.toRem(68px) 0; // TODO: Remove this once we have proper images
     .img {
       object-fit: contain;
       object-position: center;

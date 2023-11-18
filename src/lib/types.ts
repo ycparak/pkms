@@ -5,7 +5,8 @@ export type Post = {
 	slug: string;
 	date: string;
 	category: string;
-	hasLink: boolean;
+	draft: boolean | null;
+	hasLink: boolean | null;
 	previewImage: string | null;
 	previewVideo: string | null;
 	hasPreviewComponent: boolean | null;
