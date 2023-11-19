@@ -1,18 +1,18 @@
-<div class="circle"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
+<div class="v"></div>
+<div class="v"></div>
+<div class="v"></div>
+<div class="h"></div>
 
 <style lang="scss">
-  .circle {
+  .h {
     position: absolute;
-    top: 33px;
+    top: 23px;
     width: 100%;
     z-index: 9999;
     height: 1px;
     background-color: red;
   }
-  .line {
+  .v {
     width: 2px;
     height: 100%;
     min-height: 100vh;

@@ -2,7 +2,7 @@
   import '$styles/main.scss'
   import "@phosphor-icons/web/bold";
   import "@phosphor-icons/web/fill";
-  import { Nav } from '$components';
+  import { Nav, Guidelines } from '$components';
   import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
 	import type { LayoutData } from './$types';

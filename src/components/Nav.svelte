@@ -63,7 +63,6 @@
 
 <style lang="scss">
   header {
-    position: relative;
     height: fit-content;
     width: 100%;
     padding: functions.toRem(14px) 0;

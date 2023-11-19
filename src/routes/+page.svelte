@@ -17,6 +17,7 @@
 
   // State
   let shouldSlide = true;
+  const positionTolerance = 0.05;
   let initialKeypress = true;
 	let isRubberBanding = false;
   let mainSpring = spring(0, { 
@@ -33,9 +34,8 @@
     const isArrowLeft = event.key === 'ArrowLeft';
     if (!(isArrowRight || isArrowLeft)) return;
 
-    const maxRubberBandDistance = 0.03;
     const step = isArrowRight ? 1 : -1;
-		const positionTolerance = 0.05;
+    const maxRubberBandDistance = 0.03;
     const isRubberBandRegion = $mainSpring < positionTolerance || $mainSpring > posts.length - 1 - positionTolerance;
 
     if (isArrowRight && $index < posts.length - 1 || isArrowLeft && $index > 0) {
@@ -57,11 +57,27 @@
 
   function wheel(e : Event) {
     const deltaX = (e as WheelEvent).deltaX;
-    if (shouldSlide) {
+
+    if (shouldSlide && Math.abs(deltaX) > 5) {
       shouldSlide = false;
-      if (deltaX > 1 && $index < posts.length - 1) index.set($index += 1);
-      else if (deltaX < -1 && $index > 0) index.set($index -= 1);
-      setTimeout(() => shouldSlide = true, 1000);
+      const step = deltaX > 0 ? 1 : -1;
+      const maxRubberBandDistance = 0.03;
+      const isRubberBandRegion = $mainSpring < positionTolerance || $mainSpring > posts.length - 1 - positionTolerance;
+
+      if ((deltaX > 0 && $index < posts.length - 1) || (deltaX < 0 && $index > 0)) {
+        index.set($index += step);
+        setTimeout(() => shouldSlide = true, 700);
+      } else if (isRubberBandRegion) {
+        isRubberBanding = true;
+        shouldSlide = true;
+        mainSpring.set($mainSpring + (step * maxRubberBandDistance));
+        setTimeout(() => {
+          isRubberBanding = false;
+          mainSpring.set($index);
+        }, 1);
+      }
+
+      initialKeypress = false;
     }
   }
 </script>
@@ -73,10 +89,10 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
-<!-- on:wheel|preventDefault={wheel} -->
 <div
   class="slides"
-  style="transform: translate3d({xPosSlides}px, 0px, 0px);">
+  style="transform: translate3d({xPosSlides}px, 0px, 0px);"
+  on:wheel|preventDefault={wheel}>
   {#each posts as post, i}
     <Slide index={i} {post} />
   {/each}

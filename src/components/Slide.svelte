@@ -8,8 +8,8 @@
 
   onMount(async () => {
     if (post.hasPreviewComponent) {
-      let slug = post.slug.split("/")[1].charAt(0).toUpperCase() + post.slug.split("/")[1].slice(1)
-      previewComponent = (await import(/* @vite-ignore */ `./content/${slug}Preview.svelte`)).default
+      const slug = post.slug.split("-").map((s) => s[0].toUpperCase() + s.slice(1)).join("");
+      previewComponent = (await import(/* @vite-ignore */ `./previews/${slug}.svelte`)).default
     }
   });
 
@@ -48,10 +48,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-height: calc(100vh - functions.toRem(68px));
-    max-height: calc(100dvh - functions.toRem(68px));
+    max-height: calc(100vh - functions.toRem(72px));
+    max-height: calc(100dvh - functions.toRem(72px));
     // padding: functions.toRem(56px) 0 functions.toRem(68px) 0;
-    padding: 0 0 functions.toRem(68px) 0; // TODO: Remove this once we have proper images
+    padding: 0;
     .img {
       object-fit: contain;
       object-position: center;
