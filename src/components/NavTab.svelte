@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte'
   import { spring } from 'svelte/motion';
-  import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher()
 
   export let active: boolean;
   export let href: string;
@@ -10,7 +9,6 @@
   export let tabOffset: number;
   export let tabActiveOffset: number;
   let opacityFaded = 0.2;
-  let slug = href.split('/')[1];
 
   const springOpacity = spring(active ? 1 : opacityFaded, {
     stiffness: 0.09,
@@ -31,11 +29,11 @@
   const scaleUp = () => springScale.set(1);
 </script>
 
-<button
-  id={slug}
+<a
+  href="{href}"
   style="opacity: {$springOpacity}; transform: scale({$springScale});"
   class:active={active}
-  on:click|preventDefault={() => dispatch('setActive')}
+  on:click|preventDefault={() => dispatch('select')}
   on:mousedown={scaleDown}
   on:mouseup={scaleUp}
   on:mouseleave={scaleUp}
@@ -45,10 +43,10 @@
   tabindex="-1"
   draggable="false">
   {title}
-</button>
+</a>
 
 <style lang="scss">
-  button {
+  a {
     // reset all button styles
     all: unset;
     width: fit-content;

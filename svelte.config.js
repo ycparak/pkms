@@ -33,6 +33,7 @@ const config = {
 			$components: './src/components',
 			$content: './src/content',
 			$routes: './src/routes',
+			$stores: './src/stores',
 			$styles: './src/styles'
 		}
 	}

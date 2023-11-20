@@ -10,6 +10,7 @@ async function getPosts() {
 		const file = paths[path];
 		let slug = path.split('/').at(-1)?.replace('.md', '');
 		slug = `/${slug}`;
+		if (slug === '/homepage') slug = '/';
 
 		if (file && typeof file === 'object' && 'metadata' in file && slug) {
 			const metadata = file.metadata as Omit<Post, 'slug'>;

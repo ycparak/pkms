@@ -2,9 +2,9 @@
   import type { Post } from "$lib/types";
 	import { onMount } from "svelte";
 
-  export let index = 0;
   export let post: Post;
   let previewComponent: any;
+  let slug = post.slug === '/' ? post.slug : '#' + post.slug.split('/')[1];
 
   onMount(async () => {
     if (post.hasPreviewComponent) {
@@ -17,7 +17,7 @@
 </script>
 
 <div 
-  id="slide-{index}"
+  id="{slug}"
   class="slide">
   {#if post.previewImage}
     <div class="asset-wrapper">
