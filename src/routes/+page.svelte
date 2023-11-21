@@ -8,34 +8,26 @@
 	export let data: LayoutData;
   const posts = data.posts;
 
-  // Global state
-  let sliderIndex = 0;
-  let screenWidth = 0;
-  let wheelTimeout: ReturnType<typeof setTimeout>;
-  let shouldWheelSlide = true;
-  let initialKeypress = true;
-
-  // State nav
-  let navSpring = spring(-70, { 
-    stiffness: 0.075,
-    damping: 0.8,
-    precision: 0,
-  });
-  let nav: HTMLElement;
-  let tabOffsets = [-70] as number[];
-  let date = posts[sliderIndex].date;
-  $: calcTabOffsets(nav);
-  $: navSpring.set(tabOffsets[sliderIndex]);
-  $: setDate(sliderIndex);
-
-  // State slider
+  // State
   let slideSpring = spring(0, { 
     stiffness: 0.075,
     damping: 0.8,
-    precision: 0,
+    precision: 0.00001,
   });
-  $: slideSpring.set(sliderIndex);
-  $: xPosSlides = $slideSpring * -screenWidth;
+  let prevIndex = 0;
+  let sliderIndex = 0;
+  let screenWidth = 0;
+  let nav: HTMLElement;
+  let tabOffsets = [-70] as number[];
+  let date = posts[sliderIndex].date;
+  let wheelTimeout: ReturnType<typeof setTimeout>;
+  let shouldWheelSlide = true;
+  let initialKeypress = true;
+  
+  $: calcTabOffsets(nav);
+  $: xPosNav = interpolateNav($slideSpring);
+  $: xPosSlides = interpolateSlides($slideSpring);
+  $: date = setDate(sliderIndex);
 
   // Lifecycle
   onMount(() => {
@@ -47,15 +39,18 @@
     const hash = window.location.hash;
     const slug = '/' + hash.split('#')[1];
     const index = posts.findIndex((post) => post.slug === slug);
-    if (index > -1) sliderIndex = index;
+    if (index > -1) {
+      sliderIndex = index;
+      slideSpring.set(index);
+    }
   }
 
-  async function calcTabOffsets(nav : HTMLElement) {
+  function calcTabOffsets(nav : HTMLElement) {
     if (!nav) return;
     
     let tabs = Array.from(nav.children);
-    let tabWidths = [140.71875] as number[];
-    let tabWidthsCumulative = [140.71875] as number[];
+    let tabWidths = [] as number[];
+    let tabWidthsCumulative = [] as number[];
     
     tabs.forEach((tab, i) => {
       tabWidths[i] = tab.getBoundingClientRect().width;
@@ -65,18 +60,33 @@
     });
   }
 
+  function interpolateNav(slideSpring : number) {
+    if (prevIndex === sliderIndex) return tabOffsets[sliderIndex];
+
+    const prevOffset = tabOffsets[prevIndex];
+    const nextOffset = tabOffsets[sliderIndex];
+    const slideSpringPercentage = (slideSpring - prevIndex) / (sliderIndex - prevIndex);
+    return prevOffset + (nextOffset - prevOffset) * slideSpringPercentage;
+  }
+
+  function interpolateSlides(slideSpring : number) {
+    return slideSpring * -screenWidth;
+  }
+
   function setDate(tabActive : number) {
     const newDate = new Date(posts[tabActive].date);
-    date = `${(newDate.getMonth() + 1).toString().padStart(2, '0')}.${newDate.getFullYear()}`;
+    return `${(newDate.getMonth() + 1).toString().padStart(2, '0')}.${newDate.getFullYear()}`;
   }
 
   function getHref(slug : string) {
     return slug === '/' ? slug : '#' + slug.split('/')[1];
   }
 
-  function goToSlide(index : number) {
-    sliderIndex = index;
-    const href = getHref(posts[index].slug);
+  function goToSlide(nextIndex : number) {
+    prevIndex = sliderIndex;
+    sliderIndex = nextIndex;
+    slideSpring.set(sliderIndex);
+    const href = getHref(posts[nextIndex].slug);
     if (href === '/') window.history.pushState({}, '', window.location.pathname);
     else window.location.hash = href;
   }
@@ -161,14 +171,14 @@
 
 <!-- Header -->
 <header>
-  <nav bind:this={nav} style="transform: translate3d({$navSpring}px, 0px, 0px)">
+  <nav bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
     {#each posts as link, index}
       <NavTab
         active={index === sliderIndex}
         href={getHref(link.slug)}
         title={link.title}
         tabOffset={tabOffsets[index]}
-        tabActiveOffset={$navSpring}
+        tabActiveOffset={xPosNav}
         on:select={() => goToSlide(index)}
       />
     {/each}
@@ -203,7 +213,6 @@
       left: 50%;
       display: flex;
       white-space: nowrap;
-      // will-change: transform;
       backface-visibility: hidden;
     }
     time {
@@ -225,6 +234,5 @@
     background-color: var(--color-background);
     border: none;
     height: fit-content;
-    // will-change: transform;
   }
 </style>
