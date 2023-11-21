@@ -1,5 +1,5 @@
 ---
-title: Canary Copy & Paste
+title: Canary Console
 date: '2021-02-01'
 category: design
 hasLink: true

@@ -3,19 +3,17 @@
 	import { NavTab, Slide } from '$components'
   import { spring } from 'svelte/motion';
 	import type { LayoutData } from './$types';
-	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
   
 	export let data: LayoutData;
   const posts = data.posts;
 
   // Global state
   let sliderIndex = 0;
-  if (browser && window.location.hash) {
-    const hash = window.location.hash;
-    const slug = '/' + hash.split('#')[1];
-    const index = posts.findIndex((post) => post.slug === slug);
-    if (index > -1) sliderIndex = index;
-  }
+  let screenWidth = 0;
+  let wheelTimeout: ReturnType<typeof setTimeout>;
+  let shouldWheelSlide = true;
+  let initialKeypress = true;
 
   // State nav
   let navSpring = spring(-70, { 
@@ -36,14 +34,22 @@
     damping: 0.8,
     precision: 0,
   });
-  let screenWidth = 0;
-  let shouldSlide = true;
-  let initialKeypress = true;
-	let isRubberBanding = false;
   $: slideSpring.set(sliderIndex);
   $: xPosSlides = $slideSpring * -screenWidth;
 
+  // Lifecycle
+  onMount(() => {
+    if (window.location.hash) setIndexBasedOnHash();
+  });
+
   // Methods
+  function setIndexBasedOnHash() {
+    const hash = window.location.hash;
+    const slug = '/' + hash.split('#')[1];
+    const index = posts.findIndex((post) => post.slug === slug);
+    if (index > -1) sliderIndex = index;
+  }
+
   async function calcTabOffsets(nav : HTMLElement) {
     if (!nav) return;
     
@@ -70,8 +76,6 @@
 
   function goToSlide(index : number) {
     sliderIndex = index;
-
-    // Update URL hash
     const href = getHref(posts[index].slug);
     if (href === '/') window.history.pushState({}, '', window.location.pathname);
     else window.location.hash = href;
@@ -87,6 +91,21 @@
     goToSlide(sliderIndex - 1);
   }
 
+  function isRubberBandRegion() {
+    const positionTolerance = 0.05;
+    return $slideSpring < positionTolerance || $slideSpring > posts.length - 1 - positionTolerance;
+  }
+
+  function rubberBand(step : number) {
+    const maxRubberBandDistance = 0.03;
+    slideSpring.set($slideSpring + (step * maxRubberBandDistance));
+  }
+
+  function stopRubberBanding() {
+    slideSpring.set(sliderIndex);
+    initialKeypress = true;
+  }
+
   // Events
   function keydown(event: KeyboardEvent) {
     const isArrowRight = event.key === 'ArrowRight';
@@ -94,37 +113,41 @@
     if (!(isArrowRight || isArrowLeft)) return;
 
     const step = isArrowRight ? 1 : -1;
-    const positionTolerance = 0.05;
-    const maxRubberBandDistance = 0.03;
-    const isRubberBandRegion = $slideSpring < positionTolerance || $slideSpring > posts.length - 1 - positionTolerance;
 
     if (isArrowRight && sliderIndex < posts.length - 1 || isArrowLeft && sliderIndex > 0) {
       isArrowRight ? next() : prev();
-    } else if (initialKeypress && isRubberBandRegion) {
-      isRubberBanding = true;
-      slideSpring.set($slideSpring + (step * maxRubberBandDistance));
+    } else if (initialKeypress && isRubberBandRegion()) {
+      rubberBand(step);
     }
 
     initialKeypress = false;
   }
 
   function keyup(event : KeyboardEvent) {
-    if (!isRubberBanding && !(event.key === 'ArrowRight' || event.key === 'ArrowLeft')) return;
-    isRubberBanding = false;
-    slideSpring.set(sliderIndex);
-    initialKeypress = true;
+    if (!(event.key === 'ArrowRight' || event.key === 'ArrowLeft')) return;
+    stopRubberBanding();
   }
 
   function wheel(e : Event) {
     const deltaX = (e as WheelEvent).deltaX;
+    const threshold = 5;
+    if (!shouldWheelSlide || Math.abs(deltaX) < threshold) return;
 
-    if (shouldSlide && Math.abs(deltaX) > 5) {
-      shouldSlide = false;
-      if ((deltaX > 0 && sliderIndex < posts.length - 1) || (deltaX < 0 && sliderIndex > 0)) {
-        deltaX > 0 ? next() : prev();
-        setTimeout(() => shouldSlide = true, 700);
-      }
+    shouldWheelSlide = false;
+    const slideRight = deltaX > threshold && sliderIndex < posts.length - 1;
+    const slideLeft = deltaX < threshold && sliderIndex > 0;
+    if (slideRight || slideLeft) {
+      slideRight ? next() : prev();
+      setTimeout(() => shouldWheelSlide = true, 700);
+    } else if (isRubberBandRegion()) {
+      shouldWheelSlide = true;
+      rubberBand(deltaX > 0 ? 1 : -1);
     }
+  }
+
+  function stopWheel() {
+    clearTimeout(wheelTimeout);
+    wheelTimeout = setTimeout(stopRubberBanding, 75);
   }
 </script>
 
@@ -166,7 +189,8 @@
   bind:innerWidth={screenWidth}
   on:keydown={keydown}
   on:keyup={keyup}
-  on:wheel={wheel} />
+  on:wheel={wheel}
+  on:wheel={stopWheel} />
 
 <style lang="scss">
   header {

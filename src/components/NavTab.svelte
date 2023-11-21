@@ -40,7 +40,6 @@
   on:touchstart={scaleDown}
   on:touchend={scaleUp}
   on:touchcancel={scaleUp}
-  tabindex="-1"
   draggable="false">
   {title}
 </a>
@@ -63,6 +62,8 @@
     box-shadow: none;
     color: var(--color-text);
     border-radius: 6px;
+    user-select: none;
+    -webkit-user-drag: none;
 
     &:focus, &:focus-within, &:active {
       outline: none;
