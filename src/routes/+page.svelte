@@ -167,18 +167,16 @@
     wheelTimeout = setTimeout(stopRubberBanding, 75);
   }
 
-  // User can drag right/left and after dragging past a threshold, the slider will snap to the next slide. Set threshold relative to screen width.
-
-  function startDragging(e: MouseEvent) {
+  function startDragging(x: number) {
     isDragging = true;
-    dragX = e.clientX;
+    dragX = x;
   }
 
-  function continueDragging(e: MouseEvent) {
+  function continueDragging(x: number) {
     if (!isDragging) return;
 
-    panVelocity = e.clientX - dragX;
-    dragX = e.clientX;
+    panVelocity = x - dragX;
+    dragX = x;
 
     const springValue = $slideSpring;
     let progress = progressPercentage(panVelocity, 0, -screenWidth);
@@ -253,10 +251,14 @@
   on:keyup={keyup}
   on:wheel={wheel}
   on:wheel={stopWheel}
-  on:mousedown|preventDefault={startDragging}
-  on:mousemove|preventDefault={continueDragging}
-  on:mouseup|preventDefault={stopDragging}
-  on:mouseleave|preventDefault={stopDragging}
+  on:mousedown={(e) => startDragging(e.clientX)}
+  on:mousemove={(e) => continueDragging(e.clientX)}
+  on:mouseup={stopDragging}
+  on:mouseleave={stopDragging}
+  on:touchstart={(e) => startDragging(e.touches[0].pageX)}
+  on:touchmove|preventDefault={(e) => continueDragging(e.touches[0].pageX)}
+  on:touchend={stopDragging}
+  on:touchcancel={stopDragging}
 />
 
 <style lang="scss">
