@@ -20,6 +20,7 @@
   let nav: HTMLElement;
   let navItemOffsets = [-70] as number[];
   let navItemOpacities = [0.2] as number[];
+  let slideScales = [1] as number[];
   let wheelTimeout: ReturnType<typeof setTimeout>;
   let initialKeypress = true;
   let shouldWheelSlide = true;
@@ -30,12 +31,14 @@
     
   $: calcNavItemOffsets(nav);
   $: calcNavItemOpacities(nav, $slideSpring);
+  $: calcSlideScales($slideSpring);
   $: xPosNav = interpolateNav($slideSpring);
-  $: xPosSlides = interpolateSlides($slideSpring);
+  $: xPosSlides = interpolateSlides($slideSpring, screenWidth);
   $: date = setDate(sliderIndex);
 
   // Lifecycle
   onMount(() => {
+    calcNavItemOffsets(nav);
     if (window.location.hash) setIndexBasedOnHash();
   });
 
@@ -78,8 +81,8 @@
     return prevOffset + (nextOffset - prevOffset) * slideSpringPercentage;
   }
 
-  function interpolateSlides(slideSpring : number) {
-    return slideSpring * -screenWidth;
+  function interpolateSlides(slideSpring : number, width : number) {
+    return slideSpring * -width;
   }
 
   function calcNavItemOpacities(nav : HTMLElement, slideSpring : number) {
@@ -94,6 +97,16 @@
     });
 
     navItemOpacities = tabOpacities;
+  }
+
+  function calcSlideScales(slideSpring : number) {
+    // Scale slides based on distance from current slide from 0.45 to 1
+    let scales = [] as number[];
+    posts.forEach((post, i) => {
+      let scale = 1 - Math.abs(slideSpring - i) * 0.2;
+      scales[i] = scale < 0.45 ? 0.45 : scale;
+    });
+    slideScales = scales;
   }
 
   function progressPercentage(value : number, startValue : number, endValue : number) {
@@ -222,9 +235,10 @@
   }
 
   function shouldDragAdvance() {
+    const interpolationDelta = $slideSpring - sliderIndex;
     const passedVelocityTolerance = Math.abs(panVelocity) > 3;
-    const shouldAdvance = !isRubberBandRegion() && (passedVelocityTolerance || passedDragDistanceTolerance());
-    console.log(!isRubberBandRegion(), passedVelocityTolerance, passedDragDistanceTolerance())
+    const swipingTowardsCurrentSlide = (interpolationDelta < 0 && panVelocity > 0) || (interpolationDelta > 0 && panVelocity < 0);
+    const shouldAdvance = !isRubberBandRegion() && swipingTowardsCurrentSlide && (passedVelocityTolerance || passedDragDistanceTolerance());
     return shouldAdvance;
   }
 
@@ -262,8 +276,8 @@
   <div
     class="slides"
     style="transform: translate3d({xPosSlides}px, 0px, 0px);">
-    {#each posts as post}
-      <Slide {post} />
+    {#each posts as post, index}
+      <Slide {post} scale={slideScales[index]} />
     {/each}
   </div>
 </main>

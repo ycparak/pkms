@@ -3,6 +3,7 @@
 	import { onMount } from "svelte";
 
   export let post: Post;
+  export let scale: number;
   let previewComponent: any;
 
   onMount(async () => {
@@ -15,7 +16,7 @@
   const getImgUrl = (name: string) => new URL(`../lib/images/${name}`, import.meta.url).href;
 </script>
 
-<div class="slide">
+<div class="slide" style="transform: scale({scale})">
   {#if post.previewImage}
     <div class="asset-wrapper">
       <img class="img" src={getImgUrl(post.previewImage)} alt="Apple XDR" draggable="false"  loading="lazy">

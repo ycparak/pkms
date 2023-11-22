@@ -2,6 +2,7 @@
 <div class="v"></div>
 <div class="v"></div>
 <div class="h"></div>
+<div class="h"></div>
 
 <style lang="scss">
   .h {
@@ -13,7 +14,7 @@
     background-color: red;
   }
   .v {
-    width: 2px;
+    width: 1px;
     height: 100%;
     min-height: 100vh;
     background-color: red;
@@ -21,10 +22,10 @@
     position: absolute;
     left: calc(50% - 1px);
     &:nth-child(2) {
-      left: calc(50% - 77px);
+      left: calc(50% - 64px);
     }
     &:nth-child(3) {
-      left: calc(50% + 76px);
+      left: calc(50% + 64px);
     }
   }
 </style>
