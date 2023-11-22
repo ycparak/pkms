@@ -19,11 +19,14 @@
   let screenWidth = 0;
   let nav: HTMLElement;
   let tabOffsets = [-70] as number[];
-  let date = posts[sliderIndex].date;
   let wheelTimeout: ReturnType<typeof setTimeout>;
-  let shouldWheelSlide = true;
   let initialKeypress = true;
-  
+  let shouldWheelSlide = true;
+  let isDragging = false;
+  let dragX = 0;
+  let panVelocity = 0;
+  let date = posts[sliderIndex].date;
+    
   $: calcTabOffsets(nav);
   $: xPosNav = interpolateNav($slideSpring);
   $: xPosSlides = interpolateSlides($slideSpring);
@@ -65,13 +68,17 @@
 
     const prevOffset = tabOffsets[prevIndex];
     const nextOffset = tabOffsets[sliderIndex];
-    const slideSpringPercentage = (slideSpring - prevIndex) / (sliderIndex - prevIndex);
+    const slideSpringPercentage = progressPercentage(slideSpring, prevIndex, sliderIndex);
     return prevOffset + (nextOffset - prevOffset) * slideSpringPercentage;
   }
 
   function interpolateSlides(slideSpring : number) {
     return slideSpring * -screenWidth;
   }
+
+  function progressPercentage(value : number, startValue : number, endValue : number) {
+    return (value - startValue) / (endValue - startValue);
+  };
 
   function setDate(tabActive : number) {
     const newDate = new Date(posts[tabActive].date);
@@ -159,6 +166,51 @@
     clearTimeout(wheelTimeout);
     wheelTimeout = setTimeout(stopRubberBanding, 75);
   }
+
+  // User can drag right/left and after dragging past a threshold, the slider will snap to the next slide. Set threshold relative to screen width.
+
+  function startDragging(e: MouseEvent) {
+    isDragging = true;
+    dragX = e.clientX;
+  }
+
+  function continueDragging(e: MouseEvent) {
+    if (!isDragging) return;
+
+    panVelocity = e.clientX - dragX;
+    dragX = e.clientX;
+
+    const springValue = $slideSpring;
+    let progress = progressPercentage(panVelocity, 0, -screenWidth);
+    if (springValue + progress < 0 || springValue + progress > posts.length - 1) progress *= 0.5;
+
+    slideSpring.update((n) => n + progress);
+  }
+
+  function stopDragging() {
+    if (!isDragging) return;
+
+    const currentIndexInterpolation = $slideSpring;
+    const startIndex = sliderIndex;
+
+    const interpolationDelta = currentIndexInterpolation - startIndex;
+    const passedVelocityTolerance = Math.abs(panVelocity) > 3;
+    const passedDistanceTolerance = Math.abs(interpolationDelta) > 0.3;
+    const canSwipeInDirection = sliderIndex < posts.length - 1 && panVelocity < 0 || sliderIndex > 0 && panVelocity > 0;
+    // let swipingTowardsCurrentPage = (interpolationDelta > 0 && panVelocity > 0) || (interpolationDelta < 0 && panVelocity < 0);
+
+    const shouldAdvance = (passedVelocityTolerance || passedDistanceTolerance) && canSwipeInDirection;
+    let directionIsForward = startIndex <= currentIndexInterpolation;
+    let targetIndex = directionIsForward ? Math.ceil(currentIndexInterpolation) : Math.floor(currentIndexInterpolation);
+
+    if (shouldAdvance) {
+      goToSlide(targetIndex);
+    } else {
+      slideSpring.set(sliderIndex);
+    }
+
+    isDragging = false;
+  }
 </script>
 
 <!-- Head -->
@@ -169,8 +221,8 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
-<!-- Header -->
-<header>
+<main>
+  <!-- Header -->
   <nav bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
     {#each posts as link, index}
       <NavTab
@@ -184,48 +236,52 @@
     {/each}
   </nav>
   <time>{date}</time>
-</header>
 
-<!-- Slides -->
-<div
-  class="slides"
-  style="transform: translate3d({xPosSlides}px, 0px, 0px);">
-  {#each posts as post}
-    <Slide {post} />
-  {/each}
-</div>
+  <!-- Slides -->
+  <div
+    class="slides"
+    style="transform: translate3d({xPosSlides}px, 0px, 0px);">
+    {#each posts as post}
+      <Slide {post} />
+    {/each}
+  </div>
+</main>
 
 <svelte:window
   bind:innerWidth={screenWidth}
   on:keydown={keydown}
   on:keyup={keyup}
   on:wheel={wheel}
-  on:wheel={stopWheel} />
+  on:wheel={stopWheel}
+  on:mousedown|preventDefault={startDragging}
+  on:mousemove|preventDefault={continueDragging}
+  on:mouseup|preventDefault={stopDragging}
+  on:mouseleave|preventDefault={stopDragging}
+/>
 
 <style lang="scss">
-  header {
-    height: fit-content;
-    width: 100%;
-    padding: functions.toRem(14px) 0;
+  main {
+    cursor: grab;
+  }
+  nav {
+    position: relative;
+    left: 50%;
+    display: flex;
+    padding: functions.toRem(14px) 0 0 0;
+    white-space: nowrap;
+    backface-visibility: hidden;
+  }
+  time {
     text-align: center;
-    nav {
-      position: relative;
-      left: 50%;
-      display: flex;
-      white-space: nowrap;
-      backface-visibility: hidden;
-    }
-    time {
-      display: block;
-      font-size: functions.toRem(12px);
-      opacity: 0.4;
-      line-height: 1;
-      letter-spacing: -0.01em;
-      font-variant-numeric: tabular-nums;
-      padding: functions.toRem(2px) 0 0 0;
-      margin: 0;
-      user-select: none;
-    }
+    display: block;
+    font-size: functions.toRem(12px);
+    opacity: 0.4;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    padding: functions.toRem(2px) 0 0 0;
+    margin: 0 auto;
+    user-select: none;
   }
   .slides {
     flex-grow: 1;

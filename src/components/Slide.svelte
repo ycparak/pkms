@@ -4,7 +4,6 @@
 
   export let post: Post;
   let previewComponent: any;
-  let slug = post.slug === '/' ? post.slug : '#' + post.slug.split('/')[1];
 
   onMount(async () => {
     if (post.hasPreviewComponent) {
@@ -16,9 +15,7 @@
   const getImgUrl = (name: string) => new URL(`../lib/images/${name}`, import.meta.url).href;
 </script>
 
-<div 
-  id="{slug}"
-  class="slide">
+<div class="slide">
   {#if post.previewImage}
     <div class="asset-wrapper">
       <img class="img" src={getImgUrl(post.previewImage)} alt="Apple XDR" draggable="false"  loading="lazy">
