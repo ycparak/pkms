@@ -3,36 +3,22 @@
   import { spring } from 'svelte/motion';
   const dispatch = createEventDispatcher()
 
-  export let active: boolean;
   export let href: string;
   export let title: string;
-  export let tabOffset: number;
-  export let tabActiveOffset: number;
-  let opacityFaded = 0.2;
+  export let opacity: number;
 
-  const springOpacity = spring(active ? 1 : opacityFaded, {
-    stiffness: 0.09,
-    damping: 0.87,
-  });
   const springScale = spring(1, {
     stiffness: 0.1,
-    damping: 0.2,
+    damping: 0.225,
   });
-
-  $: if (tabActiveOffset) {
-    const distanceFromOffset = Math.abs(tabOffset - tabActiveOffset);
-    const opacity = distanceFromOffset < 88 ? 1.0 - (distanceFromOffset / 88) * opacityFaded : opacityFaded;
-    springOpacity.set(opacity < opacityFaded ? opacityFaded : opacity);
-  }
   
-  const scaleDown = () => springScale.set(0.94);
+  const scaleDown = () => springScale.set(0.92);
   const scaleUp = () => springScale.set(1);
 </script>
 
 <a
   href="{href}"
-  style="opacity: {$springOpacity}; transform: scale({$springScale});"
-  class:active={active}
+  style="opacity: {opacity}; transform: scale({$springScale});"
   on:click|preventDefault={() => dispatch('select')}
   on:mousedown={scaleDown}
   on:mouseup={scaleUp}

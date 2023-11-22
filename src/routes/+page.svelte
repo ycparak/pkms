@@ -10,7 +10,7 @@
 
   // State
   let slideSpring = spring(0, { 
-    stiffness: 0.075,
+    stiffness: 0.08,
     damping: 0.8,
     precision: 0.00001,
   });
@@ -18,7 +18,8 @@
   let sliderIndex = 0;
   let screenWidth = 0;
   let nav: HTMLElement;
-  let tabOffsets = [-70] as number[];
+  let navItemOffsets = [-70] as number[];
+  let navItemOpacities = [0.2] as number[];
   let wheelTimeout: ReturnType<typeof setTimeout>;
   let initialKeypress = true;
   let shouldWheelSlide = true;
@@ -27,13 +28,16 @@
   let panVelocity = 0;
   let date = posts[sliderIndex].date;
     
-  $: calcTabOffsets(nav);
+  $: calcNavItemOffsets(nav);
+  $: calcNavItemOpacities(nav, $slideSpring);
   $: xPosNav = interpolateNav($slideSpring);
   $: xPosSlides = interpolateSlides($slideSpring);
   $: date = setDate(sliderIndex);
 
   // Lifecycle
   onMount(() => {
+    calcNavItemOffsets(nav);
+    calcNavItemOpacities(nav, $slideSpring);
     if (window.location.hash) setIndexBasedOnHash();
   });
 
@@ -48,7 +52,7 @@
     }
   }
 
-  function calcTabOffsets(nav : HTMLElement) {
+  function calcNavItemOffsets(nav : HTMLElement) {
     if (!nav) return;
     
     let tabs = Array.from(nav.children);
@@ -59,21 +63,35 @@
       tabWidths[i] = tab.getBoundingClientRect().width;
       tabWidthsCumulative[i] = tabWidths[i] + (tabWidthsCumulative[i - 1] || 0);
       let offset = -(tabWidthsCumulative[i] - (tabWidths[i] / 2));
-      tabOffsets[i] = Math.round(offset);
+      navItemOffsets[i] = Math.round(offset);
     });
   }
 
   function interpolateNav(slideSpring : number) {
-    if (prevIndex === sliderIndex) return tabOffsets[sliderIndex];
+    if (prevIndex === sliderIndex) return navItemOffsets[sliderIndex];
 
-    const prevOffset = tabOffsets[prevIndex];
-    const nextOffset = tabOffsets[sliderIndex];
+    const prevOffset = navItemOffsets[prevIndex];
+    const nextOffset = navItemOffsets[sliderIndex];
     const slideSpringPercentage = progressPercentage(slideSpring, prevIndex, sliderIndex);
     return prevOffset + (nextOffset - prevOffset) * slideSpringPercentage;
   }
 
   function interpolateSlides(slideSpring : number) {
     return slideSpring * -screenWidth;
+  }
+
+  function calcNavItemOpacities(nav : HTMLElement, slideSpring : number) {
+    if (!nav) return;
+    
+    let tabs = Array.from(nav.children);
+    let tabOpacities = [] as number[];
+
+    tabs.forEach((tab, i) => {
+      let opacity = 1 - Math.abs(slideSpring - i);
+      tabOpacities[i] = opacity < 0.2 ? 0.2 : opacity;
+    });
+
+    navItemOpacities = tabOpacities;
   }
 
   function progressPercentage(value : number, startValue : number, endValue : number) {
@@ -206,7 +224,7 @@
     } else {
       slideSpring.set(sliderIndex);
     }
-
+    
     isDragging = false;
   }
 </script>
@@ -224,11 +242,9 @@
   <nav bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
     {#each posts as link, index}
       <NavTab
-        active={index === sliderIndex}
         href={getHref(link.slug)}
         title={link.title}
-        tabOffset={tabOffsets[index]}
-        tabActiveOffset={xPosNav}
+        opacity={navItemOpacities[index]}
         on:select={() => goToSlide(index)}
       />
     {/each}
@@ -259,6 +275,7 @@
   on:touchmove|preventDefault={(e) => continueDragging(e.touches[0].pageX)}
   on:touchend={stopDragging}
   on:touchcancel={stopDragging}
+  on:contextmenu={stopDragging}
 />
 
 <style lang="scss">
