@@ -10,12 +10,12 @@
 
   // State
   let slideSpring = spring(0, { 
-    stiffness: 0.08,
+    stiffness: 0.085,
     damping: 0.8,
     precision: 0.00001,
   });
-  let prevIndex = 0;
   let sliderIndex = 0;
+  let prevIndex = 0;
   let screenWidth = 0;
   let nav: HTMLElement;
   let navItemOffsets = [-70] as number[];
@@ -36,8 +36,6 @@
 
   // Lifecycle
   onMount(() => {
-    calcNavItemOffsets(nav);
-    calcNavItemOpacities(nav, $slideSpring);
     if (window.location.hash) setIndexBasedOnHash();
   });
 
@@ -68,7 +66,11 @@
   }
 
   function interpolateNav(slideSpring : number) {
-    if (prevIndex === sliderIndex) return navItemOffsets[sliderIndex];
+    if (prevIndex === sliderIndex && !isDragging) return navItemOffsets[sliderIndex];
+
+    // Hacky fix to get interpolation working on first load for first and last elements when dragging
+    if (isDragging && sliderIndex === 0 && prevIndex === 0) prevIndex = sliderIndex + 1;
+    if (isDragging && sliderIndex === posts.length - 1 && prevIndex === posts.length - 1) prevIndex = posts.length - 1;
 
     const prevOffset = navItemOffsets[prevIndex];
     const nextOffset = navItemOffsets[sliderIndex];
@@ -198,33 +200,38 @@
 
     const springValue = $slideSpring;
     let progress = progressPercentage(panVelocity, 0, -screenWidth);
-    if (springValue + progress < 0 || springValue + progress > posts.length - 1) progress *= 0.5;
-
+    if (springValue + progress < 0 || springValue + progress > posts.length - 1) progress *= 0.5; // Rubber banding
     slideSpring.update((n) => n + progress);
+
+    if (passedDragDistanceTolerance() && shouldDragAdvance()) dragToNextSlide();
   }
 
   function stopDragging() {
     if (!isDragging) return;
 
-    const currentIndexInterpolation = $slideSpring;
-    const startIndex = sliderIndex;
+    if (shouldDragAdvance()) dragToNextSlide();
+    else slideSpring.set(sliderIndex);
 
-    const interpolationDelta = currentIndexInterpolation - startIndex;
+    isDragging = false;
+  }
+
+  function passedDragDistanceTolerance() {
+    const interpolationDelta = $slideSpring - sliderIndex;
+    const passedDistanceTolerance = Math.abs(interpolationDelta) > 0.5;
+    return passedDistanceTolerance;
+  }
+
+  function shouldDragAdvance() {
     const passedVelocityTolerance = Math.abs(panVelocity) > 3;
-    const passedDistanceTolerance = Math.abs(interpolationDelta) > 0.3;
-    const canSwipeInDirection = sliderIndex < posts.length - 1 && panVelocity < 0 || sliderIndex > 0 && panVelocity > 0;
-    // let swipingTowardsCurrentPage = (interpolationDelta > 0 && panVelocity > 0) || (interpolationDelta < 0 && panVelocity < 0);
+    const shouldAdvance = !isRubberBandRegion() && (passedVelocityTolerance || passedDragDistanceTolerance());
+    console.log(!isRubberBandRegion(), passedVelocityTolerance, passedDragDistanceTolerance())
+    return shouldAdvance;
+  }
 
-    const shouldAdvance = (passedVelocityTolerance || passedDistanceTolerance) && canSwipeInDirection;
-    let directionIsForward = startIndex <= currentIndexInterpolation;
-    let targetIndex = directionIsForward ? Math.ceil(currentIndexInterpolation) : Math.floor(currentIndexInterpolation);
-
-    if (shouldAdvance) {
-      goToSlide(targetIndex);
-    } else {
-      slideSpring.set(sliderIndex);
-    }
-    
+  function dragToNextSlide() {
+    let directionIsForward = sliderIndex <= $slideSpring;
+    let targetIndex = directionIsForward ? Math.ceil($slideSpring) : Math.floor($slideSpring);
+    goToSlide(targetIndex);
     isDragging = false;
   }
 </script>
