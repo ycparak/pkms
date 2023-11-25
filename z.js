@@ -111,7 +111,7 @@ document.ready(function () {
 	});
 });
 
-// Sets the total nav width, tabwidths array, and tabWidthRunningSum array
+// Sets the total nav width, tabWidths array, and tabWidthRunningSum array
 let calculateTabWidths = function () {
 	let totalWidth = 0;
 	document.querySelectorAll('#nav li').each(function (i, val) {

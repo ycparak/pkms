@@ -17,9 +17,11 @@
   let sliderIndex = 0;
   let prevIndex = 0;
   let screenWidth = 0;
+  let xPosNav = 0;
+  let xPosSlides = 0;
   let nav: HTMLElement;
-  let navItemOffsets = [-70] as number[];
-  let navItemOpacities = [0.2] as number[];
+  let navItemOffsets = [0] as number[];
+  let navItemOpacities = Array(posts.length).fill(0.2) as number[];
   let slideScales = [1] as number[];
   let wheelTimeout: ReturnType<typeof setTimeout>;
   let initialKeypress = true;
@@ -32,13 +34,12 @@
   $: calcNavItemOffsets(nav);
   $: calcNavItemOpacities(nav, $slideSpring);
   $: calcSlideScales($slideSpring);
-  $: xPosNav = interpolateNav($slideSpring);
-  $: xPosSlides = interpolateSlides($slideSpring, screenWidth);
+  $: interpolateNav($slideSpring);
+  $: interpolateSlides($slideSpring, screenWidth);
   $: date = setDate(sliderIndex);
 
   // Lifecycle
   onMount(() => {
-    calcNavItemOffsets(nav);
     if (window.location.hash) setIndexBasedOnHash();
   });
 
@@ -66,6 +67,8 @@
       let offset = -(tabWidthsCumulative[i] - (tabWidths[i] / 2));
       navItemOffsets[i] = Math.round(offset);
     });
+
+    xPosNav = navItemOffsets[sliderIndex];
   }
 
   function interpolateNav(slideSpring : number) {
@@ -78,11 +81,11 @@
     const prevOffset = navItemOffsets[prevIndex];
     const nextOffset = navItemOffsets[sliderIndex];
     const slideSpringPercentage = progressPercentage(slideSpring, prevIndex, sliderIndex);
-    return prevOffset + (nextOffset - prevOffset) * slideSpringPercentage;
+    xPosNav = prevOffset + (nextOffset - prevOffset) * slideSpringPercentage;
   }
 
   function interpolateSlides(slideSpring : number, width : number) {
-    return slideSpring * -width;
+    xPosSlides = slideSpring * -width;
   }
 
   function calcNavItemOpacities(nav : HTMLElement, slideSpring : number) {
@@ -156,6 +159,27 @@
     initialKeypress = true;
   }
 
+  function passedDragDistanceTolerance() {
+    const interpolationDelta = $slideSpring - sliderIndex;
+    const passedDistanceTolerance = Math.abs(interpolationDelta) > 0.5;
+    return passedDistanceTolerance;
+  }
+
+  function shouldDragAdvance() {
+    const interpolationDelta = $slideSpring - sliderIndex;
+    const passedVelocityTolerance = Math.abs(panVelocity) > 3;
+    const swipingTowardsCurrentSlide = (interpolationDelta < 0 && panVelocity > 0) || (interpolationDelta > 0 && panVelocity < 0);
+    const shouldAdvance = !isRubberBandRegion() && (passedDragDistanceTolerance() || (swipingTowardsCurrentSlide && passedVelocityTolerance));
+    return shouldAdvance;
+  }
+
+  function dragToNextSlide() {
+    let directionIsForward = sliderIndex <= $slideSpring;
+    let targetIndex = directionIsForward ? Math.ceil($slideSpring) : Math.floor($slideSpring);
+    goToSlide(targetIndex);
+    isDragging = false;
+  }
+
   // Events
   function keydown(event: KeyboardEvent) {
     const isArrowRight = event.key === 'ArrowRight';
@@ -188,7 +212,7 @@
     const slideLeft = deltaX < threshold && sliderIndex > 0;
     if (slideRight || slideLeft) {
       slideRight ? next() : prev();
-      setTimeout(() => shouldWheelSlide = true, 700);
+      setTimeout(() => shouldWheelSlide = true, 500);
     } else if (isRubberBandRegion()) {
       shouldWheelSlide = true;
       rubberBand(deltaX > 0 ? 1 : -1);
@@ -225,27 +249,6 @@
     if (shouldDragAdvance()) dragToNextSlide();
     else slideSpring.set(sliderIndex);
 
-    isDragging = false;
-  }
-
-  function passedDragDistanceTolerance() {
-    const interpolationDelta = $slideSpring - sliderIndex;
-    const passedDistanceTolerance = Math.abs(interpolationDelta) > 0.5;
-    return passedDistanceTolerance;
-  }
-
-  function shouldDragAdvance() {
-    const interpolationDelta = $slideSpring - sliderIndex;
-    const passedVelocityTolerance = Math.abs(panVelocity) > 3;
-    const swipingTowardsCurrentSlide = (interpolationDelta < 0 && panVelocity > 0) || (interpolationDelta > 0 && panVelocity < 0);
-    const shouldAdvance = !isRubberBandRegion() && swipingTowardsCurrentSlide && (passedVelocityTolerance || passedDragDistanceTolerance());
-    return shouldAdvance;
-  }
-
-  function dragToNextSlide() {
-    let directionIsForward = sliderIndex <= $slideSpring;
-    let targetIndex = directionIsForward ? Math.ceil($slideSpring) : Math.floor($slideSpring);
-    goToSlide(targetIndex);
     isDragging = false;
   }
 </script>
@@ -318,10 +321,11 @@
     opacity: 0.4;
     line-height: 1;
     letter-spacing: -0.01em;
-    font-variant-numeric: tabular-nums;
     padding: functions.toRem(2px) 0 0 0;
     margin: 0 auto;
     user-select: none;
+    font-weight: 600;
+    margin-top: 5px;
   }
   .slides {
     flex-grow: 1;

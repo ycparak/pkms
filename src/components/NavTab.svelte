@@ -35,7 +35,7 @@
     // reset all button styles
     all: unset;
     width: fit-content;
-    padding: functions.toRem(4px) functions.toRem(24px);
+    padding: functions.toRem(4px) functions.toRem(24px) 0 functions.toRem(24px);
     border: none;
     font-size: functions.toRem(18px);
     line-height: 1;
