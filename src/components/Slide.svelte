@@ -17,17 +17,15 @@
 </script>
 
 <div class="slide" style="transform: scale({scale})">
-  {#if post.previewImage}
-    <div class="asset-wrapper">
+  <div class="asset-wrapper">
+    {#if post.previewImage}
       <img class="img" src={getImgUrl(post.previewImage)} alt="Apple XDR" draggable="false"  loading="lazy">
-    </div>
-  {:else if post.hasPreviewComponent && previewComponent}
-    <svelte:component this={previewComponent} />
-  {:else if post.previewVideo}
-    <div class="asset-wrapper">
+    {:else if post.hasPreviewComponent && previewComponent}
+      <svelte:component this={previewComponent} />
+    {:else if post.previewVideo}
       <video src={post.previewVideo} autoplay loop muted playsinline></video>
-    </div>
-  {/if}
+    {/if}
+  </div>
 </div>
 
 <style lang="scss">
@@ -46,10 +44,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-height: calc(100vh - functions.toRem(72px));
-    max-height: calc(100dvh - functions.toRem(72px));
-    // padding: functions.toRem(56px) 0 functions.toRem(68px) 0;
-    padding: 0;
+    max-height: calc(100dvh - functions.toRem(56px));
+    padding: 5dvh 8dvw 8dvh 8dvw;
+    margin: 0 auto;
     .img {
       object-fit: contain;
       object-position: center;

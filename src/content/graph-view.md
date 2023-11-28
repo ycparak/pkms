@@ -1,6 +1,6 @@
 ---
 title: Canary Graph View
-date: '2021-01-13'
+date: '2020-07-01'
 category: design
 hasLink: true
 previewImage: '9.webp'

@@ -5,6 +5,7 @@
 	import type { LayoutData } from './$types';
 	import { onMount } from 'svelte';
   
+  // Props
 	export let data: LayoutData;
   const posts = data.posts;
 
@@ -130,7 +131,7 @@
     sliderIndex = nextIndex;
     slideSpring.set(sliderIndex);
     const href = getHref(posts[nextIndex].slug);
-    if (href === '/') window.history.pushState({}, '', window.location.pathname);
+    if (sliderIndex === 0) window.history.pushState({}, '', window.location.pathname);
     else window.location.hash = href;
   }
 
@@ -169,8 +170,12 @@
     const interpolationDelta = $slideSpring - sliderIndex;
     const passedVelocityTolerance = Math.abs(panVelocity) > 3;
     const swipingTowardsCurrentSlide = (interpolationDelta < 0 && panVelocity > 0) || (interpolationDelta > 0 && panVelocity < 0);
-    const shouldAdvance = !isRubberBandRegion() && (passedDragDistanceTolerance() || (swipingTowardsCurrentSlide && passedVelocityTolerance));
-    return shouldAdvance;
+    const swipeDirectionIsRight = panVelocity < 0;
+
+    if ((sliderIndex === 0 && swipeDirectionIsRight) && (passedDragDistanceTolerance() || passedVelocityTolerance)) return true;
+    else if ((sliderIndex === posts.length - 1 && !swipeDirectionIsRight) && (passedDragDistanceTolerance() || passedVelocityTolerance)) return true;
+    else if (!isRubberBandRegion() && (passedDragDistanceTolerance() || (swipingTowardsCurrentSlide && passedVelocityTolerance))) return true;
+    else return false;
   }
 
   function dragToNextSlide() {
