@@ -24,9 +24,8 @@
   let navItemOffsets = [0] as number[];
   let navItemOpacities = Array(posts.length).fill(0.2) as number[];
   let slideScales = [1] as number[];
-  let wheelTimeout: ReturnType<typeof setTimeout>;
+  let shouldStartDetectingGesture = true;
   let initialKeypress = true;
-  let shouldWheelSlide = true;
   let isDragging = false;
   let dragX = 0;
   let panVelocity = 0;
@@ -207,26 +206,22 @@
     stopRubberBanding();
   }
 
-  function wheel(e : Event) {
-    const deltaX = (e as WheelEvent).deltaX;
-    const threshold = 5;
-    if (!shouldWheelSlide || Math.abs(deltaX) < threshold) return;
+  function wheel(deltaX: number) {
+    const threshold = 7.5;
+    if (Math.abs(deltaX) < threshold) return;
 
-    shouldWheelSlide = false;
-    const slideRight = deltaX > threshold && sliderIndex < posts.length - 1;
-    const slideLeft = deltaX < threshold && sliderIndex > 0;
-    if (slideRight || slideLeft) {
-      slideRight ? next() : prev();
-      setTimeout(() => shouldWheelSlide = true, 500);
-    } else if (isRubberBandRegion()) {
-      shouldWheelSlide = true;
-      rubberBand(deltaX > 0 ? 1 : -1);
+    if (shouldStartDetectingGesture) {
+      shouldStartDetectingGesture = false;
+
+      setTimeout(async function () {
+        if (deltaX > 0) next();
+        else prev();
+        
+        setTimeout(function () {
+          shouldStartDetectingGesture = true;
+        }, 1000);
+      }, 150);
     }
-  }
-
-  function stopWheel() {
-    clearTimeout(wheelTimeout);
-    wheelTimeout = setTimeout(stopRubberBanding, 75);
   }
 
   function startDragging(x: number) {
@@ -294,8 +289,7 @@
   bind:innerWidth={screenWidth}
   on:keydown={keydown}
   on:keyup={keyup}
-  on:wheel={wheel}
-  on:wheel={stopWheel}
+  on:wheel={(e) => wheel(e.deltaX)}
   on:mousedown={(e) => startDragging(e.clientX)}
   on:mousemove={(e) => continueDragging(e.clientX)}
   on:mouseup={stopDragging}
