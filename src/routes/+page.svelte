@@ -25,6 +25,7 @@
   let navItemOpacities = Array(posts.length).fill(0.2) as number[];
   let slideScales = [1] as number[];
   let shouldStartDetectingGesture = true;
+  let isCurrentlyDetectingGesture = false;
   let initialKeypress = true;
   let isDragging = false;
   let dragX = 0;
@@ -126,6 +127,7 @@
   }
 
   function goToSlide(nextIndex : number) {
+    if (nextIndex < 0 || nextIndex > posts.length - 1) return;
     prevIndex = sliderIndex;
     sliderIndex = nextIndex;
     slideSpring.set(sliderIndex);
@@ -147,16 +149,6 @@
   function isRubberBandRegion() {
     const positionTolerance = 0.05;
     return $slideSpring < positionTolerance || $slideSpring > posts.length - 1 - positionTolerance;
-  }
-
-  function rubberBand(step : number) {
-    const maxRubberBandDistance = 0.03;
-    slideSpring.set($slideSpring + (step * maxRubberBandDistance));
-  }
-
-  function stopRubberBanding() {
-    slideSpring.set(sliderIndex);
-    initialKeypress = true;
   }
 
   function passedDragDistanceTolerance() {
@@ -195,15 +187,19 @@
     if (isArrowRight && sliderIndex < posts.length - 1 || isArrowLeft && sliderIndex > 0) {
       isArrowRight ? next() : prev();
     } else if (initialKeypress && isRubberBandRegion()) {
-      rubberBand(step);
+      // Rubber banding
+      const maxRubberBandDistance = 0.03;
+      slideSpring.set($slideSpring + (step * maxRubberBandDistance));
     }
 
     initialKeypress = false;
   }
 
   function keyup(event : KeyboardEvent) {
+    // Stop rubber banding if user releases key
     if (!(event.key === 'ArrowRight' || event.key === 'ArrowLeft')) return;
-    stopRubberBanding();
+    slideSpring.set(sliderIndex);
+    initialKeypress = true;
   }
 
   function wheel(deltaX: number) {
@@ -212,15 +208,24 @@
 
     if (shouldStartDetectingGesture) {
       shouldStartDetectingGesture = false;
+      isCurrentlyDetectingGesture = true;
 
       setTimeout(async function () {
-        if (deltaX > 0) next();
-        else prev();
+        isCurrentlyDetectingGesture = false;
+
+        if (deltaX > 0 && sliderIndex < posts.length - 1) next();
+        else if (deltaX < 0 && sliderIndex > 0)  prev();
+        slideSpring.set(sliderIndex);
         
         setTimeout(function () {
           shouldStartDetectingGesture = true;
         }, 1000);
       }, 150);
+    }
+
+    if (isCurrentlyDetectingGesture) {
+      if (deltaX > 0 && sliderIndex === posts.length - 1) slideSpring.set($slideSpring + 0.25);
+      else if (deltaX < 0 && sliderIndex === 0) slideSpring.set($slideSpring - 0.25);
     }
   }
 
@@ -261,7 +266,7 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
-<main>
+<main class:dragging={isDragging}>
   <!-- Header -->
   <nav bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
     {#each posts as link, index}
@@ -304,27 +309,40 @@
 <style lang="scss">
   main {
     cursor: grab;
+    &.dragging {
+      cursor: grabbing;
+    }
   }
   nav {
     position: relative;
     left: 50%;
     display: flex;
-    padding: functions.toRem(14px) 0 0 0;
+    padding: functions.toRem(16px) 0 0 0;
     white-space: nowrap;
     backface-visibility: hidden;
   }
   time {
     text-align: center;
     display: block;
-    font-size: functions.toRem(12px);
+    font-size: functions.toRem(14.1927px);
+    line-height: functions.toRem(10px);
     opacity: 0.4;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    padding: functions.toRem(2px) 0 0 0;
+    letter-spacing: -0.05em;
     margin: 0 auto;
     user-select: none;
-    font-weight: 600;
-    margin-top: 5px;
+    margin-top: functions.toRem(8px);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'cv12' on;
+    &::before {
+      content: "";
+      margin-bottom: -0.0212em;
+      display: table;
+    }
+    &::after {
+      content: "";
+      margin-top: 0.0212em;
+      display: table;
+    }
   }
   .slides {
     flex-grow: 1;

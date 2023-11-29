@@ -35,10 +35,10 @@
     // reset all button styles
     all: unset;
     width: fit-content;
-    padding: functions.toRem(4px) functions.toRem(24px) 0 functions.toRem(24px);
+    padding: functions.toRem(4px) functions.toRem(24px) functions.toRem(4px) functions.toRem(24px);
     border: none;
-    font-size: functions.toRem(18px);
-    line-height: 1;
+    font-size: functions.toRem(18.4505px);
+    line-height: functions.toRem(13px);
     cursor: default;
     letter-spacing: -0.01em;
     text-decoration: none;
@@ -50,6 +50,17 @@
     border-radius: 6px;
     user-select: none;
     -webkit-user-drag: none;
+
+    &::before {
+      content: "";
+      margin-bottom: -0.0212em;
+      display: table;
+    }
+    &::after {
+      content: "";
+      margin-top: 0.0212em;
+      display: table;
+    }
 
     &:focus, &:focus-within, &:active {
       outline: none;

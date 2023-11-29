@@ -23,7 +23,7 @@
     {:else if post.hasPreviewComponent && previewComponent}
       <svelte:component this={previewComponent} />
     {:else if post.previewVideo}
-      <video src={post.previewVideo} autoplay loop muted playsinline></video>
+      <video src={post.previewVideo} draggable="false" autoplay loop muted playsinline></video>
     {/if}
   </div>
 </div>
@@ -53,6 +53,7 @@
       max-height: 100%;
       max-width: 100%;
       user-select: none;
+      -webkit-user-drag: none;
     }
   }
 </style>
