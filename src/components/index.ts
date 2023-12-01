@@ -1,9 +1,8 @@
-import DockItem from './DockItem.svelte';
+import Footer from './Footer.svelte';
 import NavTab from './NavTab.svelte';
 import Slide from './Slide.svelte';
 import Guidelines from './Guidelines.svelte';
 
 // Interface
-import ButtonBase from './interface/ButtonBase.svelte';
 
-export { DockItem, NavTab, Slide, Guidelines, ButtonBase };
+export { Footer, NavTab, Slide, Guidelines };

@@ -34,33 +34,20 @@
   a {
     // reset all button styles
     all: unset;
+    // use interface-type-lg mixin
+    @include mixins.interface-type-lg;
     width: fit-content;
-    padding: functions.toRem(4px) functions.toRem(24px) functions.toRem(4px) functions.toRem(24px);
+    padding: functions.toRem(4px) functions.toRem(20px);
     border: none;
-    font-size: functions.toRem(18.4505px);
-    line-height: functions.toRem(13px);
     cursor: default;
-    letter-spacing: -0.01em;
     text-decoration: none;
     user-select: none;
-    text-transform: lowercase;
     backface-visibility: hidden;
     box-shadow: none;
     color: var(--color-text);
     border-radius: 6px;
     user-select: none;
     -webkit-user-drag: none;
-
-    &::before {
-      content: "";
-      margin-bottom: -0.0212em;
-      display: table;
-    }
-    &::after {
-      content: "";
-      margin-top: 0.0212em;
-      display: table;
-    }
 
     &:focus, &:focus-within, &:active {
       outline: none;

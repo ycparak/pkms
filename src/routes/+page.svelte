@@ -18,10 +18,11 @@
   let sliderIndex = 0;
   let prevIndex = 0;
   let screenWidth = 0;
+  let fontLoaded = false;
   let xPosNav = 0;
   let xPosSlides = 0;
   let nav: HTMLElement;
-  let navItemOffsets = [0] as number[];
+  let navItemOffsets = [-53] as number[];
   let navItemOpacities = Array(posts.length).fill(0.2) as number[];
   let slideScales = [1] as number[];
   let shouldStartDetectingGesture = true;
@@ -31,8 +32,8 @@
   let dragX = 0;
   let panVelocity = 0;
   let date = posts[sliderIndex].date;
-    
-  $: calcNavItemOffsets(nav);
+  
+  $: calcNavItemOffsets(nav, fontLoaded);
   $: calcNavItemOpacities(nav, $slideSpring);
   $: calcSlideScales($slideSpring);
   $: interpolateNav($slideSpring);
@@ -42,6 +43,9 @@
   // Lifecycle
   onMount(() => {
     if (window.location.hash) setIndexBasedOnHash();
+    document.fonts.ready.then(() => {
+      fontLoaded = true;
+    });
   });
 
   // Methods
@@ -55,8 +59,8 @@
     }
   }
 
-  function calcNavItemOffsets(nav : HTMLElement) {
-    if (!nav) return;
+  function calcNavItemOffsets(nav : HTMLElement, fontLoaded: boolean) {
+    if (!nav || !fontLoaded) return;
     
     let tabs = Array.from(nav.children);
     let tabWidths = [] as number[];
@@ -224,8 +228,8 @@
     }
 
     if (isCurrentlyDetectingGesture) {
-      if (deltaX > 0 && sliderIndex === posts.length - 1) slideSpring.set($slideSpring + 0.25);
-      else if (deltaX < 0 && sliderIndex === 0) slideSpring.set($slideSpring - 0.25);
+      if (deltaX > 0 && sliderIndex === posts.length - 1) slideSpring.set($slideSpring + 0.1);
+      else if (deltaX < 0 && sliderIndex === 0) slideSpring.set($slideSpring - 0.1);
     }
   }
 
@@ -283,7 +287,18 @@
   <!-- Slides -->
   <div
     class="slides"
-    style="transform: translate3d({xPosSlides}px, 0px, 0px);">
+    style="transform: translate3d({xPosSlides}px, 0px, 0px);"
+    role="slider"
+    tabindex="0"
+    aria-valuenow="{sliderIndex}"
+    on:mousedown={(e) => startDragging(e.clientX)}
+    on:mousemove={(e) => continueDragging(e.clientX)}
+    on:mouseup={stopDragging}
+    on:mouseleave={stopDragging}
+    on:touchstart={(e) => startDragging(e.touches[0].pageX)}
+    on:touchmove|preventDefault={(e) => continueDragging(e.touches[0].pageX)}
+    on:touchend={stopDragging}
+    on:touchcancel={stopDragging}>
     {#each posts as post, index}
       <Slide {post} scale={slideScales[index]} />
     {/each}
@@ -295,14 +310,6 @@
   on:keydown={keydown}
   on:keyup={keyup}
   on:wheel={(e) => wheel(e.deltaX)}
-  on:mousedown={(e) => startDragging(e.clientX)}
-  on:mousemove={(e) => continueDragging(e.clientX)}
-  on:mouseup={stopDragging}
-  on:mouseleave={stopDragging}
-  on:touchstart={(e) => startDragging(e.touches[0].pageX)}
-  on:touchmove|preventDefault={(e) => continueDragging(e.touches[0].pageX)}
-  on:touchend={stopDragging}
-  on:touchcancel={stopDragging}
   on:contextmenu={stopDragging}
 />
 
@@ -322,27 +329,14 @@
     backface-visibility: hidden;
   }
   time {
+    @include mixins.interface-type-sm;
     text-align: center;
     display: block;
-    font-size: functions.toRem(14.1927px);
-    line-height: functions.toRem(10px);
     opacity: 0.4;
-    letter-spacing: -0.05em;
     margin: 0 auto;
     user-select: none;
-    margin-top: functions.toRem(8px);
+    margin-top: functions.toRem(9px);
     font-variant-numeric: tabular-nums;
-    font-feature-settings: 'cv12' on;
-    &::before {
-      content: "";
-      margin-bottom: -0.0212em;
-      display: table;
-    }
-    &::after {
-      content: "";
-      margin-top: 0.0212em;
-      display: table;
-    }
   }
   .slides {
     flex-grow: 1;
@@ -351,5 +345,8 @@
     background-color: var(--color-background);
     border: none;
     height: fit-content;
+    &:focus {
+      outline: none;
+    }
   }
 </style>

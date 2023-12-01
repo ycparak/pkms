@@ -1,0 +1,86 @@
+@use 'functions';
+
+@mixin interface-type-xl {
+	font-size: functions.toRem(25.0696px);
+	line-height: functions.toRem(18px);
+
+	&::before {
+		content: '';
+		margin-bottom: -0.044em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: 0.044em;
+		display: table;
+	}
+}
+
+@mixin interface-type-lg {
+	font-size: functions.toRem(18.1058px);
+	line-height: functions.toRem(13px);
+
+	&::before {
+		content: '';
+		margin-bottom: -0.044em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: 0.044em;
+		display: table;
+	}
+}
+
+@mixin interface-type-md {
+	font-size: functions.toRem(15.3203px);
+	line-height: functions.toRem(11px);
+
+	&::before {
+		content: '';
+		margin-bottom: -0.044em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: 0.044em;
+		display: table;
+	}
+}
+
+@mixin interface-type-sm {
+	font-size: functions.toRem(13.9276px);
+	line-height: functions.toRem(10px);
+
+	&::before {
+		content: '';
+		margin-bottom: -0.044em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: 0.044em;
+		display: table;
+	}
+}
+
+@mixin interface-type-xs {
+	font-size: functions.toRem(12px);
+	line-height: functions.toRem(9px);
+
+	&::before {
+		content: '';
+		margin-bottom: -0.044em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: 0.044em;
+		display: table;
+	}
+}

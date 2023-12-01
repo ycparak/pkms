@@ -20,8 +20,7 @@ const config = {
 	preprocess: sequence([
 		preprocess({
 			scss: {
-				prependData: '@use "src/styles/_functions.scss";'
-				// ; @use "src/styles/mixins" as mixins;
+				prependData: '@use "src/styles/_functions.scss"; @use "src/styles/_mixins.scss" as mixins;'
 			}
 		}),
 		mdsvex(mdsvexConfig)

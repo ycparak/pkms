@@ -1,5 +1,5 @@
 ---
-title: News App
+title: news app
 date: '2022-02-22'
 category: design
 hasLink: false

@@ -45,7 +45,7 @@
     align-items: center;
     width: 100%;
     max-height: calc(100dvh - functions.toRem(56px));
-    padding: 5dvh 8dvw 8dvh 8dvw;
+    padding: 2dvw 8dvw calc(3dvw + 88px) 8dvw;
     margin: 0 auto;
     .img {
       object-fit: contain;

@@ -7,7 +7,7 @@
 <style lang="scss">
   .h {
     position: absolute;
-    top: 23px;
+    top: 19px;
     width: 100%;
     z-index: 9999;
     height: 1px;
@@ -22,10 +22,10 @@
     position: absolute;
     left: calc(50% - 1px);
     &:nth-child(2) {
-      left: calc(50% - 64px);
+      left: calc(50% - 74px);
     }
     &:nth-child(3) {
-      left: calc(50% + 64px);
+      left: calc(50% + 73px);
     }
   }
 </style>
