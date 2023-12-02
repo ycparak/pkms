@@ -42,7 +42,7 @@
     backdrop-filter: blur(16px);
     border-radius: functions.toRem(12px);
     width: 360px;
-    box-shadow: 0 4px 8px rgba(0,0,0,.12);
+    box-shadow: 0 4px 8px rgba(0,0,0,.12), inset 0 1px 1px rgba(255,255,255,.12);
     pointer-events: all;
 
     &-row {
