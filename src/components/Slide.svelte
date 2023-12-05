@@ -17,41 +17,34 @@
 </script>
 
 <div class="slide" style="transform: scale({scale})">
-  <div class="asset-wrapper">
-    {#if post.previewImage}
-      <img class="img" src={getImgUrl(post.previewImage)} alt="Apple XDR" draggable="false"  loading="lazy">
-    {:else if post.hasPreviewComponent && previewComponent}
+  {#if post.previewImage}
+    <img class="asset" src={getImgUrl(post.previewImage)} alt="Apple XDR" draggable="false"  loading="lazy">
+  {:else if post.hasPreviewComponent && previewComponent}
+    <div class="asset">
       <svelte:component this={previewComponent} />
-    {:else if post.previewVideo}
-      <video src={post.previewVideo} draggable="false" autoplay loop muted playsinline></video>
-    {/if}
-  </div>
+    </div>
+  {:else if post.previewVideo}
+    <video class="asset" src={post.previewVideo} draggable="false" autoplay loop muted playsinline></video>
+  {/if}
 </div>
 
 <style lang="scss">
   .slide {
+    position: relative;
     flex-grow: 1;
-    display: flex;
-    min-height: 100%;
-    width: 100%;
     flex-shrink: 0;
-  }
-
-  .asset-wrapper {
-    --nav-height: functions.toRem(68px);
     display: flex;
-    flex-grow: 1;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    max-height: calc(100dvh - functions.toRem(56px));
-    padding: 2dvw 8dvw calc(3dvw + 88px) 8dvw;
-    margin: 0 auto;
-    .img {
+    max-height: 100%;
+    .asset {
+      position: absolute;
+      padding: 4dvh 5dvw 8dvh 5dvw;
+      height: 100%;
+      width: 100%;
       object-fit: contain;
       object-position: center;
-      max-height: 100%;
-      max-width: 100%;
       user-select: none;
       -webkit-user-drag: none;
     }

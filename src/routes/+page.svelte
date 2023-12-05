@@ -270,8 +270,8 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
-<main class:dragging={isDragging}>
-  <!-- Header -->
+<main>
+  <!-- Nav -->
   <nav bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
     {#each posts as link, index}
       <NavTab
@@ -282,11 +282,15 @@
       />
     {/each}
   </nav>
-  <time>{date}</time>
+  
+  <!-- Header -->
+  <header>
+    <time>{date}</time>
+  </header>
 
-  <!-- Slides -->
-  <div
-    class="slides"
+  <section
+    class="slideshow"
+    class:dragging={isDragging}
     style="transform: translate3d({xPosSlides}px, 0px, 0px);"
     role="slider"
     tabindex="0"
@@ -302,7 +306,7 @@
     {#each posts as post, index}
       <Slide {post} scale={slideScales[index]} />
     {/each}
-  </div>
+  </section>
 </main>
 
 <svelte:window
@@ -315,36 +319,48 @@
 
 <style lang="scss">
   main {
-    cursor: grab;
-    &.dragging {
-      cursor: grabbing;
-    }
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    width: 100dvw;
+    max-height: 100dvh;
+    max-width: 100dvw;
+    // background-color: palegoldenrod;
   }
   nav {
     position: relative;
     left: 50%;
     display: flex;
-    padding: functions.toRem(16px) 0 0 0;
+    margin: functions.toRem(15px) 0 0 0;
     white-space: nowrap;
     backface-visibility: hidden;
   }
-  time {
+
+  header {
     @include mixins.interface-type-sm;
-    text-align: center;
     display: block;
+    max-width: functions.toRem(360px);
+    text-align: center;
     opacity: 0.4;
     margin: 0 auto;
     user-select: none;
-    margin-top: functions.toRem(9px);
+    margin-top: functions.toRem(4px);
+    padding: functions.toRem(5px) 0 0 0;
     font-variant-numeric: tabular-nums;
+    cursor: default;
   }
-  .slides {
+
+  section {
     flex-grow: 1;
     display: flex;
     flex-wrap: nowrap;
-    background-color: var(--color-background);
     border: none;
-    height: fit-content;
+    cursor: grab;
+    height: 100%;
+    width: 100%;
+    &.dragging {
+      cursor: grabbing;
+    }
     &:focus {
       outline: none;
     }
