@@ -1,8 +1,8 @@
 ---
-title: news app
-date: '2022-02-22'
+title: pkms
+date: '2021-02-14'
 category: 'craft'
-project: Experiment
+project: Personal Software
 hasLink: false
 previewImage: '1.webp'
 ---

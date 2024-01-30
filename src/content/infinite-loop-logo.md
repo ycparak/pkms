@@ -1,7 +1,8 @@
 ---
-title: spotify redesign
+title: logotype
 date: '2023-07-23'
-category: homepage
+category: 'craft'
+project: Infinite Loop
 hasLink: false
 previewImage: '8.webp'
 ---

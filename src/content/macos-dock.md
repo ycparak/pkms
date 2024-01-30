@@ -1,7 +1,8 @@
 ---
 title: macos dock
-date: '2021-04-01'
-category: craft
+date: '2021-07-01'
+category: 'craft'
+project: Experiment
 hasLink: false
 hasPreviewComponent: true
 ---

@@ -112,7 +112,7 @@
     let scales = [] as number[];
     posts.forEach((post, i) => {
       let scale = 1 - Math.abs(slideSpring - i) * 0.2;
-      scales[i] = scale < 0.45 ? 0.45 : scale;
+      scales[i] = scale < 0.3 ? 0.3 : scale;
     });
     slideScales = scales;
   }
@@ -274,14 +274,21 @@
 <main>
   <!-- SLideshow meta -->
   <header>
-    <button class="date">
-      <div class="date-icon"></div>
-      <time>{date}</time>
+    <button class="meta">
+      <div class="meta-icon"></div>
+      <span><time>{date}</time> &middot; {posts[sliderIndex].project}</span>
     </button>
-    <a href="/about" class="action" draggable="false">
-      <span>view case study</span>
-      <i class="ph-bold ph-arrow-right action-icon"></i>
-    </a>
+    {#if posts[sliderIndex].hasLink && posts[sliderIndex].linkTitle}
+      <a
+        href="{posts[sliderIndex].link ? posts[sliderIndex].link : posts[sliderIndex].slug}"
+        class="action"
+        class:external="{posts[sliderIndex].link}"
+        target="{posts[sliderIndex].link ? '_blank' : '_self'}"
+        draggable="false">
+        <span>{posts[sliderIndex].linkTitle}</span>
+        <i class="ph-bold ph-arrow-right action-icon"></i>
+      </a>
+    {/if}
   </header>
   
   <!-- Slideshow -->
@@ -344,12 +351,11 @@
     user-select: none;
     margin: functions.toRem(24px) functions.toRem(24px) 0 functions.toRem(24px);
     min-height: functions.toRem(30px);
-    .date {
+    .meta {
       display: flex;
       flex-direction: row;
       align-items: center;
       @include mixins.interface-type-sm;
-      font-variant-numeric: tabular-nums;
       color: var(--color-text-accent);
       &-icon {
         width: functions.toRem(5px);
@@ -359,8 +365,10 @@
         margin-right: functions.toRem(8px);
         animation: flash 2s infinite;
       }
+      time {
+        font-variant-numeric: tabular-nums;
+      }
     }
-
     .action {
       display: flex;
       flex-direction: row;
@@ -369,20 +377,17 @@
       text-decoration: none;
       @include mixins.interface-type-sm;
       transition: all .3s ease;
-      cursor: default;
       &-icon {
         display: block;
         height: fit-content;
         transform: translateY(functions.toRem(2px));
         margin-left: functions.toRem(8px);
       }
-
       &.external {
         .action-icon {
           transform: translateY(functions.toRem(1px)) rotate(-45deg);
         }
       }
-
       &:hover {
         color: var(--color-text);
       }
