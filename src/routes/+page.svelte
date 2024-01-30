@@ -123,7 +123,8 @@
 
   function setDate(tabActive : number) {
     const newDate = new Date(posts[tabActive].date);
-    return `${(newDate.getMonth() + 1).toString().padStart(2, '0')}.${newDate.getFullYear()}`;
+    // return `${(newDate.getMonth() + 1).toString().padStart(2, '0')}.${newDate.getFullYear()}`;
+    return `${newDate.getFullYear()}`;
   }
 
   function getHref(slug : string) {
@@ -271,23 +272,19 @@
 </svelte:head>
 
 <main>
-  <!-- Nav -->
-  <nav bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
-    {#each posts as link, index}
-      <NavTab
-        href={getHref(link.slug)}
-        title={link.title}
-        opacity={navItemOpacities[index]}
-        on:select={() => goToSlide(index)}
-      />
-    {/each}
-  </nav>
-  
-  <!-- Header -->
+  <!-- SLideshow meta -->
   <header>
-    <time>{date}</time>
+    <button class="date">
+      <div class="date-icon"></div>
+      <time>{date}</time>
+    </button>
+    <a href="/about" class="action" draggable="false">
+      <span>view case study</span>
+      <i class="ph-bold ph-arrow-right action-icon"></i>
+    </a>
   </header>
-
+  
+  <!-- Slideshow -->
   <section
     class="slideshow"
     class:dragging={isDragging}
@@ -307,6 +304,18 @@
       <Slide {post} scale={slideScales[index]} />
     {/each}
   </section>
+
+  <!-- Slideshow Nav -->
+  <footer bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
+    {#each posts as link, index}
+      <NavTab
+        href={getHref(link.slug)}
+        title={link.title}
+        opacity={navItemOpacities[index]}
+        on:select={() => goToSlide(index)}
+      />
+    {/each}
+  </footer>
 </main>
 
 <svelte:window
@@ -325,29 +334,59 @@
     width: 100dvw;
     max-height: 100dvh;
     max-width: 100dvw;
-    // background-color: palegoldenrod;
-  }
-  nav {
-    position: relative;
-    left: 50%;
-    display: flex;
-    margin: functions.toRem(15px) 0 0 0;
-    white-space: nowrap;
-    backface-visibility: hidden;
   }
 
   header {
-    @include mixins.interface-type-sm;
-    display: block;
-    max-width: functions.toRem(360px);
-    text-align: center;
-    opacity: 0.4;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     user-select: none;
-    margin-top: functions.toRem(4px);
-    padding: functions.toRem(5px) 0 0 0;
-    font-variant-numeric: tabular-nums;
-    cursor: default;
+    margin: functions.toRem(24px) functions.toRem(24px) 0 functions.toRem(24px);
+    min-height: functions.toRem(30px);
+    .date {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      @include mixins.interface-type-sm;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-accent);
+      &-icon {
+        width: functions.toRem(5px);
+        height: functions.toRem(5px);
+        border-radius: 50%;
+        background-color: var(--color-text-accent);
+        margin-right: functions.toRem(8px);
+        animation: flash 2s infinite;
+      }
+    }
+
+    .action {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: var(--color-text-accent);
+      text-decoration: none;
+      @include mixins.interface-type-sm;
+      transition: all .3s ease;
+      cursor: default;
+      &-icon {
+        display: block;
+        height: fit-content;
+        transform: translateY(functions.toRem(2px));
+        margin-left: functions.toRem(8px);
+      }
+
+      &.external {
+        .action-icon {
+          transform: translateY(functions.toRem(1px)) rotate(-45deg);
+        }
+      }
+
+      &:hover {
+        color: var(--color-text);
+      }
+    }
   }
 
   section {
@@ -358,11 +397,21 @@
     cursor: grab;
     height: 100%;
     width: 100%;
+    will-change: transform;
     &.dragging {
       cursor: grabbing;
     }
     &:focus {
       outline: none;
     }
+  }
+
+  footer {
+    position: relative;
+    left: 50%;
+    display: flex;
+    margin-bottom: functions.toRem(32px);
+    white-space: nowrap;
+    backface-visibility: hidden;
   }
 </style>

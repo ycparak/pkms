@@ -32,12 +32,10 @@
 
 <style lang="scss">
   a {
-    // reset all button styles
     all: unset;
-    // use interface-type-lg mixin
     @include mixins.interface-type-lg;
     width: fit-content;
-    padding: functions.toRem(5px) functions.toRem(20px);
+    padding: functions.toRem(4px) functions.toRem(20px);
     border: none;
     cursor: default;
     text-decoration: none;
