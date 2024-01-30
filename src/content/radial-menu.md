@@ -6,4 +6,5 @@ project: Experiment
 hasLink: true
 linkTitle: View prototype
 previewImage: '4.webp'
+description: A svelte implementation of Rauno Freiberg’s wonderful radial menu.
 ---

@@ -5,12 +5,12 @@ export type Post = {
 	date: string;
 	category: Category;
 	project: string | null;
-	description: string | null;
 	hasLink: boolean | null;
 	link: string | null;
 	linkTitle: string | null;
 	previewImage: string | null;
 	previewVideo: string | null;
 	hasPreviewComponent: boolean | null;
+	description: string | null;
 	slug: string;
 };
