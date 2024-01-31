@@ -1,14 +1,13 @@
 <script lang="ts">
   import * as config from '$lib/config'
-	import { SlideMeta, SlideTab, Slide } from '$components'
   import { spring } from 'svelte/motion';
 	import type { LayoutData } from './$types';
-  import type { Post } from '$lib/types';
+	import { SlideMeta, SlideTab, Slide } from '$components'
 	import { onMount } from 'svelte';
   
   // Props
 	export let data: LayoutData;
-  const posts = data.posts as Post[];
+  const posts = data.posts.filter((post) => post.category === 'projects');
 
   // State
   let slideSpring = spring(0, { 
@@ -52,7 +51,7 @@
   // Methods
   function setIndexBasedOnHash() {
     const hash = window.location.hash;
-    const slug = '/' + hash.split('#')[1];
+    const slug = hash.split('#')[1];
     const index = posts.findIndex((post) => post.slug === slug);
     if (index > -1) {
       sliderIndex = index;
@@ -129,7 +128,7 @@
   }
 
   function getHref(slug : string) {
-    return slug === '/' ? slug : '#' + slug.split('/')[1];
+    return slug === '/' ? slug : '#' + slug;
   }
 
   function goToSlide(nextIndex : number) {
@@ -276,13 +275,7 @@
   <!-- Slideshow meta -->
   <SlideMeta
     date={date}
-    project={posts[sliderIndex].project}
-    description={posts[sliderIndex].description}
-    hasLink={posts[sliderIndex].hasLink}
-    linkTitle={posts[sliderIndex].linkTitle}
-    link={posts[sliderIndex].link}
-    slug={posts[sliderIndex].slug}
-  />
+    post={posts[sliderIndex]} />
   <!-- Slideshow -->
   <section
     class="slideshow"

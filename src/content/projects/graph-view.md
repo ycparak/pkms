@@ -1,7 +1,6 @@
 ---
 title: graph view
 date: '2020-07-01'
-category: 'craft'
 project: Thinkst Canary New UI
 hasLink: true
 link: https://blog.thinkst.com/2020/08/something-fresh.html

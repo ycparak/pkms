@@ -8,8 +8,9 @@
 
   onMount(async () => {
     if (post.hasPreviewComponent) {
-      const slug = post.slug.split("-").map((s) => s[0].toUpperCase() + s.slice(1)).join("");
-      previewComponent = (await import(/* @vite-ignore */ `./previews/${slug}.svelte`)).default
+      let componentName = post.slug.charAt(0).toUpperCase() + post.slug.slice(1);
+      componentName = componentName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+      previewComponent = (await import(/* @vite-ignore */ `./previews/${componentName}.svelte`)).default
     }
   });
 

@@ -16,7 +16,7 @@
     transform: translate(-50%, -50%);
     position: fixed;
     left: 50%;
-    top: functions.toRem(39px);
+    top: functions.toRem(38px);
     z-index: 199;
   }
   nav {

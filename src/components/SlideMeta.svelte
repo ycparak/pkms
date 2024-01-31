@@ -1,13 +1,9 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
+  import type { Post } from '$lib/types';
 
   export let date: string;
-  export let project: string | null;
-  export let description: string | null;
-  export let hasLink: boolean | null;
-  export let linkTitle: string | null;
-  export let link: string | null;
-  export let slug: string;
+  export let post: Post;
 
   let showDescription = false;
 </script>
@@ -20,26 +16,26 @@
       class="meta-button"
       class:active={showDescription}>
       <div class="meta-button-icon"></div>
-      <span><time>{date}</time> &middot; {project}</span>
+      <span><time>{date}</time> &middot; {post.project}</span>
     </button>
     {#if showDescription}
       <p
         transition:fade={{ delay: 0, duration: 300 }}
         class="meta-description"
         class:active={showDescription}>
-        {description}
+        {post.description}
       </p>
     {/if}
   </div>
-  {#if hasLink && linkTitle}
+  {#if post.hasLink && post.linkTitle}
     <a
       transition:fade={{ delay: 200, duration: 300 }}
-      href="{link ? link : slug}"
+      href="{post.link ? post.link : `${post.path}`}"
       class="action"
-      class:external="{link}"
-      target="{link ? '_blank' : '_self'}"
+      class:external="{post.link}"
+      target="{post.link ? '_blank' : '_self'}"
       draggable="false">
-      <span>{linkTitle}</span>
+      <span>{post.linkTitle}</span>
       <i class="ph-bold ph-arrow-right action-icon"></i>
     </a>
   {/if}
@@ -52,7 +48,7 @@
     justify-content: space-between;
     align-items: center;
     margin: functions.toRem(24px) functions.toRem(24px) 0 functions.toRem(24px);
-    min-height: functions.toRem(30px);
+    min-height: functions.toRem(28px);
   }
 
   .meta {
