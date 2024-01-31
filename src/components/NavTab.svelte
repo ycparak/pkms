@@ -17,6 +17,7 @@
 </script>
 
 <a
+  tabindex="-1"
   href="{href}"
   style="opacity: {opacity}; transform: scale({$springScale});"
   on:click|preventDefault={() => dispatch('select')}

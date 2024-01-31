@@ -23,3 +23,11 @@ body {
 	font-size: functions.toRem(15.3203px);
 	height: 100%;
 }
+
+a {
+	text-decoration: none;
+	&:focus {
+		outline: none;
+		color: var(--color-focus);
+	}
+}

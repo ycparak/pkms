@@ -274,10 +274,11 @@
 </svelte:head>
 
 <main>
-  <!-- SLideshow meta -->
+  <!-- Slideshow meta -->
   <header>
     <div class="meta">
       <button
+        tabindex="0"
         on:click={() => showDescription = !showDescription}
         class="meta-button"
         class:active={showDescription}>
@@ -313,7 +314,7 @@
     class:dragging={isDragging}
     style="transform: translate3d({xPosSlides}px, 0px, 0px);"
     role="slider"
-    tabindex="0"
+    tabindex="-1"
     aria-valuenow="{sliderIndex}"
     on:mousedown={(e) => startDragging(e.clientX)}
     on:mousemove={(e) => continueDragging(e.clientX)}
@@ -379,6 +380,7 @@
         height: fit-content;
         color: var(--color-text-accent);
         transition: all .3s ease;
+
         &-icon {
           width: functions.toRem(5px);
           height: functions.toRem(5px);
@@ -407,14 +409,23 @@
             animation: none;
           }
         }
+
+        &:focus {
+          outline: none;
+          color: var(--color-focus);
+          .meta-button-icon {
+            background-color: var(--color-focus);
+            animation: none;
+          }
+        }
       }
       &-description {
         position: absolute;
         top: functions.toRem(12px);
-        background-color: var(--color-translucent);
+        background-color: var(--color-background-translucent);
         backdrop-filter: blur(20px);
         padding: functions.toRem(8px) functions.toRem(13px) functions.toRem(10px);
-        z-index: 20;
+        z-index: 99;
         border-radius: functions.toRem(8px);
         border: 1px solid var(--color-background);
         display: block;
@@ -452,6 +463,10 @@
       }
       &:hover {
         color: var(--color-text);
+      }
+      &:focus {
+        outline: none;
+        color: var(--color-focus);
       }
     }
   }

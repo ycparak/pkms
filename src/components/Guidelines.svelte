@@ -2,12 +2,11 @@
 <div class="v"></div>
 <div class="v"></div>
 <div class="h"></div>
-<div class="h"></div>
 
 <style lang="scss">
   .h {
     position: absolute;
-    top: 19px;
+    top: 23px;
     width: 100%;
     z-index: 9999;
     height: 1px;

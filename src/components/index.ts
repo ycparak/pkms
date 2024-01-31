@@ -1,8 +1,8 @@
-import Footer from './Footer.svelte';
+import Menu from './Menu.svelte';
 import NavTab from './NavTab.svelte';
 import Slide from './Slide.svelte';
 import Guidelines from './Guidelines.svelte';
 
 // Interface
 
-export { Footer, NavTab, Slide, Guidelines };
+export { Menu, NavTab, Slide, Guidelines };
