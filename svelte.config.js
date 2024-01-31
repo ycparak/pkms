@@ -23,6 +23,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
+			$assets: './src/assets',
 			$components: './src/components',
 			$content: './src/content',
 			$routes: './src/routes',

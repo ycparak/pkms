@@ -4,6 +4,6 @@ date: '2023-02-01'
 project: Experiment
 hasLink: true
 linkTitle: View prototype
-previewImage: '4.webp'
+previewImage: '2.webp'
 description: A svelte implementation of Rauno Freiberg’s wonderful radial menu.
 ---

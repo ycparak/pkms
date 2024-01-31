@@ -3,7 +3,6 @@
   import { spring } from 'svelte/motion';
   const dispatch = createEventDispatcher()
 
-  export let href: string;
   export let title: string;
   export let opacity: number;
 
@@ -16,9 +15,8 @@
   const scaleUp = () => springScale.set(1);
 </script>
 
-<a
+<button
   tabindex="-1"
-  href="{href}"
   style="opacity: {opacity}; transform: scale({$springScale});"
   on:click|preventDefault={() => dispatch('select')}
   on:mousedown={scaleDown}
@@ -29,10 +27,10 @@
   on:touchcancel={scaleUp}
   draggable="false">
   {title}
-</a>
+</button>
 
 <style lang="scss">
-  a {
+  button {
     all: unset;
     @include mixins.interface-type-lg;
     width: fit-content;

@@ -14,18 +14,18 @@
     }
   });
 
-  const getImgUrl = (name: string) => new URL(`../lib/images/${name}`, import.meta.url).href;
+  const getAsset = (name: string) => new URL(`../assets/projects/${name}`, import.meta.url).href;
 </script>
 
 <div class="slide" style="transform: scale({scale})">
   {#if post.previewImage}
-    <img class="asset" src={getImgUrl(post.previewImage)} alt="Apple XDR" draggable="false"  loading="lazy">
+    <img class="asset" src={getAsset(post.previewImage)} alt="Apple XDR" draggable="false"  loading="lazy">
   {:else if post.hasPreviewComponent && previewComponent}
     <div class="asset">
       <svelte:component this={previewComponent} />
     </div>
   {:else if post.previewVideo}
-    <video class="asset" src={post.previewVideo} draggable="false" autoplay loop muted playsinline></video>
+    <video class="asset" src={getAsset(post.previewVideo)} draggable="false" autoplay loop muted playsinline></video>
   {/if}
 </div>
 

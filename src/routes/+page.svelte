@@ -2,7 +2,7 @@
   import * as config from '$lib/config'
   import { spring } from 'svelte/motion';
 	import type { LayoutData } from './$types';
-	import { SlideMeta, SlideTab, Slide } from '$components'
+	import { SlideMeta, Slide, SlideTab } from '$components'
 	import { onMount } from 'svelte';
   
   // Props
@@ -40,24 +40,11 @@
   $: interpolateSlides($slideSpring, screenWidth);
   $: date = setDate(sliderIndex);
 
-  // Lifecycle
-  onMount(() => {
-    if (window.location.hash) setIndexBasedOnHash();
+  onMount(async () => {
     document.fonts.ready.then(() => {
       fontLoaded = true;
     });
   });
-
-  // Methods
-  function setIndexBasedOnHash() {
-    const hash = window.location.hash;
-    const slug = hash.split('#')[1];
-    const index = posts.findIndex((post) => post.slug === slug);
-    if (index > -1) {
-      sliderIndex = index;
-      slideSpring.set(index);
-    }
-  }
 
   function calcNavItemOffsets(nav : HTMLElement, fontLoaded: boolean) {
     if (!nav || !fontLoaded) return;
@@ -127,18 +114,11 @@
     return `${newDate.getFullYear()}`;
   }
 
-  function getHref(slug : string) {
-    return slug === '/' ? slug : '#' + slug;
-  }
-
   function goToSlide(nextIndex : number) {
     if (nextIndex < 0 || nextIndex > posts.length - 1) return;
     prevIndex = sliderIndex;
     sliderIndex = nextIndex;
     slideSpring.set(sliderIndex);
-    const href = getHref(posts[nextIndex].slug);
-    if (sliderIndex === 0) window.history.pushState({}, '', window.location.pathname);
-    else window.location.hash = href;
   }
 
   function next() {
@@ -301,7 +281,6 @@
   <footer bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
     {#each posts as link, index}
       <SlideTab
-        href={getHref(link.slug)}
         title={link.title}
         opacity={navItemOpacities[index]}
         on:select={() => goToSlide(index)}
