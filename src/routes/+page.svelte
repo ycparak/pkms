@@ -3,11 +3,12 @@
 	import { SlideMeta, SlideTab, Slide } from '$components'
   import { spring } from 'svelte/motion';
 	import type { LayoutData } from './$types';
+  import type { Post } from '$lib/types';
 	import { onMount } from 'svelte';
   
   // Props
 	export let data: LayoutData;
-  const posts = data.posts;
+  const posts = data.posts as Post[];
 
   // State
   let slideSpring = spring(0, { 
@@ -110,7 +111,7 @@
   function calcSlideScales(slideSpring : number) {
     // Scale slides based on distance from current slide from 0.45 to 1
     let scales = [] as number[];
-    posts.forEach((post, i) => {
+    posts.forEach((post, i : number) => {
       let scale = 1 - Math.abs(slideSpring - i) * 0.2;
       scales[i] = scale < 0.3 ? 0.3 : scale;
     });
