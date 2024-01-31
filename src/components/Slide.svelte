@@ -40,7 +40,7 @@
     max-height: 100%;
     .asset {
       position: absolute;
-      padding: 4dvh 6dvw 4dvh 6dvw;
+      padding: 3.5dvh 6dvw 3.5dvh 6dvw;
       height: 100%;
       width: 100%;
       object-fit: contain;

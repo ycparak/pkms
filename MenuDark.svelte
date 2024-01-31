@@ -21,12 +21,10 @@
   }
   nav {
     position: relative;
-    background-color: var(--color-card-translucent);
-    border: 1px solid var(--color-border);
+    background-color: rgba(0, 0, 0, 0.9);
     border-radius: functions.toRem(30px);
-    // backdrop-filter: blur(16px);
     height: functions.toRem(28px);
-    box-shadow: 0 2px 4px rgba(0,0,0,.04), inset 0 1px 1px rgba(255,255,255,.12);
+    box-shadow: 0 5px 10px rgba(0,0,0,.12);
     pointer-events: all;
     display: flex;
     align-items: center;
@@ -39,14 +37,14 @@
       text-decoration: none;
       transition: all .3s ease;
       &.active {
-        color: var(--color-text);
+        color: var(--color-background);
       }
       &:hover, &:active {
-        color: var(--color-text);
+        color: var(--color-background);
       }
       &:focus {
         outline: none;
-        color: var(--color-text);
+        color: var(--color-background);
       }
     }
   }
