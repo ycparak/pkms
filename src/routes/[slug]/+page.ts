@@ -9,6 +9,6 @@ export const load = (async ({ params }) => {
 			meta: post.metadata
 		};
 	} catch (err) {
-		throw error(404, 'Could not find post');
+		error(404, 'Could not find post');
 	}
 }) satisfies PageLoad;
