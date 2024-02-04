@@ -17,7 +17,7 @@
     position: fixed;
     left: 50%;
     top: functions.toRem(38px);
-    z-index: 199;
+    z-index: 499;
   }
   nav {
     position: relative;

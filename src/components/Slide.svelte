@@ -10,7 +10,7 @@
     if (post.hasPreviewComponent) {
       let componentName = post.slug.charAt(0).toUpperCase() + post.slug.slice(1);
       componentName = componentName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
-      previewComponent = (await import(/* @vite-ignore */ `./previews/${componentName}.svelte`)).default
+      previewComponent = (await import(/* @vite-ignore */ `./projects/${componentName}.svelte`)).default
     }
   });
 
@@ -21,7 +21,7 @@
   {#if post.previewImage}
     <img class="asset" src={getAsset(post.previewImage)} alt="Apple XDR" draggable="false"  loading="lazy">
   {:else if post.hasPreviewComponent && previewComponent}
-    <div class="asset">
+    <div class="component">
       <svelte:component this={previewComponent} />
     </div>
   {:else if post.previewVideo}
@@ -41,13 +41,28 @@
     max-height: 100%;
     .asset {
       position: absolute;
-      padding: 3.5dvh 6dvw 3.5dvh 6dvw;
+      padding: 3.5dvh 5dvw 3.5dvh 5dvw;
       height: 100%;
       width: 100%;
       object-fit: contain;
       object-position: center;
       user-select: none;
       -webkit-user-drag: none;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .component {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
+      user-select: none;
+      -webkit-user-drag: none;
+      padding: 10dvh 5dvw 10dvh 5dvw;
+      @media (max-width: 768px) or (max-height: 768px) {
+        padding: 3.5dvh 5dvw 3.5dvh 5dvw;
+      }
     }
   }
 </style>
