@@ -287,6 +287,10 @@
       />
     {/each}
   </footer>
+
+  <!-- Footer fades -->
+  <div class="fade left"></div>
+  <div class="fade right"></div>
 </main>
 
 <svelte:window
@@ -331,5 +335,22 @@
     margin-bottom: functions.toRem(32px);
     white-space: nowrap;
     backface-visibility: hidden;
+  }
+
+  .fade {
+    position: fixed;
+    height: functions.toRem(50px);
+    bottom: 0;
+    width: functions.toRem(150px);
+    pointer-events: none;
+    z-index: 1;
+    &.left {
+      left: 0;
+      background: linear-gradient(to right, var(--color-background) 0%, transparent 100%);
+    }
+    &.right {
+      right: 0;
+      background: linear-gradient(to left, var(--color-background) 0%, transparent 100%);
+    }
   }
 </style>
