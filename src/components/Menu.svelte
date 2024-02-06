@@ -1,11 +1,14 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
   export let path: string;
 </script>
 
 <div class="menu">
   <nav>
     <a href="/" class:active={path === '/'}>craft</a>
-    <a href="/about" class:active={path === '/about'}>about</a>
+    <a href="/" class:active={path === '/about'} on:click={() => dispatch('showModal')}>about</a>
     <a target="_blank" href="mailto:yusuf.parak@gmail.com">email</a>
     <a target="_blank" href="https://twitter.com/ycparak">twitter</a>
   </nav>
@@ -18,6 +21,9 @@
     left: 50%;
     top: functions.toRem(38px);
     z-index: 499;
+    @media screen and (max-width: 1512px){
+      top: functions.toRem(34px);   
+    }
   }
   nav {
     position: relative;

@@ -41,7 +41,7 @@
     max-height: 100%;
     .asset {
       position: absolute;
-      padding: 3.5dvh 5dvw 3.5dvh 5dvw;
+      padding: functions.toRem(38px);
       height: 100%;
       width: 100%;
       object-fit: contain;
@@ -50,18 +50,21 @@
       -webkit-user-drag: none;
       border-radius: 20px;
       overflow: hidden;
+      @media screen and (min-width: 1512px){
+        padding: 3.5dvh 5dvw 3.5dvh 5dvw;
+      }
     }
     .component {
       position: absolute;
+      padding: functions.toRem(38px);
       height: 100%;
       width: 100%;
       object-fit: contain;
       object-position: center;
       user-select: none;
       -webkit-user-drag: none;
-      padding: 10dvh 5dvw 10dvh 5dvw;
-      @media (max-width: 768px) or (max-height: 768px) {
-        padding: 3.5dvh 5dvw 3.5dvh 5dvw;
+      @media screen and (min-width: 1512px){
+        padding: 10dvh 5dvw 10dvh 5dvw;
       }
     }
   }

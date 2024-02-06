@@ -49,6 +49,9 @@
     align-items: center;
     margin: functions.toRem(24px) functions.toRem(24px) 0 functions.toRem(24px);
     min-height: functions.toRem(28px);
+    @media screen and (max-width: 1512px){
+      margin-top: functions.toRem(20px);   
+    }
   }
 
   .meta {

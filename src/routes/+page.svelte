@@ -335,6 +335,9 @@
     margin-bottom: functions.toRem(32px);
     white-space: nowrap;
     backface-visibility: hidden;
+    @media screen and (max-width: 1512px){
+      margin-bottom: functions.toRem(28px);   
+    }
   }
 
   .fade {
