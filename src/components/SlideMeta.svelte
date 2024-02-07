@@ -1,5 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
+  import { runAnimation } from '$lib/stores';
   import type { Post } from '$lib/types';
 
   export let date: string;
@@ -8,7 +9,8 @@
   let showDescription = false;
 </script>
 
-<header>
+{#if $runAnimation}
+<header in:fade={{ delay: 1000, duration: 400 }}>
   <div class="meta">
     <button
       tabindex="0"
@@ -40,6 +42,7 @@
     </a>
   {/if}
 </header>
+{/if}
 
 <style lang="scss">
   header {

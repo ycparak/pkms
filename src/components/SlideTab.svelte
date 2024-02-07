@@ -1,10 +1,13 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte'
+  import { runAnimation } from '$lib/stores';
   import { spring } from 'svelte/motion';
+  import { fly } from 'svelte/transition';
+  import { circOut } from 'svelte/easing';
+  import { createEventDispatcher } from 'svelte'
   const dispatch = createEventDispatcher()
 
+  export let index: number;
   export let title: string;
-  export let opacity: number;
 
   const springScale = spring(1, {
     stiffness: 0.1,
@@ -15,19 +18,22 @@
   const scaleUp = () => springScale.set(1);
 </script>
 
-<button
-  tabindex="-1"
-  style="opacity: {opacity}; transform: scale({$springScale});"
-  on:click|preventDefault={() => dispatch('select')}
-  on:mousedown={scaleDown}
-  on:mouseup={scaleUp}
-  on:mouseleave={scaleUp}
-  on:touchstart={scaleDown}
-  on:touchend={scaleUp}
-  on:touchcancel={scaleUp}
-  draggable="false">
-  {title}
-</button>
+{#if $runAnimation}
+  <button
+    in:fly={{ delay: (index + 4) * 200, duration: 400, y: 60, opacity: 0, easing: circOut }}
+    tabindex="-1"
+    style="transform: scale({$springScale});"
+    on:click|preventDefault={() => dispatch('select')}
+    on:mousedown={scaleDown}
+    on:mouseup={scaleUp}
+    on:mouseleave={scaleUp}
+    on:touchstart={scaleDown}
+    on:touchend={scaleUp}
+    on:touchcancel={scaleUp}
+    draggable="false">
+    {title}
+  </button>
+{/if}
 
 <style lang="scss">
   button {

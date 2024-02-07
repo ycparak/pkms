@@ -19,11 +19,11 @@
   let prevIndex = 0;
   let screenWidth = 0;
   let fontLoaded = false;
-  let xPosNav = 0;
+  let xPosNav = -53;
   let xPosSlides = 0;
   let nav: HTMLElement;
-  let navItemOffsets = [-53] as number[];
-  let navItemOpacities = Array(posts.length).fill(0.2) as number[];
+  let navItemOffsets = [] as number[];
+  let navItemOpacities = Array.from({ length: posts.length }, (v, i) => (i === 0 ? 1 : 0.2)) as number[];
   let slideScales = [1] as number[];
   let shouldStartDetectingGesture = true;
   let isCurrentlyDetectingGesture = false;
@@ -256,6 +256,7 @@
   <SlideMeta
     date={date}
     post={posts[sliderIndex]} />
+    
   <!-- Slideshow -->
   <section
     class="slideshow"
@@ -280,11 +281,13 @@
   <!-- Slideshow Nav -->
   <footer bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
     {#each posts as link, index}
-      <SlideTab
-        title={link.title}
-        opacity={navItemOpacities[index]}
-        on:select={() => goToSlide(index)}
-      />
+      <div style="opacity: {navItemOpacities[index]}">
+        <SlideTab
+          {index}
+          title={link.title}
+          on:select={() => goToSlide(index)}
+        />
+      </div>
     {/each}
   </footer>
 

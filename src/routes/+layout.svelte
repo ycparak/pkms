@@ -3,11 +3,18 @@
   import "@phosphor-icons/web/regular";
   import "@phosphor-icons/web/bold";
   import "@phosphor-icons/web/fill";
-  import { Menu, AboutModal } from '$components';
-	import type { LayoutData } from './$types';
-  export let data: LayoutData;
+  import { afterNavigate } from '$app/navigation';
   import { tweened } from 'svelte/motion';
 	import { quadIn, circOut } from 'svelte/easing';
+  import { Menu, AboutModal } from '$components';
+  import { runAnimation } from '$lib/stores';
+	import type { LayoutData } from './$types';
+
+  export let data: LayoutData;
+
+  afterNavigate(() => {
+    runAnimation.set(true);
+  });
 
   let aboutModal = false;
   const sizeConst = 0.06;
