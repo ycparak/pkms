@@ -1,4 +1,4 @@
-export type Category = 'projects' | 'notes' | 'essays';
+export type Category = 'craft' | 'writing';
 
 export type Post = {
 	title: string;

@@ -44,7 +44,7 @@
       &:hover, &:active {
         color: var(--color-text);
       }
-      &:focus {
+      &:focus-within {
         outline: none;
         color: var(--color-text);
       }

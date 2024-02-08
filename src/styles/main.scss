@@ -26,7 +26,7 @@ body {
 
 a {
 	text-decoration: none;
-	&:focus {
+	&:focus-within {
 		outline: none;
 		color: var(--color-focus);
 	}

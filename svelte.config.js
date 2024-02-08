@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import sequence from 'svelte-sequential-preprocessor';
 import { mdsvex } from 'mdsvex';
@@ -27,7 +27,6 @@ const config = {
 			$components: './src/components',
 			$content: './src/content',
 			$routes: './src/routes',
-			$stores: './src/stores',
 			$styles: './src/styles'
 		}
 	}

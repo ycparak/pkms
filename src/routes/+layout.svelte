@@ -75,7 +75,7 @@
 </script>
 
 <div style="filter: blur({$blur}px); transform: scale({$size});">
-  <Menu path="{data.pathname}" on:showModal={showModal} />
+  <Menu path="{data.url}" on:showModal={showModal} />
   <slot></slot>
 </div>
 

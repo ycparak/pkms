@@ -42,7 +42,7 @@
       &:hover, &:active {
         color: var(--color-background);
       }
-      &:focus {
+      &:focus-within {
         outline: none;
         color: var(--color-background);
       }

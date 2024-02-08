@@ -1,13 +1,13 @@
 <script lang="ts">
   import * as config from '$lib/config'
   import { spring } from 'svelte/motion';
-	import type { LayoutData } from './$types';
 	import { SlideMeta, Slide, SlideTab } from '$components'
 	import { onMount } from 'svelte';
+	import type { PageData } from './$types';
   
   // Props
-	export let data: LayoutData;
-  const posts = data.posts.filter((post) => post.category === 'projects');
+	export let data : PageData;
+  const posts = data.posts.filter((post) => post.category === 'craft');
 
   // State
   let slideSpring = spring(0, { 

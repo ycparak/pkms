@@ -1,4 +1,5 @@
 import { json } from '@sveltejs/kit';
+import { dev } from '$app/environment';
 import type { Post, Category } from '$lib/types';
 
 async function getPosts() {
@@ -15,9 +16,8 @@ async function getPosts() {
 			const metadata = file.metadata as Omit<Post, 'slug'>;
 			const path = '/' + category + '/' + slug;
 			const post = { ...metadata, category, slug, path } satisfies Post;
-			// if post.isDraft is true and not in dev mode, skip
-			// if (post.isDraft && process.env.NODE_ENV !== 'development') posts.push(post);
-			posts.push(post);
+			if (post.isDraft && !dev) continue;
+			else posts.push(post);
 		}
 	}
 

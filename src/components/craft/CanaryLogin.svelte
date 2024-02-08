@@ -8,21 +8,21 @@
       <img class="inyoni" src="/images/inyoni.gif" alt="" draggable="false">
       <img class="canary" src="/images/canary.png" alt="" draggable="false">
     </div>
-    <div class="form">
+    <div tabindex="-1" class="form">
       <div class="card">
         <div class="card-row">
-          <input id="email" type="email" name="email" placeholder="">
+          <input tabindex="-1" id="email" type="email" name="email" placeholder="">
           <label for="email">Email Address</label>
         </div>
         <div class="card-row">
-          <input id="password" type="password" name="password" placeholder="">
+          <input tabindex="-1" id="password" type="password" name="password" placeholder="">
           <label for="password">Password</label>
         </div>
       </div>
-      <button type="submit">Log in to your Console</button>
+      <button tabindex="-1" type="submit">Log in to your Console</button>
     </div>
     <div class="footer">
-      <a href="/">Forgot your password?</a>
+      <a tabindex="-1" href="/">Forgot your password?</a>
     </div>
   </div>
 </section>

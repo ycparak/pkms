@@ -100,7 +100,7 @@
         }
       }
 
-      &:focus {
+      &:focus-within {
         outline: none;
         color: var(--color-focus);
         .meta-button-icon {
@@ -155,7 +155,7 @@
     &:hover {
       color: var(--color-text);
     }
-    &:focus {
+    &:focus-within {
       outline: none;
       color: var(--color-focus);
     }

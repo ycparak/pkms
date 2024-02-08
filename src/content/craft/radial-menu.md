@@ -5,4 +5,5 @@ project: Experiment
 hasLink: false
 hasPreviewComponent: true
 description: A svelte implementation of Rauno Freiberg’s wonderful radial menu.
+isDraft: false
 ---

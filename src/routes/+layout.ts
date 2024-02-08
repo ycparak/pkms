@@ -1,14 +1,7 @@
-import type { Post } from '$lib/types';
+export const prerender = true;
 
-export async function load({ fetch, url }) {
-	const { pathname } = url;
-
-	// Fetch posts
-	const response = await fetch('api/posts');
-	const posts: Post[] = await response.json();
-
+export async function load({ url }) {
 	return {
-		pathname,
-		posts
+		url: url.pathname
 	};
 }
