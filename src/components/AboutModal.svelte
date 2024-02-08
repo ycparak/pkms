@@ -29,7 +29,7 @@
 <div class="container">
   <div class="content" style="transform: scale({contentScale});">
     <div class="content-text" style="opacity: {contentOpacity}; filter: blur({contentBlur}px);">
-      <p>Hey, I’m Yusuf. I’m a South African Product Designer and Software Engineer. The broad through line of my work is an attempt to balance my love for designing, building, and tinkering on novel computer interfaces with my equally strong desire to build software (or software-adjacent) businesses. I’m at my happiest working on things that let me do both — thoughtfully.</p>
+      <p>Hey, I’m Yusuf. I’m a South African Product Designer and Software Engineer. The broad through line of my work is an attempt to balance my love for designing, building, and tinkering on novel computer interfaces with my equally strong desire to build software (or software-adjacent) businesses. I’m at my happiest working on things that let me do both — <em>thoughtfully</em>.</p>
       <p>
         Previously, I created <a target="_blank" href="https://pinched.io">Pinched.io</a>, a sourcing tool built on top of Twitter’s social graph, <a target="_blank" href="https://pioneer.app/blog/september-2022/">backed by Pioneer</a>. Before that, I was a design engineer at <a target="_blank" href="https://thinkst.com">Thinkst</a> where I worked on <a target="_blank" href="https://canary.tools">Canary</a>, a tool used by security teams to detect attackers on their networks. In university, I studied Computer Science.
       </p>

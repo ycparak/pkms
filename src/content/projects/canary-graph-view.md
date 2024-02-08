@@ -1,5 +1,5 @@
 ---
-title: canary graph view
+title: canary incidents graph
 date: '2020-07-01'
 project: Thinkst Canary New UI
 hasLink: true

@@ -1,5 +1,5 @@
 ---
-title: x-ray search
+title: boolean search
 date: '2022-10-01'
 project: Pinched V1
 hasLink: false

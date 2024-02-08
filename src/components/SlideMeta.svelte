@@ -10,7 +10,7 @@
 </script>
 
 {#if $runAnimation}
-<header in:fade={{ delay: 1000, duration: 400 }}>
+<header in:fade={{ delay: 1000, duration: 500 }}>
   <div class="meta">
     <button
       tabindex="0"
