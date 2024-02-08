@@ -6,11 +6,13 @@
   const dispatch = createEventDispatcher();
 
   export let path: string;
+
+  let delay = path === '/' ? 1200 : 200;
 </script>
 
 <div class="menu">
   {#if $runAnimation}
-    <nav in:fly={{ delay: 1200, duration: 400, x: 0, y: -66, opacity: 0.5, easing: circOut }}>
+    <nav in:fly={{ delay, duration: 400, x: 0, y: -66, opacity: 0.5, easing: circOut }}>
       <a href="/" class:active={path === '/'}>craft</a>
       <a href="/writing" class:active={path === '/writing'}>writing</a>
       <a href="{path}" class:active={path === '/about'} on:click={() => dispatch('showModal')}>about</a>
