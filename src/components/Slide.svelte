@@ -35,13 +35,14 @@
 
   onMount(async () => {
     if (post.hasPreviewComponent) {
+      let category = post.category;
       let componentName = post.slug.charAt(0).toUpperCase() + post.slug.slice(1);
       componentName = componentName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
-      previewComponent = (await import(/* @vite-ignore */ `./craft/${componentName}.svelte`)).default
+      previewComponent = (await import(/* @vite-ignore */ `./${category}/${componentName}.svelte`)).default
     }
   });
 
-  const getAsset = (name: string) => new URL(`../assets/craft/${name}`, import.meta.url).href;
+  const getAsset = (name: string) => new URL(`../assets/${post.category}/${name}`, import.meta.url).href;
 </script>
 
 <div class="slide" style="transform: scale({scale})">

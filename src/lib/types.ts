@@ -1,4 +1,4 @@
-export type Category = 'craft' | 'writing';
+export type Category = 'projects' | 'craft' | 'writing';
 
 export type Post = {
 	title: string;

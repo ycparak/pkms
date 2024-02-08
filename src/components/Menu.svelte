@@ -13,7 +13,7 @@
     <nav in:fly={{ delay: 1200, duration: 400, x: 0, y: -66, opacity: 0.5, easing: circOut }}>
       <a href="/" class:active={path === '/'}>craft</a>
       <a href="/writing" class:active={path === '/writing'}>writing</a>
-      <a href="/" class:active={path === '/about'} on:click={() => dispatch('showModal')}>about</a>
+      <a href="{path}" class:active={path === '/about'} on:click={() => dispatch('showModal')}>about</a>
       <!-- <a target="_blank" href="mailto:yusuf.parak@gmail.com">email</a>
       <a target="_blank" href="https://twitter.com/ycparak">twitter</a> -->
     </nav>

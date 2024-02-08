@@ -1,4 +1,5 @@
 <script lang="ts">
+  import * as config from '$lib/config'
   import '$styles/main.scss'
   import "@phosphor-icons/web/regular";
   import "@phosphor-icons/web/bold";
@@ -74,9 +75,16 @@
   }
 </script>
 
+<svelte:head>
+	<title>{config.title}</title>
+	<meta name="twitter:title" content="{config.title}" />
+	<meta name="twitter:description" content="{config.description}" />
+	<meta name="Description" content="{config.description}" />
+</svelte:head>
+
 <div style="filter: blur({$blur}px); transform: scale({$size});">
   <Menu path="{data.url}" on:showModal={showModal} />
-  <slot></slot>
+  <slot />
 </div>
 
 {#if aboutModal}

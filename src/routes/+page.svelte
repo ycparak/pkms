@@ -1,13 +1,14 @@
 <script lang="ts">
-  import * as config from '$lib/config'
   import { spring } from 'svelte/motion';
 	import { SlideMeta, Slide, SlideTab } from '$components'
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+
+  const categories = ['projects', 'craft']
   
   // Props
 	export let data : PageData;
-  const posts = data.posts.filter((post) => post.category === 'craft');
+  const posts = data.posts.filter((post) => categories.includes(post.category));
 
   // State
   let slideSpring = spring(0, { 
@@ -242,14 +243,6 @@
     isDragging = false;
   }
 </script>
-
-<!-- Head -->
-<svelte:head>
-	<title>{config.title}</title>
-	<meta name="twitter:title" content="{config.title}" />
-	<meta name="twitter:description" content="{config.description}" />
-	<meta name="Description" content="{config.description}" />
-</svelte:head>
 
 <main>
   <!-- Slideshow meta -->
