@@ -32,7 +32,7 @@
   {#if post.hasLink && post.linkTitle}
     <a
       data-sveltekit-preload-data="hover"
-      transition:fade={{ delay: 200, duration: 300 }}
+      transition:fade={{ delay: 100, duration: 300 }}
       href="{post.link ? post.link : `${post.path}`}"
       class="action"
       class:external="{post.link}"
@@ -146,11 +146,12 @@
     height: fit-content;
     &-icon {
       height: functions.toRem(10px);
-      margin-left: functions.toRem(8px);
+      margin-left: functions.toRem(6px);
     }
     &.external {
       .action-icon {
-        transform: translateY(functions.toRem(1px)) rotate(-45deg);
+        margin-left: 4px;
+        transform: translateY(-1px) rotate(-45deg);
       }
     }
     &:hover {
