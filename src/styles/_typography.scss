@@ -1,0 +1,22 @@
+@use 'functions';
+@use 'mixins';
+
+article {
+	h1 {
+		font-size: functions.toRem(16px);
+		line-height: 1.2;
+		font-weight: 500;
+		color: var(--color-text);
+	}
+
+	time {
+		@include mixins.interface-type-sm;
+		color: var(--color-text-accent);
+	}
+
+	p {
+		font-size: functions.toRem(16px);
+		line-height: 1.75;
+		color: var(--color-text-body);
+	}
+}

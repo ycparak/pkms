@@ -1,211 +1,355 @@
-<script>
-	import "@fontsource/newsreader/400-italic.css";
+<script lang="ts">
+  import { spring } from 'svelte/motion';
+	import { SlideMeta, Slide, SlideTab } from '$components'
+	import { onMount } from 'svelte';
+	import type { PageData } from './$types';
+
+  const categories = ['projects', 'craft']
+  
+  // Props
+	export let data : PageData;
+  const posts = data.posts.filter((post) => categories.includes(post.category));
+
+  // State
+  let slideSpring = spring(0, { 
+    stiffness: 0.085,
+    damping: 0.8,
+    precision: 0.00001,
+  });
+  let sliderIndex = 0;
+  let prevIndex = 0;
+  let screenWidth = 0;
+  let fontLoaded = false;
+  let xPosNav = -53;
+  let xPosSlides = 0;
+  let nav: HTMLElement;
+  let navItemOffsets = [] as number[];
+  let navItemOpacities = Array.from({ length: posts.length }, (v, i) => (i === 0 ? 1 : 0.2)) as number[];
+  let slideScales = [1] as number[];
+  let shouldStartDetectingGesture = true;
+  let isCurrentlyDetectingGesture = false;
+  let initialKeypress = true;
+  let isDragging = false;
+  let dragX = 0;
+  let panVelocity = 0;
+  let date = posts[sliderIndex].date;
+  
+  $: calcNavItemOffsets(nav, fontLoaded);
+  $: calcNavItemOpacities(nav, $slideSpring);
+  $: calcSlideScales($slideSpring);
+  $: interpolateNav($slideSpring);
+  $: interpolateSlides($slideSpring, screenWidth);
+  $: date = setDate(sliderIndex);
+
+  onMount(async () => {
+    document.fonts.ready.then(() => {
+      fontLoaded = true;
+    });
+  });
+
+  function calcNavItemOffsets(nav : HTMLElement, fontLoaded: boolean) {
+    if (!nav || !fontLoaded) return;
+    
+    let tabs = Array.from(nav.children);
+    let tabWidths = [] as number[];
+    let tabWidthsCumulative = [] as number[];
+    
+    tabs.forEach((tab, i) => {
+      tabWidths[i] = tab.getBoundingClientRect().width;
+      tabWidthsCumulative[i] = tabWidths[i] + (tabWidthsCumulative[i - 1] || 0);
+      let offset = -(tabWidthsCumulative[i] - (tabWidths[i] / 2));
+      navItemOffsets[i] = Math.round(offset);
+    });
+
+    xPosNav = navItemOffsets[sliderIndex];
+  }
+
+  function interpolateNav(slideSpring : number) {
+    if (prevIndex === sliderIndex && !isDragging) return navItemOffsets[sliderIndex];
+
+    // Hacky fix to get interpolation working on first load for first and last elements when dragging
+    if (isDragging && sliderIndex === 0 && prevIndex === 0) prevIndex = sliderIndex + 1;
+    if (isDragging && sliderIndex === posts.length - 1 && prevIndex === posts.length - 1) prevIndex = posts.length - 1;
+
+    const prevOffset = navItemOffsets[prevIndex];
+    const nextOffset = navItemOffsets[sliderIndex];
+    const slideSpringPercentage = progressPercentage(slideSpring, prevIndex, sliderIndex);
+    xPosNav = prevOffset + (nextOffset - prevOffset) * slideSpringPercentage;
+  }
+
+  function interpolateSlides(slideSpring : number, width : number) {
+    xPosSlides = slideSpring * -width;
+  }
+
+  function calcNavItemOpacities(nav : HTMLElement, slideSpring : number) {
+    if (!nav) return;
+    
+    let tabs = Array.from(nav.children);
+    let tabOpacities = [] as number[];
+
+    tabs.forEach((tab, i) => {
+      let opacity = 1 - Math.abs(slideSpring - i);
+      tabOpacities[i] = opacity < 0.2 ? 0.2 : opacity;
+    });
+
+    navItemOpacities = tabOpacities;
+  }
+
+  function calcSlideScales(slideSpring : number) {
+    // Scale slides based on distance from current slide from 0.45 to 1
+    let scales = [] as number[];
+    posts.forEach((post, i : number) => {
+      let scale = 1 - Math.abs(slideSpring - i) * 0.2;
+      scales[i] = scale < 0.3 ? 0.3 : scale;
+    });
+    slideScales = scales;
+  }
+
+  function progressPercentage(value : number, startValue : number, endValue : number) {
+    return (value - startValue) / (endValue - startValue);
+  };
+
+  function setDate(tabActive : number) {
+    const newDate = new Date(posts[tabActive].date);
+    // return `${(newDate.getMonth() + 1).toString().padStart(2, '0')}.${newDate.getFullYear()}`;
+    return `${newDate.getFullYear()}`;
+  }
+
+  function goToSlide(nextIndex : number) {
+    if (nextIndex < 0 || nextIndex > posts.length - 1) return;
+    prevIndex = sliderIndex;
+    sliderIndex = nextIndex;
+    slideSpring.set(sliderIndex);
+  }
+
+  function next() {
+    if (sliderIndex === posts.length - 1) return;
+    goToSlide(sliderIndex + 1);
+  }
+
+  function prev() {
+    if (sliderIndex === 0) return;
+    goToSlide(sliderIndex - 1);
+  }
+
+  function isRubberBandRegion() {
+    const positionTolerance = 0.05;
+    return $slideSpring < positionTolerance || $slideSpring > posts.length - 1 - positionTolerance;
+  }
+
+  function passedDragDistanceTolerance() {
+    const interpolationDelta = $slideSpring - sliderIndex;
+    const passedDistanceTolerance = Math.abs(interpolationDelta) > 0.5;
+    return passedDistanceTolerance;
+  }
+
+  function shouldDragAdvance() {
+    const interpolationDelta = $slideSpring - sliderIndex;
+    const passedVelocityTolerance = Math.abs(panVelocity) > 3;
+    const swipingTowardsCurrentSlide = (interpolationDelta < 0 && panVelocity > 0) || (interpolationDelta > 0 && panVelocity < 0);
+    const swipeDirectionIsRight = panVelocity < 0;
+
+    if ((sliderIndex === 0 && swipeDirectionIsRight) && (passedDragDistanceTolerance() || passedVelocityTolerance)) return true;
+    else if ((sliderIndex === posts.length - 1 && !swipeDirectionIsRight) && (passedDragDistanceTolerance() || passedVelocityTolerance)) return true;
+    else if (!isRubberBandRegion() && (passedDragDistanceTolerance() || (swipingTowardsCurrentSlide && passedVelocityTolerance))) return true;
+    else return false;
+  }
+
+  function dragToNextSlide() {
+    let directionIsForward = sliderIndex <= $slideSpring;
+    let targetIndex = directionIsForward ? Math.ceil($slideSpring) : Math.floor($slideSpring);
+    goToSlide(targetIndex);
+    isDragging = false;
+  }
+
+  // Events
+  function keydown(event: KeyboardEvent) {
+    const isArrowRight = event.key === 'ArrowRight';
+    const isArrowLeft = event.key === 'ArrowLeft';
+    if (!(isArrowRight || isArrowLeft)) return;
+
+    const step = isArrowRight ? 1 : -1;
+
+    if (isArrowRight && sliderIndex < posts.length - 1 || isArrowLeft && sliderIndex > 0) {
+      isArrowRight ? next() : prev();
+    } else if (initialKeypress && isRubberBandRegion()) {
+      // Rubber banding
+      const maxRubberBandDistance = 0.03;
+      slideSpring.set($slideSpring + (step * maxRubberBandDistance));
+    }
+
+    initialKeypress = false;
+  }
+
+  function keyup(event : KeyboardEvent) {
+    // Stop rubber banding if user releases key
+    if (!(event.key === 'ArrowRight' || event.key === 'ArrowLeft')) return;
+    slideSpring.set(sliderIndex);
+    initialKeypress = true;
+  }
+
+  function wheel(deltaX: number) {
+    const threshold = 7.5;
+    if (Math.abs(deltaX) < threshold) return;
+
+    if (shouldStartDetectingGesture) {
+      shouldStartDetectingGesture = false;
+      isCurrentlyDetectingGesture = true;
+
+      setTimeout(async function () {
+        isCurrentlyDetectingGesture = false;
+
+        if (deltaX > 0 && sliderIndex < posts.length - 1) next();
+        else if (deltaX < 0 && sliderIndex > 0)  prev();
+        slideSpring.set(sliderIndex);
+        
+        setTimeout(function () {
+          shouldStartDetectingGesture = true;
+        }, 1000);
+      }, 150);
+    }
+
+    if (isCurrentlyDetectingGesture) {
+      if (deltaX > 0 && sliderIndex === posts.length - 1) slideSpring.set($slideSpring + 0.1);
+      else if (deltaX < 0 && sliderIndex === 0) slideSpring.set($slideSpring - 0.1);
+    }
+  }
+
+  function startDragging(x: number) {
+    isDragging = true;
+    dragX = x;
+  }
+
+  function continueDragging(x: number) {
+    if (!isDragging) return;
+
+    panVelocity = x - dragX;
+    dragX = x;
+
+    const springValue = $slideSpring;
+    let progress = progressPercentage(panVelocity, 0, -screenWidth);
+    if (springValue + progress < 0 || springValue + progress > posts.length - 1) progress *= 0.5; // Rubber banding
+    slideSpring.update((n) => n + progress);
+
+    if (passedDragDistanceTolerance() && shouldDragAdvance()) dragToNextSlide();
+  }
+
+  function stopDragging() {
+    if (!isDragging) return;
+
+    if (shouldDragAdvance()) dragToNextSlide();
+    else slideSpring.set(sliderIndex);
+
+    isDragging = false;
+  }
 </script>
 
-<svelte:head>
-	<title>Yusuf Parak • @ycparak</title>
+<main>
+  <!-- Slideshow meta -->
+  <SlideMeta
+    date={date}
+    post={posts[sliderIndex]} />
+    
+  <!-- Slideshow -->
+  <section
+    class="slideshow"
+    class:dragging={isDragging}
+    style="transform: translate3d({xPosSlides}px, 0px, 0px);"
+    role="slider"
+    tabindex="-1"
+    aria-valuenow="{sliderIndex}"
+    on:mousedown={(e) => startDragging(e.clientX)}
+    on:mousemove={(e) => continueDragging(e.clientX)}
+    on:mouseup={stopDragging}
+    on:mouseleave={stopDragging}
+    on:touchstart={(e) => startDragging(e.touches[0].pageX)}
+    on:touchmove|preventDefault={(e) => continueDragging(e.touches[0].pageX)}
+    on:touchend={stopDragging}
+    on:touchcancel={stopDragging}>
+    {#each posts as post, index}
+      <Slide {post} scale={slideScales[index]} />
+    {/each}
+  </section>
 
-	<meta name="twitter:title" content="Yusuf Parak" />
-	<meta name="twitter:description" content="@ycparak • design engineer, building pinched.io, alumnus pioneer.app" />
-	<meta name="Description" content="Crafting great software. Design engineer, building pinched.io, alumnus at pioneer.app" />
-</svelte:head>
+  <!-- Slideshow Nav -->
+  <footer bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
+    {#each posts as link, index}
+      <div style="opacity: {navItemOpacities[index]}">
+        <SlideTab
+          {index}
+          title={link.title}
+          on:select={() => goToSlide(index)}
+        />
+      </div>
+    {/each}
+  </footer>
 
-<div id="page">
-	<section class="hero">
-		<h1>Yusuf Parak, <br /> design engineer <br /> building pinched.</h1>
-		<div class="nav-links">
-			<a class="external-link" target="_blank" href="mailto:yusuf@ycparak.com">Email</a>
-			<a class="external-link" target="_blank" href="https://twitter.com/ycparak">Twitter</a>
-			<a class="external-link" target="_blank" href="https://github.com/ycparak">Github</a>
-			<a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a>
-		</div>
-	</section>
-	<section class="about">
-		<p>The broad through line of my work is designing software that makes people feel a sense of awe. Currently I’m building <a target="_blank" href="https://pinched.io">Pinched.io</a>, a sourcing tool that helps cool folks find their next hire, sales lead, or founder to invest in (we’re backed by Pioneer). Before that I was a design engineer at <a target="_blank" href="https://blog.thinkst.com/2020/08/something-fresh.html">Thinkst Canary</a>. Before that I studied CS. Before that I dropped out of an architecture degree. Before that I was a deeply unmotivated student that only loved one subject — art. If I have to connect the dots going backward, taking art class is probably the thing that got me into the game.</p>
-	</section>
-	<section class="projects">
-		<h2>Projects</h2>
-		<div class="project">
-			<div class="date">2022–Now</div>
-			<div class="content">
-				<h3><a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a></h3>
-				<p>Network based sourcing tool for finding your next hire, sales lead, or founder to invest in, starting with Twitter.</p>
-			</div>
-		</div>
-		<div class="project">
-			<div class="date">2023–Now</div>
-			<div class="content">
-				<h3>Svbmit</h3>
-				<p>Low-level UI component library for <a target="_blank" href="https://kit.svelte.dev/">Sveltekit</a>, with a focus on accessibility and DX, à la <a target="_blank" href="https://www.radix-ui.com/">Radix UI</a> for Svelte. Used in production for Pinched.io.</p>
-			</div>
-		</div>
-		<div class="project">
-			<div class="date">2020</div>
-			<div class="content">
-				<h3><a class="external-link" target="_blank" href="https://twitter.com/ycparak/status/1299506072160546816">Personal Knowledge Management System</a></h3>
-				<p>PKMS inspired by Roam Research and Andy Matuschak’s note taking system. Served as my own CRM, notes app and task manager.</p>
-			</div>
-		</div>
-		<div class="project">
-			<div class="date">2018–2021</div>
-			<div class="content">
-				<h3><a class="external-link" target="_blank" href="https://blog.thinkst.com/2020/08/something-fresh.html">Design Engineer at Thinkst Canary</a></h3>
-				<p>Worked on redesigning and rebuilding the frontend UI. Canary is widely used by security teams to detect internal network breaches.</p>
-			</div>
-		</div>
-	</section>
-	<section class="now">
-		<h2>Now</h2>
-		<p>Currently learning and exploring Svelte, DuckDB, LLM’s, interaction design, typography, local-first software and performance.</p>
-		<p>Trying to build awe-inspiring software by mastering design & engineering. Most of my learning is done on the job by building side projects, chief of which is <a target="_blank" href="https://pinched.io">Pinched.io</a>.</p>
-		<p>I’ll be traveling to SF sometime between May and July, I’ll be there for a month and will then spend a couple weeks exploring the rest of the west coast (from Seattle to San Diego). If you’re reading this and you’ll also be in town, I’d love to link, DM me!</p>
-	</section>
-	<footer>
-		© 2023 &middot; Code open sourced <a class="external-link" target="_blank" href="https://github.com/ycparak">here</a>
-	</footer>
-</div>
+  <!-- Footer fades -->
+  <div class="fade left"></div>
+  <div class="fade right"></div>
+</main>
+
+<svelte:window
+  bind:innerWidth={screenWidth}
+  on:keydown={keydown}
+  on:keyup={keyup}
+  on:wheel={(e) => wheel(e.deltaX)}
+  on:contextmenu={stopDragging}
+/>
 
 <style lang="scss">
-	h1 {
-		font-family: 'Newsreader', serif;
-		font-style: italic;
-		font-weight: 400;
-		font-size: 36px;
-		line-height: 46px;
-		color: var(--text-header);
-	}
-	h3 {
-		font-size: 16px;
-		font-weight: 550;
-		line-height: 1;
-		margin: 0;
-		padding: 0;
-		color: var(--text-header);
-		margin-bottom: 4px;
-		a {
-			color: inherit;
-			text-decoration: underline;
-			text-decoration-color: var(--line-underline);
-			&::after {
-				color: var(--text-header);
-				font-size: 12px;
-			}
-		}
-	}
-	h2 {
-		font-size: 16px;
-		font-weight: 550;
-		line-height: 1;
-		margin: 0;
-		padding: 0;
-		color: var(--text-header);
-		margin-bottom: 28px;
-	}
+  main {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    width: 100dvw;
+    max-height: 100dvh;
+    max-width: 100dvw;
+  }
 
-	p {
-		font-size: 16px;
-		font-weight: 450;
-		line-height: var(--line-height-base);
-		margin-bottom: 20px;
-		a {
-			color: inherit;
-			text-decoration: underline;
-			text-decoration-color: var(--line-underline);
-			&::after {
-				color: var(--text-header);
-				font-size: 12px;
-				opacity: 1;
-				transform: rotate(-45deg) translateY(-4px) translateX(4px);
-			}
-		}
-	}
+  section {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    border: none;
+    cursor: grab;
+    height: 100%;
+    width: 100%;
+    will-change: transform;
+    &.dragging {
+      cursor: grabbing;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 
-	.hero {
-		margin-top: 160px;
-		margin-bottom: 80px;
-		h2 { 
-			color: var(--text-muted);
-			margin-bottom: 0;
-		}
-		.nav-links {
-			margin-top: 20px;
-			a {
-				color: var(--text-muted);
-				font-size: 14px;
-				font-weight: 550;
-				line-height: 1;
-				text-decoration: none;
-				margin-right: 10px;
-				&::after {
-					font-size: 10px;
-					color: var(--text);
-				}
-				&:hover {
-					color: var(--text);
-				}
-			}
-		}
-	}
-	.about, .projects, .now {
-		margin-bottom: 68px;
-		max-width: 480px;
-	}
+  footer {
+    position: relative;
+    left: 50%;
+    display: flex;
+    margin-bottom: functions.toRem(32px);
+    white-space: nowrap;
+    backface-visibility: hidden;
+    @media screen and (max-width: 1512px){
+      margin-bottom: functions.toRem(28px);   
+    }
+  }
 
-	.project {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		margin-bottom: 8px;
-
-		&:last-of-type {
-			margin-bottom: 0;
-		}
-		.date {
-			min-width: 140px;
-			font-size: 16px;
-			line-height: var(--line-height-base);
-			font-weight: 550;
-			color: var(--text-muted);
-		}
-		.content {
-			h3 {
-				line-height: var(--line-height-base);
-				margin: 0;
-				padding: 0;
-			}
-			width: 100%;
-		}
-
-		@media (max-width: 556px) {
-			flex-direction: column;
-			.date {
-				font-size: 13px;
-				font-weight: 650;
-				margin-bottom: 4px;
-			}
-		}
-	}
-
-	footer {
-		margin-bottom: 160px;
-		font-size: 14px;
-		font-weight: 550;
-		line-height: 1;
-		color: var(--text-muted);
-		a {
-			color: var(--text-muted);
-			font-size: 14px;
-			font-weight: 550;
-			line-height: 1;
-			text-decoration: underline;
-			margin-right: 10px;
-			&::after {
-				font-size: 10px;
-				color: var(--text);
-			}
-			&:hover {
-				color: var(--text);
-			}
-		}
-	}
+  .fade {
+    position: fixed;
+    height: functions.toRem(50px);
+    bottom: 0;
+    width: functions.toRem(150px);
+    pointer-events: none;
+    z-index: 1;
+    &.left {
+      left: 0;
+      background: linear-gradient(to right, var(--color-background) 0%, transparent 100%);
+    }
+    &.right {
+      right: 0;
+      background: linear-gradient(to left, var(--color-background) 0%, transparent 100%);
+    }
+  }
 </style>

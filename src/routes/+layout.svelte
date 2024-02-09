@@ -1,133 +1,100 @@
-<script>
-	import '../app.scss';
-	import { fly, blur } from 'svelte/transition'
-	import { expoIn, expoOut, expoInOut } from 'svelte/easing'
+<script lang="ts">
+  import * as config from '$lib/config'
+  import '$styles/main.scss'
+  import "@phosphor-icons/web/regular";
+  import "@phosphor-icons/web/bold";
+  import "@phosphor-icons/web/fill";
+  import { afterNavigate } from '$app/navigation';
+  import { tweened } from 'svelte/motion';
+	import { quadIn, circOut } from 'svelte/easing';
+  import { Menu, AboutModal } from '$components';
+  import { runAnimation } from '$lib/stores';
+	import type { LayoutData } from './$types';
 
-	export let data
+  export let data: LayoutData;
+
+  afterNavigate(() => {
+    runAnimation.set(true);
+  });
+
+  let aboutModal = false;
+  const sizeConst = 0.06;
+
+  const size = tweened(1, {
+    duration: 250,
+    easing: circOut
+  });
+
+  const blur = tweened(0, {
+    duration: 200,
+    easing: circOut
+  });
+
+  const opacity = tweened(0, {
+    duration: 300,
+    delay: 50,
+    easing: circOut
+  });
+
+  const contentScale = tweened(1.07, {
+    duration: 300,
+    delay: 100,
+    easing: circOut
+  });
+
+  const contentOpacity = tweened(0, {
+    duration: 300,
+    delay: 0,
+    easing: quadIn
+  });
+
+  const contentBlur = tweened(3, {
+    duration: 300,
+    delay: 0,
+    easing: quadIn
+  });
+
+  function showModal() {
+    aboutModal = true;
+    $size -= sizeConst;
+    $blur = 20;
+    $opacity = 1;
+    $contentScale = 1;
+    $contentOpacity = 1;
+    $contentBlur = 0;
+  }
+
+  function hideModal() {
+    aboutModal = false;
+    $size += sizeConst;
+    $blur = 0;
+    $opacity = 0;
+    $contentScale = 1.07;
+    $contentOpacity = 0;
+    $contentBlur = 3;
+  }
 </script>
 
-<!-- <div class="grid">
-	<div class="sidebar">
-		<div class="sidebar-container">
-			<nav>
-				<h1><a class="logo" href="/" data-sveltekit-noscroll>Yusuf Parak</a></h1>
-				<div class="nav-links">
-					<a class="external-link" target="_blank" href="mailto:yusuf@ycparak.com">Email</a>
-					<a class="external-link" target="_blank" href="https://twitter.com/ycparak">Twitter</a>
-					<a class="external-link" target="_blank" href="https://github.com/ycparak">Github</a>
-					<a class="external-link" target="_blank" href="https://pinched.io">Pinched.io</a>
-					<a class="external-link" href="/about" data-sveltekit-noscroll>About</a>
-				</div>
-			</nav>
-			<footer>
-				2023 · Source
-				<a class="external-link" target="_blank" href="https://github.com/ycparak/ycparak">code</a>
-			</footer>
-		</div>
-	</div>
-</div> -->
+<svelte:head>
+	<title>{config.title}</title>
+	<meta name="twitter:title" content="{config.title}" />
+	<meta name="twitter:description" content="{config.description}" />
+	<meta name="Description" content="{config.description}" />
+</svelte:head>
 
+<div style="filter: blur({$blur}px); transform: scale({$size});">
+  <Menu path="{data.url}" on:showModal={showModal} />
+  <slot />
+</div>
 
-	{#key data.pathname}
-	<main 
-		in:fly={{ x: 700, easing: expoOut, duration: 500, delay: 520 }}
-    out:fly={{ x: -700, easing: expoIn, duration: 500 }}>
-		<div in:blur={{ easing: expoInOut, duration: 500, delay: 350 }}>
-			<slot />
-		</div>
-	</main>
-	{/key}
+{#if aboutModal}
+	<AboutModal 
+    opacity="{$opacity}"
+    contentScale={$contentScale}
+    contentOpacity={$contentOpacity}
+    contentBlur={$contentBlur}
+    on:close={hideModal} />
+{/if}
 
 <style lang="scss">
-/* 	.grid {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-	}
-	.sidebar {
-		position: relative;
-		display: block;
-		flex-shrink: 0;
-		width: 220px;
-		z-index: 1;
-		background: var(--bg);
-		border-right: 1px solid var(--line);
-
-		&-container {
-			position: sticky;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			flex-shrink: 1;
-			height: 100vh;
-			top: 0;
-			bottom: 0;
-			nav {
-				padding: 32px 40px;
-				h1 {
-					font-size: 16px;
-					font-weight: 550;
-					line-height: 1;
-					color: var(--text-header);
-					margin-top: 0;
-					margin-bottom: 28px;
-					.logo {
-						display: block;
-						text-decoration: none;
-						color: inherit;
-					}
-				}
-	
-				.nav-links {
-					display: flex;
-					flex-direction: column;
-					gap: 12px;
-					a {
-						font-size: 16px;
-						font-weight: 550;
-						line-height: 1;
-						color: var(--text-muted);
-						text-decoration: none;
-						width: fit-content;
-						&::after {
-							font-size: 12px;
-						}
-
-						&:hover {
-							color: var(--text);
-						}
-					}
-				}
-			}
-	
-			footer {
-				font-size: 13px;
-				padding: 28px 40px;
-				font-weight: 550;
-				line-height: 1;
-				color: var(--text-muted);
-				a {
-					color: var(--text-muted);
-					text-decoration: underline;
-					text-decoration-color: var(--text_muted);
-					&::after {
-						font-size: 10px;
-					}
-					&:hover {
-						color: var(--text);
-					}
-				}
-			}
-		}
-	} */
-
-	main {
-		display: block;
-		flex-grow: 1;
-		padding-left: 180px;
-		// Media query when smaller than 660px
-		@media (max-width: 840px) {
-			padding: 0 7vw;
-		}
-	}
 </style>

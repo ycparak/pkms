@@ -1,0 +1,34 @@
+@use 'functions';
+@use 'mixins';
+@use 'fonts';
+@use 'variables';
+@use 'reset';
+@use 'buttons';
+@use 'keyframes';
+@use 'typography';
+
+html {
+	overflow-x: hidden;
+}
+
+html,
+body {
+	background-color: var(--color-background);
+	font-family: var(--font-primary);
+	font-size: 16px;
+	color: var(--color-text);
+	line-height: 1.45;
+}
+
+#root {
+	font-size: functions.toRem(15.3203px);
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+	&:focus-within {
+		outline: none;
+		color: var(--color-focus);
+	}
+}

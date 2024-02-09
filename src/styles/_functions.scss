@@ -1,0 +1,6 @@
+@use 'sass:math';
+
+// Function that takes in a px value and returns a rem value (px param will include a 'px' suffix)
+@function toRem($pxValue) {
+	@return math.div($pxValue, 16px) * 1rem;
+}
