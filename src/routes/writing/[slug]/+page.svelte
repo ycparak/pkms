@@ -8,46 +8,55 @@
 	<meta property="og:title" content={data.meta.title} />
 </svelte:head>
 
-<article>
-	<hgroup>
-		<h1>{data.meta.title}</h1>
-		<p>Published at {data.meta.date}</p>
-	</hgroup>
+<main>
+	<article>
+		<hgroup>
+			<div class="meta">
+				<h1>{data.meta.title}</h1>
+				<time>July 2023</time>
+			</div>
+		</hgroup>
+	
+		<div class="prose">
+			<svelte:component this={data.content} />
+		</div>
+	</article>
+</main>
 
-	<div class="tags">
-		{#each data.meta.categories as category}
-			<span class="surface-4">&num;{category}</span>
-		{/each}
-	</div>
-
-	<div class="prose">
-		<svelte:component this={data.content} />
-	</div>
-</article>
-
-<style>
+<style lang="scss">
 	article {
-		max-inline-size: var(--size-content-3);
-		margin-inline: auto;
-	}
-
-	h1 {
-		text-transform: capitalize;
-	}
-
-	h1 + p {
-		margin-top: var(--size-2);
-		color: var(--text-2);
-	}
-
-	.tags {
+		position: relative;
 		display: flex;
-		gap: var(--size-3);
-		margin-top: var(--size-7);
+		flex-direction: column;
+		margin: 0 auto;
+		padding: functions.toRem(128px) functions.toRem(24px);
+		max-width: functions.toRem(640px);
 	}
 
-	.tags > * {
-		padding: var(--size-2) var(--size-3);
-		border-radius: var(--radius-round);
+	hgroup {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		flex-wrap: nowrap;
+		margin-bottom: functions.toRem(32px);
+
+		.meta {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: stretch;
+			flex-wrap: nowrap;
+			gap: 8px;
+		}
+	}
+
+	.prose {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: stretch;
+		flex-wrap: nowrap;
+		gap: functions.toRem(24px);
 	}
 </style>
