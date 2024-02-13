@@ -267,7 +267,7 @@
     on:touchend={stopDragging}
     on:touchcancel={stopDragging}>
     {#each posts as post, index}
-      <Slide {post} scale={slideScales[index]} />
+      <Slide {post} scale={slideScales[index]} lazy={index === 1} />
     {/each}
   </section>
 

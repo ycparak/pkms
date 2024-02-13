@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { CldImage } from 'svelte-cloudinary';
   import type { Post } from "$lib/types";
   import { runAnimation } from '$lib/stores';
   import { tweened } from 'svelte/motion';
@@ -7,6 +8,7 @@
 
   export let post: Post;
   export let scale: number;
+  export let lazy: boolean;
   let previewComponent: any;
 
   const slideScale = tweened(1.07, {
@@ -47,20 +49,19 @@
 
 <div class="slide" style="transform: scale({scale})">
   {#if post.previewImage}
-    <img
+    <CldImage
+      src="canary-console"
+      alt={post.title}
       style="transform: scale({$slideScale}); opacity: {$slideOpacity}; filter: blur({$slideBlur}px);"
       class="asset"
-      src={getAsset(post.previewImage)}
-      alt="Apple XDR"
-      draggable="false"
-      loading="lazy">
+      priority={!lazy}
+      draggable="false" />
 
   {:else if post.hasPreviewComponent && previewComponent}
     <div
       style="transform: scale({$slideScale}); opacity: {$slideOpacity}; filter: blur({$slideBlur}px);"
       class="component">
-      <svelte:component
-        this={previewComponent} />
+      <svelte:component this={previewComponent} />
     </div>
 
   {:else if post.previewVideo}
@@ -92,7 +93,7 @@
       padding: functions.toRem(38px);
       height: 100%;
       width: 100%;
-      object-fit: contain;
+      object-fit: contain !important;
       object-position: center;
       user-select: none;
       -webkit-user-drag: none;
