@@ -2,9 +2,7 @@
 	import * as config from '$lib/config'
 
 	export let data
-
-	const categories = ['writing']
-  const posts = data.posts.filter((post) => categories.includes(post.category));
+  const posts = data.posts;
 </script>
 
 <svelte:head>
