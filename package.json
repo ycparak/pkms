@@ -35,6 +35,9 @@
 	"type": "module",
 	"dependencies": {
 		"@phosphor-icons/web": "^2.0.3",
+		"rehype-slug": "^6.0.0",
+		"remark-toc": "^9.0.0",
+		"remark-unwrap-images": "^4.0.0",
 		"svelte-cloudinary": "^1.2.1"
 	}
 }

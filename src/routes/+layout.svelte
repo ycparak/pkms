@@ -82,8 +82,8 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
+<Menu path="{data.url}" on:showModal={showModal} />
 <div style="filter: blur({$blur}px); transform: scale({$size});">
-  <Menu path="{data.url}" on:showModal={showModal} />
   <slot />
 </div>
 

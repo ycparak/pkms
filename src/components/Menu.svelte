@@ -28,13 +28,13 @@
 
 <style lang="scss">
   .menu {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     position: fixed;
     left: 50%;
-    top: functions.toRem(38px);
+    top: functions.toRem(24px);
     z-index: 499;
     @media screen and (max-width: 1512px){
-      top: functions.toRem(34px);   
+      top: functions.toRem(20px);   
     }
   }
   nav {

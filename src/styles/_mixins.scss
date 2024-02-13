@@ -1,86 +1,94 @@
 @use 'functions';
 
+// Interface
+
 @mixin interface-type-xl {
-	font-size: functions.toRem(25.0696px);
-	line-height: functions.toRem(18px);
+	font-size: functions.toRem(18.4505px);
+	line-height: functions.toRem(13px);
+	letter-spacing: -0.01em;
 
 	&::before {
 		content: '';
-		margin-bottom: -0.044em;
+		margin-bottom: -0.0212em;
 		display: table;
 	}
 
 	&::after {
 		content: '';
-		margin-top: 0.044em;
+		margin-top: 0.0212em;
 		display: table;
 	}
 }
 
 @mixin interface-type-lg {
-	font-size: functions.toRem(18.1058px);
-	line-height: functions.toRem(13px);
+	font-size: functions.toRem(17.0312px);
+	line-height: functions.toRem(12px);
+	letter-spacing: -0.01em;
 
 	&::before {
 		content: '';
-		margin-bottom: -0.044em;
+		margin-bottom: -0.0212em;
 		display: table;
 	}
 
 	&::after {
 		content: '';
-		margin-top: 0.044em;
+		margin-top: 0.0212em;
 		display: table;
 	}
 }
 
 @mixin interface-type-md {
-	font-size: functions.toRem(15.3203px);
+	font-size: functions.toRem(15.6119px);
 	line-height: functions.toRem(11px);
+	letter-spacing: -0.01em;
 
 	&::before {
 		content: '';
-		margin-bottom: -0.044em;
+		margin-bottom: -0.0212em;
 		display: table;
 	}
 
 	&::after {
 		content: '';
-		margin-top: 0.044em;
+		margin-top: 0.0212em;
 		display: table;
 	}
 }
 
 @mixin interface-type-sm {
-	font-size: functions.toRem(13.9276px);
+	font-size: functions.toRem(14.1927px);
 	line-height: functions.toRem(10px);
+	letter-spacing: -0.01em;
 
 	&::before {
 		content: '';
-		margin-bottom: -0.044em;
+		margin-bottom: -0.0212em;
 		display: table;
 	}
 
 	&::after {
 		content: '';
-		margin-top: 0.044em;
+		margin-top: 0.0212em;
 		display: table;
 	}
 }
 
-@mixin interface-type-xs {
-	font-size: functions.toRem(12px);
-	line-height: functions.toRem(9px);
+// Typography
+@mixin type-body {
+	font-size: functions.toRem(22.7082px);
+	line-height: functions.toRem(34px);
+	letter-spacing: -0.01em;
 
 	&::before {
 		content: '';
-		margin-bottom: -0.044em;
+		margin-bottom: -0.4176em;
 		display: table;
 	}
 
 	&::after {
 		content: '';
-		margin-top: 0.044em;
+		margin-top: -0.3751em;
 		display: table;
 	}
 }

@@ -38,7 +38,7 @@
 <style lang="scss">
   button {
     all: unset;
-    @include mixins.interface-type-lg;
+    @include mixins.interface-type-xl;
     width: fit-content;
     padding: functions.toRem(4px) functions.toRem(20px);
     border: none;
