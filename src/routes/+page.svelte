@@ -2,13 +2,15 @@
   import { spring } from 'svelte/motion';
 	import { SlideMeta, Slide, SlideTab } from '$components'
 	import { onMount } from 'svelte';
-	import type { PageData } from './$types';
+  import { projects } from '$lib/projects';
+  import { dev } from '$app/environment';
+  import type { Project } from '$lib/types';
 
-  const categories = ['projects', 'craft']
-  
   // Props
-	export let data : PageData;
-  const posts = data.posts.filter((post) => categories.includes(post.category));
+  const posts = projects.filter((post) => {
+			if (post.isDraft && !dev) return;
+      return post;
+  }) as Project[];
 
   // State
   let slideSpring = spring(0, { 
@@ -267,7 +269,7 @@
     on:touchend={stopDragging}
     on:touchcancel={stopDragging}>
     {#each posts as post, index}
-      <Slide {post} scale={slideScales[index]} lazy={index === 1} />
+      <Slide post={post} scale={slideScales[index]} lazy={index === 1} />
     {/each}
   </section>
 

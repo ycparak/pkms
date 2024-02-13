@@ -1,10 +1,10 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
   import { runAnimation } from '$lib/stores';
-  import type { Post } from '$lib/types';
+  import type { Project } from '$lib/types';
 
   export let date: string;
-  export let post: Post;
+  export let post: Project;
 
   let showDescription = false;
 </script>

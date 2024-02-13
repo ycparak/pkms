@@ -1,19 +1,16 @@
 export type Category = 'projects' | 'craft' | 'writing';
 
-export type Post = {
+export type Project = {
 	title: string;
 	date: string;
-	project: string | null;
+	project: string;
 	hasLink: boolean | null;
-	link: string | null;
-	linkTitle: string | null;
-	previewImage: string | null;
-	previewVideo: string | null;
-	hasPreviewComponent: boolean | null;
-	description: string | null;
-	isDraft: boolean | false;
-	isPublishable: boolean | true;
-	category: Category;
-	path: string;
-	slug: string;
+	description: string;
+	isDraft: boolean;
+	isPublishable: boolean;
+	link?: string | null | undefined;
+	linkTitle?: string | null | undefined;
+	previewImage?: string | null | undefined;
+	previewVideo?: string | null | undefined;
+	previewComponent?: string | null | undefined;
 };

@@ -1,12 +1,12 @@
 <script lang="ts">
   import { CldImage } from 'svelte-cloudinary';
-  import type { Post } from "$lib/types";
+  import type { Project } from "$lib/types";
   import { runAnimation } from '$lib/stores';
   import { tweened } from 'svelte/motion';
 	import { quadIn, circOut } from 'svelte/easing';
 	import { onMount } from "svelte";
 
-  export let post: Post;
+  export let post: Project;
   export let scale: number;
   export let lazy: boolean;
   let previewComponent: any;
@@ -36,28 +36,26 @@
   }
 
   onMount(async () => {
-    if (post.hasPreviewComponent) {
-      let category = post.category;
-      let componentName = post.slug.charAt(0).toUpperCase() + post.slug.slice(1);
-      componentName = componentName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
-      previewComponent = (await import(/* @vite-ignore */ `./${category}/${componentName}.svelte`)).default
+    if (post.previewComponent) {
+      previewComponent = (await import(/* @vite-ignore */ `./${post.previewComponent}.svelte`)).default
     }
   });
-
-  const getAsset = (name: string) => new URL(`../assets/${post.category}/${name}`, import.meta.url).href;
 </script>
 
 <div class="slide" style="transform: scale({scale})">
   {#if post.previewImage}
     <CldImage
-      src="canary-console"
-      alt={post.title}
       style="transform: scale({$slideScale}); opacity: {$slideOpacity}; filter: blur({$slideBlur}px);"
       class="asset"
+      src={post.previewImage}
+      aspectRatio="16:9"
+      width={4096}
+      height={2447}
+      alt={post.title}
       priority={!lazy}
       draggable="false" />
 
-  {:else if post.hasPreviewComponent && previewComponent}
+  {:else if post.previewComponent && previewComponent}
     <div
       style="transform: scale({$slideScale}); opacity: {$slideOpacity}; filter: blur({$slideBlur}px);"
       class="component">
@@ -68,7 +66,7 @@
     <video
       style="transform: scale({$slideScale}); opacity: {$slideOpacity}; filter: blur({$slideBlur}px);"
       class="asset"
-      src={getAsset(post.previewVideo)}
+      src="/images/{post.previewVideo}"
       draggable="false"
       autoplay
       loop
@@ -88,11 +86,11 @@
     justify-content: center;
     width: 100%;
     max-height: 100%;
-    .asset {
+    :global(.asset) {
       position: absolute;
       padding: functions.toRem(38px);
-      height: 100%;
-      width: 100%;
+      height: 100% !important;
+      width: 100% !important;
       object-fit: contain !important;
       object-position: center;
       user-select: none;

@@ -51,6 +51,7 @@
     border-radius: 6px;
     user-select: none;
     -webkit-user-drag: none;
+    text-transform: lowercase;
 
     &:focus, &:focus-within, &:active {
       outline: none;
