@@ -256,7 +256,7 @@
   <section
     class="slideshow"
     class:dragging={isDragging}
-    style="transform: translate3d({xPosSlides}px, 0px, 0px);"
+    style="transform: translateX({xPosSlides}px);"
     role="slider"
     tabindex="-1"
     aria-valuenow="{sliderIndex}"

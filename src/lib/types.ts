@@ -23,4 +23,6 @@ export type Project = {
 	previewImage?: string | null | undefined;
 	previewVideo?: string | null | undefined;
 	previewComponent?: string | null | undefined;
+	imageWidth?: number | null | undefined;
+	imageHeight?: number | null | undefined;
 };

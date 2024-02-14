@@ -33,7 +33,7 @@
     <a
       data-sveltekit-preload-data="hover"
       transition:fade={{ delay: 100, duration: 300 }}
-      href="{post.link ? post.link : `${post.path}`}"
+      href="{post.link}"
       class="action"
       class:external="{post.link}"
       target="{post.link ? '_blank' : ''}"

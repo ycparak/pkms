@@ -75,6 +75,23 @@
 }
 
 // Typography
+@mixin type-h1 {
+	font-size: 41.1587px;
+	line-height: 46px;
+	letter-spacing: -0.01em;
+
+	&::before {
+		content: '';
+		margin-bottom: -0.2278em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: -0.3751em;
+		display: table;
+	}
+}
 @mixin type-body {
 	font-size: functions.toRem(22.7082px);
 	line-height: functions.toRem(34px);
@@ -82,7 +99,7 @@
 
 	&::before {
 		content: '';
-		margin-bottom: -0.4176em;
+		margin-bottom: -0.1853em;
 		display: table;
 	}
 

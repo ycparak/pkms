@@ -49,8 +49,8 @@
       class="asset"
       src={post.previewImage}
       aspectRatio="16:9"
-      width={4096}
-      height={2447}
+      width={post.imageWidth}
+      height={post.imageHeight}
       alt={post.title}
       priority={!lazy}
       draggable="false" />

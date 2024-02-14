@@ -2,7 +2,25 @@
 @use 'mixins';
 
 article {
+	h1 {
+		@include mixins.type-h1;
+		font-weight: 400;
+	}
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
 	p {
 		@include mixins.type-body;
+	}
+
+	time {
+		display: inline-block;
+		@include mixins.interface-type-sm;
+		color: #bababa;
+		margin-bottom: functions.toRem(16px);
+		font-weight: 600;
 	}
 }

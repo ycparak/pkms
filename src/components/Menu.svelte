@@ -41,7 +41,7 @@
     position: relative;
     background-color: var(--color-card-translucent);
     border: 1px solid var(--color-border);
-    border-radius: functions.toRem(30px);
+    border-radius: functions.toRem(28px);
     // backdrop-filter: blur(16px);
     height: functions.toRem(28px);
     box-shadow: 0 2px 4px rgba(0,0,0,.04), inset 0 1px 1px rgba(255,255,255,.12);

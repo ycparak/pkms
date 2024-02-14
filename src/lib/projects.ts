@@ -9,7 +9,9 @@ export const projects = [
 		description:
 			'A redesigned dashboard for Pinched, with the idea of combining data from Twitter, Github & LinkedIn into a single view.',
 		isDraft: false,
-		isPublishable: true
+		isPublishable: true,
+		imageWidth: 1998,
+		imageHeight: 1186
 	},
 	{
 		title: 'Infinite Loop Logo',
@@ -19,13 +21,16 @@ export const projects = [
 		previewImage: 'infinite-loop',
 		description: 'Logo rebrand for Infinite Loop, a music & sound production company.',
 		isDraft: false,
-		isPublishable: true
+		isPublishable: true,
+		imageWidth: 2294,
+		imageHeight: 1462
 	},
 	{
 		title: 'Rauno’s Radial Menu',
 		date: '2023-09-01',
 		project: 'Concept',
 		hasLink: true,
+		link: '/craft/radial-menu',
 		linkTitle: 'View prototype',
 		previewComponent: 'RadialMenu',
 		description: 'A svelte implementation of Rauno Freiberg’s wonderful radial menu.',
@@ -54,7 +59,9 @@ export const projects = [
 		description:
 			'A quickly put together landing page for Pinched, that somewhat surprisingly, had a super high conversion rate (~16%).',
 		isDraft: false,
-		isPublishable: true
+		isPublishable: true,
+		imageWidth: 1998,
+		imageHeight: 1186
 	},
 	{
 		title: 'News App',
@@ -65,13 +72,17 @@ export const projects = [
 		description:
 			'An exploration into what a news app would look like if we used AI to remove sensationalism from articles.',
 		isDraft: false,
-		isPublishable: true
+		isPublishable: true,
+		imageWidth: 1998,
+		imageHeight: 1186
 	},
 	{
 		title: 'MacOS Dock',
 		date: '2021-07-01',
 		project: 'Concept',
-		hasLink: false,
+		hasLink: true,
+		linkTitle: 'View prototype',
+		link: '/craft/radial-menu',
 		previewComponent: 'MacosDock',
 		description:
 			'Experimenting with Svelte and its in built animation, motion and transition libraries.',
@@ -87,12 +98,14 @@ export const projects = [
 		description:
 			'A personal knowledge management system, inspired by Andy Matuschak and the tools for thought backlinking zeitgeist.',
 		isDraft: false,
-		isPublishable: true
+		isPublishable: true,
+		imageWidth: 1998,
+		imageHeight: 1186
 	},
 	{
 		title: 'Canary Console',
 		date: '2020-08-01',
-		project: 'Thinkst Canary New UI',
+		project: 'Canary New UI',
 		hasLink: true,
 		link: 'https://blog.thinkst.com/2020/08/something-fresh.html',
 		linkTitle: 'View case study',
@@ -100,7 +113,9 @@ export const projects = [
 		description:
 			'A full rebuild and redesign of the Canary Console, with Nick Rohrbeck, Max McClaughlin and Haroon Meer.',
 		isDraft: false,
-		isPublishable: true
+		isPublishable: true,
+		imageWidth: 4096,
+		imageHeight: 2447
 	},
 	{
 		title: 'Canary Incidents Graph',
@@ -113,12 +128,14 @@ export const projects = [
 		description:
 			'Visualising large batches of Alerts using d3, for quick comprehension and triage. Built on work done by Nick Rohrbeck.',
 		isDraft: false,
-		isPublishable: true
+		isPublishable: true,
+		imageWidth: 2760,
+		imageHeight: 1758
 	},
 	{
 		title: 'Canary Login',
 		date: '2019-09-01',
-		project: 'Thinkst Canary New UI',
+		project: 'Canary New UI',
 		hasLink: true,
 		link: 'https://blog.thinkst.com/2020/08/something-fresh.html',
 		linkTitle: 'View case study',
