@@ -21,7 +21,6 @@ body {
 }
 
 #root {
-	@include mixins.interface-type-sm;
 	min-height: 100%;
 }
 

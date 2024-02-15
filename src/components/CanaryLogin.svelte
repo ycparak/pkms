@@ -87,7 +87,7 @@
         display: flex;
         flex-direction: column;
         position: relative;
-        padding: functions.toRem(6px) functions.toRem(16px) functions.toRem(8px) functions.toRem(14px);
+        padding: functions.toRem(6px) functions.toRem(16px) functions.toRem(6px) functions.toRem(14px);
         &:first-child {
           border-bottom: functions.toRem(1px)solid rgba(0, 0, 0, 0.05);
         }
@@ -114,7 +114,7 @@
       font-weight: 700;
       transition: color 1s cubic-bezier(0.165, 0.63, 0.14, 0.82);
       height: 0;
-      padding: functions.toRem(35px) 0 functions.toRem(10px) 0;
+      padding: functions.toRem(34px) 0 functions.toRem(10px) 0;
       line-height: 1.5;
       &:focus {
         color: var(--color-text);

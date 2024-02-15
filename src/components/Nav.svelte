@@ -67,6 +67,7 @@
     border-radius: functions.toRem(32px);
     background-color: var(--color-background-translucent);
     overflow: hidden;
+    @include mixins.interface-type-sm;
     .container {
       position: relative;
       padding: 0 functions.toRem(16px);

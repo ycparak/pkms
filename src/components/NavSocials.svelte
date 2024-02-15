@@ -38,6 +38,7 @@
 
 <style lang="scss">
   .socials {
+    @include mixins.interface-type-sm;
     position: fixed;
     bottom: var(--space-container);
     right: var(--space-container);
