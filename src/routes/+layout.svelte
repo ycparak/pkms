@@ -24,8 +24,8 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
-<Nav path={data.url} />
 <slot />
+<Nav path={data.url} />
 
 <style lang="scss">
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { NavSocials } from '$components';
+  import { projectSlide } from '$lib/stores';
   import { slide } from 'svelte/transition';
   import { tweened } from 'svelte/motion';
 	import { backOut, backIn } from 'svelte/easing';
@@ -11,45 +12,41 @@
 
   // State
   let rootPath = '';
-  let showSlideButton = true;
   
   const buttonBlur = tweened(5, {
-    duration: showSlideButton ? 450 : 1,
-    delay: showSlideButton ? 100 : 0,
-    easing: showSlideButton ? backOut : backIn
+    duration: $projectSlide.link ? 300 : 400,
+    delay: $projectSlide.link ? 0 : 100,
+    easing: $projectSlide.link ? backIn : backOut
   });
 
   $: rootPath = path.split('/')[1];
-  $: if (showSlideButton) {
+  $: if ($projectSlide.link) {
     $buttonBlur = 0;
   } else {
     $buttonBlur = 5;
   }
-</script>
 
-<label>
-	<input type="checkbox" bind:checked={showSlideButton} />
-	visible
-</label>
+</script>
 
 <div class="menu">
   <div class="container">
     <div class="backdrop"></div>
     <nav>
-      <a href="/craft" class:active={rootPath === '' || rootPath === 'craft'}>craft</a>
+      <a href="/" class:active={rootPath === '' || rootPath === 'craft'}>craft</a>
       <a href="/writing" class:active={rootPath === 'writing'}>writing</a>
       <a href="/about" class:active={rootPath === 'about'} on:click={() => dispatch('showModal')}>about</a>
-      {#if showSlideButton}
+      {#if $projectSlide.link}
         <a 
           in:slide={{ duration: 500, easing: backOut, axis: 'x' }}
-          out:slide={{ duration: 500, easing: backIn, axis: 'x' }}
-          class="btn"
-          href="/">
+          out:slide={{ duration: 400, easing: backIn, axis: 'x' }}
+          href={$projectSlide.link}
+          target={$projectSlide.linkIsExternal ? '_blank' : ''}
+          class="btn">
           <div
             style="filter: blur({$buttonBlur}px);"
             class="btn-content">
-            <span>view case study</span>
-            <i class="ph ph-arrow-up-right"></i>
+            <span>{$projectSlide.linkTitle}</span>
+            <i class="ph { $projectSlide.linkIsExternal ? 'ph-arrow-up-right' : 'ph-arrow-right' }"></i>
           </div>
         </a>
       {/if}
@@ -69,9 +66,13 @@
     transform: translate(-50%, 0);
     border-radius: functions.toRem(32px);
     background-color: var(--color-background-translucent);
-    padding: 0 functions.toRem(16px);
+    overflow: hidden;
     .container {
       position: relative;
+      padding: 0 functions.toRem(16px);
+      @media (max-width: 767px) {
+        padding: 0 functions.toRem(10px);
+      }
     }
 
     .backdrop {
@@ -83,13 +84,7 @@
       z-index: -1;
       backdrop-filter: blur(16px);
     }
-
-    @media (max-width: 767px) {
-      padding: 0 functions.toRem(10px);
-    }
   }
-
-
 
   nav {
     display: flex;
