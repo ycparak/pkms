@@ -111,7 +111,7 @@
       user-select: none;
       -webkit-user-drag: none;
       @media screen and (min-width: 1512px){
-        padding: 10dvh 5dvw 10dvh 5dvw;
+        padding: 3.5dvh 5dvw 3.5dvh 5dvw;
       }
     }
   }

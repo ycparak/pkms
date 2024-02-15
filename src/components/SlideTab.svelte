@@ -40,7 +40,7 @@
     all: unset;
     @include mixins.interface-type-xl;
     width: fit-content;
-    padding: functions.toRem(4px) functions.toRem(20px);
+    padding: functions.toRem(4px) functions.toRem(24px);
     border: none;
     cursor: default;
     text-decoration: none;

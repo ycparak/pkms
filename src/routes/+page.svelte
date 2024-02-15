@@ -1,6 +1,6 @@
 <script lang="ts">
   import { spring } from 'svelte/motion';
-	import { SlideMeta, Slide, SlideTab } from '$components'
+	import { Slide, SlideTab } from '$components'
 	import { onMount } from 'svelte';
   import { projects } from '$lib/projects';
   import { dev } from '$app/environment';
@@ -249,9 +249,20 @@
 
 
 <main>
-  <!-- <SlideMeta
-    date={date}
-    post={posts[sliderIndex]} /> -->
+  <!-- <div class="fade left"></div>
+  <div class="fade right"></div> -->
+
+  <header bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
+    {#each posts as link, index}
+      <div style="opacity: {navItemOpacities[index]}">
+        <SlideTab
+          {index}
+          title={link.title}
+          on:select={() => goToSlide(index)}
+        />
+      </div>
+    {/each}
+  </header>
     
   <section
     class="slideshow"
@@ -272,21 +283,6 @@
       <Slide post={post} scale={slideScales[index]} lazy={index === 1} />
     {/each}
   </section>
-
-  <!-- <footer bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
-    {#each posts as link, index}
-      <div style="opacity: {navItemOpacities[index]}">
-        <SlideTab
-          {index}
-          title={link.title}
-          on:select={() => goToSlide(index)}
-        />
-      </div>
-    {/each}
-  </footer> -->
-
-  <!-- <div class="fade left"></div>
-  <div class="fade right"></div> -->
 </main>
 
 <svelte:window
@@ -299,15 +295,26 @@
 
 <style lang="scss">
   main {
+    --height-bottom: calc(var(--space-container) + var(--space-nav) - 11px);
     display: flex;
     flex-direction: column;
-    height: 100dvh;
+    height: calc(100dvh - var(--height-bottom));
     width: 100dvw;
     max-height: 100dvh;
     max-width: 100dvw;
   }
 
+  header {
+    position: relative;
+    left: 50%;
+    display: flex;
+    margin-top: var(--space-container);
+    white-space: nowrap;
+    backface-visibility: hidden;
+  }
+
   section {
+    --height-top: calc(var(--space-container) + 18px);
     flex-grow: 1;
     display: flex;
     flex-wrap: nowrap;
@@ -324,17 +331,7 @@
     }
   }
 
-  /* footer {
-    position: relative;
-    left: 50%;
-    display: flex;
-    margin-bottom: functions.toRem(32px);
-    white-space: nowrap;
-    backface-visibility: hidden;
-    @media screen and (max-width: 1512px){
-      margin-bottom: functions.toRem(28px);   
-    }
-  }
+  /*
 
   .fade {
     position: fixed;

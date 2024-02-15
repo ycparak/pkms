@@ -99,6 +99,7 @@
       transition: all .3s ease;
       border-radius: 2px;
       margin: 0 functions.toRem(16px);
+      text-transform: lowercase;
       @media (max-width: 767px) {
         margin: 0 functions.toRem(10px);
       }
