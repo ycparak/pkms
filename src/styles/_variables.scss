@@ -4,11 +4,24 @@
 
 	--color-background: #fff;
 	--color-background-translucent: rgba(255, 255, 255, 0.6);
+	--color-button: #f2f2f2;
+	--color-button-hover: #e5e5e5;
+	--color-text: #000;
+	--color-focus: #f15a22;
+
+	--color-text-accent: #808080;
+
 	--color-card: #f7f7f7;
 	--color-card-translucent: rgba(245, 245, 245, 0.6);
-	--color-text: #000;
-	--color-text-accent: #999;
 	--color-text-body: #121212;
 	--color-border: #e5e7eb;
-	--color-focus: var(--color-text);
+
+	--space-container: 36px;
+
+	--shadow-focus: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-focus);
+
+	// Small screens
+	@media (max-width: 767px) {
+		--space-container: 24px;
+	}
 }

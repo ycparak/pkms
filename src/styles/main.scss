@@ -21,14 +21,17 @@ body {
 }
 
 #root {
-	font-size: functions.toRem(15.3203px);
-	height: 100%;
+	@include mixins.interface-type-sm;
+	min-height: 100%;
 }
 
-a {
+a,
+button {
+	color: var(--color-text-accent);
 	text-decoration: none;
-	&:focus-within {
-		outline: none;
-		color: var(--color-focus);
+	transition: all 0.3s ease;
+	border-radius: 2px;
+	&:hover {
+		color: var(--color-text);
 	}
 }

@@ -26,6 +26,10 @@
   {/if}
 </div>
 
+<div class="socials">
+
+</div>
+
 <style lang="scss">
   .menu {
     transform: translate(-50%, 0);
@@ -37,6 +41,7 @@
       top: functions.toRem(20px);   
     }
   }
+  
   nav {
     position: relative;
     background-color: var(--color-card-translucent);

@@ -1,10 +1,11 @@
-import Menu from './Menu.svelte';
-import AboutModal from './AboutModal.svelte';
+import Guidelines from './Guidelines.svelte';
+import Nav from './Nav.svelte';
+import NavSocials from './NavSocials.svelte';
+/* import AboutModal from './AboutModal.svelte';
 import Slide from './Slide.svelte';
 import SlideMeta from './SlideMeta.svelte';
-import SlideTab from './SlideTab.svelte';
-import Guidelines from './Guidelines.svelte';
+import SlideTab from './SlideTab.svelte'; */
 
 // Interface
 
-export { Menu, AboutModal, Slide, SlideMeta, SlideTab, Guidelines };
+export { Guidelines, Nav, NavSocials };
