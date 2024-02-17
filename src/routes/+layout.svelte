@@ -24,6 +24,7 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
+<!-- <Guidelines /> -->
 <slot />
 <Nav path={data.url} />
 

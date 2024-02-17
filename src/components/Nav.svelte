@@ -32,9 +32,8 @@
   <div class="container">
     <div class="backdrop"></div>
     <nav>
-      <a href="/" class:active={rootPath === '' || rootPath === 'craft'}>craft</a>
-      <a href="/writing" class:active={rootPath === 'writing'}>writing</a>
-      <a href="/about" class:active={rootPath === 'about'} on:click={() => dispatch('showModal')}>about</a>
+      <a href="/" class:active={rootPath === ''}>home</a>
+      <a href="/craft" class:active={rootPath === 'craft'}>craft</a>
       {#if $projectSlide.link}
         <a 
           in:slide={{ duration: 500, easing: backOut, axis: 'x' }}
@@ -50,6 +49,8 @@
           </div>
         </a>
       {/if}
+      <a href="/writing" class:active={rootPath === 'writing'}>writing</a>
+      <a href="/#about" class:active={rootPath === 'about'} on:click={() => dispatch('showModal')}>about</a>
     </nav>
   </div>
 </div>
@@ -131,12 +132,6 @@
 
       &.btn {
         border-radius: functions.toRem(28px);
-        @media (max-width: 767px) {
-          padding: 0 functions.toRem(12px) 0 functions.toRem(14px);
-          .btn-content {
-            gap: functions.toRem(4px);
-          }
-        }
       }
     }
   }

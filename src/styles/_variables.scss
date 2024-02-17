@@ -22,7 +22,13 @@
 	--shadow-focus: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-focus);
 
 	// Small screens
-	@media (max-width: 767px) {
+	@media (max-width: 767px) or (max-height: 900px) {
+		--space-container: 28px;
+	}
+
+	// Extra small screens
+	@media (max-width: 575px) {
 		--space-container: 24px;
+		--space-nav: 24px;
 	}
 }

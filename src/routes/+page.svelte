@@ -249,21 +249,22 @@
 
 
 <main>
-  <!-- <div class="fade left"></div>
-  <div class="fade right"></div> -->
-
+  <!-- Header -->
+  <div class="fade left"></div>
+  <div class="fade right"></div>
   <header bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
     {#each posts as link, index}
-      <div style="opacity: {navItemOpacities[index]}">
-        <SlideTab
-          {index}
-          title={link.title}
-          on:select={() => goToSlide(index)}
+    <div class="tabs" style="opacity: {navItemOpacities[index]}">
+      <SlideTab
+        {index}
+        title={link.title}
+        on:select={() => goToSlide(index)}
         />
-      </div>
+    </div>
     {/each}
   </header>
     
+  <!-- Slideshow -->
   <section
     class="slideshow"
     class:dragging={isDragging}
@@ -302,6 +303,23 @@
     width: 100dvw;
     max-height: 100dvh;
     max-width: 100dvw;
+
+    .fade {
+      position: absolute;
+      top: var(--space-container);
+      height: functions.toRem(22px);
+      width: 10dvw;
+      pointer-events: none;
+      z-index: 1;
+      &.left {
+        left: 0;
+        background: linear-gradient(to right, var(--color-text) 0%, transparent 100%);
+      }
+      &.right {
+        right: 0;
+        background: linear-gradient(to left, var(--color-text) 0%, transparent 100%);
+      }
+    }
   }
 
   header {
@@ -330,23 +348,4 @@
       outline: none;
     }
   }
-
-  /*
-
-  .fade {
-    position: fixed;
-    height: functions.toRem(50px);
-    bottom: 0;
-    width: functions.toRem(150px);
-    pointer-events: none;
-    z-index: 1;
-    &.left {
-      left: 0;
-      background: linear-gradient(to right, var(--color-background) 0%, transparent 100%);
-    }
-    &.right {
-      right: 0;
-      background: linear-gradient(to left, var(--color-background) 0%, transparent 100%);
-    }
-  } */
 </style>

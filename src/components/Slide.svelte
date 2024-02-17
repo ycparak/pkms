@@ -88,7 +88,7 @@
     max-height: 100%;
     :global(.asset) {
       position: absolute;
-      padding: functions.toRem(38px);
+      padding: var(--space-container);
       height: 100% !important;
       width: 100% !important;
       object-fit: contain !important;
@@ -98,12 +98,12 @@
       border-radius: 20px;
       overflow: hidden;
       @media screen and (min-width: 1512px){
-        padding: 3.5dvh 5dvw 3.5dvh 5dvw;
+        padding: calc(var(--space-container) * 2)
       }
     }
     .component {
       position: absolute;
-      padding: functions.toRem(38px);
+      padding: var(--space-container);
       height: 100%;
       width: 100%;
       object-fit: contain;
@@ -111,7 +111,7 @@
       user-select: none;
       -webkit-user-drag: none;
       @media screen and (min-width: 1512px){
-        padding: 3.5dvh 5dvw 3.5dvh 5dvw;
+        padding: calc(var(--space-container) * 2)
       }
     }
   }

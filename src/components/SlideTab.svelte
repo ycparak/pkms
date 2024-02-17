@@ -40,9 +40,8 @@
     all: unset;
     @include mixins.interface-type-xl;
     width: fit-content;
-    padding: functions.toRem(4px) functions.toRem(24px);
+    padding: functions.toRem(4px) functions.toRem(22px);
     border: none;
-    cursor: default;
     text-decoration: none;
     user-select: none;
     backface-visibility: hidden;
@@ -52,6 +51,7 @@
     user-select: none;
     -webkit-user-drag: none;
     text-transform: lowercase;
+    cursor: pointer;
 
     &:focus, &:focus-within, &:active {
       outline: none;

@@ -11,11 +11,11 @@
     <div tabindex="-1" class="form">
       <div class="card">
         <div class="card-row">
-          <input tabindex="-1" id="email" type="email" name="email" placeholder="">
+          <input tabindex="-1" id="email" type="email" name="email" placeholder="" autocomplete="off">
           <label for="email">Email Address</label>
         </div>
         <div class="card-row">
-          <input tabindex="-1" id="password" type="password" name="password" placeholder="">
+          <input tabindex="-1" id="password" type="password" name="password" placeholder="" autocomplete="off">
           <label for="password">Password</label>
         </div>
       </div>

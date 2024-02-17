@@ -47,7 +47,6 @@
     align-items: center;
     margin-bottom: functions.toRem(-7px);
     margin-right: functions.toRem(-4px);
-    gap: functions.toRem(8px);
     .overlay {
       content: '';
       position: fixed;
