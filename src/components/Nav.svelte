@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { NavSocials } from '$components';
   import { projectSlide } from '$lib/stores';
   import { slide } from 'svelte/transition';
   import { tweened } from 'svelte/motion';
@@ -54,8 +53,6 @@
     </nav>
   </div>
 </div>
-
-<NavSocials />
 
 <style lang="scss">
   .menu {

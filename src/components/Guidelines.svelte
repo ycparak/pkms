@@ -8,7 +8,7 @@
 <style lang="scss">
   .guideline {
     position: absolute;
-    z-index: 399;
+    z-index: 999;
     background-color: red;
   }
   .h {

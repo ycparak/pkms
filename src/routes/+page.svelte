@@ -256,7 +256,6 @@
     {#each posts as link, index}
     <div class="tabs" style="opacity: {navItemOpacities[index]}">
       <SlideTab
-        {index}
         title={link.title}
         on:select={() => goToSlide(index)}
         />
@@ -313,11 +312,11 @@
       z-index: 1;
       &.left {
         left: 0;
-        background: linear-gradient(to right, var(--color-text) 0%, transparent 100%);
+        background: linear-gradient(to right, var(--color-background) 0%, transparent 100%);
       }
       &.right {
         right: 0;
-        background: linear-gradient(to left, var(--color-text) 0%, transparent 100%);
+        background: linear-gradient(to left, var(--color-background) 0%, transparent 100%);
       }
     }
   }
@@ -326,7 +325,7 @@
     position: relative;
     left: 50%;
     display: flex;
-    margin-top: var(--space-container);
+    margin-top: calc(var(--space-container) - 4px);
     white-space: nowrap;
     backface-visibility: hidden;
   }
