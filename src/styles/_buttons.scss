@@ -49,3 +49,12 @@ button {
 		color: var(--color-text);
 	}
 }
+
+.btn-none {
+	background-color: transparent;
+	color: var(--color-background);
+	text-transform: lowercase;
+	padding: 0;
+	margin: 0;
+	gap: 0;
+}

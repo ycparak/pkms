@@ -98,7 +98,7 @@
       border-radius: 20px;
       overflow: hidden;
       @media screen and (min-width: 1512px){
-        padding: calc(var(--space-container) * 2)
+        padding: var(--space-container) calc(var(--space-container) * 2)
       }
     }
     .component {
@@ -111,7 +111,7 @@
       user-select: none;
       -webkit-user-drag: none;
       @media screen and (min-width: 1512px){
-        padding: calc(var(--space-container) * 2)
+        padding: var(--space-container) calc(var(--space-container) * 2)
       }
     }
   }

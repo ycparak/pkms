@@ -25,8 +25,8 @@
 </svelte:head>
 
 <!-- <Guidelines /> -->
-<slot />
 <Nav path={data.url} />
+<slot />
 
 <style lang="scss">
 </style>

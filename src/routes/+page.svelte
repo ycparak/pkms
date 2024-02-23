@@ -295,18 +295,18 @@
 
 <style lang="scss">
   main {
-    --height-bottom: calc(var(--space-container) + var(--space-nav) - 11px);
+    --height-bottom: calc(var(--space-container) + var(--space-nav) - 10px);
     display: flex;
     flex-direction: column;
     height: calc(100dvh - var(--height-bottom));
     width: 100dvw;
     max-height: 100dvh;
     max-width: 100dvw;
-
+    
     .fade {
       position: absolute;
-      top: var(--space-container);
-      height: functions.toRem(22px);
+      top: 0;
+      height: calc(var(--space-container) + 20px);
       width: 10dvw;
       pointer-events: none;
       z-index: 1;
@@ -320,18 +320,17 @@
       }
     }
   }
-
+  
   header {
     position: relative;
     left: 50%;
     display: flex;
-    margin-top: calc(var(--space-container) - 4px);
+    margin-top: calc(var(--space-container) - 10px);
     white-space: nowrap;
     backface-visibility: hidden;
   }
-
+  
   section {
-    --height-top: calc(var(--space-container) + 18px);
     flex-grow: 1;
     display: flex;
     flex-wrap: nowrap;

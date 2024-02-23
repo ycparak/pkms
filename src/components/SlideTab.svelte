@@ -36,7 +36,7 @@
     all: unset;
     @include mixins.interface-type-xl;
     width: fit-content;
-    padding: functions.toRem(4px) functions.toRem(20px);
+    padding: functions.toRem(8px) functions.toRem(20px);
     border: none;
     text-decoration: none;
     user-select: none;

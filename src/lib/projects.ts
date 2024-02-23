@@ -27,7 +27,7 @@ export const projects = [
 		date: '2023-09-01',
 		project: 'Concept',
 		link: '/craft/radial-menu',
-		linkTitle: 'View prototype',
+		linkTitle: 'view prototype',
 		linkIsExternal: false,
 		previewComponent: 'RadialMenu',
 		description: 'A svelte implementation of Rauno Freiberg’s wonderful radial menu.',
@@ -49,7 +49,7 @@ export const projects = [
 		date: '2022-08-01',
 		project: 'Pinched V1',
 		link: 'https://pinched.io',
-		linkTitle: 'View live site',
+		linkTitle: 'view live site',
 		linkIsExternal: true,
 		previewImage: '0',
 		description:
@@ -75,7 +75,7 @@ export const projects = [
 		title: 'MacOS Dock',
 		date: '2021-07-01',
 		project: 'Concept',
-		linkTitle: 'View prototype',
+		linkTitle: 'view prototype',
 		link: '/craft/macos-dock',
 		linkIsExternal: false,
 		previewComponent: 'MacosDock',
@@ -101,7 +101,7 @@ export const projects = [
 		date: '2020-08-01',
 		project: 'Canary New UI',
 		link: 'https://blog.thinkst.com/2020/08/something-fresh.html',
-		linkTitle: 'View case study',
+		linkTitle: 'view case study',
 		linkIsExternal: true,
 		previewImage: 'canary-console',
 		description:
@@ -116,7 +116,7 @@ export const projects = [
 		date: '2020-07-01',
 		project: 'Canary New UI',
 		link: 'https://blog.thinkst.com/2020/08/something-fresh.html',
-		linkTitle: 'View case study',
+		linkTitle: 'view case study',
 		linkIsExternal: true,
 		previewImage: 'canary-graph',
 		description:
@@ -131,7 +131,7 @@ export const projects = [
 		date: '2019-09-01',
 		project: 'Canary New UI',
 		link: 'https://blog.thinkst.com/2020/08/something-fresh.html',
-		linkTitle: 'View case study',
+		linkTitle: 'view case study',
 		linkIsExternal: true,
 		previewComponent: 'CanaryLogin',
 		description:
