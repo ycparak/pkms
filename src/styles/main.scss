@@ -18,17 +18,20 @@ body {
 	font-size: 16px;
 	color: var(--color-text);
 	line-height: 1.45;
-}
-
-#root {
-	font-size: functions.toRem(15.3203px);
 	height: 100%;
 }
 
-a {
+#root {
+	min-height: 100%;
+}
+
+a,
+button {
+	color: var(--color-text-accent);
 	text-decoration: none;
-	&:focus-within {
-		outline: none;
-		color: var(--color-focus);
+	transition: all 0.3s ease;
+	border-radius: 2px;
+	&:hover {
+		color: var(--color-text);
 	}
 }

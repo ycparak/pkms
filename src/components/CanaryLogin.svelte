@@ -11,11 +11,11 @@
     <div tabindex="-1" class="form">
       <div class="card">
         <div class="card-row">
-          <input tabindex="-1" id="email" type="email" name="email" placeholder="">
+          <input tabindex="-1" id="email" type="email" name="email" placeholder="" autocomplete="off">
           <label for="email">Email Address</label>
         </div>
         <div class="card-row">
-          <input tabindex="-1" id="password" type="password" name="password" placeholder="">
+          <input tabindex="-1" id="password" type="password" name="password" placeholder="" autocomplete="off">
           <label for="password">Password</label>
         </div>
       </div>
@@ -87,7 +87,7 @@
         display: flex;
         flex-direction: column;
         position: relative;
-        padding: functions.toRem(6px) functions.toRem(16px) functions.toRem(8px) functions.toRem(14px);
+        padding: functions.toRem(6px) functions.toRem(16px) functions.toRem(6px) functions.toRem(14px);
         &:first-child {
           border-bottom: functions.toRem(1px)solid rgba(0, 0, 0, 0.05);
         }
@@ -114,7 +114,7 @@
       font-weight: 700;
       transition: color 1s cubic-bezier(0.165, 0.63, 0.14, 0.82);
       height: 0;
-      padding: functions.toRem(35px) 0 functions.toRem(10px) 0;
+      padding: functions.toRem(34px) 0 functions.toRem(10px) 0;
       line-height: 1.5;
       &:focus {
         color: var(--color-text);

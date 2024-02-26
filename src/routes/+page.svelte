@@ -1,12 +1,12 @@
 <script lang="ts">
   import { spring } from 'svelte/motion';
-	import { SlideMeta, Slide, SlideTab } from '$components'
+	import { Slide, SlideTab } from '$components'
 	import { onMount } from 'svelte';
   import { projects } from '$lib/projects';
   import { dev } from '$app/environment';
   import type { Project } from '$lib/types';
+	import { projectSlide } from '$lib/stores';
 
-  // Props
   const posts = projects.filter((post) => {
 			if (post.isDraft && !dev) return;
       return post;
@@ -42,6 +42,7 @@
   $: interpolateNav($slideSpring);
   $: interpolateSlides($slideSpring, screenWidth);
   $: date = setDate(sliderIndex);
+  $: if (Math.abs(sliderIndex - $slideSpring) <= 0.1) projectSlide.set(posts[sliderIndex]);
 
   onMount(async () => {
     document.fonts.ready.then(() => {
@@ -246,11 +247,21 @@
   }
 </script>
 
+
 <main>
-  <!-- Slideshow meta -->
-  <SlideMeta
-    date={date}
-    post={posts[sliderIndex]} />
+  <!-- Header -->
+  <div class="fade left"></div>
+  <div class="fade right"></div>
+  <header bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
+    {#each posts as link, index}
+    <div class="tabs" style="opacity: {navItemOpacities[index]}">
+      <SlideTab
+        title={link.title}
+        on:select={() => goToSlide(index)}
+        />
+    </div>
+    {/each}
+  </header>
     
   <!-- Slideshow -->
   <section
@@ -272,23 +283,6 @@
       <Slide post={post} scale={slideScales[index]} lazy={index === 1} />
     {/each}
   </section>
-
-  <!-- Slideshow Nav -->
-  <footer bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
-    {#each posts as link, index}
-      <div style="opacity: {navItemOpacities[index]}">
-        <SlideTab
-          {index}
-          title={link.title}
-          on:select={() => goToSlide(index)}
-        />
-      </div>
-    {/each}
-  </footer>
-
-  <!-- Footer fades -->
-  <div class="fade left"></div>
-  <div class="fade right"></div>
 </main>
 
 <svelte:window
@@ -301,14 +295,41 @@
 
 <style lang="scss">
   main {
+    --height-bottom: calc(var(--space-container) + var(--space-nav) - 10px);
     display: flex;
     flex-direction: column;
-    height: 100dvh;
+    height: calc(100dvh - var(--height-bottom));
     width: 100dvw;
     max-height: 100dvh;
     max-width: 100dvw;
+    
+    .fade {
+      position: absolute;
+      top: 0;
+      height: calc(var(--space-container) + 20px);
+      width: 10dvw;
+      pointer-events: none;
+      z-index: 1;
+      &.left {
+        left: 0;
+        background: linear-gradient(to right, var(--color-background) 0%, transparent 100%);
+      }
+      &.right {
+        right: 0;
+        background: linear-gradient(to left, var(--color-background) 0%, transparent 100%);
+      }
+    }
   }
-
+  
+  header {
+    position: relative;
+    left: 50%;
+    display: flex;
+    margin-top: calc(var(--space-container) - 10px);
+    white-space: nowrap;
+    backface-visibility: hidden;
+  }
+  
   section {
     flex-grow: 1;
     display: flex;
@@ -323,35 +344,6 @@
     }
     &:focus {
       outline: none;
-    }
-  }
-
-  footer {
-    position: relative;
-    left: 50%;
-    display: flex;
-    margin-bottom: functions.toRem(32px);
-    white-space: nowrap;
-    backface-visibility: hidden;
-    @media screen and (max-width: 1512px){
-      margin-bottom: functions.toRem(28px);   
-    }
-  }
-
-  .fade {
-    position: fixed;
-    height: functions.toRem(50px);
-    bottom: 0;
-    width: functions.toRem(150px);
-    pointer-events: none;
-    z-index: 1;
-    &.left {
-      left: 0;
-      background: linear-gradient(to right, var(--color-background) 0%, transparent 100%);
-    }
-    &.right {
-      right: 0;
-      background: linear-gradient(to left, var(--color-background) 0%, transparent 100%);
     }
   }
 </style>

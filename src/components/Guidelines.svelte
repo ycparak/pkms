@@ -1,30 +1,40 @@
-<div class="v"></div>
-<div class="v"></div>
-<div class="v"></div>
-<div class="h"></div>
+<div class="guideline h t"></div>
+<div class="guideline v l"></div>
+<div class="guideline h c"></div>
+<div class="guideline v c"></div>
+<div class="guideline v r"></div>
+<div class="guideline h b"></div>
 
 <style lang="scss">
-  .h {
+  .guideline {
     position: absolute;
-    top: 23px;
-    width: 100%;
-    z-index: 9999;
-    height: 1px;
+    z-index: 999;
     background-color: red;
+  }
+  .h {
+    width: 100%;
+    height: 1px;
+    &.t {
+      top: 36px;
+    }
+    &.b {
+      bottom: 36px;
+    }
+    &.c {
+      top: 50%;
+    }
   }
   .v {
     width: 1px;
     height: 100%;
-    min-height: 100vh;
-    background-color: red;
-    z-index: 999;
-    position: absolute;
-    left: calc(50% - 1px);
-    &:nth-child(2) {
-      left: calc(50% - 74px);
+    &.l {
+      left: 36px;
     }
-    &:nth-child(3) {
-      left: calc(50% + 73px);
+    &.r {
+      right: 36px;
+    }
+    &.c {
+      left: 50%;
     }
   }
 </style>

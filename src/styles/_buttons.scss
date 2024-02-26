@@ -1,56 +1,60 @@
+@use 'functions';
+@use 'mixins';
+
 button {
-	all: unset;
-	cursor: pointer;
-	height: 30px;
-	border-radius: 30px;
-	font-size: 14.1px;
+	box-shadow: none;
+	border: none;
+}
+
+.btn {
+	@include mixins.interface-type-sm;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	.inner {
+	gap: functions.toRem(8px);
+	height: functions.toRem(28px);
+	border-radius: functions.toRem(28px);
+	padding: 0 functions.toRem(7px) 0 functions.toRem(9px);
+	background-color: var(--color-button);
+	white-space: nowrap;
+	transform-origin: 50% 50% 0px;
+	transition: all 0.3s ease;
+
+	.btn-content {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-		border-radius: 30px;
+		gap: functions.toRem(8px);
+		transform-origin: 50% 50% 0px;
 	}
-}
 
-.button-primary {
-	overflow: hidden;
-	background: #ed4607;
-	background-image: radial-gradient(farthest-side at 100% 100%, #fa9d62 50%, #ee4c09 90%);
-	box-shadow: 0px 0px 0px 0.75px #68290d;
-	transition: all 0.2s ease-out;
-	.inner {
-		border: 4px solid #ed6a27;
-		box-shadow: inset -0.25px -0.25px 0.5px 0 rgba(255, 255, 255, 0.55),
-			inset 2px 2px 6px 0 rgba(0, 0, 0, 0.15);
-	}
 	&:hover {
-		box-shadow: 0px 0px 0px 0.75px #ad6542, rgba(0, 0, 0, 0.002) 0.175px 0.35px 0.35px,
-			rgba(0, 0, 0, 0.005) 0.475px 0.95px 0.95px, rgba(0, 0, 0, 0.012) 0.9px 1.8px 1.8px,
-			rgba(0, 0, 0, 0.02) 1.575px 3.15px 3.15px, rgba(0, 0, 0, 0.035) 2.75px 5.5px 5.5px,
-			rgba(0, 0, 0, 0.1) 5.05px 10.1px 10.1px, rgba(0, 0, 0, 0.125) 10px 20px 20px;
+		background-color: var(--color-button-hover);
+		color: var(--color-text);
 	}
-	&:active {
-		transition: all 0.1s ease-out;
-		box-shadow: 0px 0px 0px 0.75px #ad6542;
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: var(--shadow-focus);
 	}
 }
 
-.button-default {
-}
-
-.button-icon {
-	width: 32px;
-	height: 32px;
-	border-radius: 32px;
-}
-
-.button-dual {
-	.inner {
-		gap: 8px;
+.btn-icon {
+	all: unset;
+	padding: functions.toRem(4px);
+	font-size: 16px;
+	color: var(--color-text-accent);
+	cursor: pointer;
+	transition: all 0.3s ease;
+	&:hover {
+		color: var(--color-text);
 	}
+}
+
+.btn-none {
+	background-color: transparent;
+	color: var(--color-background);
+	text-transform: lowercase;
+	padding: 0;
+	margin: 0;
+	gap: 0;
 }

@@ -1,12 +1,9 @@
 <script lang="ts">
   import { runAnimation } from '$lib/stores';
   import { spring } from 'svelte/motion';
-  import { fly } from 'svelte/transition';
-  import { circOut } from 'svelte/easing';
   import { createEventDispatcher } from 'svelte'
   const dispatch = createEventDispatcher()
 
-  export let index: number;
   export let title: string;
 
   const springScale = spring(1, {
@@ -20,7 +17,6 @@
 
 {#if $runAnimation}
   <button
-    in:fly={{ delay: (index + 4) * 200, duration: 400, y: 60, opacity: 0, easing: circOut }}
     tabindex="-1"
     style="transform: scale({$springScale});"
     on:click|preventDefault={() => dispatch('select')}
@@ -40,9 +36,8 @@
     all: unset;
     @include mixins.interface-type-xl;
     width: fit-content;
-    padding: functions.toRem(4px) functions.toRem(20px);
+    padding: functions.toRem(8px) functions.toRem(20px);
     border: none;
-    cursor: default;
     text-decoration: none;
     user-select: none;
     backface-visibility: hidden;
@@ -52,6 +47,7 @@
     user-select: none;
     -webkit-user-drag: none;
     text-transform: lowercase;
+    cursor: pointer;
 
     &:focus, &:focus-within, &:active {
       outline: none;
