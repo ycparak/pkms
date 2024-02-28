@@ -4,7 +4,7 @@ export const prerender = true;
 
 export async function load({ params }) {
 	try {
-		const post = await import(`../../../content/craft/${params.slug}.md`);
+		const post = await import(`../../../content/projects/${params.slug}.md`);
 		return {
 			post: post.default,
 			meta: post.metadata

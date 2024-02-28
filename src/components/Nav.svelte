@@ -4,7 +4,7 @@
   import { backIn, backOut, sineIn } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
 	import { spring } from 'svelte/motion';
-  import { clickOutside } from '$lib/clickOutside';
+  import { clickOutside } from '$lib/functions';
 
   export let path: string;
 
@@ -74,7 +74,7 @@
             about
           </button>
         </nav>
-        {#if $projectSlide.link}
+        {#if $projectSlide.link && path === '/'}
           <div class="divider"></div>
           <a
             class="craft-link btn btn-none"

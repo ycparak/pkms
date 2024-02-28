@@ -15,6 +15,7 @@ export type Project = {
 	date: string;
 	project: string;
 	description: string;
+	collaborators: string[];
 	isDraft: boolean;
 	isPublishable: boolean;
 	link?: string | null | undefined;
@@ -25,4 +26,5 @@ export type Project = {
 	previewComponent?: string | null | undefined;
 	imageWidth?: number | null | undefined;
 	imageHeight?: number | null | undefined;
+	slug: string;
 };

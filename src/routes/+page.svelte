@@ -2,15 +2,12 @@
   import { spring } from 'svelte/motion';
 	import { Slide, SlideTab } from '$components'
 	import { onMount } from 'svelte';
-  import { projects } from '$lib/projects';
-  import { dev } from '$app/environment';
   import type { Project } from '$lib/types';
 	import { projectSlide } from '$lib/stores';
+	import type { PageData } from './$types';
 
-  const posts = projects.filter((post) => {
-			if (post.isDraft && !dev) return;
-      return post;
-  }) as Project[];
+  export let data : PageData;
+  const posts = data.posts as Project[];
 
   // State
   let slideSpring = spring(0, { 
