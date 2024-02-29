@@ -1,7 +1,15 @@
 <script lang="ts">
+	import MetaDescription from '$components/interface/MetaDescription.svelte';
 	import type { PageData } from './$types';
 	
 	export let data: PageData;
+	const meta = data.meta;
 </script>
 
-<h1>{data.meta.title}</h1>
+<MetaDescription
+	date={meta.date}
+	project={meta.project}
+	description={meta.description} />
+<div class="component">
+	<svelte:component this={data.post} />
+</div>

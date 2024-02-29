@@ -4,11 +4,7 @@ declare global {
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
-		interface PageData {
-			state: {
-				aboutModal: boolean;
-			};
-		}
+		// interface PageData {}
 		// interface Platform {}
 	}
 }

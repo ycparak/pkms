@@ -37,7 +37,7 @@
 
   onMount(async () => {
     if (post.previewComponent) {
-      previewComponent = (await import(/* @vite-ignore */ `./${post.previewComponent}.svelte`)).default
+      previewComponent = (await import(/* @vite-ignore */ `../craft/${post.previewComponent}.svelte`)).default
     }
   });
 </script>

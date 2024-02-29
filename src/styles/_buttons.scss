@@ -58,3 +58,23 @@ button {
 	margin: 0;
 	gap: 0;
 }
+
+.btn-link {
+	background-color: transparent;
+	color: var(--color-background);
+	text-transform: lowercase;
+	padding: functions.toRem(4px);
+	margin: functions.toRem(-4px);
+	border-radius: 4px;
+	gap: 0;
+
+	&:hover {
+		background-color: transparent;
+		color: var(--color-text);
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: var(--shadow-focus);
+	}
+}

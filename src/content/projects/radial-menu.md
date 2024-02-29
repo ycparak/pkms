@@ -11,3 +11,9 @@ previewComponent: RadialMenu
 isDraft: false
 isPublishable: true
 ---
+
+<script>
+  import RadialMenu from '$components/craft/RadialMenu.svelte';
+</script>
+
+<RadialMenu />

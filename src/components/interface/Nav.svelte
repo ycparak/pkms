@@ -77,7 +77,7 @@
         {#if $projectSlide.link && path === '/'}
           <div class="divider"></div>
           <a
-            class="craft-link btn btn-none"
+            class="btn btn-none craft-link"
             in:slide={{ duration: 500, easing: backOut, axis: 'x' }}
             out:slide={{ duration: 400, easing: backIn, axis: 'x' }}
             href={$projectSlide.link}
@@ -138,7 +138,7 @@
       justify-content: center;
       position: relative;
       background-color: var(--color-text-translucent);
-      box-shadow: var(--shadow-nav);
+      box-shadow: var(--shadow-sm);
       overflow: hidden;
       min-height: 30px;
     }
@@ -188,12 +188,14 @@
     height: functions.toRem(18px);
     top: functions.toRem(6px);
     background-color: var(--color-border-dark);
-    margin-right: functions.toRem(20px);
+    margin-right: functions.toRem(14px);
   }
 
   .craft-link {
-    padding-right: functions.toRem(6px);
+    padding-left: functions.toRem(6px);
+    margin-right: functions.toRem(6px) !important;
     background-color: transparent;
+    height: fit-content;
     .btn-content {
       gap: 16px;
 
@@ -210,9 +212,13 @@
       }
     }
 
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 0.5px var(--color-text-translucent), 0 0 0 2.5px var(--color-focus);
+    }
+
     &:hover {
-      background-color: transparent;
-      color: var(--color-primary);
+      color: var(--color-background);
     }
   }
 

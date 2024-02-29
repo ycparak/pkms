@@ -4,8 +4,9 @@
   import "@phosphor-icons/web/regular";
   import "@phosphor-icons/web/bold";
   import "@phosphor-icons/web/fill";
+  import Nav from '$components/interface/Nav.svelte';
+  // import Guidelines from '$components/interface/Guidelines.svelte';
   import { afterNavigate } from '$app/navigation';
-  import { Nav, Guidelines } from '$components';
   import { runAnimation } from '$lib/stores';
 	import type { LayoutData } from './$types';
 

@@ -1,7 +1,6 @@
 :root {
 	--font-primary: -apple-system, BlinkMacSystemFont, 'HelveticaNeue-Light', 'Helvetica Neue',
 		Helvetica, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-	--font-deco: 'G', 'New York', Georgia, 'Times New Roman', Times, serif;
 
 	--color-background: #fff;
 	--color-background-accent: #ccc;
@@ -11,7 +10,7 @@
 	--color-button-hover: #e5e5e5;
 	--color-text: #000;
 	--color-text-translucent: rgba(0, 0, 0, 0.915);
-	--color-text-accent: #999;
+	--color-text-accent: #919191;
 	--color-primary: #f15a22;
 	--color-focus: #f15a22;
 	--color-border-dark: #3d3d3d;
@@ -21,18 +20,15 @@
 	--space-container: 36px;
 	--space-nav: 30px;
 
-	--shadow-nav: 0 5px 10px rgba(0, 0, 0, 0.12);
 	--shadow-focus: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-focus);
 	--shadow-focus-nav: 0 0 0 2px var(--color-text-translucent), 0 0 0 4px var(--color-focus);
 
-	// Small screens
-	@media (max-width: 767px) or (max-height: 900px) {
-		// --space-container: 28px;
-	}
-
-	// Extra small screens
-	@media (max-width: 575px) {
-		--space-container: 24px;
-		--space-nav: 24px;
-	}
+	--shadow-sm: 0 0.7961918735236395px 0.7961918735236395px -0.6875px #00000024,
+		0 2.414506143104518px 2.414506143104518px -1.375px #0002,
+		0 6.382653521484461px 6.382653521484461px -2.0625px #00000021, 0 20px 20px -2.75px #0000001d;
+	--shadow-lg: rgba(0, 0, 0, 0.004) 0px 0.783403px 0.783403px 0px,
+		rgba(0, 0, 0, 0.01) 0px 1.92107px 1.92107px 0px,
+		rgba(0, 0, 0, 0.024) 0px 3.63429px 3.63429px 0px,
+		rgba(0, 0, 0, 0.04) 0px 6.35486px 6.35486px 0px, rgba(0, 0, 0, 0.07) 0px 11.0474px 11.0474px 0px,
+		rgba(0, 0, 0, 0.125) 0px 20.2497px 20.2497px 0px, rgba(0, 0, 0, 0.25) 0px 40px 40px 0px;
 }

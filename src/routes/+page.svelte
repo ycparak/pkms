@@ -1,6 +1,8 @@
 <script lang="ts">
+  import Slide from '$components/interface/Slide.svelte';
+  import SlideTab from '$components/interface/SlideTab.svelte';
+  import MetaDescription from '$components/interface/MetaDescription.svelte';
   import { spring } from 'svelte/motion';
-	import { Slide, SlideTab } from '$components'
 	import { onMount } from 'svelte';
   import type { Project } from '$lib/types';
 	import { projectSlide } from '$lib/stores';
@@ -278,9 +280,14 @@
     on:touchcancel={stopDragging}>
     {#each posts as post, index}
       <Slide post={post} scale={slideScales[index]} lazy={index === 1} />
-    {/each}
-  </section>
-</main>
+      {/each}
+    </section>
+  </main>
+  
+  <MetaDescription 
+    date={posts[sliderIndex].date}
+    project={posts[sliderIndex].project}
+    description={posts[sliderIndex].description} />
 
 <svelte:window
   bind:innerWidth={screenWidth}
