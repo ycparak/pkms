@@ -1,9 +1,10 @@
 <script lang="ts">
   import * as THREE from 'three'
   import * as SC from 'svelte-cubed'
-  import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+  import { GLTFLoader, type GLTF } from "three/examples/jsm/loaders/GLTFLoader.js";
   import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 	import { onMount } from "svelte";
+  import { mousePos } from '$lib/stores';
 
   export let isPrototype = false;
   
@@ -15,25 +16,18 @@
 
   let model : THREE.BufferGeometry | null = null;
   let spot = new THREE.SpotLight();
-  spot.position.set(0, 0, 8)
-
-  let mouse = { x: 0, y: 0 };
-
-  function handleMousemove(event : MouseEvent) {
-    mouse.x = event.clientX;
-    mouse.y = event.clientY;
-  }
+  spot.position.set(0, 0, 8);
     
   onMount(() => {
-    loader.load("/models/graces-draco2.glb", (gltf : any) => {
-      model = gltf.scene.children[0].geometry;
+    loader.load("/models/graces-draco2.glb", (gltf : GLTF) => {
+      model = (gltf.scene.children[0] as THREE.Mesh).geometry;
     });
   });
 
   SC.onFrame(() => {
     // follow mouse with light
-    spot.position.x = lerp((spot.position.x -0.5), mouse.x / 250, 0.1)
-    spot.position.y = lerp((spot.position.y), -mouse.y / 250, 0.1)
+    spot.position.x = lerp((spot.position.x -0.5), $mousePos.x / 250, 0.1)
+    spot.position.y = lerp((spot.position.y), -$mousePos.y / 250, 0.1)
   });
 
   function lerp(v0 : number, v1 : number, t : number) {
@@ -43,8 +37,7 @@
 
 <div
   class:preview={!isPrototype}
-  role="presentation"
-  on:mousemove={handleMousemove}>
+  role="presentation">
   <SC.Canvas
     antialias
     background={new THREE.Color('black')}

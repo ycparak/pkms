@@ -99,7 +99,7 @@
         class="about"
         style="width: {$aboutSpring.width}px; height: {$aboutSpring.height}px; opacity: {$aboutContent.opacity}; filter: blur({$aboutContent.blur}px);">
         <p in:blur={{ delay: 150, duration: 200, amount: 5, easing: sineIn }}>
-          Hey, I’m Yusuf. I’m a Product Designer and Interface Engineer; obsessed with crafting novel and useful software. Previously I created Pinched.io, a sourcing tool built on top of Twitter’s social graph, backed by Pioneer. Before that I worked at Thinkst, on Canary, a toolkit to detect attackers on internal networks.
+          Hey, I’m Yusuf. I’m a Product Designer and Interface Engineer; obsessed with crafting novel and useful software. Previously I created <a href="https://pinched.io" target="_blank">Pinched.io</a>, a sourcing tool built on top of Twitter’s social graph, <a href="https://pioneer.app/blog/september-2022/" target="_blank">backed by Pioneer</a>. Before that I worked at <a href="https://thinkst.com" target="_blank">Thinkst</a>, on <a href="https://canary.tools" target="_blank">Canary</a>, a toolkit to detect attackers on internal networks.
         </p>
         <div
           in:blur={{ delay: 50, duration: 300, amount: 5, easing: sineIn }} 
@@ -232,6 +232,13 @@
       width: 319px;
       @include mixins.interface-type-md;
       line-height: 1.55;
+      pointer-events: all;
+      cursor: text;
+      a {
+        color: var(--color-background);
+        text-decoration: underline;
+        text-decoration-color: var(--color-text-accent);
+      }
     }
 
     .actions {

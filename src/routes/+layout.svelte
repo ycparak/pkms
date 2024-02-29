@@ -7,7 +7,7 @@
   import Nav from '$components/interface/Nav.svelte';
   // import Guidelines from '$components/interface/Guidelines.svelte';
   import { afterNavigate } from '$app/navigation';
-  import { runAnimation } from '$lib/stores';
+  import { runAnimation, mousePos } from '$lib/stores';
 	import type { LayoutData } from './$types';
 
   export let data: LayoutData;
@@ -29,5 +29,8 @@
 <Nav path={data.url} />
 <slot />
 
-<style lang="scss">
-</style>
+<svelte:window
+  on:mousemove={(e) => {
+    mousePos.set({ x: e.clientX, y: e.clientY });
+  }}
+/>

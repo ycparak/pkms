@@ -1,7 +1,12 @@
 @use 'functions';
 
-// Interface
+// Type
+@mixin text-invert {
+	filter: invert(60%);
+	mix-blend-mode: difference;
+}
 
+// Type Interface
 @mixin interface-type-xl {
 	font-size: functions.toRem(18.4505px);
 	line-height: functions.toRem(13px);
@@ -74,7 +79,7 @@
 	}
 }
 
-// Typography
+// Type Typography
 @mixin type-h1 {
 	font-size: 41.1587px;
 	line-height: 46px;
@@ -92,6 +97,7 @@
 		display: table;
 	}
 }
+
 @mixin type-body {
 	font-size: functions.toRem(22.7082px);
 	line-height: functions.toRem(34px);
