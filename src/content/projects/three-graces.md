@@ -11,3 +11,9 @@ previewComponent: ThreeGraces
 isDraft: false
 isPublishable: true
 ---
+
+<script>
+  import ThreeGraces from '$components/craft/ThreeGraces.svelte';
+</script>
+
+<ThreeGraces isPrototype={true} />

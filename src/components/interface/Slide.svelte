@@ -102,6 +102,8 @@
       }
     }
     .component {
+      display: grid;
+      place-items: center;
       position: absolute;
       padding: var(--space-container);
       height: 100%;
