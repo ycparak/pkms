@@ -8,11 +8,11 @@
 
   export let isPrototype = false;
   
-  const dracoLoader = new DRACOLoader()
-  const loader = new GLTFLoader()
-  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
-  dracoLoader.setDecoderConfig({ type: 'js' })
-  loader.setDRACOLoader(dracoLoader)
+  const dracoLoader = new DRACOLoader();
+  const loader = new GLTFLoader();
+  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+  dracoLoader.setDecoderConfig({ type: 'js' });
+  loader.setDRACOLoader(dracoLoader);
 
   let model : THREE.BufferGeometry | null = null;
   let spot = new THREE.SpotLight();

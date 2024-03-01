@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { clickOutside } from '$lib/functions';
+
   export let date : string;
   export let project : string;
   export let description : string;
@@ -11,7 +13,8 @@
   }
 </script>
 
-<div 
+<div
+  use:clickOutside={() => descriptionIsVisible = false }
   class="meta"
   style="transform: translateY({descriptionIsVisible ? -descriptionHeight : 0}px)">
   <div class="container">
@@ -63,6 +66,7 @@
     @include mixins.interface-type-sm;
     @include mixins.text-invert;
     color: var(--color-text);
+    text-transform: none;
 
     .icon {
       background-color: var(--color-text);

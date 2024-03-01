@@ -10,6 +10,5 @@
 	date={meta.date}
 	project={meta.project}
 	description={meta.description} />
-<div class="component">
-	<svelte:component this={data.post} />
-</div>
+
+<svelte:component this={data.post} />
