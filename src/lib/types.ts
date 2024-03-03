@@ -27,4 +27,5 @@ export type Project = {
 	imageWidth?: number | null | undefined;
 	imageHeight?: number | null | undefined;
 	slug: string;
+	codeLink: string | null | undefined;
 };

@@ -10,6 +10,7 @@ linkIsExternal: false
 previewComponent: ThreeGraces
 isDraft: false
 isPublishable: true
+codeLink: https://github.com/ycparak/ycparak/blob/master/src/components/craft/ThreeGraces.svelte
 ---
 
 <script>

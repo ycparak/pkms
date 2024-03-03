@@ -1,9 +1,11 @@
 <script lang="ts">
   import Slide from '$components/interface/Slide.svelte';
   import SlideTab from '$components/interface/SlideTab.svelte';
+  import MetaActions from '$components/interface/MetaActions.svelte';
   import MetaDescription from '$components/interface/MetaDescription.svelte';
-  import { spring } from 'svelte/motion';
 	import { onMount } from 'svelte';
+  import { spring } from 'svelte/motion';
+  import { fade } from 'svelte/transition';
   import type { Project } from '$lib/types';
 	import { projectSlide } from '$lib/stores';
 	import type { PageData } from './$types';
@@ -21,7 +23,7 @@
   let prevIndex = 0;
   let screenWidth = 0;
   let fontLoaded = false;
-  let xPosNav = -53;
+  let xPosNav = -73;
   let xPosSlides = 0;
   let nav: HTMLElement;
   let navItemOffsets = [] as number[];
@@ -33,14 +35,12 @@
   let isDragging = false;
   let dragX = 0;
   let panVelocity = 0;
-  let date = posts[sliderIndex].date;
   
   $: calcNavItemOffsets(nav, fontLoaded);
   $: calcNavItemOpacities(nav, $slideSpring);
   $: calcSlideScales($slideSpring);
   $: interpolateNav($slideSpring);
   $: interpolateSlides($slideSpring, screenWidth);
-  $: date = setDate(sliderIndex);
   $: if (Math.abs(sliderIndex - $slideSpring) <= 0.1) projectSlide.set(posts[sliderIndex]);
 
   onMount(async () => {
@@ -110,12 +110,6 @@
   function progressPercentage(value : number, startValue : number, endValue : number) {
     return (value - startValue) / (endValue - startValue);
   };
-
-  function setDate(tabActive : number) {
-    const newDate = new Date(posts[tabActive].date);
-    // return `${(newDate.getMonth() + 1).toString().padStart(2, '0')}.${newDate.getFullYear()}`;
-    return `${newDate.getFullYear()}`;
-  }
 
   function goToSlide(nextIndex : number) {
     if (nextIndex < 0 || nextIndex > posts.length - 1) return;
@@ -288,6 +282,14 @@
     date={posts[sliderIndex].date}
     project={posts[sliderIndex].project}
     description={posts[sliderIndex].description} />
+
+  {#if posts[sliderIndex].codeLink}
+    <div transition:fade={{ duration: 300}}>
+      <MetaActions
+        link={posts[sliderIndex].codeLink}
+        icon="github-logo" />
+    </div>
+  {/if}
 
 <svelte:window
   bind:innerWidth={screenWidth}

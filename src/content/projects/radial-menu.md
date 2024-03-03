@@ -10,6 +10,7 @@ linkIsExternal: false
 previewComponent: RadialMenu
 isDraft: false
 isPublishable: true
+codeLink: https://github.com/ycparak/ycparak/blob/master/src/components/craft/RadialMenu.svelte
 ---
 
 <script>

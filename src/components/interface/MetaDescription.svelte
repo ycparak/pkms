@@ -1,6 +1,7 @@
 <script lang="ts">
   import { clickOutside } from '$lib/functions';
 
+  export let isDarkMode = false;
   export let date : string;
   export let project : string;
   export let description : string;
@@ -16,6 +17,7 @@
 <div
   use:clickOutside={() => descriptionIsVisible = false }
   class="meta"
+  class:dark={isDarkMode}
   style="transform: translateY({descriptionIsVisible ? -descriptionHeight : 0}px)">
   <div class="container">
     <button
@@ -64,12 +66,10 @@
     cursor: pointer;
     user-select: none;
     @include mixins.interface-type-sm;
-    @include mixins.text-invert;
-    color: var(--color-text);
     text-transform: none;
 
     .icon {
-      background-color: var(--color-text);
+      background-color: var(--color-text-accent);
       width: functions.toRem(5px);
       height: functions.toRem(5px);
       border-radius: 50%;
@@ -85,9 +85,9 @@
 
     &.active, &:hover, &:active {
       transition: all .5s ease;
-      color: var(--color-background) !important;
+      color: var(--color-text) !important;
       .icon {
-        background-color: var(--color-background) !important;
+        background-color: var(--color-text) !important;
         animation: none;
       }
     }
@@ -112,17 +112,16 @@
     
     p {
       @include mixins.interface-type-sm;
-      @include mixins.text-invert;
       line-height: 1.4;
-      color: var(--color-text);
+      color: var(--color-text-accent);
       padding-top: functions.toRem(8px);
       padding-left: functions.toRem(13px);
       :global(a) {
-        color: var(--color-text);
+        color: var(--color-text-accent);
         text-decoration: underline !important;
-        text-decoration-color: rgba(0, 0, 0, 0.55) !important;
+        text-decoration-color: var(--color-text-accent-underline) !important;
         &:hover {
-          color: var(--color-background);
+          filter: brightness(0.8);
         }
       }
     }

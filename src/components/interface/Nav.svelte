@@ -60,7 +60,7 @@
   
 </script>
 
-<div class="menu">
+<div class="menu dark">
   <div class="backdrop" style="border-radius: {$aboutSpring.radius}px"></div>
   <div class="container" style="border-radius: {$aboutSpring.radius}px">
     {#if !showAbout}
@@ -137,7 +137,7 @@
       display: flex;
       justify-content: center;
       position: relative;
-      background-color: var(--color-text-translucent);
+      background-color: var(--color-background-translucent);
       box-shadow: var(--shadow-sm);
       overflow: hidden;
       min-height: 30px;
@@ -152,7 +152,7 @@
     .nav-link {
       all: unset;
       cursor: pointer;
-      color: var(--color-background-accent);
+      color: var(--color-text-accent);
       text-decoration: none;
       transition: all .3s ease;
       border-radius: 2px;
@@ -161,14 +161,14 @@
       padding: 2px 0;
 
       &.active, &:hover:not(.active) {
-        color: var(--color-background);
+        color: var(--color-text);
       }
 
       &:focus-visible {
         outline: 0px;
-        box-shadow: var(--shadow-focus-nav);
+        box-shadow: var(--shadow-focus);
         text-decoration: none;
-        color: var(--color-background);
+        color: var(--color-text);
       }
     }
   }
@@ -187,7 +187,7 @@
     width: 1px;
     height: functions.toRem(18px);
     top: functions.toRem(6px);
-    background-color: var(--color-border-dark);
+    background-color: var(--color-border);
     margin-right: functions.toRem(14px);
   }
 
@@ -196,6 +196,7 @@
     margin-right: functions.toRem(6px) !important;
     background-color: transparent;
     height: fit-content;
+    color: var(--color-text);
     .btn-content {
       gap: 16px;
 
@@ -208,23 +209,19 @@
         background-color: var(--color-primary);
         height: functions.toRem(18px);
         border-radius: functions.toRem(18px);
-        color: var(--color-background);
+        color: var(--color-text);
       }
     }
 
     &:focus-visible {
       outline: none;
-      box-shadow: 0 0 0 0.5px var(--color-text-translucent), 0 0 0 2.5px var(--color-focus);
-    }
-
-    &:hover {
-      color: var(--color-background);
+      box-shadow: 0 0 0 0.5px var(--color-background-translucent), 0 0 0 2.5px var(--color-focus);
     }
   }
 
   .about {
     position: relative;
-    color: var(--color-background);
+    color: var(--color-text);
     p {
       position: absolute;
       top: 20px;
@@ -235,9 +232,14 @@
       pointer-events: all;
       cursor: text;
       a {
-        color: var(--color-background);
+        color: var(--color-text);
         text-decoration: underline;
-        text-decoration-color: var(--color-text-accent);
+        text-decoration-color: var(--color-text-underline);
+        transition: all .3s ease;
+        &:hover {
+          color: var(--color-text-accent);
+          text-decoration-color: var(--color-text-accent-underline);
+        }
       }
     }
 
@@ -248,7 +250,7 @@
       width: 100%;
       height: 49px;
       padding: 0 24px;
-      border-top: 1px solid var(--color-border-dark);
+      border-top: 1px solid var(--color-border);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -261,7 +263,7 @@
         @include mixins.interface-type-sm;
         display: flex;
         a {
-          color: var(--color-background-accent);
+          color: var(--color-text-accent);
           text-decoration: none;
           transition: all .3s ease;
           margin: 0 6px;
