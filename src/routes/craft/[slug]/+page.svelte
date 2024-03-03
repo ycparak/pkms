@@ -1,4 +1,5 @@
 <script lang="ts">
+	import MetaBack from '$components/interface/MetaBack.svelte';
 	import MetaCopy from '$components/interface/MetaCopy.svelte';
 	import MetaDescription from '$components/interface/MetaDescription.svelte';
 	import MetaActions from '$components/interface/MetaActions.svelte';
@@ -8,14 +9,13 @@
 	const meta = data.meta;
 </script>
 
+<MetaBack isDarkMode={true} />
 <MetaCopy isDarkMode={true} />
-
 <MetaDescription
 	isDarkMode={true}
 	date={meta.date}
 	project={meta.project}
 	description={meta.description} />
-
 {#if meta.codeLink}
 	<MetaActions
 		isDarkMode={true}

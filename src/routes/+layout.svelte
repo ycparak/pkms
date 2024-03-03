@@ -4,6 +4,7 @@
   import "@phosphor-icons/web/regular";
   import "@phosphor-icons/web/bold";
   import "@phosphor-icons/web/fill";
+  // import Guidelines from '$components/interface/Guidelines.svelte';
   import Nav from '$components/interface/Nav.svelte';
   import { afterNavigate } from '$app/navigation';
   import { runAnimation, mousePos } from '$lib/stores';
@@ -24,6 +25,7 @@
 	<meta name="Description" content="{config.description}" />
 </svelte:head>
 
+<!-- <Guidelines /> -->
 <Nav path={data.url} />
 <slot />
 
