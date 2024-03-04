@@ -4,6 +4,8 @@
   import { sineInOut } from 'svelte/easing';
 	import { spring } from 'svelte/motion';
 
+	export let isPrototype = false;
+
   const ITEM_OFFSET = 90;
   const menuItems = [
     { icon: 'arrow-left', label: 'Back' },
@@ -124,7 +126,7 @@
   }
 </script>
 
-<section>
+<section class="dark" class:preview={!isPrototype}>
 </section>
 
 <svelte:window
@@ -138,11 +140,20 @@
 
 <style lang="scss">
   section {
-    background-color: var(--color-card);
+    background-color: var(--color-background);
     height: 100%;
     width: 100%;
     margin: 0 auto;
     display: grid;
     place-items: center;
+
+		&.preview {
+			position: relative;
+			width: 90%;
+			height: 90%;
+			border-radius: 20px;
+			overflow: hidden;
+			box-shadow: var(--shadow-lg);
+		}
   }
 </style>

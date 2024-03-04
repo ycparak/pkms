@@ -17,4 +17,4 @@ codeLink: https://github.com/ycparak/ycparak/blob/master/src/components/craft/Ra
   import RadialMenu from '$components/craft/RadialMenu.svelte';
 </script>
 
-<RadialMenu />
+<RadialMenu isPrototype={true} />

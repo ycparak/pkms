@@ -1,4 +1,5 @@
 <script lang="ts">
+	import MetaTitle from '$components/interface/MetaTitle.svelte';
 	import MetaBack from '$components/interface/MetaBack.svelte';
 	import MetaCopy from '$components/interface/MetaCopy.svelte';
 	import MetaDescription from '$components/interface/MetaDescription.svelte';
@@ -9,6 +10,9 @@
 	const meta = data.meta;
 </script>
 
+<MetaTitle
+	isDarkMode={true}
+	title={meta.title} />
 <MetaBack isDarkMode={true} />
 <MetaCopy isDarkMode={true} />
 <MetaDescription
