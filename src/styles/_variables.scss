@@ -6,8 +6,11 @@
 	--color-card: #f7f7f7;
 
 	--color-text: #000;
-	--color-text-underline: #ccc;
+	--color-text-body: #161616;
+	--color-text-aside: #777;
+	--color-text-underline: #b5b5b5;
 	--color-text-accent: #999;
+	--color-text-accent-underline: #c5c5c5;
 
 	--color-primary: #f15a22;
 	--color-focus: #f15a22;
@@ -28,7 +31,7 @@
 }
 
 .dark {
-	--color-background: #1c1c1c;
+	--color-background: #000;
 	--color-background-translucent: rgba(0, 0, 0, 0.915);
 	--color-border: #333;
 
@@ -39,4 +42,11 @@
 	--color-text-light: #a0a0a0;
 
 	--shadow-focus: 0 0 0 2px rgba(0, 0, 0, 0.915), 0 0 0 4px var(--color-focus);
+}
+
+// small screen
+@media (max-width: 767px) {
+	:root {
+		--space-container: 28px;
+	}
 }

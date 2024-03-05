@@ -2,25 +2,87 @@
 @use 'mixins';
 
 article {
-	h1 {
-		@include mixins.type-h1;
-		font-weight: 400;
-	}
-
 	h2,
 	h3,
 	h4,
 	h5,
-	h6,
-	p {
+	h6 {
 		@include mixins.type-body;
+		grid-column: body;
+		color: var(--color-text);
+		font-weight: 500;
+		margin-top: functions.toRem(20px);
+		margin-bottom: functions.toRem(20px);
 	}
 
-	time {
-		display: inline-block;
-		@include mixins.interface-type-sm;
-		color: #bababa;
-		margin-bottom: functions.toRem(16px);
-		font-weight: 600;
+	p {
+		@include mixins.type-body;
+		grid-column: body;
+		font-weight: 400;
+		margin-bottom: functions.toRem(40px);
+		color: var(--color-text-body);
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+		a {
+			color: var(--color-text-body);
+			text-decoration: underline;
+			text-decoration-color: var(--color-text-underline);
+			&:hover {
+				color: var(--color-text-accent);
+				text-decoration-color: var(--color-text-accent-underline);
+			}
+
+			&:focus-visible {
+				outline: none;
+				box-shadow: var(--shadow-focus);
+			}
+		}
+	}
+
+	* {
+		&:last-child {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	aside {
+		position: relative;
+
+		&:nth-of-type(odd) {
+			grid-column: aside-right;
+		}
+
+		&:nth-of-type(even) {
+			grid-column: aside-left;
+			// Make it come on the previous grid row
+		}
+
+		p {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: fit-content;
+			@include mixins.type-body-aside;
+			color: var(--color-text-accent);
+			max-height: fit-content;
+			font-weight: 400;
+		}
+
+		@media (max-width: functions.toRem(1224px)) {
+			grid-column: body;
+			order: 1;
+			&:nth-of-type(odd),
+			&:nth-of-type(even) {
+				grid-column: body;
+			}
+
+			p {
+				position: relative;
+			}
+		}
 	}
 }

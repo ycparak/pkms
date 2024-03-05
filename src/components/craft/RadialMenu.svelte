@@ -126,7 +126,29 @@
   }
 </script>
 
-<section class="dark" class:preview={!isPrototype}>
+<section class:preview={!isPrototype}>
+	<div class="bg">
+		{#if clickCoords}
+			<div
+				{style}
+				class="radial-menu-wrapper"
+				transition:scale={{ start: 0.9, duration: 150, easing: sineInOut }}>
+				<div class="ring" data-has-selected={selected !== null} />
+				<ul class="radial-menu">
+					{#each menuItems.slice(0, menuItems.length) as item, i}
+						<li class="item" style={getItemStyle(i)} data-selected={selected === i}>
+							<i class={`ti ti-${item.icon}`} />
+						</li>
+					{/each}
+				</ul>
+				<div class="inner" bind:this={innerEl}>
+					{#if selected !== null}
+						<span class="label">{menuItems[selected].label}</span>
+					{/if}
+				</div>
+			</div>
+		{/if}
+	</div>
 </section>
 
 <svelte:window
@@ -140,20 +162,35 @@
 
 <style lang="scss">
   section {
+		position: relative;
     background-color: var(--color-background);
+		background: url('/images/radial-menu.webp') no-repeat center center;
     height: 100%;
     width: 100%;
-    margin: 0 auto;
     display: grid;
     place-items: center;
+    margin: 0 auto;
 
 		&.preview {
 			position: relative;
-			width: 90%;
+			width: 100%;
 			height: 90%;
 			border-radius: 20px;
 			overflow: hidden;
 			box-shadow: var(--shadow-lg);
+		}
+		.bg {
+			--size-num: 300;
+			--size: functions.toRem(var(--size-num));
+			--ring-size-num: var(--size-num) + 32;
+			--ring-size: functions.toRem(var(--ring-size-num));
+			--gap-size: functions.toRem(var(--ring-size-num) - 24);
+			--innerSize: calc(0.5 * var(--size));
+
+
+			width: 100%;
+			height: 100%;
+			background: radial-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.9) 100%);
 		}
   }
 </style>

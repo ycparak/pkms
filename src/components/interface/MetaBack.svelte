@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-  import { fly } from 'svelte/transition';
   export let isDarkMode = false;
 
   let parentPath = '/';
@@ -18,7 +17,7 @@
 
 <div class="meta" class:dark={isDarkMode}>
   <a href={parentPath} class="btn btn-icon">
-    <i in:fly={{ y: 8 }} class="icon ph ph-arrow-elbow-up-left"></i>
+    <i class="icon ph ph-arrow-elbow-up-left"></i>
   </a>
 </div>
 
