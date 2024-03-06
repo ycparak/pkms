@@ -39,6 +39,7 @@
 		"rehype-slug": "^6.0.0",
 		"remark-toc": "^9.0.0",
 		"remark-unwrap-images": "^4.0.0",
+		"shiki": "^1.1.7",
 		"svelte-cloudinary": "^1.2.1",
 		"svelte-cubed": "^0.2.1",
 		"three": "^0.140.2"

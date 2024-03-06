@@ -1,13 +1,16 @@
 :root {
 	--font-primary: -apple-system, BlinkMacSystemFont, 'HelveticaNeue-Light', 'Helvetica Neue',
 		Helvetica, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+	--font-mono: ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono',
+		'Courier New', monospace;
 
 	--color-background: #fff;
+	--color-code: #eff1f5;
 	--color-card: #f7f7f7;
 
 	--color-text: #000;
 	--color-text-body: #161616;
-	--color-text-aside: #777;
+	--color-text-aside: #444;
 	--color-text-underline: #b5b5b5;
 	--color-text-accent: #999;
 	--color-text-accent-underline: #c5c5c5;

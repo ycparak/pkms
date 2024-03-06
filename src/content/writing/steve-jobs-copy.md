@@ -1,7 +1,6 @@
 ---
 title: Steve Jobs
-description: Design can feel like there's no science to it — only feel and intuition. Even researchers have trouble grounding interaction design practices in science, inherently treating them as a mysterious black box. 1 While from my own experience that's partly true, I have been trying to deconstruct and dig out the why behind great displays of interaction design.
-date: '2020-08-28'
+date: '2021-08-28'
 published: true
 ---
 

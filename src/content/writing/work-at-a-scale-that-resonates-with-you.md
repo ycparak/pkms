@@ -1,6 +1,6 @@
 ---
 title: Work at a Scale That Resonates With You
-date: '2020-08-28'
+date: '2021-08-28'
 published: true
 ---
 
@@ -20,7 +20,7 @@ Simultaneously, as we made the app I made a [meta-book about our making of the a
 
 <aside id="1">
   <p>
-    How do you even ask yourself this question? I have some simple heuristics. Some more or less concrete than others. In reflection on a past year, I often ask: Did I acquire a new skill? Did I feel challenged in my craft or life choices? Did I push myself out of my comfort zone? Did that struggle result in a better understanding of myself or others? Did I make material progress on a big project? Answers to those questions can sometimes be hard to quantify. One of my favorite quantifiable heuristics is to maximize the number of days I spend with people I love and respect and whose work moves my heart. In essence I’m trying to “collect” good people in the way someone may acquire a stock portfolio. The greater number of people near to you for whom you have deep respect strengthens archetypes. Stronger archetypes means being shown more paths for life potentialities. Life potentialities writ clear before your very eyes demystifies them and means a higher chance of success that you, too, will be able to realize those potentialities. I’ve found the best way to increase these people in life is to work hard, be kind, empathetic. Good begets good, amplifies good, inspires diligence.
+    <a href="#aside-link-1" class="aside-link reverse-link" tabindex="-1">1</a> How do you even ask yourself this question? I have some simple heuristics. Some more or less concrete than others. In reflection on a past year, I often ask: Did I acquire a new skill? Did I feel challenged in my craft or life choices? Did I push myself out of my comfort zone? Did that struggle result in a better understanding of myself or others? Did I make material progress on a big project? Answers to those questions can sometimes be hard to quantify. One of my favorite quantifiable heuristics is to maximize the number of days I spend with people I love and respect and whose work moves my heart. In essence I’m trying to “collect” good people in the way someone may acquire a stock portfolio. The greater number of people near to you for whom you have deep respect strengthens archetypes. Stronger archetypes means being shown more paths for life potentialities. Life potentialities writ clear before your very eyes demystifies them and means a higher chance of success that you, too, will be able to realize those potentialities. I’ve found the best way to increase these people in life is to work hard, be kind, empathetic. Good begets good, amplifies good, inspires diligence.
   </p>
 </aside>
 
@@ -28,4 +28,4 @@ Does affecting one hundred lives turn you on? A thousand? A million? A billion? 
 
 I spend a lot of time making time, and then protecting that time. And through it all I fill my days with work based around return on investment. I don’t mean that coldly or even financially. I mean that in the context of — and I recognize this sounds a little crazy — respect for life itself. We are alive. We have consciousness. We are capable of a great understanding and empathy via creative and intellectual output.
 
-So I ask myself regularly: Am I maximizing this so-called respect for my being alive or not?<a href="#1" id="aside-link-1" class="aside-link">1</a> Does my work pay dividends in making me more empathetic, more curious, kinder, smarter? And the best way I’ve found to say ‘yes’ to this somewhat ridiculous question is to ask if the work, my day to day, moves my heart. And I’ve found the most reliable way to get there is by putting what’s in my head into words. Codifying an experience in a way to multiply the impact of that experience.
+So I ask myself regularly: Am I maximizing this so-called respect for my being alive or not?<a href="#1" id="aside-link-1" class="aside-link" tabindex="-1">1</a> Does my work pay dividends in making me more empathetic, more curious, kinder, smarter? And the best way I’ve found to say ‘yes’ to this somewhat ridiculous question is to ask if the work, my day to day, moves my heart. And I’ve found the most reliable way to get there is by putting what’s in my head into words. Codifying an experience in a way to multiply the impact of that experience.

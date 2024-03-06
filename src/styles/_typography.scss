@@ -2,6 +2,10 @@
 @use 'mixins';
 
 article {
+	* {
+		grid-column: body;
+	}
+
 	h2,
 	h3,
 	h4,
@@ -21,9 +25,7 @@ article {
 		font-weight: 400;
 		margin-bottom: functions.toRem(40px);
 		color: var(--color-text-body);
-		&:first-of-type {
-			margin-top: 0;
-		}
+		transition: all 0.2s ease;
 
 		a {
 			color: var(--color-text-body);
@@ -39,50 +41,142 @@ article {
 				box-shadow: var(--shadow-focus);
 			}
 		}
+
+		.active {
+			color: var(--color-primary);
+		}
 	}
 
-	* {
-		&:last-child {
-			margin-bottom: 0;
-			padding-bottom: 0;
+	pre {
+		grid-column: content;
+		position: relative;
+		z-index: 1;
+		background: transparent;
+		margin-bottom: functions.toRem(40px);
+		overflow-x: auto;
+		padding: functions.toRem(28px) 0;
+		border-radius: functions.toRem(8px);
+		direction: ltr;
+		text-align: left;
+		white-space: pre;
+		word-spacing: normal;
+		word-break: normal;
+		word-wrap: normal;
+		-moz-tab-size: 4;
+		-o-tab-size: 4;
+		tab-size: 4;
+		-webkit-hyphens: none;
+		-moz-hyphens: none;
+		-ms-hyphens: none;
+		hyphens: none;
+		code {
+			display: block;
+			padding: 0 functions.toRem(28px);
+			width: fit-content;
+			min-width: 100%;
+			font-size: functions.toRem(14px);
+			line-height: 1.5882352941;
+			transition: all 0.5s ease;
+			direction: ltr;
+			text-align: left;
+			white-space: pre;
+			word-spacing: normal;
+			word-break: normal;
+			word-wrap: normal;
+			-moz-tab-size: 2;
+			-o-tab-size: 2;
+			tab-size: 2;
+			-webkit-hyphens: none;
+			-moz-hyphens: none;
+			-ms-hyphens: none;
+			hyphens: none;
 		}
+	}
+
+	:not(pre, h1, h2, h3, h4, h5, h6) > code {
+		background-color: var(--color-code);
+		color: var(--color-text-body);
+		padding: functions.toRem(3px) functions.toRem(6px);
+		border-radius: functions.toRem(4px);
+		font-family: var(--font-mono);
+		font-size: functions.toRem(14px);
+		// letter-spacing: 0;
 	}
 
 	aside {
 		position: relative;
-
-		&:nth-of-type(odd) {
-			grid-column: aside-right;
-		}
-
-		&:nth-of-type(even) {
-			grid-column: aside-left;
-			// Make it come on the previous grid row
-		}
+		grid-column: aside-right;
+		transition: all 0.2s ease;
 
 		p {
+			color: var(--color-text-accent);
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: fit-content;
 			@include mixins.type-body-aside;
-			color: var(--color-text-accent);
 			max-height: fit-content;
 			font-weight: 400;
+			transition: all 0.2s ease;
+		}
+
+		&.active {
+			p {
+				color: var(--color-text-aside);
+			}
+
+			.aside-link {
+				color: var(--color-background);
+				background-color: var(--color-text);
+				border-color: var(--color-text);
+			}
+		}
+
+		&.left {
+			grid-column: aside-left;
 		}
 
 		@media (max-width: functions.toRem(1224px)) {
-			grid-column: body;
+			grid-column: body !important;
 			order: 1;
-			&:nth-of-type(odd),
-			&:nth-of-type(even) {
-				grid-column: body;
-			}
-
+			margin: functions.toRem(16px) 0;
 			p {
 				position: relative;
 			}
 		}
+	}
+
+	.aside-link {
+		position: relative;
+		top: functions.toRem(-6px);
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: functions.toRem(17px);
+		height: functions.toRem(17px);
+		border: 1px solid var(--color-text-accent-underline);
+		border-radius: 50%;
+		font-size: functions.toRem(9px);
+		line-height: functions.toRem(9px);
+		font-weight: 700;
+		text-decoration: none;
+		text-align: center;
+		margin: 0 functions.toRem(4px);
+		transition: all 0.2s ease;
+		color: var(--color-text);
+
+		&:hover,
+		&.active {
+			color: var(--color-background);
+			background-color: var(--color-text);
+			border-color: var(--color-text);
+		}
+	}
+
+	.reverse-link {
+		margin-left: 0;
+		margin-right: functions.toRem(2px);
+		top: functions.toRem(-4px);
 	}
 }

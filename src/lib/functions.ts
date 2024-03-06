@@ -43,3 +43,48 @@ export function setUserSelect(element: HTMLElement, value: string) {
 	// @ts-ignore
 	element.style.webkitTouchCallout = value;
 }
+
+export function foo() {
+	// Get all aside links that don’t have class .reverse-link
+	const asideLinks = document.querySelectorAll('.aside-link:not(.reverse-link)');
+
+	// Add event listener to each aside link
+	asideLinks.forEach((link) => {
+		link.addEventListener('mouseenter', (e) => {
+			const id = (e?.target as HTMLElement)?.getAttribute('href')?.replace('#', '');
+			const target = document.getElementById(id || '');
+			target?.classList.add('active');
+
+			const current = (e?.target as HTMLElement)?.closest('p');
+			const sentences = current?.innerText.split(/(?<=[.!?])/g);
+			const indexOfLink = sentences?.findIndex((sentence) => sentence.includes(id || ''));
+			const sentence = sentences && indexOfLink && sentences[indexOfLink - 1];
+
+			if (sentence && current) {
+				current.innerHTML = current.innerHTML.replace(
+					sentence,
+					`<span class="active">${sentence}</span>`
+				);
+			}
+		});
+
+		link.addEventListener('mouseleave', (e) => {
+			console.log('hello world');
+			const id = (e?.target as HTMLElement)?.getAttribute('href')?.replace('#', '');
+			const target = document.getElementById(id || '');
+			target?.classList.remove('active');
+
+			const current = (e?.target as HTMLElement)?.closest('p');
+			const sentences = current?.innerText.split(/(?<=[.!?])/g);
+			const indexOfLink = sentences?.findIndex((sentence) => sentence.includes(id || ''));
+			const sentence = sentences && indexOfLink && sentences[indexOfLink - 1];
+
+			if (sentence && current) {
+				current.innerHTML = current.innerHTML.replace(
+					`<span class="active">${sentence}</span>`,
+					sentence
+				);
+			}
+		});
+	});
+}

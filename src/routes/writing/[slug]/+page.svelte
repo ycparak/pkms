@@ -85,23 +85,26 @@
 
 		align-items: start;
 		margin: 0 auto;
-		padding-bottom: functions.toRem(220px);
+		padding-bottom: functions.toRem(200px);
+	}
 
-		hgroup {
-			grid-column: body;
-			text-align: center;
-			padding-top: var(--space-container);
-			padding-bottom: functions.toRem(120px);
-			h1 {
-				@include mixins.interface-type-xl;
-				font-weight: 400;
-				margin-bottom: functions.toRem(6px);
-			}
-			time {
-				@include mixins.interface-type-sm;
-				color: var(--color-text-accent);
-				font-weight: 400;
-			}
+	hgroup {
+		grid-column: main;
+		text-align: center;
+		padding-top: var(--space-container);
+		padding-bottom: functions.toRem(120px);
+		h1 {
+			@include mixins.interface-type-xl;
+			font-weight: 400;
+			margin-bottom: functions.toRem(14px);
+		}
+		time {
+			display: block;
+			@include mixins.interface-type-sm;
+			color: var(--color-text-accent);
+			font-weight: 400;
+			padding: 0;
+			margin: 0;
 		}
 	}
 </style>
