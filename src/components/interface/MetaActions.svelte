@@ -13,8 +13,8 @@
 <style lang="scss">
   .meta {
     position: fixed;
-    right: calc(var(--space-container) - 6px);
-    bottom: calc(var(--space-container) - 6px);
+    right: calc(var(--space-pos-fixed));
+    bottom: calc(var(--space-pos-fixed));
     z-index: 499;
   }
 

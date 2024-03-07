@@ -2,10 +2,6 @@
 @use 'mixins';
 
 article {
-	* {
-		grid-column: body;
-	}
-
 	h2,
 	h3,
 	h4,
@@ -26,6 +22,11 @@ article {
 		margin-bottom: functions.toRem(40px);
 		color: var(--color-text-body);
 		transition: all 0.2s ease;
+
+		@media (max-width: 640px) {
+			@include mixins.type-body-sm;
+			margin-bottom: 32px;
+		}
 
 		a {
 			color: var(--color-text-body);
@@ -69,6 +70,7 @@ article {
 		-moz-hyphens: none;
 		-ms-hyphens: none;
 		hyphens: none;
+
 		code {
 			display: block;
 			padding: 0 functions.toRem(28px);
@@ -91,6 +93,17 @@ article {
 			-ms-hyphens: none;
 			hyphens: none;
 		}
+
+		@media (max-width: 640px) {
+			padding: functions.toRem(20px) 0;
+			margin-bottom: functions.toRem(32px);
+
+			code {
+				padding: 0 functions.toRem(20px);
+				font-size: functions.toRem(12px);
+				line-height: 1.5;
+			}
+		}
 	}
 
 	:not(pre, h1, h2, h3, h4, h5, h6) > code {
@@ -100,7 +113,6 @@ article {
 		border-radius: functions.toRem(4px);
 		font-family: var(--font-mono);
 		font-size: functions.toRem(14px);
-		// letter-spacing: 0;
 	}
 
 	aside {
@@ -115,7 +127,7 @@ article {
 			left: 0;
 			width: 100%;
 			height: fit-content;
-			@include mixins.type-body-aside;
+			@include mixins.type-body-xs;
 			max-height: fit-content;
 			font-weight: 400;
 			transition: all 0.2s ease;
@@ -137,7 +149,7 @@ article {
 			grid-column: aside-left;
 		}
 
-		@media (max-width: functions.toRem(1224px)) {
+		@media (max-width: 1264px) {
 			grid-column: body !important;
 			order: 1;
 			margin: functions.toRem(16px) 0;

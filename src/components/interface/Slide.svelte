@@ -88,7 +88,7 @@
     max-height: 100%;
     :global(.asset) {
       position: absolute;
-      padding: var(--space-container);
+      padding: var(--space-container-v) var(--space-container-h);
       height: 100% !important;
       width: 100% !important;
       object-fit: contain !important;
@@ -98,14 +98,14 @@
       border-radius: 20px;
       overflow: hidden;
       @media screen and (min-width: 1512px){
-        padding: var(--space-container) calc(var(--space-container) * 2)
+        padding: var(--space-container-v) calc(var(--space-container-h) * 2)
       }
     }
     .component {
       display: grid;
       place-items: center;
       position: absolute;
-      padding: var(--space-container);
+      padding: var(--space-container-v) var(--space-container-h);
       height: 100%;
       width: 100%;
       object-fit: contain;
@@ -113,7 +113,7 @@
       user-select: none;
       -webkit-user-drag: none;
       @media screen and (min-width: 1512px){
-        padding: var(--space-container) calc(var(--space-container) * 2)
+        padding: var(--space-container-v) calc(var(--space-container-h) * 2)
       }
     }
   }

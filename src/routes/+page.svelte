@@ -301,7 +301,7 @@
 
 <style lang="scss">
   main {
-    --height-bottom: calc(var(--space-container) + var(--space-nav) - 10px);
+    --height-bottom: calc(var(--space-container-v) + var(--space-nav) - 10px);
     display: flex;
     flex-direction: column;
     height: calc(100dvh - var(--height-bottom));
@@ -312,7 +312,7 @@
     .fade {
       position: absolute;
       top: 0;
-      height: calc(var(--space-container) + 20px);
+      height: calc(var(--space-container-v) + 20px);
       width: 10dvw;
       pointer-events: none;
       z-index: 1;
@@ -331,7 +331,7 @@
     position: relative;
     left: 50%;
     display: flex;
-    margin-top: calc(var(--space-container) - 10px);
+    margin-top: calc(var(--space-container-v) - 10px);
     white-space: nowrap;
     backface-visibility: hidden;
   }

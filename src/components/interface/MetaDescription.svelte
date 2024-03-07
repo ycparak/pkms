@@ -44,15 +44,8 @@
 
 <style lang="scss">
   .meta {
-    position: fixed;
-    left: var(--space-container);
-    bottom: var(--space-container);
-    z-index: 499;
-    transition: all .4s ease;
-    @media (max-width: 640px) {
-      display: none;
-      visibility: hidden;
-    }
+    left: var(--space-container-v);
+    bottom: var(--space-container-v);
     .container {
       position: relative;
     }

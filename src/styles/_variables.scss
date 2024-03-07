@@ -18,8 +18,14 @@
 	--color-primary: #f15a22;
 	--color-focus: #f15a22;
 
-	--space-container: 36px;
+	--space-container-v: 36px;
+	--space-container-h: 36px;
+	--space-pos-fixed: calc(var(--space-container-v) - 6px);
 	--space-nav: 30px;
+
+	--breakpoint-xs: 640px;
+	--breakpoint-sm: 784px;
+	--breakpoint-md: 1264px;
 
 	--shadow-focus: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-focus);
 
@@ -48,8 +54,8 @@
 }
 
 // small screen
-@media (max-width: 767px) {
+@media (max-width: 640px) {
 	:root {
-		--space-container: 28px;
+		--space-container-h: 24px;
 	}
 }

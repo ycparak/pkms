@@ -120,7 +120,7 @@
   .menu {
     position: fixed;
     left: 50%;
-    bottom: calc(var(--space-container) - 10px);
+    bottom: calc(var(--space-container-v) - 10px);
     transform: translate(-50%, 0);
     z-index: 499;
     user-select: none;

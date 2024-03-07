@@ -28,10 +28,8 @@
 
 <style lang="scss">
   .meta {
-    position: fixed;
-    top: calc(var(--space-container) - 6px);
-    right: calc(var(--space-container) - 6px);
-    z-index: 499;
+    top: calc(var(--space-pos-fixed));
+    right: calc(var(--space-pos-fixed));
   }
 
   button {

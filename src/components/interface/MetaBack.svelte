@@ -23,10 +23,8 @@
 
 <style lang="scss">
   .meta {
-    position: fixed;
-    top: calc(var(--space-container) - 6px);
-    left: calc(var(--space-container) - 6px);
-    z-index: 499;
+    top: calc(var(--space-pos-fixed));
+    left: calc(var(--space-pos-fixed));
   }
 
   a {

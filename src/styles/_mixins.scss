@@ -92,7 +92,25 @@
 	}
 }
 
-@mixin type-body-aside {
+@mixin type-body-sm {
+	font-size: functions.toRem(15.6119px);
+	line-height: functions.toRem(24px);
+	letter-spacing: -0.01em;
+
+	&::before {
+		content: '';
+		margin-bottom: -0.4376em;
+		display: table;
+	}
+
+	&::after {
+		content: '';
+		margin-top: -0.3951e;
+		display: table;
+	}
+}
+
+@mixin type-body-xs {
 	font-size: functions.toRem(14.1927px);
 	line-height: functions.toRem(20px);
 	letter-spacing: -0.01em;

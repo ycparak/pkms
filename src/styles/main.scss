@@ -36,3 +36,13 @@ button {
 		color: var(--color-text);
 	}
 }
+
+.meta {
+	position: fixed;
+	z-index: 499;
+	transition: all 0.3s ease;
+	@media (max-width: 640px) {
+		display: none;
+		visibility: hidden;
+	}
+}

@@ -10,7 +10,7 @@
 <style lang="scss">
   .meta {
     position: fixed;
-    top: calc(var(--space-container) - 2px);
+    top: calc(var(--space-container-v) - 2px);
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 499;
