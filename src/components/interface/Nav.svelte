@@ -124,7 +124,7 @@
     transform: translate(-50%, 0);
     z-index: 499;
     user-select: none;
-    @include mixins.interface-type-sm;
+    @include interface-type-sm;
     .backdrop {
       position: absolute;
       width: 100%;
@@ -178,22 +178,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: functions.toRem(18px);
-    gap: 0 functions.toRem(16px);
-    padding: 0 functions.toRem(20px);
+    height: toRem(18px);
+    gap: 0 toRem(16px);
+    padding: 0 toRem(20px);
   }
 
   .divider {
     width: 1px;
-    height: functions.toRem(18px);
-    top: functions.toRem(6px);
+    height: toRem(18px);
+    top: toRem(6px);
     background-color: var(--color-border);
-    margin-right: functions.toRem(14px);
+    margin-right: toRem(14px);
   }
 
   .craft-link {
-    padding-left: functions.toRem(6px);
-    margin-right: functions.toRem(6px) !important;
+    padding-left: toRem(6px);
+    margin-right: toRem(6px) !important;
     background-color: transparent;
     height: fit-content;
     color: var(--color-text);
@@ -204,11 +204,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: functions.toRem(40px);
+        width: toRem(40px);
         text-align: center;
         background-color: var(--color-primary);
-        height: functions.toRem(18px);
-        border-radius: functions.toRem(18px);
+        height: toRem(18px);
+        border-radius: toRem(18px);
         color: var(--color-text);
       }
     }
@@ -227,7 +227,7 @@
       top: 20px;
       left: 24px;
       width: 319px;
-      @include mixins.interface-type-md;
+      @include interface-type-md;
       line-height: 1.55;
       pointer-events: all;
       cursor: text;
@@ -260,7 +260,7 @@
         border-radius: 50%;
       }
       .social-links {
-        @include mixins.interface-type-sm;
+        @include interface-type-sm;
         display: flex;
         a {
           color: var(--color-text-accent);

@@ -34,7 +34,7 @@ const config = {
 	preprocess: sequence([
 		preprocess({
 			scss: {
-				prependData: '@use "src/styles/_functions.scss"; @use "src/styles/_mixins.scss" as mixins;'
+				prependData: '@import "src/styles/_functions.scss"; @import "src/styles/_mixins.scss";'
 			}
 		}),
 		mdsvex(mdsvexOptions)

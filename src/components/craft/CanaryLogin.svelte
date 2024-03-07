@@ -33,10 +33,10 @@
     flex-direction: column;
     position: relative;
     background-color: var(--color-card);
-    border: functions.toRem(1px) solid var(--color-border);
+    border: toRem(1px) solid var(--color-border);
     height: 100%;
     width: 100%;
-    border-radius: functions.toRem(16px);
+    border-radius: toRem(16px);
     overflow: hidden;
     margin: 0 auto;
     display: grid;
@@ -44,8 +44,8 @@
   }
 
   .container {
-    padding: functions.toRem(60px) functions.toRem(24px) 0 functions.toRem(24px);
-    min-width: functions.toRem(432px);
+    padding: toRem(60px) toRem(24px) 0 toRem(24px);
+    min-width: toRem(432px);
   }
 
   .header {
@@ -57,15 +57,15 @@
     .inyoni {
       position: absolute;
       left: 0;
-      bottom: functions.toRem(-9px);
+      bottom: toRem(-9px);
       max-height: 120px;
       user-select: none;
     }
     .canary {
       position: absolute;
-      left: functions.toRem(126px);
-      bottom: functions.toRem(20px);
-      max-height: functions.toRem(38px);
+      left: toRem(126px);
+      bottom: toRem(20px);
+      max-height: toRem(38px);
       user-select: none;
     }
   }
@@ -81,22 +81,22 @@
       display: block;
       background: var(--color-background);
       width: 100%;
-      border-radius: functions.toRem(8px);
-      box-shadow: 0 functions.toRem(4px) functions.toRem(10px) 0 rgba(0,0,0, 0.06);
+      border-radius: toRem(8px);
+      box-shadow: 0 toRem(4px) toRem(10px) 0 rgba(0,0,0, 0.06);
       &-row {
         display: flex;
         flex-direction: column;
         position: relative;
-        padding: functions.toRem(6px) functions.toRem(16px) functions.toRem(6px) functions.toRem(14px);
+        padding: toRem(6px) toRem(16px) toRem(6px) toRem(14px);
         &:first-child {
-          border-bottom: functions.toRem(1px)solid rgba(0, 0, 0, 0.05);
+          border-bottom: toRem(1px)solid rgba(0, 0, 0, 0.05);
         }
       }
     }
     label {
       position: absolute;
-      top: functions.toRem(18px);
-      font-size: functions.toRem(16px);
+      top: toRem(18px);
+      font-size: toRem(16px);
       font-weight: 500;
       opacity: .4;
       pointer-events: none;
@@ -108,13 +108,13 @@
       box-shadow: none;
       background-color: transparent;
       display: block;
-      font-size: functions.toRem(15px);
-      bottom: functions.toRem(6px);
+      font-size: toRem(15px);
+      bottom: toRem(6px);
       color: #03B46E;
       font-weight: 700;
       transition: color 1s cubic-bezier(0.165, 0.63, 0.14, 0.82);
       height: 0;
-      padding: functions.toRem(34px) 0 functions.toRem(10px) 0;
+      padding: toRem(34px) 0 toRem(10px) 0;
       line-height: 1.5;
       &:focus {
         color: var(--color-text);
@@ -125,23 +125,23 @@
     }
     input:focus ~ label, input:not(:focus):not(:placeholder-shown) ~ label {
       transform: translateY(-8px);
-      font-size: functions.toRem(12px);
+      font-size: toRem(12px);
       opacity: .6;
       font-weight: 500;
     }
     button {
       display: block;
-      border-radius: functions.toRem(6px);
-      height: functions.toRem(40px);
-      padding: 0 functions.toRem(16px);
+      border-radius: toRem(6px);
+      height: toRem(40px);
+      padding: 0 toRem(16px);
       background-color: #03B46E;
       color: #fff;
       font-weight: 700;
       text-align: center;
-      margin-top: functions.toRem(16px);
-      line-height: functions.toRem(10px);
+      margin-top: toRem(16px);
+      line-height: toRem(10px);
       box-shadow: 0 1px 3px rgba(0,0,0,.30);
-      font-size: functions.toRem(16px);
+      font-size: toRem(16px);
     }
   }
 
@@ -149,9 +149,9 @@
     display: inline-block;
     color: #03B46E;
     font-weight: 500;
-    font-size: functions.toRem(13px);
+    font-size: toRem(13px);
     cursor: pointer;
-    margin-top: functions.toRem(12px);
+    margin-top: toRem(12px);
     text-align: left;
   }
 </style>

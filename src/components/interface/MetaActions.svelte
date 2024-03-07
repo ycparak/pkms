@@ -19,6 +19,6 @@
   }
 
   a {
-    font-size: functions.toRem(16px);
+    font-size: toRem(16px);
   }
 </style>

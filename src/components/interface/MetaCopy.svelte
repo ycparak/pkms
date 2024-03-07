@@ -33,7 +33,7 @@
   }
 
   button {
-    font-size: functions.toRem(15px);
+    font-size: toRem(15px);
     .primary {
       color: var(--color-primary);
     }

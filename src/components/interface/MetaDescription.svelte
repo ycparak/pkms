@@ -58,21 +58,21 @@
     height: fit-content;
     cursor: pointer;
     user-select: none;
-    @include mixins.interface-type-sm;
+    @include interface-type-sm;
     text-transform: none;
 
     .icon {
       background-color: var(--color-text-accent);
-      width: functions.toRem(5px);
-      height: functions.toRem(5px);
+      width: toRem(5px);
+      height: toRem(5px);
       border-radius: 50%;
-      margin-right: functions.toRem(8px);
+      margin-right: toRem(8px);
       animation: flash 2s infinite;
       transition: all .5s ease;
     }
     
     time {
-      letter-spacing: functions.toRem(-0.8px);
+      letter-spacing: toRem(-0.8px);
       font-variant-numeric: tabular-nums;
     }
 
@@ -93,7 +93,7 @@
   .description {
     position: absolute;
     transition: all .4s ease;
-    width: functions.toRem(296px);
+    width: toRem(296px);
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
@@ -104,11 +104,11 @@
     }
     
     p {
-      @include mixins.interface-type-sm;
+      @include interface-type-sm;
       line-height: 1.4;
       color: var(--color-text-accent);
-      padding-top: functions.toRem(8px);
-      padding-left: functions.toRem(13px);
+      padding-top: toRem(8px);
+      padding-left: toRem(13px);
       :global(a) {
         color: var(--color-text-accent);
         text-decoration: underline !important;

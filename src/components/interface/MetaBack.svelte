@@ -28,6 +28,6 @@
   }
 
   a {
-    font-size: functions.toRem(15px);
+    font-size: toRem(15px);
   }
 </style>

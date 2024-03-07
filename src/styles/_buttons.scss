@@ -1,20 +1,17 @@
-@use 'functions';
-@use 'mixins';
-
 button {
 	box-shadow: none;
 	border: none;
 }
 
 .btn {
-	@include mixins.interface-type-sm;
+	@include interface-type-sm;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: functions.toRem(8px);
-	height: functions.toRem(28px);
-	border-radius: functions.toRem(28px);
-	padding: 0 functions.toRem(7px) 0 functions.toRem(9px);
+	gap: toRem(8px);
+	height: toRem(28px);
+	border-radius: toRem(28px);
+	padding: 0 toRem(7px) 0 toRem(9px);
 	background-color: var(--color-text);
 	color: var(--color-background);
 	white-space: nowrap;
@@ -24,7 +21,7 @@ button {
 	.btn-content {
 		display: flex;
 		align-items: center;
-		gap: functions.toRem(8px);
+		gap: toRem(8px);
 		transform-origin: 50% 50% 0px;
 	}
 
@@ -36,7 +33,7 @@ button {
 
 .btn-icon {
 	all: unset;
-	padding: functions.toRem(4px);
+	padding: toRem(4px);
 	font-size: 16px;
 	color: var(--color-text-accent);
 	cursor: pointer;
@@ -59,8 +56,8 @@ button {
 	background-color: transparent;
 	color: var(--color-text-accent);
 	text-transform: lowercase;
-	padding: functions.toRem(4px);
-	margin: functions.toRem(-4px);
+	padding: toRem(4px);
+	margin: toRem(-4px);
 	border-radius: 4px;
 	gap: 0;
 
@@ -82,8 +79,8 @@ button {
 	background-color: transparent;
 	color: var(--color-text-accent);
 	text-transform: lowercase;
-	width: functions.toRem(24px);
-	height: functions.toRem(24px);
+	width: toRem(24px);
+	height: toRem(24px);
 	padding: 0;
 	margin: 0;
 	border-radius: 50%;

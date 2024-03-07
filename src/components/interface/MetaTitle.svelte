@@ -15,7 +15,7 @@
     transform: translate(-50%, 0);
     z-index: 499;
     h1 {
-      @include mixins.interface-type-xl;
+      @include interface-type-xl;
       color: var(--color-text);
       font-weight: 400;
       text-transform: lowercase;

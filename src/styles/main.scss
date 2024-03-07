@@ -1,11 +1,11 @@
-@use 'functions';
-@use 'mixins';
-@use 'fonts';
-@use 'variables';
-@use 'reset';
-@use 'buttons';
-@use 'keyframes';
-@use 'typography';
+@import 'functions';
+@import 'mixins';
+@import 'fonts';
+@import 'variables';
+@import 'reset';
+@import 'buttons';
+@import 'keyframes';
+@import 'typography';
 
 html {
 	overflow-x: hidden;

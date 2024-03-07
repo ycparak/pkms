@@ -181,10 +181,10 @@
 		}
 		.bg {
 			--size-num: 300;
-			--size: functions.toRem(var(--size-num));
+			--size: toRem(var(--size-num));
 			--ring-size-num: var(--size-num) + 32;
-			--ring-size: functions.toRem(var(--ring-size-num));
-			--gap-size: functions.toRem(var(--ring-size-num) - 24);
+			--ring-size: toRem(var(--ring-size-num));
+			--gap-size: toRem(var(--ring-size-num) - 24);
 			--innerSize: calc(0.5 * var(--size));
 
 

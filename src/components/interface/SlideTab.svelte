@@ -34,9 +34,9 @@
 <style lang="scss">
   button {
     all: unset;
-    @include mixins.interface-type-xl;
+    @include interface-type-xl;
     width: fit-content;
-    padding: functions.toRem(8px) functions.toRem(22px);
+    padding: toRem(8px) toRem(22px);
     border: none;
     text-decoration: none;
     user-select: none;

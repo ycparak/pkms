@@ -1,30 +1,27 @@
-@use 'functions';
-@use 'mixins';
-
 article {
 	h2,
 	h3,
 	h4,
 	h5,
 	h6 {
-		@include mixins.type-body;
+		@include type-body;
 		grid-column: body;
 		color: var(--color-text);
 		font-weight: 500;
-		margin-top: functions.toRem(20px);
-		margin-bottom: functions.toRem(20px);
+		margin-top: toRem(20px);
+		margin-bottom: toRem(20px);
 	}
 
 	p {
-		@include mixins.type-body;
+		@include type-body;
 		grid-column: body;
 		font-weight: 400;
-		margin-bottom: functions.toRem(40px);
+		margin-bottom: toRem(40px);
 		color: var(--color-text-body);
 		transition: all 0.2s ease;
 
 		@media (max-width: 640px) {
-			@include mixins.type-body-sm;
+			@include type-body-sm;
 			margin-bottom: 32px;
 		}
 
@@ -53,10 +50,10 @@ article {
 		position: relative;
 		z-index: 1;
 		background: transparent;
-		margin-bottom: functions.toRem(40px);
+		margin-bottom: toRem(40px);
 		overflow-x: auto;
-		padding: functions.toRem(28px) 0;
-		border-radius: functions.toRem(8px);
+		padding: toRem(28px) 0;
+		border-radius: toRem(8px);
 		direction: ltr;
 		text-align: left;
 		white-space: pre;
@@ -73,10 +70,10 @@ article {
 
 		code {
 			display: block;
-			padding: 0 functions.toRem(28px);
+			padding: 0 toRem(28px);
 			width: fit-content;
 			min-width: 100%;
-			font-size: functions.toRem(14px);
+			font-size: toRem(14px);
 			line-height: 1.5882352941;
 			transition: all 0.5s ease;
 			direction: ltr;
@@ -95,12 +92,12 @@ article {
 		}
 
 		@media (max-width: 640px) {
-			padding: functions.toRem(20px) 0;
-			margin-bottom: functions.toRem(32px);
+			padding: toRem(20px) 0;
+			margin-bottom: toRem(32px);
 
 			code {
-				padding: 0 functions.toRem(20px);
-				font-size: functions.toRem(12px);
+				padding: 0 toRem(20px);
+				font-size: toRem(12px);
 				line-height: 1.5;
 			}
 		}
@@ -109,10 +106,10 @@ article {
 	:not(pre, h1, h2, h3, h4, h5, h6) > code {
 		background-color: var(--color-code);
 		color: var(--color-text-body);
-		padding: functions.toRem(3px) functions.toRem(6px);
-		border-radius: functions.toRem(4px);
+		padding: toRem(3px) toRem(6px);
+		border-radius: toRem(4px);
 		font-family: var(--font-mono);
-		font-size: functions.toRem(14px);
+		font-size: toRem(14px);
 	}
 
 	aside {
@@ -127,7 +124,7 @@ article {
 			left: 0;
 			width: 100%;
 			height: fit-content;
-			@include mixins.type-body-xs;
+			@include type-body-xs;
 			max-height: fit-content;
 			font-weight: 400;
 			transition: all 0.2s ease;
@@ -152,7 +149,7 @@ article {
 		@media (max-width: 1264px) {
 			grid-column: body !important;
 			order: 1;
-			margin: functions.toRem(16px) 0;
+			margin: toRem(16px) 0;
 			p {
 				position: relative;
 			}
@@ -161,20 +158,20 @@ article {
 
 	.aside-link {
 		position: relative;
-		top: functions.toRem(-6px);
+		top: toRem(-6px);
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		width: functions.toRem(17px);
-		height: functions.toRem(17px);
+		width: toRem(17px);
+		height: toRem(17px);
 		border: 1px solid var(--color-text-accent-underline);
 		border-radius: 50%;
-		font-size: functions.toRem(9px);
-		line-height: functions.toRem(9px);
+		font-size: toRem(9px);
+		line-height: toRem(9px);
 		font-weight: 700;
 		text-decoration: none;
 		text-align: center;
-		margin: 0 functions.toRem(4px);
+		margin: 0 toRem(4px);
 		transition: all 0.2s ease;
 		color: var(--color-text);
 
@@ -188,7 +185,7 @@ article {
 
 	.reverse-link {
 		margin-left: 0;
-		margin-right: functions.toRem(2px);
-		top: functions.toRem(-4px);
+		margin-right: toRem(2px);
+		top: toRem(-4px);
 	}
 }
