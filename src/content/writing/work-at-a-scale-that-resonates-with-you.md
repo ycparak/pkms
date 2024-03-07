@@ -4,7 +4,7 @@ date: '2021-08-28'
 published: true
 ---
 
-[Craig Mod](https://craigmod.com) was [interviewed by Offscreen Magazine](https://craigmod.com/essays/offscreen_interview) in 2017 and if you haven’t read the interview, I’d certainly recommend it. I particularly liked the following part, where he introspectively muses on his time at Flipboard and his insight that scale comes secondary to work that moves your heart.
+In 2017, [Craig Mod](https://craigmod.com) was [interviewed by Offscreen Magazine](https://craigmod.com/essays/offscreen_interview), and in it he gives a deeply insightful response to a question about his time at Flipboard. I’ve clipped the relevant part below, but the whole interview is worth reading.
 
 ###### Question
 

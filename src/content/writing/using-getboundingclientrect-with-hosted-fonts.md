@@ -1,6 +1,6 @@
 ---
-title: Using getBoundingClientRect with Hosted Fonts
-date: '2021-09-17'
+title: Hosted Fonts and getBoundingClientRect
+date: '2022-09-17'
 published: true
 ---
 
