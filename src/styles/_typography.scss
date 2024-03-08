@@ -1,4 +1,8 @@
-article {
+.grid {
+	* {
+		grid-column: body;
+	}
+
 	h2,
 	h3,
 	h4,
@@ -112,6 +116,14 @@ article {
 		font-size: toRem(14px);
 	}
 
+	hr {
+		grid-column: body;
+		border: none;
+		height: toRem(1px);
+		background-color: var(--color-text-accent-underline);
+		margin: toRem(40px) 0;
+	}
+
 	aside {
 		position: relative;
 		grid-column: aside-right;
@@ -142,16 +154,13 @@ article {
 			}
 		}
 
-		&.left {
-			grid-column: aside-left;
-		}
-
-		@media (max-width: 1264px) {
+		@media (max-width: 1224px) {
 			grid-column: body !important;
 			order: 1;
-			margin: toRem(16px) 0;
+
 			p {
 				position: relative;
+				margin-bottom: toRem(28px);
 			}
 		}
 	}
@@ -184,7 +193,7 @@ article {
 	}
 
 	.reverse-link {
-		margin-left: 0;
+		margin-left: toRem(-4px);
 		margin-right: toRem(2px);
 		top: toRem(-4px);
 	}

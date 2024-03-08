@@ -24,115 +24,165 @@
 			<h1>{data.meta.title}</h1>
 			<time>{dateString(data.meta.date)}</time>
 		</hgroup>
-	
-		<svelte:component this={data.content} />
+		
+		<div class="grid">
+			<svelte:component this={data.content} />
+		</div>
 	</article>
+	
+	<footer class="grid footer">
+		<div class="footer-container">
+			{#if data.previousPost}
+				<a href="/writing/{data.previousPost.slug}" class="col col-left">
+					<span class="subtitle">Previous</span>
+					<span class="title">{data.previousPost.title}</span>
+				</a>
+			{/if}
+
+			{#if data.nextPost}
+				<a href="/writing/{data.nextPost.slug}" class="col col-right">
+					<span class="subtitle">Next</span>
+					<span class="title">{data.nextPost.title}</span>
+				</a>
+			{/if}
+		</div>
+	</footer>
+	<div class="fader"></div>
 </main>
 
 <style lang="scss">
-	article {
+	main {
+		padding-bottom: toRem(120px);
+
+		.fader {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: toRem(120px);
+			background-color: transparent;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--color-background) 100%);
+			pointer-events: none;
+		}
+	}
+	hgroup {
+		grid-column: main;
+		text-align: center;
+		padding-top: calc(var(--space-pos-fixed));
+		padding-bottom: toRem(120px);
+		h1 {
+			@include interface-type-xl;
+			line-height: 1.4;
+			font-weight: 400;
+			margin-bottom: toRem(6px);
+		}
+		time {
+			@include interface-type-sm;
+			display: block;
+			color: var(--color-text-accent);
+			font-weight: 400;
+			padding: 0;
+			margin: 0;
+		}
+
+		@media (max-width: 640px) {
+			padding-bottom: toRem(60px);
+		}
+	}
+	.grid {
 		display: grid;
+		align-items: start;
+		margin: 0 auto;	
+
 		grid-template-columns:
 			[full-start]
 				var(--space-container-v)
-				[main-start aside-left-start]
-					minmax(toRem(240px), toRem(280px))
-					[aside-left-end]
-					minmax(24px, 1fr) 
-					[bleed-start]
-						minmax(24px, 1fr) 
-						[content-start]
-							toRem(28px)
-							[body-start] minmax(560px, 600px) [body-end]
-							toRem(28px)
-						[content-end]
-						minmax(24px, 1fr) 
-					[bleed-end]
-					minmax(24px, 1fr) 
-					[aside-right-start]
-					minmax(toRem(240px), toRem(280px))
-				[aside-right-end main-end]
+				[main-start]
+					1fr
+					[aside-left-start] minmax(toRem(240px), toRem(280px)) [aside-left-end]
+					toRem(28px)
+					[content-start]
+						toRem(28px)
+						[body-start] minmax(560px, 600px) [body-end]
+						toRem(28px)
+					[content-end]
+					toRem(28px)
+					[aside-right-start] minmax(toRem(240px), toRem(280px)) [aside-right-end]
+					1fr
+				[main-end]
 				var(--space-container-v)
 			[full-end];
-		@media (max-width: 1264px) {
+		@media (max-width: 1224px) {
 			grid-template-columns:
 				[full-start]
 					var(--space-container-v)
 					[main-start]
-						minmax(24px, 1fr) 
-						[bleed-start]
-							minmax(24px, 1fr) 
-							[content-start]
-								toRem(28px)
-								[body-start] minmax(560px, 580px) [body-end]
-								toRem(28px)
-							[content-end]
-							minmax(24px, 1fr) 
-						[bleed-end]
-						minmax(24px, 1fr) 
+						1fr
+						[content-start]
+							toRem(28px)
+							[body-start] minmax(560px, 580px) [body-end]
+							toRem(28px)
+						[content-end]
+						1fr
 					[main-end]
 					var(--space-container-v)
 				[full-end];
 		}
-		@media (max-width: 784px) {
+		@media (max-width: 688px) {
 			grid-template-columns:
 				[full-start]
 					var(--space-container-v)
-					[main-start bleed-start]
+					[main-start]
 						1fr
 						[content-start body-start]
 							minmax(auto, 560px)
 						[body-end content-end]
 						1fr
-					[bleed-end main-end]
+					[main-end]
 					var(--space-container-v)
 				[full-end];
 		}
-
 		@media (max-width: 640px) {
 			grid-template-columns:
 				[full-start]
 					var(--space-container-h)
-					[main-start bleed-start]
+					[main-start]
 						1fr
 						[content-start body-start]
 							minmax(auto, 560px)
 						[body-end content-end]
 						1fr
-					[bleed-end main-end]
+					[main-end]
 					var(--space-container-h)
 				[full-end];
 		}
+	}
 
-		align-items: start;
-		margin: 0 auto;
-		padding-bottom: toRem(200px);
+	.footer-container {
+		margin-top: toRem(20px);
+		border-top: 1px solid var(--color-border);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 28px;
+		padding: toRem(28px) 0;
 
-		* {
-			grid-column: body;
-		}
-		hgroup {
-			grid-column: main;
-			text-align: center;
-			padding-top: calc(var(--space-pos-fixed));
-			padding-bottom: toRem(120px);
-			h1 {
-				@include interface-type-xl;
-				line-height: 1.4;
-				font-weight: 400;
-				margin-bottom: toRem(6px);
+		.col {
+			@include interface-type-sm;
+			display: flex;
+			flex-direction: column;
+			&.col-right {
+				margin-left: auto;
+				text-align: right;
 			}
-			time {
-				display: block;
-				@include interface-type-sm;
+
+			.subtitle {
 				color: var(--color-text-accent);
-				font-weight: 400;
-				padding: 0;
-				margin: 0;
+				margin-bottom: toRem(8px);
 			}
-	
-			@media (max-width: 640px) {
-				padding-bottom: toRem(60px);
+			.title {
+				color: var(--color-text-body);
+				line-height: 1.4;
 			}
 		}
 	}

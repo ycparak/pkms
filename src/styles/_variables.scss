@@ -5,8 +5,10 @@
 		'Courier New', monospace;
 
 	--color-background: #fff;
+	--color-background-translucent: rgba(255, 255, 255, 0.5);
 	--color-code: #eff1f5;
 	--color-card: #f7f7f7;
+	--color-border: #eee;
 
 	--color-text: #000;
 	--color-text-body: #1b1c1d;
@@ -23,9 +25,9 @@
 	--space-pos-fixed: calc(var(--space-container-v) - 6px);
 	--space-nav: 30px;
 
-	--breakpoint-xs: 640px;
-	--breakpoint-sm: 784px;
-	--breakpoint-md: 1264px;
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 784px;
+	--breakpoint-lg: 1224px;
 
 	--shadow-focus: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-focus);
 

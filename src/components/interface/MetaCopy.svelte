@@ -30,12 +30,19 @@
   .meta {
     top: calc(var(--space-pos-fixed));
     right: calc(var(--space-pos-fixed));
-  }
+    button {
+      font-size: toRem(15px);
+      .primary {
+        color: var(--color-primary);
+      }
+    }
 
-  button {
-    font-size: toRem(15px);
-    .primary {
-      color: var(--color-primary);
+    &:not(.dark) {
+      button {
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+      }
     }
   }
+
 </style>

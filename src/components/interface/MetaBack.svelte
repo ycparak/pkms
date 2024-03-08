@@ -25,9 +25,16 @@
   .meta {
     top: calc(var(--space-pos-fixed));
     left: calc(var(--space-pos-fixed));
-  }
 
-  a {
-    font-size: toRem(15px);
+    a {
+      font-size: toRem(15px);
+    }
+
+    &:not(.dark) {
+      a {
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+      }
+    }
   }
 </style>

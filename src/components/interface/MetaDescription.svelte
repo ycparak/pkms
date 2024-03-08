@@ -49,6 +49,11 @@
     .container {
       position: relative;
     }
+
+    @media (max-width: 784px) {
+      display: none;
+      visibility: hidden;
+    }
   }
 
   button {
