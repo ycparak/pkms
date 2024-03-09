@@ -11,6 +11,9 @@
 	.full {
 		grid-column: full;
 	}
+	.absolute {
+		position: absolute;
+	}
 
 	h2,
 	h3,
@@ -78,7 +81,7 @@
 		margin-bottom: toRem(40px);
 		overflow-x: auto;
 		padding: toRem(28px) 0;
-		border-radius: toRem(8px);
+		border-radius: toRem(12px);
 		direction: ltr;
 		text-align: left;
 		white-space: pre;
@@ -152,7 +155,6 @@
 
 		p {
 			color: var(--color-text-accent);
-			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;

@@ -20,7 +20,7 @@ We launched Flipboard for iPhone and instantly — boom! — had millions of new
 Simultaneously, as we made the app I made a [meta-book about our making of the app](https://craigmod.com/journal/digital_physical/) — the design detritus, the engineering commits — and presented that to the team. Jesus, my heart moved a mile. It was difficult not to cry. I realized in that moment that scale is secondary to grace or movement.
 
 <aside id="1">
-  <p>
+  <p class="absolute">
     <a href="#aside-link-1" class="aside-link reverse-link" tabindex="-1">1</a> How do you even ask yourself this question? I have some simple heuristics. Some more or less concrete than others. In reflection on a past year, I often ask: Did I acquire a new skill? Did I feel challenged in my craft or life choices? Did I push myself out of my comfort zone? Did that struggle result in a better understanding of myself or others? Did I make material progress on a big project? Answers to those questions can sometimes be hard to quantify. One of my favorite quantifiable heuristics is to maximize the number of days I spend with people I love and respect and whose work moves my heart. In essence I’m trying to “collect” good people in the way someone may acquire a stock portfolio. The greater number of people near to you for whom you have deep respect strengthens archetypes. Stronger archetypes means being shown more paths for life potentialities. Life potentialities writ clear before your very eyes demystifies them and means a higher chance of success that you, too, will be able to realize those potentialities. I’ve found the best way to increase these people in life is to work hard, be kind, empathetic. Good begets good, amplifies good, inspires diligence.
   </p>
 </aside>
