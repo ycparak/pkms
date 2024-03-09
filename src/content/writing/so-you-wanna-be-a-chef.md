@@ -4,6 +4,12 @@ date: '2021-10-11'
 published: true
 ---
 
+_The great Anthony Bourdain wrote the following chapter, in his book Medium Raw. It used to be up on [ruhlman.com](https://ruhlman.com/so-you-wanna-be-a-chef-by-bourdain-2/) but unfortunately has since been taken down. I'm republishing it here as a reminder to a time when I was in college reading it and feeling deeply inspired._
+
+<img class="content" alt="Anthony Bourdain" src="/images/bourdain.webp">
+
+**So You Wanna Be a Chef by Anthony Bourdain**
+
 I am frequently asked by aspiring chefs, dreamers young and old, attracted by the lure of slowly melting shallots and caramelizing pork belly, or delusions of Food Network stardom, if they should go to culinary school. I usually give a long, thoughtful, and qualified answer.
 
 But the short answer is “no.”

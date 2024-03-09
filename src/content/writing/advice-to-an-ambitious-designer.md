@@ -10,9 +10,6 @@ In an interview with Lovers Magazine, I was asked what advice I’d give to ambi
   <p>
     You ask advice: ah, what a very human and very dangerous thing to do! For to give advice to a man who asks what to do with his life implies something very close to egomania. To presume to point a man to the right and ultimate goal — to point with a trembling finger in the RIGHT direction is something only a fool would take upon himself.
   </p>
-  <!-- <p>
-    I am not a fool, but I respect your sincerity in asking my advice. I ask you though, in listening to what I say, to remember that all advice can only be a product of the man who gives it. What is truth to one may be disaster to another. I do not see life through your eyes, nor you through mine. If I were to attempt to give you specific advice, it would be too much like the blind leading the blind.
-  </p> -->
 </aside>
 
 If you want to be a great designer, design more. Design more than anyone you know. Refine more, ideate more, tinker more. If you truly want to be a great designer, this won’t feel like work to you. That in itself will tell you you’re on the right path. Follow your curiosity and design things interesting to you. Then design them again. Then add different tweaks. Maybe change the typography, or the colours, or the spacing. Refine your skills and your taste. Build up a body of work on the shoulders of designers further ahead than you. Start to piece together what differentiates bad design, from good design, from great design.

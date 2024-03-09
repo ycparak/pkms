@@ -30,7 +30,7 @@
 		</div>
 	</article>
 	
-	<footer class="grid footer">
+	<!-- <footer class="grid footer">
 		<div class="footer-container">
 			{#if data.previousPost}
 				<a href="/writing/{data.previousPost.slug}" class="col col-left">
@@ -46,7 +46,7 @@
 				</a>
 			{/if}
 		</div>
-	</footer>
+	</footer> -->
 	<div class="fader"></div>
 </main>
 
@@ -158,7 +158,7 @@
 		}
 	}
 
-	.footer-container {
+	/* .footer-container {
 		margin-top: toRem(20px);
 		border-top: 1px solid var(--color-border);
 		display: flex;
@@ -185,5 +185,5 @@
 				line-height: 1.4;
 			}
 		}
-	}
+	} */
 </style>

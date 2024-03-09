@@ -2,6 +2,15 @@
 	* {
 		grid-column: body;
 	}
+	.content {
+		grid-column: content;
+	}
+	.main {
+		grid-column: main;
+	}
+	.full {
+		grid-column: full;
+	}
 
 	h2,
 	h3,
@@ -29,6 +38,11 @@
 			margin-bottom: 32px;
 		}
 
+		strong {
+			font-weight: 500;
+			color: var(--color-text);
+		}
+
 		a {
 			color: var(--color-text-body);
 			text-decoration: underline;
@@ -47,6 +61,13 @@
 		.active {
 			color: var(--color-primary);
 		}
+	}
+
+	img {
+		grid-column: content;
+		max-width: 100%;
+		height: auto;
+		margin: toRem(8px) auto toRem(48px) auto;
 	}
 
 	pre {

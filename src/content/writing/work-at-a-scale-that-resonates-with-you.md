@@ -17,12 +17,6 @@ It was everything I expected. Working with Marcos Weskamp and the team at Flipbo
 
 We launched Flipboard for iPhone and instantly — boom! — had millions of new users. But I didn’t feel my heart move. Not an inch. It was just an observation, a truth. You have to acknowledge these truths. It came with no judgment. My heart didn’t move. I loved the people and the work, but the object, the artifact, did not move my heart. By that point in my career I had worked on enough projects that had moved me to understand what was happening. I had archetypes to lean on.
 
-<aside id="2">
-  <p>
-    <a href="#aside-link-2" class="aside-link reverse-link" tabindex="-1">2</a> How do you even ask yourself this question? I have some simple heuristics. Some more or less concrete than others.
-  </p>
-</aside>
-
 Simultaneously, as we made the app I made a [meta-book about our making of the app](https://craigmod.com/journal/digital_physical/) — the design detritus, the engineering commits — and presented that to the team. Jesus, my heart moved a mile. It was difficult not to cry. I realized in that moment that scale is secondary to grace or movement.
 
 <aside id="1">
