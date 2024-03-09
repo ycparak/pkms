@@ -137,7 +137,7 @@
       display: flex;
       justify-content: center;
       position: relative;
-      background-color: var(--color-background-translucent);
+      background-color: var(--color-nav);
       box-shadow: var(--shadow-sm);
       overflow: hidden;
       min-height: 30px;
@@ -152,7 +152,7 @@
     .nav-link {
       all: unset;
       cursor: pointer;
-      color: var(--color-text-accent);
+      color: var(--color-text-light);
       text-decoration: none;
       transition: all .3s ease;
       border-radius: 2px;
@@ -237,7 +237,7 @@
         text-decoration-color: var(--color-text-underline);
         transition: all .3s ease;
         &:hover {
-          color: var(--color-text-accent);
+          color: var(--color-text-light);
           text-decoration-color: var(--color-text-accent-underline);
         }
       }
@@ -263,7 +263,7 @@
         @include interface-type-sm;
         display: flex;
         a {
-          color: var(--color-text-accent);
+          color: var(--color-text-light);
           text-decoration: none;
           transition: all .3s ease;
           margin: 0 6px;

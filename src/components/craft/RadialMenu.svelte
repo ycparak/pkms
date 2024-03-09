@@ -3,6 +3,7 @@
   import { fade, scale } from 'svelte/transition';
   import { sineInOut } from 'svelte/easing';
 	import { spring } from 'svelte/motion';
+	import { onMount } from 'svelte';
 
 	// Props
 	export let isPrototype = false;
@@ -19,7 +20,7 @@
   ]
 
 	// Variables
-	let holdingMouse = false;
+	let holdingMouse = true;
   let selected: number | null = null;
 	let clickCoords: [number, number] | null = null;
 	let mouseCoords: [number, number] | null = null;
@@ -29,6 +30,10 @@
 		damping: 0.3,
 	});
   let [skew, top, left, ringAngleOffset, ringPercent] = [30, 62, 59, 120, 83.2];
+
+	onMount(() => {
+		clickCoords = [window.innerWidth / 2, window.innerHeight / 2];
+	});
 
 	// Reactive values
   $: selected = (function getMouseSelection() {
@@ -110,7 +115,7 @@
 
 	function onMouseDown(e: MouseEvent) {
 		const el = e.target as HTMLElement;
-		if (!['bg', 'explainer'].includes(el.id)) return;
+		if (!['bg', 'explainer'].includes(el.id) || holdingMouse) return;
 		holdingMouse = true;
 		clickCoords = [e.clientX, e.clientY];
 		document.body.style.cursor = 'move';
@@ -130,34 +135,32 @@
   }
 </script>
 
-<section class="dark" class:preview={!isPrototype}>
-	<div id="bg" class="bg">
-		<div id="explainer" class="content">
-			{#if !holdingMouse}
-				<p transition:fade={{ duration: 150 }}>Hold and rotate from anywhere</p>
-			{/if}
+<section id="bg" class="dark" class:preview={!isPrototype}>
+	<div id="explainer" class="content">
+		{#if !holdingMouse}
+			<p transition:fade={{ duration: 150 }}>Hold and rotate from anywhere</p>
+		{/if}
 
-			{#if clickCoords}
-				<div
-					class="radial-menu-wrapper"
-					{style}
-					transition:scale={{ start: 0.9, duration: 150, easing: sineInOut }}>
-					<div class="ring" data-has-selected={selected !== null} />
-					<ul class="radial-menu">
-						{#each menuItems.slice(0, menuItems.length) as item, i}
-							<li class="item" style={getItemStyle(i)} data-selected={selected === i}>
-								<i class={`ph ph-${item.icon}`} />
-							</li>
-						{/each}
-					</ul>
-					<div class="inner" bind:this={innerEl}>
-						{#if selected !== null}
-							<span class="label">{menuItems[selected].label}</span>
-						{/if}
-					</div>
+		{#if clickCoords}
+			<div
+				class="radial-menu-wrapper"
+				{style}
+				transition:scale={{ start: 0.9, duration: 150, easing: sineInOut }}>
+				<div class="ring" data-has-selected={selected !== null} />
+				<ul class="radial-menu">
+					{#each menuItems.slice(0, menuItems.length) as item, i}
+						<li class="item" style={getItemStyle(i)} data-selected={selected === i}>
+							<i class={`ph ph-${item.icon}`} />
+						</li>
+					{/each}
+				</ul>
+				<div class="inner" bind:this={innerEl}>
+					{#if selected !== null}
+						<span class="label">{menuItems[selected].label}</span>
+					{/if}
 				</div>
-			{/if}
-		</div>
+			</div>
+		{/if}
 	</div>
 </section>
 
@@ -171,10 +174,17 @@
 />
 
 <style lang="scss">
+	$wrapper: #131419;
+	$bg: #1a1b20;
+	$border: #27282d;
+	$highlight: #868f97;
+	$text: #868f97;
+	$text-highlight: #d8bbc3;
 	section {
+		display: grid;
+		place-items: center;
 		position: relative;
-    background-color: #1c1c1c;
-		// background: url('/images/radial-menu.webp') no-repeat center center;
+    background-color: $wrapper;
     height: 100%;
     width: 100%;
     margin: 0 auto;
@@ -187,31 +197,18 @@
 			overflow: hidden;
 			box-shadow: var(--shadow-lg);
 		}
-		.bg {
-			display: grid;
-			place-items: center;
-			width: 100%;
-			height: 100%;
-			// background: radial-gradient(transparent 0%, rgba(0, 0, 0, 0.5) 100%);
-			p {
-				@include interface-type-sm;
-				color: var(--color-text-aside);
-				user-select: none;
-				pointer-events: none;
-			}
+
+		p {
+			@include interface-type-sm;
+			color: var(--color-text-accent);
+			user-select: none;
+			pointer-events: none;
 		}
   }
 
 
 	$size-num: 250px;
 	$size: toRem($size-num);
-	
-	$wrapper: #1c1c1c;
-	$bg: #232323;
-	$border: #2e2e2e;
-	$highlight: #707070;
-	$text: #a0a0a0;
-	$text-highlight: #fff;
 
 	.radial-menu-wrapper {
 		position: absolute;
@@ -241,8 +238,8 @@
 			background: conic-gradient(
 				from var(--selectedAngle),
 				$bg var(--ringPercent),
-				$highlight 0,
-				$highlight 100%
+				#d0c5ea 0,
+				#ddb2a1 100%
 			);
 		}
 

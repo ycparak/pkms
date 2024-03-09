@@ -5,7 +5,7 @@
 		'Courier New', monospace;
 
 	--color-background: #fff;
-	--color-background-translucent: rgba(255, 255, 255, 0.5);
+	--color-nav: #161616;
 	--color-code: #eff1f5;
 	--color-card: #f7f7f7;
 	--color-border: #eee;
@@ -42,17 +42,17 @@
 }
 
 .dark {
-	--color-background: #000;
-	--color-background-translucent: rgba(0, 0, 0, 0.915);
-	--color-border: #333;
+	--color-background: #131419;
+	--color-nav: rgba(0, 0, 0, 0.915);
+	--color-border: #27282d;
 
 	--color-text: #fff;
-	--color-text-underline: #999;
-	--color-text-accent: #bbb;
-	--color-text-accent-underline: #666;
-	--color-text-light: #a0a0a0;
+	--color-text-light: #a4acb2;
+	--color-text-accent: #868f97;
+	--color-text-underline: #a4acb2;
+	--color-text-accent-underline: #4f5559;
 
-	--shadow-focus: 0 0 0 2px rgba(0, 0, 0, 0.915), 0 0 0 4px var(--color-focus);
+	--shadow-focus: 0 0 0 2px rgba(15, 13, 13, 0.915), 0 0 0 4px var(--color-focus);
 }
 
 // small screen
