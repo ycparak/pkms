@@ -5,8 +5,6 @@ import { mdsvex, escapeSvelte } from 'mdsvex';
 import { getHighlighter } from 'shiki';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import remarkToc from 'remark-toc';
-import remarkGfm from 'remark-gfm';
-import remarkDirective from 'remark-directive';
 import rehypeSlug from 'rehype-slug';
 
 const theme = 'rose-pine';
@@ -26,7 +24,7 @@ const mdsvexOptions = {
 			return `{@html \`${html}\` }`;
 		}
 	},
-	remarkPlugins: [remarkUnwrapImages, remarkGfm, remarkDirective, [(remarkToc, { tight: true })]],
+	remarkPlugins: [remarkUnwrapImages, [(remarkToc, { tight: true })]],
 	rehypePlugins: [rehypeSlug]
 };
 

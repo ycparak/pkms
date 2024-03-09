@@ -11,9 +11,6 @@
 	.full {
 		grid-column: full;
 	}
-	.absolute {
-		position: absolute;
-	}
 
 	h2,
 	h3,
@@ -163,6 +160,9 @@
 			max-height: fit-content;
 			font-weight: 400;
 			transition: all 0.2s ease;
+			&.absolute {
+				position: absolute;
+			}
 		}
 
 		&.active {
@@ -182,7 +182,7 @@
 			order: 1;
 
 			p {
-				position: relative;
+				position: relative !important;
 				margin-bottom: toRem(28px);
 			}
 		}
