@@ -1,12 +1,52 @@
 <script lang="ts">
 	import MetaBack from '$components/interface/MetaBack.svelte';
 	import MetaCopy from '$components/interface/MetaCopy.svelte';
+	import { onMount } from 'svelte';
 
 	export let data;
 
 	function dateString(date : string) {
 		return new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 	}
+
+	onMount(() => {
+		const asideLinks = document.querySelectorAll('.aside-link:not(.reverse-link)');
+		const reverseLinks = document.querySelectorAll('.aside-link.reverse-link');
+
+		asideLinks.forEach((link) => {
+			link.addEventListener('mouseenter', (e) => {
+				const id = (e?.target as HTMLElement)?.getAttribute('href')?.replace('#', '');
+				const target = document.getElementById(id || '');
+				target?.classList.add('active');
+			});
+
+			link.addEventListener('mouseleave', (e) => {
+				const id = (e?.target as HTMLElement)?.getAttribute('href')?.replace('#', '');
+				const target = document.getElementById(id || '');
+				target?.classList.remove('active');
+			});
+		});
+
+		reverseLinks.forEach((link) => {
+			link.addEventListener('mouseenter', (e) => {
+				const id = (e?.target as HTMLElement)?.getAttribute('href')?.replace('#', '');
+				const asideId = (e?.target as HTMLElement)?.getAttribute('href')?.split('-')[2]
+				const target = document.getElementById(id || '');
+				const asideTarget = document.getElementById(asideId || '');
+				target?.classList.add('active');
+				asideTarget?.classList.add('active');
+			});
+
+			link.addEventListener('mouseleave', (e) => {
+				const id = (e?.target as HTMLElement)?.getAttribute('href')?.replace('#', '');
+				const asideId = (e?.target as HTMLElement)?.getAttribute('href')?.split('-')[2];
+				const target = document.getElementById(id || '');
+				const asideTarget = document.getElementById(asideId || '');
+				target?.classList.remove('active');
+				asideTarget?.classList.remove('active');
+			});
+		});
+	});
 </script>
 
 <svelte:head>
@@ -30,23 +70,6 @@
 		</div>
 	</article>
 	
-	<!-- <footer class="grid footer">
-		<div class="footer-container">
-			{#if data.previousPost}
-				<a href="/writing/{data.previousPost.slug}" class="col col-left">
-					<span class="subtitle">Previous</span>
-					<span class="title">{data.previousPost.title}</span>
-				</a>
-			{/if}
-
-			{#if data.nextPost}
-				<a href="/writing/{data.nextPost.slug}" class="col col-right">
-					<span class="subtitle">Next</span>
-					<span class="title">{data.nextPost.title}</span>
-				</a>
-			{/if}
-		</div>
-	</footer> -->
 	<div class="fader"></div>
 </main>
 
@@ -157,33 +180,4 @@
 				[full-end];
 		}
 	}
-
-	/* .footer-container {
-		margin-top: toRem(20px);
-		border-top: 1px solid var(--color-border);
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 28px;
-		padding: toRem(28px) 0;
-
-		.col {
-			@include interface-type-sm;
-			display: flex;
-			flex-direction: column;
-			&.col-right {
-				margin-left: auto;
-				text-align: right;
-			}
-
-			.subtitle {
-				color: var(--color-text-accent);
-				margin-bottom: toRem(8px);
-			}
-			.title {
-				color: var(--color-text-body);
-				line-height: 1.4;
-			}
-		}
-	} */
 </style>

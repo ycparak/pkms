@@ -1,6 +1,6 @@
 ---
 title: Advice to an Ambitious Designer
-date: '2024-03-10'
+date: '2024-03-12'
 published: true
 ---
 

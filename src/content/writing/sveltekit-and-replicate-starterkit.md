@@ -1,5 +1,5 @@
 ---
 title: Sveltekit and Replicate Starter kit
-date: '2023-04-06'
+date: '2024-03-02'
 published: true
 ---

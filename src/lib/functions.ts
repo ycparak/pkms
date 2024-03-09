@@ -54,18 +54,6 @@ export function foo() {
 			const id = (e?.target as HTMLElement)?.getAttribute('href')?.replace('#', '');
 			const target = document.getElementById(id || '');
 			target?.classList.add('active');
-
-			const current = (e?.target as HTMLElement)?.closest('p');
-			const sentences = current?.innerText.split(/(?<=[.!?])/g);
-			const indexOfLink = sentences?.findIndex((sentence) => sentence.includes(id || ''));
-			const sentence = sentences && indexOfLink && sentences[indexOfLink - 1];
-
-			if (sentence && current) {
-				current.innerHTML = current.innerHTML.replace(
-					sentence,
-					`<span class="active">${sentence}</span>`
-				);
-			}
 		});
 
 		link.addEventListener('mouseleave', (e) => {
@@ -73,18 +61,6 @@ export function foo() {
 			const id = (e?.target as HTMLElement)?.getAttribute('href')?.replace('#', '');
 			const target = document.getElementById(id || '');
 			target?.classList.remove('active');
-
-			const current = (e?.target as HTMLElement)?.closest('p');
-			const sentences = current?.innerText.split(/(?<=[.!?])/g);
-			const indexOfLink = sentences?.findIndex((sentence) => sentence.includes(id || ''));
-			const sentence = sentences && indexOfLink && sentences[indexOfLink - 1];
-
-			if (sentence && current) {
-				current.innerHTML = current.innerHTML.replace(
-					`<span class="active">${sentence}</span>`,
-					sentence
-				);
-			}
 		});
 	});
 }
