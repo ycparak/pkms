@@ -20,6 +20,8 @@
   ]
 
 	// Variables
+	let screenWidth : number;
+	let screenHeight : number;
 	let holdingMouse = true;
   let selected: number | null = null;
 	let clickCoords: [number, number] | null = null;
