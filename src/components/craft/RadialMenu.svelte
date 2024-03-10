@@ -20,8 +20,6 @@
   ]
 
 	// Variables
-	let screenWidth : number;
-	let screenHeight : number;
 	let holdingMouse = true;
   let selected: number | null = null;
 	let clickCoords: [number, number] | null = null;
@@ -302,14 +300,13 @@
 	}
 
 	.label {
+		@include interface-type-sm;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		translate: -50% -50%;
 		z-index: 999;
 		color: $text;
-		font-size: toRem(13px);
-		letter-spacing: -0.01em;
 	}
 
 	.item {

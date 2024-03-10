@@ -6,10 +6,14 @@
 	<h1>{$page.status}: {$page.error?.message}</h1>
 </div>
 
-<style>
+<style lang="scss">
 	.error {
 		height: 100%;
 		display: grid;
 		place-content: center;
+		h1 {
+			@include interface-type-xl;
+			font-weight: 400;
+		}
 	}
 </style>

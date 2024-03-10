@@ -1,6 +1,8 @@
 import type { Writing } from '$lib/types';
 import { error } from '@sveltejs/kit';
 
+export const prerender = true;
+
 export async function load({ params, fetch }) {
 	try {
 		const response = await fetch('/api/writing');

@@ -3,10 +3,7 @@ export type WritingCategory = 'essay' | 'note';
 export type Writing = {
 	title: string;
 	date: string;
-	description: string;
-	category: WritingCategory;
 	slug: string;
-	path: string;
 	isDraft: boolean;
 };
 

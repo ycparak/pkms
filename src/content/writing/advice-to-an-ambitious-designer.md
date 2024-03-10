@@ -1,7 +1,7 @@
 ---
 title: Advice to an Ambitious Designer
 date: '2024-03-12'
-published: true
+isDraft: true
 ---
 
 In an interview with Lovers Magazine, I was asked what advice I’d give to ambitious designers. The absurdity that they think I’m qualified to give advice aside, I figured I’d neatly sidestep the ego tripping question by writing it as advice to myself crouched as advice to others.

@@ -7,7 +7,7 @@ description: 'A svelte implementation of <a href="https://rauno.me" target="_bla
 link: '/craft/radial-menu'
 linkTitle: view prototype
 linkIsExternal: false
-previewComponent: RadialMenu
+previewVideo: boolean-search.mp4
 isDraft: false
 isPublishable: true
 codeLink: https://github.com/ycparak/ycparak/blob/master/src/components/craft/RadialMenu.svelte

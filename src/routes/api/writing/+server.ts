@@ -13,8 +13,7 @@ async function getWriting() {
 
 		if (file && typeof file === 'object' && 'metadata' in file && slug) {
 			const metadata = file.metadata as Omit<Writing, 'slug'>;
-			const path = '/' + metadata.category + '/' + slug;
-			const post = { ...metadata, slug, path } satisfies Writing;
+			const post = { ...metadata, slug } satisfies Writing;
 			if (post.isDraft && !dev) continue;
 			else posts.push(post);
 		}
