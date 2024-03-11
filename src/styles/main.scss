@@ -46,3 +46,15 @@ button {
 		visibility: hidden;
 	}
 }
+
+.preview-lg {
+	position: relative !important;
+	height: calc(100% - var(--space-container-v) * 2) !important;
+	width: calc(100% - var(--space-container-h) * 2) !important;
+	border-radius: toRem(16px) !important;
+	overflow: hidden !important;
+	@media (min-width: 1512px) {
+		width: calc(100% - 10dvw) !important;
+		height: calc(100% - 10dvh) !important;
+	}
+}

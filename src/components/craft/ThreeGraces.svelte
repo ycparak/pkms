@@ -4,10 +4,11 @@
   import { GLTFLoader, type GLTF } from "three/examples/jsm/loaders/GLTFLoader.js";
   import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 	import { onMount } from "svelte";
-  import { mousePos } from '$lib/stores';
+  import { path, mousePos } from '$lib/stores';
 
-  export let isPrototype = false;
-  
+  // Get path from layout data
+  let isPreview = $path === '/' ? true : false;
+
   const dracoLoader = new DRACOLoader();
   const loader = new GLTFLoader();
   dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
@@ -36,7 +37,7 @@
 </script>
 
 <div
-  class:preview={!isPrototype}
+  class:preview-lg={isPreview}
   role="presentation">
   <SC.Canvas
     antialias
@@ -69,12 +70,7 @@
 </div>
 
 <style lang="scss">
-  .preview {
-    position: relative;
-    width: 90%;
-    height: 90%;
-    border-radius: 20px;
-    overflow: hidden;
+  .preview-lg {
     box-shadow: var(--shadow-lg);
   }
 </style>

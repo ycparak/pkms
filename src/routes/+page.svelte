@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as config from '$lib/config'
   import Slide from '$components/interface/Slide.svelte';
   import SlideTab from '$components/interface/SlideTab.svelte';
   import MetaActions from '$components/interface/MetaActions.svelte';
@@ -11,7 +12,7 @@
 	import type { PageData } from './$types';
 
   export let data : PageData;
-  const posts = data.posts as Project[];
+  const projects = data.projects as Project[];
 
   // State
   let slideSpring = spring(0, { 
@@ -27,7 +28,7 @@
   let xPosSlides = 0;
   let nav: HTMLElement;
   let navItemOffsets = [] as number[];
-  let navItemOpacities = Array.from({ length: posts.length }, (v, i) => (i === 0 ? 1 : 0.2)) as number[];
+  let navItemOpacities = Array.from({ length: projects.length }, (v, i) => (i === 0 ? 1 : 0.2)) as number[];
   let slideScales = [1] as number[];
   let shouldStartDetectingGesture = true;
   let isCurrentlyDetectingGesture = false;
@@ -41,7 +42,7 @@
   $: calcSlideScales($slideSpring);
   $: interpolateNav($slideSpring);
   $: interpolateSlides($slideSpring, screenWidth);
-  $: if (Math.abs(sliderIndex - $slideSpring) <= 0.1) projectSlide.set(posts[sliderIndex]);
+  $: if (Math.abs(sliderIndex - $slideSpring) <= 0.1) projectSlide.set(projects[sliderIndex]);
 
   onMount(async () => {
     document.fonts.ready.then(() => {
@@ -71,7 +72,7 @@
 
     // Hacky fix to get interpolation working on first load for first and last elements when dragging
     if (isDragging && sliderIndex === 0 && prevIndex === 0) prevIndex = sliderIndex + 1;
-    if (isDragging && sliderIndex === posts.length - 1 && prevIndex === posts.length - 1) prevIndex = posts.length - 1;
+    if (isDragging && sliderIndex === projects.length - 1 && prevIndex === projects.length - 1) prevIndex = projects.length - 1;
 
     const prevOffset = navItemOffsets[prevIndex];
     const nextOffset = navItemOffsets[sliderIndex];
@@ -100,7 +101,7 @@
   function calcSlideScales(slideSpring : number) {
     // Scale slides based on distance from current slide from 0.45 to 1
     let scales = [] as number[];
-    posts.forEach((post, i : number) => {
+    projects.forEach((post, i : number) => {
       let scale = 1 - Math.abs(slideSpring - i) * 0.2;
       scales[i] = scale < 0.3 ? 0.3 : scale;
     });
@@ -112,14 +113,14 @@
   };
 
   function goToSlide(nextIndex : number) {
-    if (nextIndex < 0 || nextIndex > posts.length - 1) return;
+    if (nextIndex < 0 || nextIndex > projects.length - 1) return;
     prevIndex = sliderIndex;
     sliderIndex = nextIndex;
     slideSpring.set(sliderIndex);
   }
 
   function next() {
-    if (sliderIndex === posts.length - 1) return;
+    if (sliderIndex === projects.length - 1) return;
     goToSlide(sliderIndex + 1);
   }
 
@@ -130,7 +131,7 @@
 
   function isRubberBandRegion() {
     const positionTolerance = 0.05;
-    return $slideSpring < positionTolerance || $slideSpring > posts.length - 1 - positionTolerance;
+    return $slideSpring < positionTolerance || $slideSpring > projects.length - 1 - positionTolerance;
   }
 
   function passedDragDistanceTolerance() {
@@ -146,7 +147,7 @@
     const swipeDirectionIsRight = panVelocity < 0;
 
     if ((sliderIndex === 0 && swipeDirectionIsRight) && (passedDragDistanceTolerance() || passedVelocityTolerance)) return true;
-    else if ((sliderIndex === posts.length - 1 && !swipeDirectionIsRight) && (passedDragDistanceTolerance() || passedVelocityTolerance)) return true;
+    else if ((sliderIndex === projects.length - 1 && !swipeDirectionIsRight) && (passedDragDistanceTolerance() || passedVelocityTolerance)) return true;
     else if (!isRubberBandRegion() && (passedDragDistanceTolerance() || (swipingTowardsCurrentSlide && passedVelocityTolerance))) return true;
     else return false;
   }
@@ -166,7 +167,7 @@
 
     const step = isArrowRight ? 1 : -1;
 
-    if (isArrowRight && sliderIndex < posts.length - 1 || isArrowLeft && sliderIndex > 0) {
+    if (isArrowRight && sliderIndex < projects.length - 1 || isArrowLeft && sliderIndex > 0) {
       isArrowRight ? next() : prev();
     } else if (initialKeypress && isRubberBandRegion()) {
       // Rubber banding
@@ -195,7 +196,7 @@
       setTimeout(async function () {
         isCurrentlyDetectingGesture = false;
 
-        if (deltaX > 0 && sliderIndex < posts.length - 1) next();
+        if (deltaX > 0 && sliderIndex < projects.length - 1) next();
         else if (deltaX < 0 && sliderIndex > 0)  prev();
         slideSpring.set(sliderIndex);
         
@@ -206,7 +207,7 @@
     }
 
     if (isCurrentlyDetectingGesture) {
-      if (deltaX > 0 && sliderIndex === posts.length - 1) slideSpring.set($slideSpring + 0.1);
+      if (deltaX > 0 && sliderIndex === projects.length - 1) slideSpring.set($slideSpring + 0.1);
       else if (deltaX < 0 && sliderIndex === 0) slideSpring.set($slideSpring - 0.1);
     }
   }
@@ -224,7 +225,7 @@
 
     const springValue = $slideSpring;
     let progress = progressPercentage(panVelocity, 0, -screenWidth);
-    if (springValue + progress < 0 || springValue + progress > posts.length - 1) progress *= 0.5; // Rubber banding
+    if (springValue + progress < 0 || springValue + progress > projects.length - 1) progress *= 0.5; // Rubber banding
     slideSpring.update((n) => n + progress);
 
     if (passedDragDistanceTolerance() && shouldDragAdvance()) dragToNextSlide();
@@ -240,16 +241,20 @@
   }
 </script>
 
+<svelte:head>
+	<title>{config.title}</title>
+</svelte:head>
+
 
 <main>
   <!-- Header -->
   <div class="fade left"></div>
   <div class="fade right"></div>
   <header bind:this={nav} style="transform: translate3d({xPosNav}px, 0px, 0px)">
-    {#each posts as link, index}
+    {#each projects as project, index}
     <div class="tabs" style="opacity: {navItemOpacities[index]}">
       <SlideTab
-        title={link.title}
+        title={project.meta.title}
         on:select={() => goToSlide(index)}
         />
     </div>
@@ -272,21 +277,21 @@
     on:touchmove|preventDefault={(e) => continueDragging(e.touches[0].pageX)}
     on:touchend={stopDragging}
     on:touchcancel={stopDragging}>
-    {#each posts as post, index}
-      <Slide post={post} scale={slideScales[index]} lazy={index === 1} />
+    {#each projects as project, index}
+      <Slide project={project} scale={slideScales[index]} />
       {/each}
     </section>
   </main>
   
   <MetaDescription 
-    date={posts[sliderIndex].date}
-    project={posts[sliderIndex].project}
-    description={posts[sliderIndex].description} />
+    date={projects[sliderIndex].meta.date}
+    project={projects[sliderIndex].meta.project}
+    description={projects[sliderIndex].meta.description} />
 
-  {#if posts[sliderIndex].codeLink}
+  {#if projects[sliderIndex].meta.codeLink}
     <div transition:fade={{ duration: 300}}>
       <MetaActions
-        link={posts[sliderIndex].codeLink}
+        link={projects[sliderIndex].meta.codeLink}
         icon="github-logo" />
     </div>
   {/if}
@@ -301,7 +306,7 @@
 
 <style lang="scss">
   main {
-    --height-bottom: calc(var(--space-container-v) + var(--space-nav) - 10px);
+    --height-bottom: calc(var(--space-container-v) + var(--space-nav));
     display: flex;
     flex-direction: column;
     height: calc(100dvh - var(--height-bottom));

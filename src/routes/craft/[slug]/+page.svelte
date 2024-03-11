@@ -10,16 +10,19 @@
 	const meta = data.meta;
 </script>
 
+<svelte:head>
+	<title>{data.meta.title}</title>
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={data.meta.title} />
+</svelte:head>
+
 <MetaTitle
 	isDarkMode={true}
 	title={meta.title} />
+
 <MetaBack isDarkMode={true} />
 <MetaCopy isDarkMode={true} />
-<MetaDescription
-	isDarkMode={true}
-	date={meta.date}
-	project={meta.project}
-	description={meta.description} />
+
 {#if meta.codeLink}
 	<MetaActions
 		isDarkMode={true}
@@ -27,4 +30,10 @@
 		icon="github-logo" />
 {/if}
 
-<svelte:component this={data.post} />
+<MetaDescription
+	isDarkMode={true}
+	date={meta.date}
+	project={meta.project}
+	description={meta.description} />
+
+<svelte:component this={data.project} />

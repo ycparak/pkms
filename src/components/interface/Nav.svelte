@@ -18,9 +18,9 @@
   let originalRadius = 30;
 
   const buttonBlur = tweened(5, {
-    duration: $projectSlide.link ? 300 : 400,
-    delay: $projectSlide.link ? 0 : 100,
-    easing: $projectSlide.link ? backIn : backOut
+    duration: $projectSlide?.meta?.link ? 300 : 400,
+    delay: $projectSlide?.meta?.link ? 0 : 100,
+    easing: $projectSlide?.meta?.link ? backIn : backOut
   });
   const aboutSpring = spring({ height: aboutHeight, width: aboutWidth, radius: originalRadius }, {
     stiffness: 0.05,
@@ -34,7 +34,7 @@
   })
 
   $: rootPath = path.split('/')[1];
-  $: if ($projectSlide.link) {
+  $: if ($projectSlide?.meta?.link) {
     $buttonBlur = 0;
   } else {
     $buttonBlur = 5;
@@ -74,20 +74,20 @@
             about
           </button>
         </nav>
-        {#if $projectSlide.link && path === '/'}
+        {#if $projectSlide?.meta?.link && path === '/'}
           <div class="divider"></div>
           <a
             class="btn btn-none craft-link"
             in:slide={{ duration: 500, easing: backOut, axis: 'x' }}
             out:slide={{ duration: 400, easing: backIn, axis: 'x' }}
-            href={$projectSlide.link}
-            target={$projectSlide.linkIsExternal ? '_blank' : ''}>
+            href={$projectSlide?.meta?.link}
+            target={$projectSlide?.meta?.linkIsExternal ? '_blank' : ''}>
             <div 
               class="btn-content"
               style="filter: blur({$buttonBlur}px);">
-              <span>{$projectSlide.linkTitle}</span>
+              <span>{$projectSlide?.meta?.linkTitle}</span>
               <div class="icon">
-                <i class="ph-bold { $projectSlide.linkIsExternal ? 'ph-arrow-up-right' : 'ph-arrow-right' }"></i>
+                <i class="ph-bold { $projectSlide?.meta?.linkIsExternal ? 'ph-arrow-up-right' : 'ph-arrow-right' }"></i>
               </div>
             </div>
           </a>

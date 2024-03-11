@@ -7,22 +7,20 @@ export type Writing = {
 	isDraft: boolean;
 };
 
-export type Project = {
+export type ProjectMeta = {
 	title: string;
 	date: string;
 	project: string;
 	description: string;
-	collaborators: string[];
-	isDraft: boolean;
-	isPublishable: boolean;
 	link?: string | null | undefined;
 	linkTitle?: string | null | undefined;
 	linkIsExternal?: boolean | null;
-	previewImage?: string | null | undefined;
-	previewVideo?: string | null | undefined;
-	previewComponent?: string | null | undefined;
-	imageWidth?: number | null | undefined;
-	imageHeight?: number | null | undefined;
+	codeLink?: string | null | undefined;
 	slug: string;
-	codeLink: string | null | undefined;
+	isDraft: boolean;
+};
+
+export type Project = {
+	default: any;
+	meta: ProjectMeta;
 };

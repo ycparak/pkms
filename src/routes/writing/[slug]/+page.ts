@@ -18,7 +18,7 @@ export async function load({ params, fetch }) {
 		}
 
 		return {
-			content: post.default,
+			post: post.default,
 			meta: post.metadata,
 			previousPost,
 			nextPost,

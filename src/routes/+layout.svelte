@@ -7,10 +7,12 @@
   // import Guidelines from '$components/interface/Guidelines.svelte';
   import Nav from '$components/interface/Nav.svelte';
   import { afterNavigate } from '$app/navigation';
-  import { runAnimation, mousePos } from '$lib/stores';
+  import { runAnimation, mousePos, path } from '$lib/stores';
 	import type { LayoutData } from './$types';
 
   export let data: LayoutData;
+
+  $: path.set(data.url);
   
   // Lifecycle hooks
   afterNavigate(() => {

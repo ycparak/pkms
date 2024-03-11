@@ -4,9 +4,10 @@
   import { sineInOut } from 'svelte/easing';
 	import { spring } from 'svelte/motion';
 	import { onMount } from 'svelte';
+  import { path } from '$lib/stores';
 
 	// Props
-	export let isPrototype = false;
+	let isPreview = $path === '/' ? true : false;
 
 	// Constants
   const offset = 90;
@@ -135,11 +136,13 @@
   }
 </script>
 
-<section id="bg" class="dark" class:preview={!isPrototype}>
-	<div id="explainer" class="content">
-		{#if !holdingMouse}
-			<p transition:fade={{ duration: 150 }}>Hold and rotate from anywhere</p>
-		{/if}
+{#if !isPreview}
+	<section id="bg" class="dark">
+		<div id="explainer">
+			{#if !holdingMouse}
+				<p transition:fade={{ duration: 150 }}>Hold and rotate from anywhere</p>
+			{/if}
+		</div>
 
 		{#if clickCoords}
 			<div
@@ -161,8 +164,20 @@
 				</div>
 			</div>
 		{/if}
-	</div>
-</section>
+	</section>
+{:else}
+	<section class="preview-lg">
+		<video
+			class="asset"
+			src="/videos/radial-menu.mp4"
+			draggable="false"
+			autoplay
+			loop
+			muted
+			playsinline>
+		</video>
+	</section>
+{/if}
 
 <svelte:window
   on:touchstart={onTouchStart}
@@ -181,21 +196,33 @@
 	$text: #868f97;
 	$text-highlight: #d8bbc3;
 	section {
-		display: grid;
-		place-items: center;
 		position: relative;
     background-color: $wrapper;
     height: 100%;
     width: 100%;
     margin: 0 auto;
+		display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 
-		&.preview {
-			position: relative;
-			width: 100%;
-			height: 90%;
-			border-radius: 20px;
-			overflow: hidden;
+		&.preview-lg {
 			box-shadow: var(--shadow-lg);
+			background-color: #15141b;
+
+			video {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				max-width: 788px;
+				max-height: 788px;
+				user-select: none;
+				-webkit-user-drag: none;
+				overflow: hidden;
+				user-select: none;
+				-webkit-user-drag: none;
+			}
 		}
 
 		p {

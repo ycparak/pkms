@@ -2,7 +2,7 @@
 
 </script>
 
-<section>
+<section class="preview-lg">
   <div class="container">
     <div class="header">
       <img class="inyoni" src="/images/inyoni.gif" alt="" draggable="false">
@@ -31,13 +31,8 @@
   section {
     display: flex;
     flex-direction: column;
-    position: relative;
     background-color: var(--color-card);
-    border: toRem(1px) solid var(--color-border);
-    height: 100%;
-    width: 100%;
-    border-radius: toRem(16px);
-    overflow: hidden;
+    height: calc(100% - var(--space-container-v) * 2);
     margin: 0 auto;
     display: grid;
     place-items: center;

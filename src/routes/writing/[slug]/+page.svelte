@@ -66,7 +66,7 @@
 		</hgroup>
 		
 		<div class="grid">
-			<svelte:component this={data.content} />
+			<svelte:component this={data.post} />
 		</div>
 	</article>
 	

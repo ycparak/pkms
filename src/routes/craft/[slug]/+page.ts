@@ -3,10 +3,12 @@ import { error } from '@sveltejs/kit';
 export async function load({ params }) {
 	try {
 		const post = await import(`../../../content/projects/${params.slug}.md`);
-		if (!post.link || post.link.isExternal) throw new Error('Invalid link');
+		if (post.default.slug === '') throw new Error('Invalid link');
+
+		console.log(JSON.stringify(post.default));
 
 		return {
-			post: post.default,
+			project: post.default,
 			meta: post.metadata
 		};
 	} catch {

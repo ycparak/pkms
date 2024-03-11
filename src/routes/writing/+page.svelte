@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>Writing | {config.title}</title>
+	<title>Writing</title>
 </svelte:head>
 
 <main>
