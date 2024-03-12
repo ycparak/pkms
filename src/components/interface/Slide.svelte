@@ -3,7 +3,7 @@
   import type { Project } from "$lib/types";
   import { runAnimation } from '$lib/stores';
   import { tweened } from 'svelte/motion';
-	import { quadIn, circOut } from 'svelte/easing';
+	import { quadInOut, circOut } from 'svelte/easing';
 
   export let project: Project;
   export let scale: number;
@@ -18,15 +18,15 @@
   });
 
   const slideOpacity = tweened(0, {
-    duration: 400,
+    duration: 800,
     delay: 0,
-    easing: quadIn
+    easing: quadInOut
   });
 
-  const slideBlur = tweened(3, {
-    duration: 400,
+  const slideBlur = tweened(0, {
+    duration: 800,
     delay: 0,
-    easing: quadIn
+    easing: quadInOut
   });
 
   $: if (runAnimation) {
@@ -60,8 +60,6 @@
       position: absolute;
       height: 100%;
       width: 100%;
-      object-fit: contain;
-      object-position: center;
       user-select: none;
       -webkit-user-drag: none;
     }

@@ -23,7 +23,7 @@ async function getProjects() {
 
 			// Set projects
 			const post = { default: file.default, meta };
-			if (post.meta.isDraft && !dev) continue;
+			if (post.meta.isDraft) continue;
 			else projects.push(post);
 		}
 	}

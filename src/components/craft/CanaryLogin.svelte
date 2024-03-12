@@ -32,6 +32,7 @@
     display: flex;
     flex-direction: column;
     background-color: var(--color-card);
+    border: 1px solid var(--color-border);
     height: calc(100% - var(--space-container-v) * 2);
     margin: 0 auto;
     display: grid;
