@@ -1,6 +1,6 @@
 ---
 title: Infinite Loop Logo
-date: '2023-11-23'
+date: '2023-09-23'
 project: Infinite Loop
 description: 'A new Logo rebrand for Infiniteloop, a music & sound production company.'
 isDraft: false

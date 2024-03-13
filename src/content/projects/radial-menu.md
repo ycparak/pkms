@@ -1,6 +1,6 @@
 ---
 title: Rauno’s Radial Menu
-date: '2023-09-01'
+date: '2023-11-01'
 project: Concept
 description: 'A svelte implementation of <a href="https://rauno.me" target="_blank">Rauno Freiberg’s</a> wonderful <a href="https://rauno.me/craft/radial-menu" target="_blank">radial menu</a>.'
 link: '/craft/radial-menu'

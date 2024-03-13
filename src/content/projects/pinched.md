@@ -10,4 +10,4 @@ isDraft: true
   import Macbook from '$components/craft/Macbook.svelte';
 </script>
 
-<Macbook />
+<Macbook src="/images/canary-console.webp" />
