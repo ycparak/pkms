@@ -6,7 +6,7 @@ description: 'Visualising large batches of incidents in the Canary Console using
 link: 'https://blog.thinkst.com/2020/08/something-fresh.html'
 linkTitle: view case study
 linkIsExternal: true
-isDraft: true
+isDraft: false
 ---
 
 <script>

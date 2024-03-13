@@ -4,7 +4,7 @@ date: '2021-10-11'
 published: true
 ---
 
-_The great Anthony Bourdain wrote the following chapter, in his book Medium Raw. It used to be up on [ruhlman.com](https://ruhlman.com/so-you-wanna-be-a-chef-by-bourdain-2/) but unfortunately has since been taken down. I'm republishing it here as a reminder to a time when I was in college reading it and feeling deeply inspired._
+_The great Anthony Bourdain wrote the following chapter, in his book Medium Raw. It used to be up on [ruhlman.com](https://ruhlman.com/so-you-wanna-be-a-chef-by-bourdain-2/) but unfortunately has since been taken down. I'm republishing it here as a reminder to a time when I first read it in college and came a way with a sense of awe for both Bourdain’s writing ability and professional chefs who go through The Life._
 
 <img class="content" alt="Anthony Bourdain" src="/images/bourdain.webp">
 

@@ -13,7 +13,10 @@
     border: 1px solid var(--color-border);
     padding: var(--space-container-v);
     svg {
-      max-height: 15%;
+      height: 100%;
+      width: 100%;
+      max-height: 17.5%;
+      max-width: toRem(800px);
     }
   }
 </style>
