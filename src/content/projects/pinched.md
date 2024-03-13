@@ -7,7 +7,7 @@ isDraft: true
 ---
 
 <script>
-  import Pinched from '$components/craft/Pinched.svelte';
+  import Macbook from '$components/craft/Macbook.svelte';
 </script>
 
-<Pinched />
+<Macbook />

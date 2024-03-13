@@ -1,5 +1,5 @@
 <section class="preview-lg">
-  <img src="/images/graph-view.webp" alt="Canary incidents graph built with d3.js" />
+  <img src="/images/graph-view.webp" alt="Canary incidents graph built with d3.js" draggable="false" />
 </section>
 
 <style lang="scss">
@@ -19,6 +19,7 @@
     img {
       width: 100%;
       height: auto;
+      user-select: none;
     }
   }
 </style>
