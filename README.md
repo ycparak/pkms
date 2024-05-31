@@ -1,6 +1,8 @@
 # PKMS
 
-Note taking system inspired by [Andy Matuschak’s notes](https://notes.andymatuschak.org/About_these_notes), built with Vue and Nuxt.js. As an interface paradigm, horizontal panning seems to me to encourage ephemeral rabbit hole consumption, I think this takes advantage of that, and intuitevly feels like it holds higher retentention. OTOH, I think that may come at the expense of deeper knowledge study / understanding.
+Note taking system inspired by [Andy Matuschak’s notes](https://notes.andymatuschak.org/About_these_notes), built with Vue and Nuxt.js.
+
+As an interface paradigm, horizontal panning seems to me to encourage ephemeral rabbit hole consumption, I think this takes advantage of that, and intuitevly feels like it holds higher end-user retentention. OTOH, I think that it possibly comes at the expense of deeper knowledge study / understanding.
 
 ![5](https://github.com/ycparak/pkms/assets/12952566/12a3ccfb-bb77-4f86-92c5-b179e31d5a25)
 
